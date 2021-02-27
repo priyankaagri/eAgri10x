@@ -9,4 +9,11 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+
+    <string name="Mobile_number">"Your Mobile Number"</string>
+    <string name="verify_account">"Verify Account"</string>
+    <string name="we_will_send">"We will send an SMS With a Confirmation code to this number"</string>
+    <string name="verification">"Please Type Verification code send to +91XXXXXXXXXX"</string>
+
 </resources>

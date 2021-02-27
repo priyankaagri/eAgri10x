@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EAgri10x">
-
-        <activity android:name=".activities.Login">
+        <activity android:name=".activities.Update_Profile_Activity"></activity>
+        <activity android:name=".activities.OrderFail_Activity" />
+        <activity android:name=".activities.Otp_Screen_Activity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.LocationActivity" />
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.mobile.eagri10x.activities;
+package com.mobile.agri10x.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,19 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.mobile.eagri10x.R;
+import com.mobile.agri10x.R;
 
-public class LoginActivity extends AppCompatActivity {
-  Button btn_next;
+public class LocationActivity extends AppCompatActivity {
+    Button loction_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        btn_next= findViewById(R.id.btn_next);
-        btn_next.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_location);
+        loction_btn= findViewById(R.id.loction_btn);
+        loction_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, Otp_Screen_Activity.class);
+                Intent intent = new Intent(LocationActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

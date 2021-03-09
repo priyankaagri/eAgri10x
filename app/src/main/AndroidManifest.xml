@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mobile.eagri10x">
+    package="com.mobile.agri10x">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EAgri10x">
-        <activity android:name=".activities.Update_Profile_Activity"></activity>
+        <activity android:name=".activities.HomePageActivity"></activity>
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.Update_Profile_Activity" />
         <activity android:name=".activities.OrderFail_Activity" />
         <activity android:name=".activities.Otp_Screen_Activity" />
         <activity android:name=".activities.LoginActivity" />

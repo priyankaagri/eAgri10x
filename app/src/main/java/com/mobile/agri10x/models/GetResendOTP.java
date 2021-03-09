@@ -1,9 +1,10 @@
-package com.mobile.eagri10x.models;
+package com.mobile.agri10x.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class VerifyOTP {
+public class GetResendOTP {
+
     @SerializedName("message")
     @Expose
     private String message;
@@ -26,4 +27,5 @@ public class VerifyOTP {
     public void setType(String type) {
         this.type = type;
     }
+
 }

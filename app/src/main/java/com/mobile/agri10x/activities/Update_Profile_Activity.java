@@ -1,4 +1,4 @@
-package com.mobile.eagri10x.activities;
+package com.mobile.agri10x.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.mobile.eagri10x.R;
+import com.mobile.agri10x.R;
 
 public class Update_Profile_Activity extends AppCompatActivity {
     Button save_btn;

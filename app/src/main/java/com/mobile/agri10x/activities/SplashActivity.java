@@ -1,11 +1,11 @@
-package com.mobile.eagri10x.activities;
+package com.mobile.agri10x.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.mobile.eagri10x.R;
+import com.mobile.agri10x.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
 // Thread will sleep for 5 seconds
                     sleep(2*1000);
 
-                    Intent intent = new Intent(SplashActivity.this, LocationActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
 
 

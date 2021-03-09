@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/con"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+
+            android:src="@drawable/backarrow"
+            android:id="@+id/img_arrow"
+            android:layout_width="40dp"
+            android:layout_height="30dp"/>
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_alignBaseline="@id/img_arrow"
+            android:layout_toRightOf="@+id/img_arrow"
+            android:text=""
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/phone"
+            app:tint="@color/black"
+            android:id="@+id/call"
+            android:layout_width="40dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_below="@+id/mmmmm"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:text="@string/fname"
+                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+
+
+            <EditText
+                android:id="@+id/fname"
+                android:layout_width="match_parent"
+                android:hint="@string/entrnamef"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:text="@string/lname"
+                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/lname"
+                android:layout_width="match_parent"
+                android:hint="@string/enternamel"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Register As"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="6"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/proxima_nova_alt_bold"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/farmer_btn"
+                        android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:layout_weight="5"
+                        android:text="@string/farmer"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/proxima_nova_bold"
+                        android:background="@drawable/filll_back"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/trader_btn"
+                        android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:layout_weight="5"
+                        android:text="@string/trder"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:fontFamily="@font/proxima_nova_bold"
+                        android:background="@drawable/hollow_back"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:padding="10dp"
+            android:background="@drawable/btn_round_corner"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="@string/facetouble"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/proximanova_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/callus"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/teal_200"
+                android:fontFamily="@font/proximanova_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/callphon"
+                android:textColor="@color/purple_500"
+                android:text="@string/tollfree"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

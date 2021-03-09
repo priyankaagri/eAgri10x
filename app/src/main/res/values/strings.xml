@@ -9,30 +9,12 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="fname">First Name</string>
-    <string name="lname">Last Name</string>
-    <string name="tollfree">1800-121-2243</string>
-    <string name="facetouble">Facing trouble?</string>
-    <string name="callus">Call Us</string>
-    <string name="entrnamef">Enter First Name</string>
-    <string name="enternamel">Enter Last Name</string>
-    <string name="farmer">Farmer</string>
-    <string name="trder">Trader</string>
+    <string name="logout_b">Are you sure you want to logout?</string>
+
 
     <string name="Mobile_number">"Your Mobile Number"</string>
     <string name="verify_account">"Verify Account"</string>
     <string name="we_will_send">"We will send an SMS With a Confirmation code to this number"</string>
     <string name="verification">"Please Type Verification code send to +91XXXXXXXXXX"</string>
-    <string name="title_activity_home_page">HomePageActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
 </resources>

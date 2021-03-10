@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_bar"
+        android:layout_marginBottom="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginVertical="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:src="@drawable/logogreen"
+                        android:layout_height="30dp">
+
+                    </ImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_weight="7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="right"
+                        android:layout_alignParentRight="true">
+                        <TextView
+                            android:id="@+id/txt_signups"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sign In"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/proxima_nova_bold"
+                            android:gravity="center"/>
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/signin_img"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_below="@+id/hloa"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_corner_blue"
+                    android:layout_weight="6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:spinnerMode="dropdown"
+                        android:fontFamily="@font/proximanova_regular"
+                        android:id="@+id/catagaryname_id"
+                        />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/round_corner_blue"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:id="@+id/srcg"
+                        android:src="@drawable/search"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_height="20dp">
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_toRightOf="@+id/srcg"
+                        android:gravity="center|left"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/proximanova_regular"
+                        android:textColor="@color/text_color"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="12dp"
+                        android:text="Looking for....."
+                        android:layout_height="match_parent">
+
+                    </TextView>
+
+
+
+                </RelativeLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="20dp">
+
+                <androidx.viewpager.widget.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/viewPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    tools:context="com.codinginflow.picassoimagesliderexample.MainActivity"></androidx.viewpager.widget.ViewPager>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="15dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:padding="15dp"
+                            android:src="@drawable/vegetable_img" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:gravity="center"
+                            android:text="@string/vegitabl"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:padding="15dp"
+                            android:src="@drawable/fruits_img" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:gravity="center"
+                            android:text="@string/furits"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:padding="15dp"
+                            android:src="@drawable/grains_img" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:gravity="center"
+                            android:text="@string/gaisins"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:padding="15dp"
+                            android:src="@drawable/pulses_img" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:gravity="center"
+                            android:text="@string/vegpulesr"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:padding="15dp"
+                            android:src="@drawable/spices_img" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:gravity="center"
+                            android:text="@string/spixce"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+            <LinearLayout
+                android:id="@+id/dailydeals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/daily_deal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="@dimen/text_size_small"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="Today's Features Categories"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium" />
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginRight="@dimen/text_size_fiteen"
+                        android:src="@drawable/fruit_bannerimg">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginRight="@dimen/text_size_fiteen"
+                        android:src="@drawable/grains_img">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginRight="@dimen/text_size_fiteen"
+                        android:src="@drawable/veggies">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/fruit_bannerimg">
+
+                    </ImageView>
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
+            <LinearLayout
+                android:id="@+id/Top_picks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/top_pics_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="@dimen/text_size_small"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="@string/catogery_list"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/caltogerylist_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"></androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="@dimen/text_size_small"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="@string/our_services"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/farmer_img">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
+                        android:layout_marginTop="@dimen/activity_margin_xxlarge"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="@string/i_am_famr"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginTop="@dimen/second_card_view"
+                        android:background="@drawable/radius_button"
+                        android:padding="10dp"
+                        android:text="@string/iwanttosell"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/trader_img">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="@string/i_am_trader"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginTop="@dimen/second_card_view"
+                        android:background="@drawable/radius_button"
+                        android:padding="10dp"
+                        android:text="@string/iwanttobut"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fpo_img">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="@string/i_am_fpo"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginTop="@dimen/second_card_view"
+                        android:background="@drawable/radius_button"
+                        android:padding="10dp"
+                        android:text="@string/iwanttowork"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/worker_img">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="@string/i_am_worker"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginTop="@dimen/second_card_view"
+                        android:background="@drawable/radius_button"
+                        android:padding="10dp"
+                        android:text="@string/iwanttowork"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="@dimen/text_size_small"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="@string/comdity_rate"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

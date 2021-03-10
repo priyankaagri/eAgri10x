@@ -5,4 +5,66 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="status_height">30dp</dimen>
+
+    <dimen name="menu_bg">120dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_margin_small">5dp</dimen>
+    <dimen name="activity_margin_seven">7dp</dimen>
+    <dimen name="activity_margin_normal">10dp</dimen>
+    <dimen name="activity_margin_normal_medium">14dp</dimen>
+    <dimen name="activity_margin_medium">16dp</dimen>
+    <dimen name="activity_margin_large">20dp</dimen>
+    <dimen name="activity_margin_xlarge">25dp</dimen>
+    <dimen name="activity_margin_xxlarge">30dp</dimen>
+    <dimen name="activity_margin_xxxlarge">35dp</dimen>
+    <dimen name="activity_margin_xxxxlarge">45dp</dimen>
+    <dimen name="activity_margin_120">120dp</dimen>
+    <dimen name="edtxtheight">45dp</dimen>
+
+
+    <dimen name="third_card_view">72dp</dimen>
+    <dimen name="second_card_view">56dp</dimen>
+    <dimen name="first_card_view">40dp</dimen>
+    <dimen name="bottom_second">32dp</dimen>
+    <dimen name="bottom_third">48dp</dimen>
+    <!--<dimen name="action_bar">72dp</dimen>-->
+
+    <dimen name="image_height">80dp</dimen>
+
+    <dimen name="text_size_fab">12sp</dimen>
+    <dimen name="text_padding">12dp</dimen>
+
+    <dimen name="btn_height">50dp</dimen>
+    <dimen name="btn_text_size">20sp</dimen>
+    <dimen name="btn_wid_icon_text_size">16sp</dimen>
+
+    <dimen name="text_size_mini">10sp</dimen>
+    <dimen name="text_size_small1">11sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_fiteen">15sp</dimen>
+    <dimen name="text_size_extra_normal">16sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_xlarge">22sp</dimen>
+    <dimen name="text_size_xxlarge">25sp</dimen>
+    <dimen name="text_size_xxlargew">50sp</dimen>
+
+
+    <dimen name="text_margin_mini">2dp</dimen>
+    <dimen name="text_margin_mini_">3dp</dimen>
+    <dimen name="text_margin_small">5dp</dimen>
+    <dimen name="text_margin_normal">8dp</dimen>
+    <dimen name="text_margin_medium">10dp</dimen>
+    <dimen name="text_margin_large">15dp</dimen>
+    <dimen name="text_margin_xlarge">20dp</dimen>
+    <dimen name="text_margin_xxlarge">22dp</dimen>
+    <dimen name="text_margin_xxxlarge">25dp</dimen>
+
+    <dimen name="text_view_size">14dp</dimen>
+
+
 </resources>

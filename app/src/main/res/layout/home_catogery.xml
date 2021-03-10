@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:textAllCaps="false"
+        android:background="@drawable/grayback"
+        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="hello"
+        android:textColor="@color/black"
+        android:textSize="14dp">
+
+    </TextView>
+
+</LinearLayout>

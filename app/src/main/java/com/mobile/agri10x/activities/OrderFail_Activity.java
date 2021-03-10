@@ -1,4 +1,4 @@
-package com.mobile.eagri10x.activities;
+package com.mobile.agri10x.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.mobile.eagri10x.R;
+import com.mobile.agri10x.R;
+
 
 public class OrderFail_Activity extends AppCompatActivity {
      Button backhome_btn;

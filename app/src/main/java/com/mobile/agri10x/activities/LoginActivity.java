@@ -4,6 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +14,7 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -75,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_next.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +96,14 @@ public class LoginActivity extends AppCompatActivity {
                     mobilenumber.requestFocus();
                     return;
                 }else {
+                    InputMethodManager imm = (InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                    if (imm.isAcceptingText()) {
+                        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    } else {
+                        // writeToLog("Software Keyboard was not shown");
+                    }
                     GetOtp(strmobilenumber);
                 }
 
@@ -120,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     dialog.dismiss();
+                    Log.d("getout", String.valueOf(response.body().getOut()));
                     if(response.body().getOut() == 5)
                     {
                         Intent i = new Intent(LoginActivity.this,Otp_Screen_Activity.class);
@@ -128,11 +141,13 @@ public class LoginActivity extends AppCompatActivity {
                         i.putExtra("flag","1");
                         startActivity(i);
                         finish();
+                    }else {
+                        Toast.makeText(LoginActivity.this, "Mobile Number is not registerd.", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
                     dialog.dismiss();
-                    Toast.makeText(LoginActivity.this, "Something went Wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Please try again"
-                android:textColor="@color/purple_500"/>
+                android:textColor="@color/appgreen"/>
             <Button
                 android:id="@+id/backhome_btn"
                 android:layout_width="match_parent"

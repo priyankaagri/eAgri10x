@@ -12,6 +12,43 @@
     <string name="logout_b">Are you sure you want to logout?</string>
 
 
+    <string name="viewall">See All</string>
+    <string name="top_picks">Top Picks</string>
+    <string name="catogery_list">Catogery List</string>
+    <string name="our_services">Our Services</string>
+    <string name="i_am_famr">I am a Farmer</string>
+    <string name="i_am_trader">I am a Trader</string>
+    <string name="i_am_fpo">I am a FPO</string>
+    <string name="i_am_worker">I am a Worker</string>
+    <string name="iwanttosell">I WANT TO SELL</string>
+    <string name="iwanttobut">I WANT TO BUY</string>
+    <string name="iwanttowork">I WANT TO WORK</string>
+    <string name="comdity_rate">Commodity Rates</string>
+
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="tollfree">1800-121-2243</string>
+    <string name="facetouble">Facing trouble?</string>
+    <string name="callus">Call Us</string>
+    <string name="entrnamef">Enter First Name</string>
+    <string name="enternamel">Enter Last Name</string>
+    <string name="farmer">Farmer</string>
+    <string name="trder">Trader</string>
+
+    <string name="home">Home</string>
+    <string name="payment">Payment</string>
+    <string name="cart">Cart</string>
+    <string name="setting">Setting</string>
+    <string name="offer">Offer</string>
+
+    <string name="vegitabl">Vegitables</string>
+    <string name="spixce">Spices</string>
+    <string name="furits">Fruits</string>
+    <string name="vegpulesr">Pules</string>
+    <string name="gaisins">Grains</string>
+
+
+
     <string name="Mobile_number">"Your Mobile Number"</string>
     <string name="verify_account">"Verify Account"</string>
     <string name="we_will_send">"We will send an SMS With a Confirmation code to this number"</string>

@@ -3,82 +3,29 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class GetHomeProduct {
-    @SerializedName("_id")
+    @SerializedName("message")
     @Expose
-    private String id;
-    @SerializedName("varietyName")
+    private String message;
+    @SerializedName("data")
     @Expose
-    private String varietyName;
-    @SerializedName("pricePerLot")
-    @Expose
-    private Integer pricePerLot;
-    @SerializedName("featured")
-    @Expose
-    private Boolean featured;
-    @SerializedName("discount")
-    @Expose
-    private Object discount;
-    @SerializedName("totalAvailable")
-    @Expose
-    private Integer totalAvailable;
-    @SerializedName("orderID")
-    @Expose
-    private String orderID;
+    private List<GetHomeProductData> data = null;
 
-    public String getId() {
-        return id;
+    public String getMessage() {
+        return message;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getVarietyName() {
-        return varietyName;
+    public List<GetHomeProductData> getData() {
+        return data;
     }
 
-    public void setVarietyName(String varietyName) {
-        this.varietyName = varietyName;
-    }
-
-    public Integer getPricePerLot() {
-        return pricePerLot;
-    }
-
-    public void setPricePerLot(Integer pricePerLot) {
-        this.pricePerLot = pricePerLot;
-    }
-
-    public Boolean getFeatured() {
-        return featured;
-    }
-
-    public void setFeatured(Boolean featured) {
-        this.featured = featured;
-    }
-
-    public Object getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Object discount) {
-        this.discount = discount;
-    }
-
-    public Integer getTotalAvailable() {
-        return totalAvailable;
-    }
-
-    public void setTotalAvailable(Integer totalAvailable) {
-        this.totalAvailable = totalAvailable;
-    }
-
-    public String getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
+    public void setData(List<GetHomeProductData> data) {
+        this.data = data;
     }
 }

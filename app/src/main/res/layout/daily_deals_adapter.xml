@@ -31,17 +31,29 @@ android:id="@+id/cardview"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/potato_dwn" />
 
+
             <TextView
                 android:id="@+id/txt_product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/product_img"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/proxima_nova_bold"
 
                 android:text="Potato"
                 android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/fav"
+                android:src="@drawable/ic_baseline_favorite_border_24"
+                android:layout_alignParentEnd="true"
+             android:layout_marginTop="110dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp">
+
+            </ImageView>
 
             <RatingBar
 

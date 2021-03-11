@@ -9,7 +9,6 @@ import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +23,6 @@ import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 
-
 import org.json.JSONObject;
 
 import java.util.List;
@@ -35,38 +33,35 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DailyDealsAdapter extends RecyclerView.Adapter<DailyDealsAdapter.ViewHolders> {
+public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHolders> {
     Context context;
     private List<GetHomeProductData> dataList;
     boolean check;
 
-
-
-    public DailyDealsAdapter(List<GetHomeProductData> featuredproductlist, Context context, boolean check) {
-        this.dataList=featuredproductlist;
+    public TopPicksAdapter(List<GetHomeProductData> toppicksproductlist, Context context, boolean check) {
+        this.dataList=toppicksproductlist;
         this.context=context;
-        this.check =check;
+        this.check = check;
     }
 
 
     @NonNull
     @Override
     public ViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_deals_adapter, parent, false);
+         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.topicks_adapter, parent, false);
         ViewHolders viewHolder = new ViewHolders(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolders holder, int position) {
-
         if(check){
             holder.fav.setVisibility(View.VISIBLE);
         }else{
             holder.fav.setVisibility(View.GONE);
         }
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
-        holder.product_price.setText("Rs "+dataList.get(position).getPricePerLot());
+        holder.product_price.setText("₹ "+dataList.get(position).getPricePerLot());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +69,6 @@ public class DailyDealsAdapter extends RecyclerView.Adapter<DailyDealsAdapter.Vi
                 callApiProductDetail(str_orderId,position);
             }
         });
-
 
     }
 
@@ -131,7 +125,6 @@ public class DailyDealsAdapter extends RecyclerView.Adapter<DailyDealsAdapter.Vi
 
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(position).getPricePerLot());
-
                     dialog.show();
                 }
                 else {
@@ -148,7 +141,6 @@ public class DailyDealsAdapter extends RecyclerView.Adapter<DailyDealsAdapter.Vi
             }
         });
     }
-
 
     @Override
     public int getItemCount() {

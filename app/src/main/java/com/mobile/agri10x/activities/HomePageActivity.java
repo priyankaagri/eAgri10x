@@ -42,6 +42,7 @@ public class HomePageActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()==R.id.tab_home)
                 {
+
                     setFragment(new HomeFragment());
                 }else if(item.getItemId()==R.id.tab_paymet)
                 {
@@ -64,7 +65,7 @@ public class HomePageActivity extends AppCompatActivity {
     {
         FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.nav_host_fragment, fragment);
+        transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(fragment.getClass().getName());
         transaction.commit();
 

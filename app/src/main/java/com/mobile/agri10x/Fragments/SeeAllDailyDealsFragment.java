@@ -91,7 +91,7 @@ public class SeeAllDailyDealsFragment extends Fragment {
                     dealofDay.addAll(response.body().getData());
                     if(dealofDay.size()>0)
                     {
-                        DailyDealsAdapter dailyDealsAdapter = new DailyDealsAdapter(dealofDay, context);
+                        DailyDealsAdapter dailyDealsAdapter = new DailyDealsAdapter(dealofDay, context,true);
                         recyle_allDailydeals.setAdapter(dailyDealsAdapter);
                     }
 

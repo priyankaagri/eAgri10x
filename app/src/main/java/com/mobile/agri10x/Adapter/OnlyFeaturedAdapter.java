@@ -93,7 +93,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                     dialog.setCancelable(true);
                     dialog.setCanceledOnTouchOutside(true);
                     dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-                    Button add_btn= dialog.findViewById(R.id.add_btn);
+                    Button add_btn= dialog.findViewById(R.id.addcart);
                     ImageView shareiamge= dialog.findViewById(R.id.shareiamge);
                     shareiamge.setOnClickListener(new View.OnClickListener() {
                         @Override

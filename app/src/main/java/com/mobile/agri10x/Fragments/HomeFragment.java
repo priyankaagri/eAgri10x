@@ -24,8 +24,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mobile.agri10x.Adapter.AdapterHomeCategory;
-import com.mobile.agri10x.Adapter.AdapterTopPicks;
+import com.mobile.agri10x.Adapter.HomeCategoryAdapter;
+import com.mobile.agri10x.Adapter.TopPicksAdapter;
 import com.mobile.agri10x.Adapter.DailyDealsAdapter;
 import com.mobile.agri10x.Adapter.ImageAdapter;
 import com.mobile.agri10x.Adapter.OnlyFeaturedAdapter;
@@ -34,7 +34,6 @@ import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCategoriesData;
-import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.models.GetQueryDailyDeals;
@@ -129,7 +128,7 @@ public class HomeFragment extends Fragment {
                 dealofDay.addAll(response.body().getData());
                 if(dealofDay.size()>0)
                 {
-                    DailyDealsAdapter dailyDealsAdapter = new DailyDealsAdapter(dealofDay, context);
+                    DailyDealsAdapter dailyDealsAdapter = new DailyDealsAdapter(dealofDay, context, false);
                     recycler_dailydeals.setAdapter(dailyDealsAdapter);
                 }
 
@@ -170,7 +169,7 @@ public class HomeFragment extends Fragment {
                     toppicks.addAll(response.body().getData());
                     if(toppicks.size()>0)
                     {
-                        AdapterTopPicks adapterTopPicks = new AdapterTopPicks(toppicks, context);
+                        TopPicksAdapter adapterTopPicks = new TopPicksAdapter(toppicks, context,false);
                         recycler_toppics.setAdapter(adapterTopPicks);
                     }
 getonlyFeature();
@@ -278,7 +277,7 @@ getonlyFeature();
                     }
 
                     if (catArraylist.size() > 0) {
-                        AdapterHomeCategory adapterShopDetails = new AdapterHomeCategory(catArraylist, context);
+                        HomeCategoryAdapter adapterShopDetails = new HomeCategoryAdapter(catArraylist, context);
                         caltogerylist_recycle.setAdapter(adapterShopDetails);
                         adapterShopDetails.notifyDataSetChanged();
                         ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(),

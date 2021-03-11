@@ -15,12 +15,12 @@ import com.mobile.agri10x.models.GetCategoriesData;
 
 import java.util.List;
 
-public class AdapterHomeCategory extends RecyclerView.Adapter<AdapterHomeCategory.ViewHolder> {
+public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapter.ViewHolder> {
     Context context;
     private List<GetCategoriesData> dataList;
 
 
-    public AdapterHomeCategory(List<GetCategoriesData> catArraylist, Context context1) {
+    public HomeCategoryAdapter(List<GetCategoriesData> catArraylist, Context context1) {
         this.dataList = catArraylist;
         this.context = context1;
 

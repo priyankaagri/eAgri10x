@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.mobile.agri10x.Adapter.AdapterTopPicks;
+import com.mobile.agri10x.Adapter.TopPicksAdapter;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetHomeProduct;
@@ -90,7 +90,7 @@ public class SeeAllTopPicksFragment extends Fragment  {
                     alltoppicks.addAll(response.body().getData());
                     if(alltoppicks.size()>0)
                     {
-                        AdapterTopPicks adapterTopPicks = new AdapterTopPicks(alltoppicks, context);
+                        TopPicksAdapter adapterTopPicks = new TopPicksAdapter(alltoppicks, context,true);
                         recyle_alltoppicks.setAdapter(adapterTopPicks);
                     }
 

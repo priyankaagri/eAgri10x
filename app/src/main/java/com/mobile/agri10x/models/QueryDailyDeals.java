@@ -3,7 +3,7 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Querydata {
+public class QueryDailyDeals {
     @SerializedName("dealOfTheDay")
     @Expose
     private Boolean dealOfTheDay;

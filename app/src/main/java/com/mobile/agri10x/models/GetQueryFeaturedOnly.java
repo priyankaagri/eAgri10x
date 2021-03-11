@@ -3,17 +3,17 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetQuery {
+public class GetQueryFeaturedOnly {
+
     @SerializedName("query")
-
     @Expose
-    private Querydata query;
+    private QueryFeatureOnly query;
 
-    public Querydata getQuery() {
+    public QueryFeatureOnly getQuery() {
         return query;
     }
 
-    public void setQuery(Querydata query) {
+    public void setQuery(QueryFeatureOnly query) {
         this.query = query;
     }
 }

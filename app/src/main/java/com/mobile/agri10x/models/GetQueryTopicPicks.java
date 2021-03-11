@@ -3,17 +3,17 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetQueryTopic {
+public class GetQueryTopicPicks {
 
     @SerializedName("query")
     @Expose
-    private QueryTopicData query;
+    private QueryTopicks query;
 
-    public QueryTopicData getQuery() {
+    public QueryTopicks getQuery() {
         return query;
     }
 
-    public void setQuery(QueryTopicData query) {
+    public void setQuery(QueryTopicks query) {
         this.query = query;
     }
 

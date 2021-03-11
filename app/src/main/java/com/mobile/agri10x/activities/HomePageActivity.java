@@ -22,7 +22,7 @@ public class HomePageActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     public static FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-    BottomNavigationView animatedBottomBar;
+   public static BottomNavigationView animatedBottomBar;
     static AppCompatActivity context;
 
     @Override
@@ -69,9 +69,14 @@ public class HomePageActivity extends AppCompatActivity {
         transaction.commit();
 
 
-
     }
-
+    public static  void removeFragment(Fragment fragment){
+        FragmentManager manager =(FragmentManager)context.getSupportFragmentManager();
+        FragmentTransaction trans = manager.beginTransaction();
+        trans.remove(fragment);
+        trans.commit();
+        manager.popBackStack();
+    }
     @Override
     public void onBackPressed() {
 

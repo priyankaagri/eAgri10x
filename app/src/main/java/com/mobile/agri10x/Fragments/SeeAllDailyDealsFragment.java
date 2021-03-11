@@ -7,25 +7,24 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.mobile.agri10x.Adapter.DailyDealsAdapter;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetHomeProductData;
-import com.mobile.agri10x.models.GetQuery;
-import com.mobile.agri10x.models.Querydata;
+import com.mobile.agri10x.models.GetQueryDailyDeals;
+import com.mobile.agri10x.models.QueryDailyDeals;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 
@@ -39,6 +38,7 @@ import retrofit2.Response;
 
 public class SeeAllDailyDealsFragment extends Fragment {
     AlertDialog dialog;
+    ImageView but_back;
     List<GetHomeProductData> dealofDay = new ArrayList<>();
     RecyclerView recyle_allDailydeals;
     Context context;
@@ -47,9 +47,18 @@ public class SeeAllDailyDealsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_see_all_daily_deals, container, false);
-
         context = view.getContext();
+
+
         recyle_allDailydeals=view.findViewById(R.id.recyle_allDailydeals);
+        but_back=view.findViewById(R.id.but_back);
+        but_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                HomePageActivity.removeFragment(new SeeAllDailyDealsFragment());
+            }
+        });
         recyle_allDailydeals.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
    getAllSeeDeilydeals();
@@ -62,9 +71,9 @@ public class SeeAllDailyDealsFragment extends Fragment {
 
     private void getAllSeeDeilydeals() {
         dialog= new Alert().pleaseWait();
-        Querydata querydata=new Querydata();
+        QueryDailyDeals querydata=new QueryDailyDeals();
         querydata.setDealOfTheDay(false);
-        GetQuery query=new GetQuery();
+        GetQueryDailyDeals query=new GetQueryDailyDeals();
         query.setQuery(querydata);
 
         AgriInvestor apiService = ApiHandler.getApiService();

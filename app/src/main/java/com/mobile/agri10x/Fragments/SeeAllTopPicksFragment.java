@@ -1,7 +1,6 @@
 package com.mobile.agri10x.Fragments;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,21 +10,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.method.KeyListener;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.mobile.agri10x.Adapter.AdapterTopPicks;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetHomeProductData;
-import com.mobile.agri10x.models.GetQueryTopic;
-import com.mobile.agri10x.models.QueryTopicData;
+import com.mobile.agri10x.models.GetQueryTopicPicks;
+import com.mobile.agri10x.models.QueryTopicks;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 
@@ -39,6 +38,7 @@ import retrofit2.Response;
 
 public class SeeAllTopPicksFragment extends Fragment  {
     AlertDialog dialog;
+    ImageView but_back;
     RecyclerView recyle_alltoppicks;
     List<GetHomeProductData> alltoppicks = new ArrayList<>();
     Context context;
@@ -53,9 +53,16 @@ public class SeeAllTopPicksFragment extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_see_all_top_picks, container, false);
-
         context=view.getContext();
+
         recyle_alltoppicks=view.findViewById(R.id.recyle_alltoppicks);
+        but_back=view.findViewById(R.id.but_back);
+        but_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.removeFragment(new SeeAllTopPicksFragment());
+            }
+        });
         recyle_alltoppicks.setLayoutManager(new GridLayoutManager(getActivity(),2));
         getAllSeeTopPicks();
     return  view;
@@ -64,9 +71,9 @@ public class SeeAllTopPicksFragment extends Fragment  {
 
     private void getAllSeeTopPicks() {
         dialog=new Alert().pleaseWait();
-        QueryTopicData queryTopicData=new QueryTopicData();
+        QueryTopicks queryTopicData=new QueryTopicks();
         queryTopicData.setTopPicks(false);
-        GetQueryTopic query=new GetQueryTopic();
+        GetQueryTopicPicks query=new GetQueryTopicPicks();
         query.setQuery(queryTopicData);
         AgriInvestor apiService = ApiHandler.getApiService();
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);

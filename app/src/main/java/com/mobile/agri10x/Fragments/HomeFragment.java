@@ -28,17 +28,21 @@ import com.mobile.agri10x.Adapter.AdapterHomeCategory;
 import com.mobile.agri10x.Adapter.AdapterTopPicks;
 import com.mobile.agri10x.Adapter.DailyDealsAdapter;
 import com.mobile.agri10x.Adapter.ImageAdapter;
+import com.mobile.agri10x.Adapter.OnlyFeaturedAdapter;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCategoriesData;
+import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetHomeProductData;
-import com.mobile.agri10x.models.GetQuery;
-import com.mobile.agri10x.models.GetQueryTopic;
-import com.mobile.agri10x.models.QueryTopicData;
-import com.mobile.agri10x.models.Querydata;
+import com.mobile.agri10x.models.GetQueryDailyDeals;
+import com.mobile.agri10x.models.GetQueryFeaturedOnly;
+import com.mobile.agri10x.models.GetQueryTopicPicks;
+import com.mobile.agri10x.models.QueryFeatureOnly;
+import com.mobile.agri10x.models.QueryTopicks;
+import com.mobile.agri10x.models.QueryDailyDeals;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
@@ -52,17 +56,19 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView recycler_dailydeals, recycler_toppics, caltogerylist_recycle, OfferShopListRecyclerView;
+    RecyclerView recycler_dailydeals, recycler_toppics, caltogerylist_recycle, OfferShopListRecyclerView,only_feature_rv;
     TextView txt_ViewAll, txt_Viewsee,txt_signups;
     AlertDialog dialog;
     Context context;
     private LinearLayoutManager linearLayoutManager;
     private LinearLayoutManager linearLayoutManager1;
     private LinearLayoutManager linearLayoutManager2;
+    private  LinearLayoutManager linearLayoutManager3;
     Spinner CommodityUnit;
     ArrayList<String> category = new ArrayList<>();
     List<GetHomeProductData> dealofDay = new ArrayList<>();
     List<GetHomeProductData> toppicks = new ArrayList<>();
+    List<GetHomeProductData> featuredonly = new ArrayList<>();
 
     List<GetCategoriesData> catArraylist = new ArrayList<>();
     //  List<FeaturedProduct_Model> featuredproductlist = new ArrayList<>();
@@ -102,9 +108,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void getDailyDeals() {
-        Querydata querydata=new Querydata();
+        dealofDay.clear();
+        QueryDailyDeals querydata=new QueryDailyDeals();
         querydata.setDealOfTheDay(false);
-        GetQuery query=new GetQuery();
+        GetQueryDailyDeals query=new GetQueryDailyDeals();
         query.setQuery(querydata);
 
         AgriInvestor apiService = ApiHandler.getApiService();
@@ -143,10 +150,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void gettoppicks() {
-        dialog=new Alert().pleaseWait();
-        QueryTopicData queryTopicData=new QueryTopicData();
+       toppicks.clear();
+        QueryTopicks queryTopicData=new QueryTopicks();
         queryTopicData.setTopPicks(false);
-        GetQueryTopic query=new GetQueryTopic();
+        GetQueryTopicPicks query=new GetQueryTopicPicks();
         query.setQuery(queryTopicData);
         AgriInvestor apiService = ApiHandler.getApiService();
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
@@ -157,8 +164,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<GetHomeProduct> call,
                                    Response<GetHomeProduct> response) {
-                dialog.dismiss();
-                Log.d("Toppicks",response.toString());
+
+                Log.d("gettoppicks",response.toString());
                 if (response.isSuccessful()) {
                     toppicks.addAll(response.body().getData());
                     if(toppicks.size()>0)
@@ -166,6 +173,47 @@ public class HomeFragment extends Fragment {
                         AdapterTopPicks adapterTopPicks = new AdapterTopPicks(toppicks, context);
                         recycler_toppics.setAdapter(adapterTopPicks);
                     }
+getonlyFeature();
+                } else {
+
+                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetHomeProduct> call,
+                                  Throwable t) {
+                getonlyFeature();
+                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getonlyFeature() {
+        QueryFeatureOnly queryFeatureOnly=new QueryFeatureOnly();
+        queryFeatureOnly.setFeatured(true);
+        GetQueryFeaturedOnly getQueryFeaturedOnly=new GetQueryFeaturedOnly();
+        getQueryFeaturedOnly.setQuery(queryFeatureOnly);
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetHomeProduct> loginCall = apiService.wsgetFeatureOnlyProduct("123456",
+                getQueryFeaturedOnly);
+        loginCall.enqueue(new Callback<GetHomeProduct>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetHomeProduct> call,
+                                   Response<GetHomeProduct> response) {
+
+                Log.d("resFeatureonly",response.toString());
+                if (response.isSuccessful()) {
+                    featuredonly.addAll(response.body().getData());
+                    if(featuredonly.size()>0)
+                    {
+                        OnlyFeaturedAdapter onlyFeaturedAdapter = new OnlyFeaturedAdapter(featuredonly, context);
+                        only_feature_rv.setAdapter(onlyFeaturedAdapter);
+                    }
+
 
                 } else {
 
@@ -176,8 +224,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
-                dialog.dismiss();
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+
+//                Toast.makeText(Otp_Screen_Activity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -211,6 +259,7 @@ public class HomeFragment extends Fragment {
 //    }
 
     private void GetCatogerylist() {
+        catArraylist.clear();
         dialog = new Alert().pleaseWait();
         AgriInvestor apiService = ApiHandler.getApiService();
         Call<GetCategories> call = apiService.getCategories();
@@ -340,12 +389,13 @@ public class HomeFragment extends Fragment {
         caltogerylist_recycle = view.findViewById(R.id.caltogerylist_recycle);
         txt_ViewAll = view.findViewById(R.id.txt_ViewAll);
         txt_Viewsee = view.findViewById(R.id.txt_Viewsee);
-
+        only_feature_rv = view.findViewById(R.id.only_feature_rv);
         txt_signups = view.findViewById(R.id.txt_signups);
 
         linearLayoutManager1 = new LinearLayoutManager(getActivity());
         linearLayoutManager2 = new LinearLayoutManager(getActivity());
         linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager3 = new LinearLayoutManager(getActivity());
 
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         caltogerylist_recycle.setLayoutManager(linearLayoutManager);
@@ -356,6 +406,8 @@ public class HomeFragment extends Fragment {
         linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
         recycler_toppics.setLayoutManager(linearLayoutManager1);
 
+        linearLayoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
+        only_feature_rv.setLayoutManager(linearLayoutManager3);
 
     }
 }

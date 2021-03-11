@@ -8,19 +8,20 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
-    <nl.joery.animatedbottombar.AnimatedBottomBar
-        android:id="@+id/bottom_bar"
-        android:background="@color/gray"
+    <com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView
         android:layout_alignParentBottom="true"
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:abb_selectedTabType="text"
-        app:abb_indicatorAppearance="round"
-        app:abb_indicatorMargin="16dp"
-        app:abb_indicatorHeight="4dp"
-        app:abb_tabs="@menu/tabs"
-        app:abb_selectedIndex="0"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/tabs"
+
+        app:backgroundTint="@color/gray"
+        app:morphCornerRadius="128dp"
+        app:morphItemRadius="64dp"
+        app:morphVerticalOffset="8dp"
+        style="@style/BottomNavigationView"
+        app:labelVisibilityMode="labeled"/>
     <FrameLayout
         android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"

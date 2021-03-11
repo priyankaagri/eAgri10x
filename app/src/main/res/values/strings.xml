@@ -48,10 +48,11 @@
     <string name="gaisins">Grains</string>
 
 
-
     <string name="Mobile_number">"Your Mobile Number"</string>
     <string name="verify_account">"Verify Account"</string>
     <string name="we_will_send">"We will send an SMS With a Confirmation code to this number"</string>
     <string name="verification">"Please Type Verification code send to +91XXXXXXXXXX"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

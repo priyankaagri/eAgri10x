@@ -1,5 +1,6 @@
 package com.mobile.agri10x.retrofit;
 
+import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetOTP;
@@ -22,11 +23,14 @@ public interface AgriInvestor {
     Call<VerifyOTP> wsgetVerifyOTP(@Body RequestBody params);
     @POST("e/resendOTP")
     Call<GetResendOTP> wsgetresendOTP(@Body RequestBody params);
-    @POST("m/homepageProducts ")
+    @POST("m/homepageProducts")
     Call<GetHomeProduct> wsgetHomeProduct(@Header("x-auth-token") String token,@Body GetQuery getQuery);
     @GET("e/getCategories")
     Call<GetCategories> getCategories();
-    @POST("m/homepageProducts ")
+    @POST("m/homepageProducts")
     Call<GetHomeProduct> wsgetHomeProductTopic(@Header("x-auth-token") String token,@Body GetQueryTopic getQueryTopic);
+    @POST("m/displayProducts")
+    Call<DisplayQuickView> wsgetdisplayQuickView(@Header("x-auth-token") String token, @Body RequestBody params);
+
 
 }

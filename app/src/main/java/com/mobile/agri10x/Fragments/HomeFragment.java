@@ -29,6 +29,7 @@ import com.mobile.agri10x.Adapter.AdapterTopPicks;
 import com.mobile.agri10x.Adapter.DailyDealsAdapter;
 import com.mobile.agri10x.Adapter.ImageAdapter;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCategoriesData;
@@ -96,6 +97,7 @@ public class HomeFragment extends Fragment {
                 getActivity().startActivity(myIntent);
             }
         });
+
         return view;
     }
 
@@ -315,6 +317,18 @@ public class HomeFragment extends Fragment {
     }
 
     private void clicklister() {
+        txt_ViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.setFragment(new SeeAllDailyDealsFragment());
+            }
+        });
+        txt_Viewsee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.setFragment(new SeeAllTopPicksFragment());
+            }
+        });
 
     }
 
@@ -326,6 +340,7 @@ public class HomeFragment extends Fragment {
         caltogerylist_recycle = view.findViewById(R.id.caltogerylist_recycle);
         txt_ViewAll = view.findViewById(R.id.txt_ViewAll);
         txt_Viewsee = view.findViewById(R.id.txt_Viewsee);
+
         txt_signups = view.findViewById(R.id.txt_signups);
 
         linearLayoutManager1 = new LinearLayoutManager(getActivity());

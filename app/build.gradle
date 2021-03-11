@@ -50,6 +50,8 @@ dependencies {
 
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
+    implementation 'com.tbuonomo:morph-bottom-navigation:1.0.1'
+    implementation 'com.mikhaellopez:circularimageview:2.0.1'
 
 
 }

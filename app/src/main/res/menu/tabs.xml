@@ -1,5 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:iconTint="@color/purple_200"
         android:id="@+id/tab_home"
         android:icon="@drawable/home"
         android:title="@string/home" />
@@ -8,6 +9,7 @@
         android:icon="@drawable/newpayment"
         android:title="@string/payment" />
     <item
+
         android:id="@+id/tab_cart"
         android:icon="@drawable/ic_cart"
         android:title="@string/cart" />

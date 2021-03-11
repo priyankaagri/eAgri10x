@@ -52,11 +52,12 @@
                             android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sign In"
+
                             android:textSize="18sp"
                             android:fontFamily="@font/proxima_nova_bold"
                             android:gravity="center"/>
                         <ImageView
+                            android:layout_marginRight="15dp"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -344,7 +345,7 @@
                         android:layout_width="200dp"
                         android:layout_height="200dp"
                         android:layout_marginRight="@dimen/text_size_fiteen"
-                        android:src="@drawable/grains_img">
+                        android:src="@drawable/grians">
 
                     </ImageView>
 

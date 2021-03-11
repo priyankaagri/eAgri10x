@@ -3,6 +3,7 @@ package com.mobile.agri10x.Fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,28 +25,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.agri10x.Adapter.AdapterHomeCategory;
-import com.mobile.agri10x.Adapter.Adapterfeatured;
+import com.mobile.agri10x.Adapter.AdapterTopPicks;
+import com.mobile.agri10x.Adapter.DailyDealsAdapter;
 import com.mobile.agri10x.Adapter.ImageAdapter;
 import com.mobile.agri10x.R;
-import com.mobile.agri10x.activities.Otp_Screen_Activity;
+import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCategoriesData;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.models.GetQuery;
-import com.mobile.agri10x.models.GetResendOTP;
+import com.mobile.agri10x.models.GetQueryTopic;
+import com.mobile.agri10x.models.QueryTopicData;
 import com.mobile.agri10x.models.Querydata;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
-
-import org.json.JSONObject;
+import com.mobile.agri10x.utils.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,7 +52,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     RecyclerView recycler_dailydeals, recycler_toppics, caltogerylist_recycle, OfferShopListRecyclerView;
-    TextView txt_ViewAll, txt_Viewsee;
+    TextView txt_ViewAll, txt_Viewsee,txt_signups;
     AlertDialog dialog;
     Context context;
     private LinearLayoutManager linearLayoutManager;
@@ -63,6 +61,7 @@ public class HomeFragment extends Fragment {
     Spinner CommodityUnit;
     ArrayList<String> category = new ArrayList<>();
     List<GetHomeProductData> dealofDay = new ArrayList<>();
+    List<GetHomeProductData> toppicks = new ArrayList<>();
 
     List<GetCategoriesData> catArraylist = new ArrayList<>();
     //  List<FeaturedProduct_Model> featuredproductlist = new ArrayList<>();
@@ -78,12 +77,25 @@ public class HomeFragment extends Fragment {
         mViewPager.setAdapter(adapterView);
         Initview(view);
         clicklister();
-
+        if(SessionManager.isLoggedIn(getActivity().getApplicationContext()))
+        {
+            txt_signups.setText(" ");
+        }else{
+            txt_signups.setText("Sign In");
+        }
         // GetDailyDealProducts();
         // FetauredproductApi();
 
         GetCatogerylist();
-        getDailyDeals();
+
+
+        txt_signups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                getActivity().startActivity(myIntent);
+            }
+        });
         return view;
     }
 
@@ -108,9 +120,50 @@ public class HomeFragment extends Fragment {
                 dealofDay.addAll(response.body().getData());
                 if(dealofDay.size()>0)
                 {
-                    Adapterfeatured adapterfeatured = new Adapterfeatured(dealofDay, context);
-                    recycler_dailydeals.setAdapter(adapterfeatured);
+                    DailyDealsAdapter dailyDealsAdapter = new DailyDealsAdapter(dealofDay, context);
+                    recycler_dailydeals.setAdapter(dailyDealsAdapter);
                 }
+
+                gettoppicks();
+                } else {
+
+                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetHomeProduct> call,
+                                  Throwable t) {
+                gettoppicks();
+//                Toast.makeText(Otp_Screen_Activity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void gettoppicks() {
+        dialog=new Alert().pleaseWait();
+        QueryTopicData queryTopicData=new QueryTopicData();
+        queryTopicData.setTopPicks(false);
+        GetQueryTopic query=new GetQueryTopic();
+        query.setQuery(queryTopicData);
+        AgriInvestor apiService = ApiHandler.getApiService();
+        //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetHomeProduct> loginCall = apiService.wsgetHomeProductTopic("123456",
+                query);
+        loginCall.enqueue(new Callback<GetHomeProduct>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetHomeProduct> call,
+                                   Response<GetHomeProduct> response) {
+                dialog.dismiss();
+                Log.d("Toppicks",response.toString());
+                if (response.isSuccessful()) {
+                    toppicks.addAll(response.body().getData());
+                    if(toppicks.size()>0)
+                    {
+                        AdapterTopPicks adapterTopPicks = new AdapterTopPicks(toppicks, context);
+                        recycler_toppics.setAdapter(adapterTopPicks);
+                    }
 
                 } else {
 
@@ -121,8 +174,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
-
-//                Toast.makeText(Otp_Screen_Activity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -183,7 +236,7 @@ public class HomeFragment extends Fragment {
                         CommodityUnit.setAdapter(spinnerArrayAdapter);
                     }
 
-
+                    getDailyDeals();
                 } else {
                     dialog.dismiss();
                     Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
@@ -192,7 +245,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GetCategories> call, Throwable t) {
-
+                getDailyDeals();
             }
         });
 
@@ -273,6 +326,7 @@ public class HomeFragment extends Fragment {
         caltogerylist_recycle = view.findViewById(R.id.caltogerylist_recycle);
         txt_ViewAll = view.findViewById(R.id.txt_ViewAll);
         txt_Viewsee = view.findViewById(R.id.txt_Viewsee);
+        txt_signups = view.findViewById(R.id.txt_signups);
 
         linearLayoutManager1 = new LinearLayoutManager(getActivity());
         linearLayoutManager2 = new LinearLayoutManager(getActivity());

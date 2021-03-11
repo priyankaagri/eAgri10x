@@ -4,6 +4,7 @@ import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetQuery;
+import com.mobile.agri10x.models.GetQueryTopic;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.VerifyOTP;
 
@@ -25,5 +26,7 @@ public interface AgriInvestor {
     Call<GetHomeProduct> wsgetHomeProduct(@Header("x-auth-token") String token,@Body GetQuery getQuery);
     @GET("e/getCategories")
     Call<GetCategories> getCategories();
+    @POST("m/homepageProducts ")
+    Call<GetHomeProduct> wsgetHomeProductTopic(@Header("x-auth-token") String token,@Body GetQueryTopic getQueryTopic);
 
 }

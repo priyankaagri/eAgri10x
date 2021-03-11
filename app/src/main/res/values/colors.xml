@@ -3,11 +3,12 @@
     <color name="purple_200">#5FA30F</color>
     <color name="appcolor">#5EB14E</color>
     <color name="purple_700">#5FA30F</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#5EB14E</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#F2F2F2</color>
     <color name="text_color">#c0c0c0</color>
     <color name="appgreen">#5FA30F</color>
+    <color name="darkgrey">#D8D8D8</color>
 </resources>

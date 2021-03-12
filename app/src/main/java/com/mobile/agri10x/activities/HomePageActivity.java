@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobile.agri10x.Fragments.HomeFragment;
+import com.mobile.agri10x.Fragments.MenuFragment;
 import com.mobile.agri10x.Fragments.SeeAllLiveTradingFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
@@ -56,7 +57,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                         break;
                     case R.id.tab_menu:
-
+                        setFragment(new MenuFragment());
                         break;
                 }
                 return true;

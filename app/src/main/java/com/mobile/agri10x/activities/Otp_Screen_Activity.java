@@ -305,6 +305,14 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                 String[] split = JWTEncoded.split("\\.");
                 Log.d("JWT_DECODED", "Header: " + getJson(split[0]));
                 Log.d("JWT_DECODED", "Body: " + getJson(split[1]));
+
+                JSONObject obj = new JSONObject(getJson(split[1]));
+                String mobile = obj.getString("mobile");
+                String token = obj.getString("token");
+                String iat = obj.getString("iat");
+                String role = obj.getString("role");
+                String exp = obj.getString("exp");
+                SessionManager.addUserDetails(mobile,iat,role,exp);
             } catch (UnsupportedEncodingException e) {
                 //Error
             }

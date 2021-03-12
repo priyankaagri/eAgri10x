@@ -70,9 +70,9 @@ public class DailyDealsAdapter extends RecyclerView.Adapter<DailyDealsAdapter.Vi
         }else{
             holder.fav.setVisibility(View.GONE);
         }
-        Picasso.with(context)
-                .load("https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png")
-                .into(holder.product_img);
+//        Picasso.with(context)
+//                .load("https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png")
+//                .into(holder.product_img);
 
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
         holder.product_price.setText("Rs "+dataList.get(position).getPricePerLot());

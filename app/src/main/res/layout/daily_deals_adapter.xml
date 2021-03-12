@@ -25,6 +25,7 @@ android:id="@+id/cardview"
             android:gravity="center">
 
             <ImageView
+                android:src="@drawable/potato_dwn"
                 android:id="@+id/product_img"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -40,9 +41,9 @@ android:id="@+id/cardview"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/proxima_nova_bold"
-
+android:textColor="@color/black"
                 android:text="Potato"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:id="@+id/fav"

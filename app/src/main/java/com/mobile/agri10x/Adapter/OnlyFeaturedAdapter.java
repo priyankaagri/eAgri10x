@@ -27,6 +27,7 @@ import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -58,6 +59,11 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 
     @Override
     public void onBindViewHolder(@NonNull OnlyFeaturedAdapter.ViewHolders holder, int position) {
+
+
+        Picasso.with(context)
+                .load("https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png")
+                .into(holder.product_img);
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
         holder.product_price.setText("Rs "+dataList.get(position).getPricePerLot());
         holder.txt_varity.setText(dataList.get(position).getVarietyName());

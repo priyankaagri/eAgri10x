@@ -11,16 +11,20 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
 
 public class OrderFail_Activity extends AppCompatActivity {
      Button backhome_btn;
+    private LiveNetworkMonitor mNetworkMonitor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_fail_);
+        mNetworkMonitor=new LiveNetworkMonitor(this);
+
         backhome_btn= findViewById(R.id.backhome_btn);
         backhome_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +65,13 @@ public class OrderFail_Activity extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

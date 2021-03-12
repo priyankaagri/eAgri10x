@@ -27,6 +27,7 @@ import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.QueryTopicks;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,8 @@ public class SeeAllTopPicksFragment extends Fragment  {
     RecyclerView recyle_alltoppicks;
     List<GetHomeProductData> alltoppicks = new ArrayList<>();
     Context context;
+    private LiveNetworkMonitor mNetworkMonitor;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,7 @@ public class SeeAllTopPicksFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_see_all_top_picks, container, false);
         context=view.getContext();
+        mNetworkMonitor=new LiveNetworkMonitor(context);
 
         recyle_alltoppicks=view.findViewById(R.id.recyle_alltoppicks);
         but_back=view.findViewById(R.id.but_back);
@@ -141,4 +145,11 @@ public class SeeAllTopPicksFragment extends Fragment  {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
+    }
 }

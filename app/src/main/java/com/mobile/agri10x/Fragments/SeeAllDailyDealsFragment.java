@@ -27,6 +27,7 @@ import com.mobile.agri10x.models.GetQueryDailyDeals;
 import com.mobile.agri10x.models.QueryDailyDeals;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,14 +43,15 @@ public class SeeAllDailyDealsFragment extends Fragment {
     List<GetHomeProductData> dealofDay = new ArrayList<>();
     RecyclerView recyle_allDailydeals;
     Context context;
+    private LiveNetworkMonitor mNetworkMonitor;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_see_all_daily_deals, container, false);
         context = view.getContext();
-
-
+        mNetworkMonitor=new LiveNetworkMonitor(context);
         recyle_allDailydeals=view.findViewById(R.id.recyle_allDailydeals);
         but_back=view.findViewById(R.id.but_back);
         but_back.setOnClickListener(new View.OnClickListener() {
@@ -141,5 +143,12 @@ dialog.dismiss();
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
+    }
 
 }

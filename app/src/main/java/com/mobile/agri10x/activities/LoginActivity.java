@@ -26,6 +26,7 @@ import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
 
 import org.json.JSONObject;
@@ -43,10 +44,14 @@ public class LoginActivity extends AppCompatActivity {
   String strmobilenumber;
     AlertDialog dialog;
     ImageView call,backarrow;
+    private LiveNetworkMonitor mNetworkMonitor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mNetworkMonitor=new LiveNetworkMonitor(this);
+
         if(SessionManager.isLoggedIn(LoginActivity.this))
         {
             startActivity(new Intent(LoginActivity.this,HomePageActivity.class));
@@ -190,5 +195,14 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

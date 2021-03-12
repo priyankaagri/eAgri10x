@@ -44,6 +44,7 @@ import com.mobile.agri10x.models.QueryTopicks;
 import com.mobile.agri10x.models.QueryDailyDeals;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
 
 import java.util.ArrayList;
@@ -71,6 +72,7 @@ public class HomeFragment extends Fragment {
 
     List<GetCategoriesData> catArraylist = new ArrayList<>();
     //  List<FeaturedProduct_Model> featuredproductlist = new ArrayList<>();
+    private LiveNetworkMonitor mNetworkMonitor;
 
 
     @Nullable
@@ -78,6 +80,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);
         context = view.getContext();
+        mNetworkMonitor=new LiveNetworkMonitor(context);
+
         ViewPager mViewPager = (ViewPager) view.findViewById(R.id.viewPage);
         ImageAdapter adapterView = new ImageAdapter(getActivity());
         mViewPager.setAdapter(adapterView);
@@ -272,7 +276,9 @@ getonlyFeature();
                     dialog.dismiss();
                     catArraylist.addAll(response.body().getData());
                     // catArraylist = response.body().getData();
-                    for (int i = 0; i < catArraylist.size(); i++) {
+category.add("Category");
+for (int i = 0; i < catArraylist.size(); i++) {
+
                         category.add(response.body().getData().get(i).getCategoryName());
                     }
 
@@ -281,8 +287,9 @@ getonlyFeature();
                         caltogerylist_recycle.setAdapter(adapterShopDetails);
                         adapterShopDetails.notifyDataSetChanged();
                         ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner_dropdown_item,
                                 category);
+
                         CommodityUnit.setAdapter(spinnerArrayAdapter);
                     }
 
@@ -295,6 +302,7 @@ getonlyFeature();
 
             @Override
             public void onFailure(Call<GetCategories> call, Throwable t) {
+                dialog.dismiss();
                 getDailyDeals();
             }
         });
@@ -408,5 +416,14 @@ getonlyFeature();
         linearLayoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
         only_feature_rv.setLayoutManager(linearLayoutManager3);
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

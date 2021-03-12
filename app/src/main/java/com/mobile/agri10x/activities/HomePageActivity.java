@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobile.agri10x.Fragments.HomeFragment;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
@@ -24,11 +26,13 @@ public class HomePageActivity extends AppCompatActivity {
     FragmentTransaction mFragmentTransaction;
    public static BottomNavigationView animatedBottomBar;
     static AppCompatActivity context;
+    private LiveNetworkMonitor mNetworkMonitor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        mNetworkMonitor=new LiveNetworkMonitor(this);
         context=this;
         animatedBottomBar = findViewById(R.id.bottomNavigationView);
         setFragment(new HomeFragment());
@@ -44,7 +48,7 @@ public class HomePageActivity extends AppCompatActivity {
                 {
 
                     setFragment(new HomeFragment());
-                }else if(item.getItemId()==R.id.tab_paymet)
+                }else if(item.getItemId()==R.id.tab_livetrade)
                 {
 
                 }else if(item.getItemId()==R.id.tab_cart)
@@ -87,8 +91,20 @@ public class HomePageActivity extends AppCompatActivity {
            finish();
 //additional code
         } else {
+            if(mNetworkMonitor.isConnected()){
+                Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+            }
             getSupportFragmentManager().popBackStack();
         }
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

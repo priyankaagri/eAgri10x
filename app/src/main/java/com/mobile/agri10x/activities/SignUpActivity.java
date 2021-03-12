@@ -12,8 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
 public class SignUpActivity extends AppCompatActivity {
     TextView trader_btn,farmer_btn,callphon;
@@ -21,10 +23,13 @@ public class SignUpActivity extends AppCompatActivity {
     Button btn_next;
     EditText lname,fname;
     String first_name_string="",last_name_string="";
+    private LiveNetworkMonitor mNetworkMonitor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        mNetworkMonitor=new LiveNetworkMonitor(this);
 
         findid();
         clicklisner();
@@ -100,5 +105,14 @@ public class SignUpActivity extends AppCompatActivity {
         btn_next= findViewById(R.id.btn_next);
         fname= findViewById(R.id.fname);
         lname= findViewById(R.id.lname);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

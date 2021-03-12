@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.mobile.agri10x.Adapter.LiveTradeAdapter;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetLiveTrades;
+import com.mobile.agri10x.models.GetLiveTradesData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 
@@ -32,7 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeeAllLiveTradingFragment extends Fragment {
-    List<GetLiveTrades> livetradelist = new ArrayList<>();
+    List<GetLiveTradesData> livetradelist = new ArrayList<>();
     RecyclerView recyle_livetrade;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +64,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
 
                 Log.d("livetrade",response.toString());
                 if (response.isSuccessful()) {
-                    // livetradelist.addAll(response.body());
+                     livetradelist.addAll(response.body().getData());
                     if(livetradelist.size()>0)
                     {
                         LiveTradeAdapter liveTradeAdapter = new LiveTradeAdapter(livetradelist, getActivity(),true);

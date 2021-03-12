@@ -54,7 +54,7 @@ public class GetLiveTradesData {
     private Integer weight;
     @SerializedName("pricePerLot")
     @Expose
-    private Integer pricePerLot;
+    private Double pricePerLot;
     @SerializedName("orderID")
     @Expose
     private String orderID;
@@ -200,11 +200,11 @@ public class GetLiveTradesData {
         this.weight = weight;
     }
 
-    public Integer getPricePerLot() {
+    public Double getPricePerLot() {
         return pricePerLot;
     }
 
-    public void setPricePerLot(Integer pricePerLot) {
+    public void setPricePerLot(Double pricePerLot) {
         this.pricePerLot = pricePerLot;
     }
 

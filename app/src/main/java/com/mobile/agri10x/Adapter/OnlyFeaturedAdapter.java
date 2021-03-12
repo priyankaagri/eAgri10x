@@ -65,7 +65,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 //                .load("https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png")
 //                .into(holder.product_img);
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
-        holder.product_price.setText("Rs "+dataList.get(position).getPricePerLot());
+        holder.product_price.setText("Price/KG : "+"₹ "+dataList.get(position).getPricePerLot());
         holder.txt_varity.setText(dataList.get(position).getVarietyName());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -97,8 +97,8 @@ public class HomeFragment extends Fragment {
         clicklister();
         if(SessionManager.isLoggedIn(getActivity().getApplicationContext()))
         {
-            txt_signups.setText(SessionManager.getmobilePref(getActivity().getApplicationContext()));
-            //txt_signups.setText(" ");
+            //txt_signups.setText(SessionManager.getmobilePref(getActivity().getApplicationContext()));
+            txt_signups.setText(" ");
         }else{
             txt_signups.setText("Sign In");
         }

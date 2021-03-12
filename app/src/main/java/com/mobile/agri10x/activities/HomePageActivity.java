@@ -13,8 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobile.agri10x.Fragments.HomeFragment;
+import com.mobile.agri10x.Fragments.LiveTradingFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
@@ -24,7 +26,7 @@ public class HomePageActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     public static FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-   public static BottomNavigationView animatedBottomBar;
+   public static BottomNavigationView bottomNavigationView;
     static AppCompatActivity context;
     private LiveNetworkMonitor mNetworkMonitor;
 
@@ -34,32 +36,33 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         mNetworkMonitor=new LiveNetworkMonitor(this);
         context=this;
-        animatedBottomBar = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.nav_view);
         setFragment(new HomeFragment());
 //        mFragmentManager = getSupportFragmentManager();
 //        mFragmentTransaction = mFragmentManager.beginTransaction();
 //        mFragmentTransaction.replace(R.id.nav_host_fragment, new HomeFragment()).commit();
 
 
-        animatedBottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        int menuItemId = bottomNavigationView.getMenu().getItem(2).getItemId();
+        BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(menuItemId);
+        badge.setBackgroundColor(getResources().getColor(R.color.appgreen));
+        badge.setNumber(0);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId()==R.id.tab_home)
-                {
+                switch (item.getItemId()) {
+                    case R.id.tab_home:
+                        setFragment(new HomeFragment());
+                        break;
+                    case R.id.tab_livetrade:
+                        setFragment(new LiveTradingFragment());
+                        break;
+                    case R.id.tab_cart:
 
-                    setFragment(new HomeFragment());
-                }else if(item.getItemId()==R.id.tab_livetrade)
-                {
+                        break;
+                    case R.id.tab_menu:
 
-                }else if(item.getItemId()==R.id.tab_cart)
-                {
-
-                }else if(item.getItemId()==R.id.tab_offer)
-                {
-
-                }else if(item.getItemId()==R.id.tab_menu)
-                {
-
+                        break;
                 }
                 return true;
             }

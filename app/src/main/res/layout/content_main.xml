@@ -8,20 +8,21 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
-    <com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView
-        android:layout_alignParentBottom="true"
-        android:id="@+id/bottomNavigationView"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:labelVisibilityMode="labeled"
+        android:theme="@style/BottomNavigationDrawerStyle"
+        android:background="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"
         app:menu="@menu/tabs"
-
-        app:backgroundTint="@color/gray"
-        app:morphCornerRadius="128dp"
-        app:morphItemRadius="64dp"
-        app:morphVerticalOffset="8dp"
-        style="@style/BottomNavigationView"
-        app:labelVisibilityMode="labeled"/>
+        app:itemTextColor="@drawable/drawer_item"
+        app:itemBackground="@color/white"
+        android:foreground="?attr/selectableItemBackground"
+        />
     <FrameLayout
         android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"

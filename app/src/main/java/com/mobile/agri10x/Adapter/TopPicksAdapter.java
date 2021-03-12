@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.ArrayMap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
@@ -66,8 +68,17 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
             holder.fav.setVisibility(View.GONE);
         }
 
-        Picasso.with(context)
-                .load("https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png")
+       String imgurl ="https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png";
+        Log.d("checkurltopicks",imgurl);
+//        Picasso.with(context)
+//                .load(imgurl)
+//                .placeholder(R.drawable.potato_dwn)
+//                .error(R.drawable.potato_dwn)
+//
+//
+//                .into(holder.product_img);
+        Glide.with(context)
+                .load("http://via.placeholder.com/300.png")
                 .into(holder.product_img);
 
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());

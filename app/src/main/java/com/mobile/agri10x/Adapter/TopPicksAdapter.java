@@ -70,16 +70,10 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
 
        String imgurl ="https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png";
         Log.d("checkurltopicks",imgurl);
-//        Picasso.with(context)
-//                .load(imgurl)
-//                .placeholder(R.drawable.potato_dwn)
-//                .error(R.drawable.potato_dwn)
-//
-//
-//                .into(holder.product_img);
-        Glide.with(context)
+        Picasso.with(context)
                 .load("http://via.placeholder.com/300.png")
                 .into(holder.product_img);
+
 
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
         holder.product_price.setText("₹ "+dataList.get(position).getPricePerLot());

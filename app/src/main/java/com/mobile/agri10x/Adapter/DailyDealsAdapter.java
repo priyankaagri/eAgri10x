@@ -3,6 +3,7 @@ package com.mobile.agri10x.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.ArrayMap;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,10 +21,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.utils.SessionManager;
 
 
 import org.json.JSONObject;
@@ -70,8 +74,12 @@ public class DailyDealsAdapter extends RecyclerView.Adapter<DailyDealsAdapter.Vi
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str_orderId=dataList.get(position).getOrderID();
-                callApiProductDetail(str_orderId,position);
+                if(SessionManager.isLoggedIn(context)){
+                    String str_orderId=dataList.get(position).getOrderID();
+                    callApiProductDetail(str_orderId,position);
+                }else {
+                    context.startActivity(new Intent(context, LoginActivity.class));
+                }
             }
         });
 
@@ -131,6 +139,9 @@ public class DailyDealsAdapter extends RecyclerView.Adapter<DailyDealsAdapter.Vi
 
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(position).getPricePerLot());
+
+                    EditText entervalue = dialog.findViewById(R.id.entervalue);
+
 
                     dialog.show();
                 }

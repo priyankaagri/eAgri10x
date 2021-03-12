@@ -3,6 +3,7 @@ package com.mobile.agri10x.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.ArrayMap;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,10 +21,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.utils.SessionManager;
 
 import org.json.JSONObject;
 
@@ -60,15 +64,19 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str_orderId=dataList.get(position).getOrderID();
-                callApiProductDetail(str_orderId);
+                if(SessionManager.isLoggedIn(context)){
+                    String str_orderId=dataList.get(position).getOrderID();
+                    callApiProductDetail(str_orderId,position);
+                }else {
+                    context.startActivity(new Intent(context, LoginActivity.class));
+                }
             }
         });
 
 
     }
 
-    private void callApiProductDetail(String str_orderId) {
+    private void callApiProductDetail(String str_orderId,int position) {
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("orderID",str_orderId);
@@ -93,7 +101,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                     dialog.setCancelable(true);
                     dialog.setCanceledOnTouchOutside(true);
                     dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-                    Button add_btn= dialog.findViewById(R.id.addcart);
+                    TextView add_btn= dialog.findViewById(R.id.addcart);
                     ImageView shareiamge= dialog.findViewById(R.id.shareiamge);
                     shareiamge.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -107,6 +115,22 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                             Toast.makeText(context, "Clicked Add Button!", Toast.LENGTH_SHORT).show();
                         }
                     });
+                    TextView comodity_txt = dialog.findViewById(R.id.comodity_txt);
+                    comodity_txt.setText(response.body().getData().get(position).getCommodityName());
+
+                    TextView location_txt = dialog.findViewById(R.id.location_txt);
+                    location_txt.setText(response.body().getData().get(position).getCity()+" , "+response.body().getData().get(position).getState());
+
+                    TextView packaging_txt = dialog.findViewById(R.id.packaging_txt);
+                    packaging_txt.setText("Packaging Size : "+" "+response.body().getData().get(position).getLotSize()+" kg");
+
+                    TextView avilablequantity_txt = dialog.findViewById(R.id.avilablequantity_txt);
+                    avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(position).getWeight()+" kg");
+
+                    TextView price_txt = dialog.findViewById(R.id.price_txt);
+                    price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(position).getPricePerLot());
+
+                    EditText entervalue = dialog.findViewById(R.id.entervalue);
                     dialog.show();
                 }
                 else {

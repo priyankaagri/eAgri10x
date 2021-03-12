@@ -72,7 +72,8 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
             public void onClick(View v) {
                 if(SessionManager.isLoggedIn(context)){
                     String str_orderId=dataList.get(position).getOrderID();
-                    callApiProductDetail(str_orderId,position);
+                    String str_grade = dataList.get(position).getGrade();
+                    callApiProductDetail(str_orderId,position,str_grade);
                 }else {
                     context.startActivity(new Intent(context, LoginActivity.class));
                 }
@@ -82,10 +83,11 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 
     }
 
-    private void callApiProductDetail(String str_orderId,int position) {
+    private void callApiProductDetail(String str_orderId, int position, String str_grade) {
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("orderID",str_orderId);
+        jsonParams.put("grade",str_grade);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);

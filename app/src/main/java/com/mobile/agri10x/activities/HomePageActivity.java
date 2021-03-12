@@ -6,21 +6,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobile.agri10x.Fragments.HomeFragment;
-import com.mobile.agri10x.Fragments.LiveTradingFragment;
+import com.mobile.agri10x.Fragments.SeeAllLiveTradingFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
-
-import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class HomePageActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
@@ -55,7 +50,7 @@ public class HomePageActivity extends AppCompatActivity {
                         setFragment(new HomeFragment());
                         break;
                     case R.id.tab_livetrade:
-                        setFragment(new LiveTradingFragment());
+                        setFragment(new SeeAllLiveTradingFragment());
                         break;
                     case R.id.tab_cart:
 

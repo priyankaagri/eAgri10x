@@ -4,6 +4,7 @@ import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetHomeProduct;
+import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetQueryDailyDeals;
 import com.mobile.agri10x.models.GetQueryFeaturedOnly;
@@ -35,4 +36,7 @@ public interface AgriInvestor {
     Call<DisplayQuickView> wsgetdisplayQuickView(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/homepageProducts")
     Call<GetHomeProduct> wsgetFeatureOnlyProduct(@Header("x-auth-token") String token, @Body GetQueryFeaturedOnly getQueryFeaturedOnly);
+    @POST("m/displayProducts")
+    Call<GetLiveTrades>wsgetlivetrades(@Header("x-auth-token") String token, @Body RequestBody params);
+
 }

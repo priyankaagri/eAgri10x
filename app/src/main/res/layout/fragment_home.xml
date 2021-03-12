@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavigationView"
+        android:layout_above="@+id/nav_view"
         android:layout_marginBottom="25dp">
 
         <LinearLayout
@@ -147,7 +147,9 @@
                     android:id="@+id/viewPage"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    tools:context="com.codinginflow.picassoimagesliderexample.MainActivity"></androidx.viewpager.widget.ViewPager>
+                    tools:context="com.codinginflow.picassoimagesliderexample.MainActivity">
+
+                </androidx.viewpager.widget.ViewPager>
 
             </androidx.cardview.widget.CardView>
 
@@ -293,7 +295,15 @@
                 </LinearLayout>
 
             </HorizontalScrollView>
+            <com.yarolegovich.discretescrollview.DiscreteScrollView
 
+                android:id="@+id/only_feature_rv"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp">
+
+            </com.yarolegovich.discretescrollview.DiscreteScrollView>
 
             <LinearLayout
                 android:id="@+id/dailydeals"
@@ -504,14 +514,7 @@
                 android:textSize="@dimen/text_size_medium"
                 android:visibility="gone" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/only_feature_rv"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp">
 
-            </androidx.recyclerview.widget.RecyclerView>
 
 
             <TextView

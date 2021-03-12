@@ -16,6 +16,7 @@
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
         <RelativeLayout
+            android:visibility="gone"
             android:background="@drawable/featured_bg"
             android:layout_width="100dp"
             android:layout_height="20dp">
@@ -45,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center">
 
             <ImageView
@@ -56,13 +57,13 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/potato_dwn" />
             <RatingBar
-
+android:layout_centerInParent="true"
                 android:id="@+id/ratingBar"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:isIndicator="false"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="-3dp"
                 android:numStars="5"
                 android:rating="3"
@@ -76,11 +77,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ratingBar"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/proxima_nova_bold"
+                android:layout_centerInParent="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
 
-                android:text="Potato"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/txt_varity"
                 android:layout_width="wrap_content"
@@ -89,43 +92,46 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/proxima_nova_bold"
+android:layout_centerInParent="true"
+                android:textColor="@color/black"
 
-                android:text="Variety"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
-
-
-            <TextView
-                android:textAllCaps="true"
-                android:id="@+id/addcart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_varity"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_round"
-                android:paddingLeft="15dp"
-                android:paddingTop="4dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="4dp"
-                android:text="Trade Now"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
 
             <TextView
 
                 android:id="@+id/product_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/addcart"
-                android:layout_alignBottom="@id/addcart"
-                android:layout_alignParentRight="true"
+            android:layout_below="@+id/txt_varity"
+               android:layout_centerInParent="true"
                 android:layout_marginRight="10dp"
+android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/proxima_nova_bold"
-                android:text="Rs.20"
-                android:textColor="@color/purple_200"
-                android:textSize="12sp" />
+             android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+            <TextView
+
+                android:textAllCaps="true"
+                android:id="@+id/addcart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_price"
+
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_round"
+                android:paddingLeft="15dp"
+                android:paddingTop="4dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="4dp"
+                android:text="Trade Now"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+
         </RelativeLayout>
 
 

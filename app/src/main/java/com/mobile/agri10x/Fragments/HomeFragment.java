@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -46,6 +47,11 @@ import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
+import com.yarolegovich.discretescrollview.DSVOrientation;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
+import com.yarolegovich.discretescrollview.transform.Pivot;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +62,12 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView recycler_dailydeals, recycler_toppics, caltogerylist_recycle, OfferShopListRecyclerView,only_feature_rv;
+    RecyclerView recycler_dailydeals, recycler_toppics, caltogerylist_recycle, OfferShopListRecyclerView;
+    DiscreteScrollView only_feature_rv;
     TextView txt_ViewAll, txt_Viewsee,txt_signups;
     AlertDialog dialog;
     Context context;
+    OnlyFeaturedAdapter onlyFeaturedAdapter;
     private LinearLayoutManager linearLayoutManager;
     private LinearLayoutManager linearLayoutManager1;
     private LinearLayoutManager linearLayoutManager2;
@@ -213,8 +221,9 @@ getonlyFeature();
                     featuredonly.addAll(response.body().getData());
                     if(featuredonly.size()>0)
                     {
-                        OnlyFeaturedAdapter onlyFeaturedAdapter = new OnlyFeaturedAdapter(featuredonly, context);
-                        only_feature_rv.setAdapter(onlyFeaturedAdapter);
+                        onlyFeaturedAdapter = new OnlyFeaturedAdapter(featuredonly, context);
+                        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(onlyFeaturedAdapter);
+                        only_feature_rv.setAdapter(wrapper);
                     }
 
 
@@ -413,8 +422,19 @@ for (int i = 0; i < catArraylist.size(); i++) {
         linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
         recycler_toppics.setLayoutManager(linearLayoutManager1);
 
-        linearLayoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
-        only_feature_rv.setLayoutManager(linearLayoutManager3);
+        only_feature_rv.smoothScrollBy(500,500);
+        only_feature_rv.setItemAnimator(new DefaultItemAnimator());
+
+
+
+        only_feature_rv.setOrientation(DSVOrientation.HORIZONTAL);
+        only_feature_rv.getCurrentItem();
+        only_feature_rv.setItemTransitionTimeMillis(500);
+        only_feature_rv.setItemTransformer(new ScaleTransformer.Builder()
+                .setMinScale(0.8f)
+                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
+                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
+                .build());
 
     }
 

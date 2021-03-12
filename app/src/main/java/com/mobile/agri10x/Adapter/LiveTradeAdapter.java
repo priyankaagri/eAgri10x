@@ -6,13 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.util.ArrayMap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,15 +18,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
-import com.mobile.agri10x.models.GetHomeProductData;
+import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -41,56 +36,53 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHolders> {
+public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.ViewHolders> {
     Context context;
-    private List<GetHomeProductData> dataList;
+    private List<GetLiveTrades> dataList;
     boolean check;
 
-    public TopPicksAdapter(List<GetHomeProductData> toppicksproductlist, Context context, boolean check) {
-        this.dataList=toppicksproductlist;
+
+
+    public LiveTradeAdapter(List<GetLiveTrades> list, Context context, boolean check) {
+        this.dataList=list;
         this.context=context;
-        this.check = check;
+        this.check =check;
     }
 
 
     @NonNull
     @Override
     public ViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.topicks_adapter, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_deals_adapter, parent, false);
         ViewHolders viewHolder = new ViewHolders(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolders holder, int position) {
+
         if(check){
             holder.fav.setVisibility(View.VISIBLE);
         }else{
             holder.fav.setVisibility(View.GONE);
         }
+        holder.txt_product_name.setText(dataList.get(position).getData().get(position).getCommodityName());
+        holder.product_price.setText("Rs "+dataList.get(position).getData().get(position).getPricePerLot());
 
-       String imgurl ="https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png";
-        Uri uri = Uri.parse(imgurl);
-        Log.d("checkurltopicks", String.valueOf(uri));
-        Picasso.with(context)
-                .load(uri)
-                .into(holder.product_img);
-
-
-        holder.txt_product_name.setText(dataList.get(position).getCommodityName());
-        holder.product_price.setText("₹ "+dataList.get(position).getPricePerLot());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(SessionManager.isLoggedIn(context)){
-                    String str_orderId=dataList.get(position).getOrderID();
-                    String str_grade = dataList.get(position).getGrade();
+                    String str_orderId=dataList.get(position).getData().get(position).getOrderID();
+                    String str_grade = dataList.get(position).getData().get(position).getGrade();
                     callApiProductDetail(str_orderId,position,str_grade);
                 }else {
                     context.startActivity(new Intent(context, LoginActivity.class));
                 }
             }
         });
+
+
 
     }
 
@@ -148,8 +140,6 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
 
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(position).getPricePerLot());
-
-                    EditText entervalue = dialog.findViewById(R.id.entervalue);
                     dialog.show();
                 }
                 else {
@@ -166,6 +156,7 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -190,3 +181,4 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
         }
     }
 }
+

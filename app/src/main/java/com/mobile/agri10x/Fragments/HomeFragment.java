@@ -190,7 +190,7 @@ getonlyFeature();
 
     private void getonlyFeature() {
         QueryFeatureOnly queryFeatureOnly=new QueryFeatureOnly();
-        queryFeatureOnly.setFeatured(true);
+        queryFeatureOnly.setFeatured(false);
         GetQueryFeaturedOnly getQueryFeaturedOnly=new GetQueryFeaturedOnly();
         getQueryFeaturedOnly.setQuery(queryFeatureOnly);
 

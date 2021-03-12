@@ -25,7 +25,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:text="Featured Trades"
+                    android:text="@string/featured_tader"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_medium" />
 

@@ -7,7 +7,7 @@
     <item
         android:id="@+id/tab_paymet"
         android:icon="@drawable/newpayment"
-        android:title="@string/payment" />
+        android:title="@string/live_trade" />
     <item
 
         android:id="@+id/tab_cart"
@@ -15,11 +15,12 @@
         android:title="@string/cart" />
     <item
         android:id="@+id/tab_offer"
+        android:visible="false"
         android:icon="@drawable/offer"
         android:title="@string/offer" />
 
     <item
         android:id="@+id/tab_menu"
         android:icon="@drawable/menu"
-        android:title="@string/setting" />
+        android:title="@string/menu" />
 </menu>

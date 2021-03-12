@@ -19,17 +19,18 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_marginVertical="10dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
                     <ImageView
                         android:layout_width="150dp"
-                        android:src="@drawable/logogreen"
-                        android:layout_height="30dp">
+                        android:layout_height="30dp"
+                        android:src="@drawable/logogreen">
 
                     </ImageView>
 
@@ -37,31 +38,34 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true">
+
                     <LinearLayout
-                        android:gravity="center"
-                        android:layout_weight="7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_alignParentRight="true"
                         android:layout_gravity="right"
-                        android:layout_alignParentRight="true">
+                        android:layout_weight="7"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/txt_signups"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
 
-                            android:textSize="18sp"
                             android:fontFamily="@font/proxima_nova_bold"
-                            android:gravity="center"/>
+                            android:gravity="center"
+                            android:textSize="18sp" />
+
                         <ImageView
-                            android:layout_marginRight="15dp"
-                            android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/signin_img"/>
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="15dp"
+                            android:src="@drawable/signin_img" />
                     </LinearLayout>
 
 
@@ -70,78 +74,69 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_below="@+id/hloa"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="10dp"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hloa"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
 
                 <RelativeLayout
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/round_corner_blue"
-                    android:layout_weight="6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="6"
+                    android:background="@drawable/round_corner_blue">
+
                     <Spinner
+                        android:id="@+id/catagaryname_id"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:spinnerMode="dropdown"
                         android:fontFamily="@font/proximanova_regular"
-                        android:id="@+id/catagaryname_id"
-                        />
+                        android:spinnerMode="dropdown" />
 
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:background="@drawable/round_corner_blue"
-                    android:layout_height="wrap_content">
+                    android:background="@drawable/round_corner_blue">
+
                     <ImageView
-                        android:layout_width="20dp"
                         android:id="@+id/srcg"
-                        android:src="@drawable/search"
-                        android:layout_marginTop="12dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginBottom="12dp"
-                        android:layout_height="20dp">
-                    </ImageView>
+                        android:src="@drawable/search"></ImageView>
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_toRightOf="@+id/srcg"
-                        android:gravity="center|left"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/proximanova_regular"
-                        android:textColor="@color/text_color"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginBottom="10dp"
-                        android:textSize="12dp"
+                        android:layout_toRightOf="@+id/srcg"
+                        android:fontFamily="@font/proximanova_regular"
+                        android:gravity="center|left"
                         android:text="Looking for....."
-                        android:layout_height="match_parent">
+                        android:textColor="@color/text_color"
+                        android:textSize="14dp">
 
                     </TextView>
-
-
-
                 </RelativeLayout>
-
-
-
-
-
-
 
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
                 app:cardCornerRadius="20dp">
 
                 <androidx.viewpager.widget.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
@@ -303,6 +298,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <include
@@ -316,11 +312,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="@dimen/text_size_small"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="Our Heroes"
+                android:text="@string/our_hero"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
-
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -328,125 +324,130 @@
                 android:layout_marginHorizontal="20dp"
                 android:scrollbars="none">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="20dp"
                     android:orientation="horizontal">
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
-                            android:src="@drawable/farmer_img">
+                            android:layout_marginRight="@dimen/text_size_fiteen"
+                            android:src="@drawable/framer_new_balck">
 
                         </ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginHorizontal="@dimen/text_size_xxlargew"
-                            android:layout_marginTop="@dimen/activity_margin_xxlarge"
+                            android:layout_marginHorizontal="25dp"
+                            android:layout_marginTop="70dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
-                            android:text="@string/i_am_famr"
+                            android:text="@string/farmer"
                             android:textColor="@color/white"
-                            android:textSize="20dp" />
+                            android:textSize="25dp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
-                            android:layout_marginTop="@dimen/second_card_view"
-                            android:background="@drawable/radius_button"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/radius_button_white"
+                            android:fontFamily="@font/proximanova_regular"
                             android:padding="10dp"
-                            android:text="@string/iwanttosell"
-                            android:textColor="@color/white"
+                            android:text="@string/contact_us"
+                            android:textColor="@color/appgreen"
                             android:textSize="15dp" />
-
 
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp">
-
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/trader_img">
+                            android:layout_marginRight="@dimen/text_size_fiteen"
+                            android:src="@drawable/trader_new_black">
 
                         </ImageView>
+
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginHorizontal="@dimen/text_size_xxlargew"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginHorizontal="25dp"
+                            android:layout_marginTop="70dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
-                            android:text="@string/i_am_trader"
+                            android:text="@string/trder"
                             android:textColor="@color/white"
-                            android:textSize="20dp" />
+                            android:textSize="25dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
-                            android:layout_marginTop="@dimen/second_card_view"
-                            android:background="@drawable/radius_button"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/radius_button_white"
+                            android:fontFamily="@font/proximanova_regular"
                             android:padding="10dp"
-                            android:text="@string/iwanttobut"
-                            android:textColor="@color/white"
+                            android:text="@string/contact_us"
+                            android:textColor="@color/appgreen"
                             android:textSize="15dp" />
 
-
                     </RelativeLayout>
+
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/grian_img">
+                            android:layout_marginRight="@dimen/text_size_fiteen"
+                            android:src="@drawable/grians">
 
                         </ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginHorizontal="@dimen/text_size_xxlargew"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginHorizontal="25dp"
+                            android:layout_marginTop="40dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
-                            android:text="@string/i_am_fpo"
+                            android:text="@string/wehole_garins"
                             android:textColor="@color/white"
-                            android:textSize="20dp" />
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="25dp"
+                            android:layout_marginTop="60dp"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:text="@string/premimu_garins"
+                            android:textColor="@color/white"
+                            android:textSize="25dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
-                            android:layout_marginTop="@dimen/second_card_view"
-                            android:background="@drawable/radius_button"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/radius_button_white"
+                            android:fontFamily="@font/proximanova_regular"
                             android:padding="10dp"
-                            android:text="@string/iwanttowork"
-                            android:textColor="@color/white"
+                            android:text="@string/contact_us"
+                            android:textColor="@color/appgreen"
                             android:textSize="15dp" />
 
-
                     </RelativeLayout>
-
-
-
 
                 </LinearLayout>
 
@@ -458,6 +459,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
                 <include
@@ -470,7 +472,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="@dimen/text_size_small"
+                android:layout_marginTop="@dimen/text_size_medium"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
                 android:text="@string/catogery_list"
                 android:textColor="@color/black"
@@ -481,26 +484,32 @@
                 android:id="@+id/caltogerylist_recycle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp">
 
-                       <TextView
-                           android:visibility="gone"
-                           android:layout_marginTop="15dp"
-                android:layout_width="wrap_content"
-                android:textSize="@dimen/text_size_medium"
-                android:textColor="@color/appcolor"
-                android:text="@string/viewall"
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
                 android:id="@+id/txt_ViewAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:gravity="right"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/proxima_nova_bold"
-                android:layout_height="wrap_content" />
+                android:gravity="right"
+                android:text="@string/viewall"
+                android:textColor="@color/appcolor"
+                android:textSize="@dimen/text_size_medium"
+                android:visibility="gone" />
 
-               <androidx.recyclerview.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/only_feature_rv"
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_marginHorizontal="20dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
 
             <TextView
@@ -512,7 +521,6 @@
                 android:text="@string/our_services"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
-
 
 
             <LinearLayout
@@ -529,16 +537,15 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-                        android:src="@drawable/farmer_img">
+                        android:src="@drawable/iamgframer">
 
                     </ImageView>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
-                        android:layout_marginTop="@dimen/activity_margin_xxlarge"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_famr"
                         android:textColor="@color/white"
@@ -547,13 +554,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginHorizontal="40dp"
                         android:layout_marginTop="@dimen/second_card_view"
                         android:background="@drawable/radius_button"
                         android:padding="10dp"
                         android:text="@string/iwanttosell"
                         android:textColor="@color/white"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
 
 
                 </RelativeLayout>
@@ -567,15 +574,15 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/trader_img">
+                        android:src="@drawable/iamtaders">
 
                     </ImageView>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_trader"
                         android:textColor="@color/white"
@@ -584,13 +591,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginHorizontal="40dp"
                         android:layout_marginTop="@dimen/second_card_view"
                         android:background="@drawable/radius_button"
                         android:padding="10dp"
                         android:text="@string/iwanttobut"
                         android:textColor="@color/white"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
 
 
                 </RelativeLayout>
@@ -610,8 +617,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_fpo"
                         android:textColor="@color/white"
@@ -620,13 +627,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginHorizontal="40dp"
                         android:layout_marginTop="@dimen/second_card_view"
                         android:background="@drawable/radius_button"
                         android:padding="10dp"
                         android:text="@string/iwanttowork"
                         android:textColor="@color/white"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
 
 
                 </RelativeLayout>
@@ -646,8 +653,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/text_size_xxlargew"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_worker"
                         android:textColor="@color/white"
@@ -656,13 +663,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/activity_margin_xxxxlarge"
+                        android:layout_marginHorizontal="40dp"
                         android:layout_marginTop="@dimen/second_card_view"
                         android:background="@drawable/radius_button"
                         android:padding="10dp"
                         android:text="@string/iwanttowork"
                         android:textColor="@color/white"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
 
 
                 </RelativeLayout>
@@ -671,7 +678,6 @@
             </LinearLayout>
 
             <TextView
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -679,14 +685,15 @@
                 android:fontFamily="@font/proxima_nova_alt_bold"
                 android:text="@string/comdity_rate"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_size_medium" />
+                android:textSize="@dimen/text_size_medium"
+                android:visibility="gone" />
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp">
+                android:layout_marginHorizontal="20dp"
+                android:visibility="gone">
 
             </androidx.recyclerview.widget.RecyclerView>
 

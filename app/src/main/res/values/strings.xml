@@ -34,11 +34,14 @@
     <string name="enternamel">Enter Last Name</string>
     <string name="farmer">Farmer</string>
     <string name="trder">Trader</string>
+    <string name="featured_tader">Featured Trades</string>
+    <string name="our_hero">Our Heroes</string>
+    <string name="live_trade">Live Trade</string>
 
     <string name="home">Home</string>
     <string name="payment">Payment</string>
     <string name="cart">Cart</string>
-    <string name="setting">Setting</string>
+    <string name="menu">Menu</string>
     <string name="offer">Offer</string>
 
     <string name="vegitabl">Vegitables</string>
@@ -46,6 +49,10 @@
     <string name="furits">Fruits</string>
     <string name="vegpulesr">Pules</string>
     <string name="gaisins">Grains</string>
+
+    <string name="contact_us">Contact Us</string>
+    <string name="wehole_garins">Wholesome &amp;</string>
+    <string name="premimu_garins">primium garins</string>
 
 
     <string name="Mobile_number">"Your Mobile Number"</string>

@@ -163,7 +163,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                     comodity_txt.setText(response.body().getData().get(0).getCommodityName());
 
                     TextView location_txt = dialog.findViewById(R.id.location_txt);
-                    location_txt.setText(response.body().getData().get(0).getCity()+" , "+response.body().getData().get(position).getState());
+                    location_txt.setText(response.body().getData().get(0).getCity()+" , "+response.body().getData().get(0).getState());
 
                     TextView packaging_txt = dialog.findViewById(R.id.packaging_txt);
                     packaging_txt.setText("Packaging Size : "+" "+response.body().getData().get(0).getLotSize()+" kg");

@@ -72,7 +72,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                 .listener(new Picasso.Listener() {
                     @Override
                     public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                     Log.d("exception", String.valueOf(exception));
+
                     }
                 })
                 .build();
@@ -88,6 +88,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
             public void onClick(View v) {
                 if(SessionManager.isLoggedIn(context)){
                     String str_orderId=dataList.get(position).getOrderID();
+                    Log.d("getcommid",dataList.get(position).getCommodityID());
                     String str_grade = dataList.get(position).getGrade();
                     callApiProductDetail(str_orderId,position,str_grade);
                 }else {
@@ -127,6 +128,20 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                     dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
                     TextView add_btn= dialog.findViewById(R.id.addcart);
                     ImageView shareiamge= dialog.findViewById(R.id.shareiamge);
+                    ImageView productimage = dialog.findViewById(R.id.productimage);
+
+                    String strimgdetail =  response.body().getData().get(0).getCommodityID()+".png";
+                    Picasso picasso = new Picasso.Builder(context)
+                            .listener(new Picasso.Listener() {
+                                @Override
+                                public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+                                    Log.d("exception", String.valueOf(exception));
+                                }
+                            })
+                            .build();
+                    picasso.load("https://data.agri10x.com/images/products/"+strimgdetail)
+                            .fit()
+                            .into(productimage);
                     shareiamge.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -140,19 +155,19 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                         }
                     });
                     TextView comodity_txt = dialog.findViewById(R.id.comodity_txt);
-                    comodity_txt.setText(response.body().getData().get(position).getCommodityName());
+                    comodity_txt.setText(response.body().getData().get(0).getCommodityName());
 
                     TextView location_txt = dialog.findViewById(R.id.location_txt);
-                    location_txt.setText(response.body().getData().get(position).getCity()+" , "+response.body().getData().get(position).getState());
+                    location_txt.setText(response.body().getData().get(0).getCity()+" , "+response.body().getData().get(0).getState());
 
                     TextView packaging_txt = dialog.findViewById(R.id.packaging_txt);
-                    packaging_txt.setText("Packaging Size : "+" "+response.body().getData().get(position).getLotSize()+" kg");
+                    packaging_txt.setText("Packaging Size : "+" "+response.body().getData().get(0).getLotSize()+" kg");
 
                     TextView avilablequantity_txt = dialog.findViewById(R.id.avilablequantity_txt);
-                    avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(position).getWeight()+" kg");
+                    avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getWeight()+" kg");
 
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
-                    price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(position).getPricePerLot());
+                    price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
 
                     EditText entervalue = dialog.findViewById(R.id.entervalue);
                     dialog.show();

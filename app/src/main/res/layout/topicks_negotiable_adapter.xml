@@ -27,7 +27,7 @@
             android:gravity="center">
 
             <ImageView
-                android:src="@drawable/potato_dwn"
+
                 android:id="@+id/product_img"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:textColor="@color/black"
-                android:text="Potato"
+
                 android:textSize="14sp" />
             <TextView
                 android:layout_centerInParent="true"
@@ -54,7 +54,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
                 android:textColor="@color/black"
-                android:text="Potato"
+
                 android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -69,7 +69,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/proxima_nova_alt_light"
-                android:text="grade1"
+
                 android:textColor="@color/black"
                 android:textSize="10sp" />
 
@@ -107,7 +107,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/proxima_nova_bold"
-                android:text="Rs.20"
+
                 android:textColor="@color/black"
                 android:textSize="12sp" />
             <TextView
@@ -120,7 +120,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/proxima_nova_alt_light"
-                android:text="city"
+
                 android:textColor="@color/black"
                 android:textSize="10sp" />
             <TextView

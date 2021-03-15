@@ -197,6 +197,7 @@ public class HomeFragment extends Fragment {
                 Log.d("gettoppicks",response.toString());
                 if (response.isSuccessful()) {
                     toppicks.addAll(response.body().getData());
+
                     if(toppicks.size()>0)
                     {
                         TopPicksNegotiableAdapter adapterTopPicks = new TopPicksNegotiableAdapter(toppicks, context,false);
@@ -244,11 +245,12 @@ getonlyFeature();
                 Log.d("resFeatureonly",response.toString());
                 if (response.isSuccessful()) {
                     featuredonly.addAll(response.body().getData());
-                    if(featuredonly.size()>0)
+                    Log.d("getsizefeat", String.valueOf(featuredonly.size()));
+                    if(featuredonly.size()>=0)
                     {
                         onlyFeaturedAdapter = new OnlyFeaturedAdapter(featuredonly, context);
-                      //  InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(onlyFeaturedAdapter);
-                        only_feature_rv.setAdapter(onlyFeaturedAdapter);
+                        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(onlyFeaturedAdapter);
+                        only_feature_rv.setAdapter(wrapper);
                     }
 
 

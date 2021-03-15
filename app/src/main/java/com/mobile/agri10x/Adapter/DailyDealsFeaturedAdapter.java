@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.util.ArrayMap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
+import com.squareup.picasso.Picasso;
 
 
 import org.json.JSONObject;
@@ -55,7 +58,7 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
     @NonNull
     @Override
     public ViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_deals_adapter, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_deals_featured_adapter, parent, false);
         ViewHolders viewHolder = new ViewHolders(view);
         return viewHolder;
     }
@@ -68,10 +71,25 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
         }else{
             holder.fav.setVisibility(View.GONE);
         }
-//        Picasso.with(context)
-//                .load("https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png")
-//                .into(holder.product_img);
 
+        String strimg =  dataList.get(position).getCommodityID()+".png";
+
+
+
+        Picasso picasso = new Picasso.Builder(context)
+                .listener(new Picasso.Listener() {
+                    @Override
+                    public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+                        Log.d("exception", String.valueOf(exception));
+                    }
+                })
+                .build();
+        picasso.load("https://data.agri10x.com/images/products/"+strimg)
+                .fit()
+                .into(holder.product_img);
+        holder.variety.setText(dataList.get(position).getVarietyName());
+        holder.city.setText(dataList.get(position).getCity());
+        holder.grade.setText("Grade "+dataList.get(position).getGrade());
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
         holder.product_price.setText("Rs "+dataList.get(position).getPricePerLot());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +190,7 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
     }
 
     public class ViewHolders extends RecyclerView.ViewHolder {
-        TextView txt_product_name,product_price;
+        TextView txt_product_name,product_price,variety,grade,city;
         ImageView product_img,fav;
         TextView addcart;
         CardView cardview;
@@ -186,6 +204,9 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
             this.addcart =itemView.findViewById(R.id.addcart);
             this.cardview =itemView.findViewById(R.id.cardview);
             this.fav = itemView.findViewById(R.id.fav);
+            this.grade = itemView.findViewById(R.id.grade);
+            this.variety = itemView.findViewById(R.id.brand);
+            this.city = itemView.findViewById(R.id.city);
         }
     }
 }

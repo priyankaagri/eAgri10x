@@ -28,6 +28,7 @@ import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -54,7 +55,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
     @NonNull
     @Override
     public ViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.topicks_adapter, parent, false);
+         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.topicks_negotiable_adapter, parent, false);
         ViewHolders viewHolder = new ViewHolders(view);
         return viewHolder;
     }
@@ -67,14 +68,46 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             holder.fav.setVisibility(View.GONE);
         }
 
-       String imgurl ="https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png";
-        Uri uri = Uri.parse(imgurl);
-        Log.d("checkurltopicks", String.valueOf(uri));
-//        Picasso.with(context)
-//                .load(uri)
-//                .into(holder.product_img);
+
+        String strimg =  dataList.get(position).getCommodityID()+".png";
 
 
+
+        Picasso picasso = new Picasso.Builder(context)
+                .listener(new Picasso.Listener() {
+                    @Override
+                    public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+                        Log.d("exception", String.valueOf(exception));
+                    }
+                })
+                .build();
+        picasso.load("https://data.agri10x.com/images/products/"+strimg)
+                .fit()
+                .into(holder.product_img);
+        holder.txt_quoteprice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog;
+                dialog = new Dialog(context);
+                dialog.setContentView(R.layout.quate_for_price);
+// dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(true);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+                ImageView cancle_btn= dialog.findViewById(R.id.cancle_btn);
+                cancle_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
+        holder.grade.setText("Grade "+dataList.get(position).getGrade());
+        holder.city.setText("Grade "+dataList.get(position).getCity());
+        holder.variety.setText(dataList.get(position).getVarietyName());
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
         holder.product_price.setText("Price/KG : "+"₹ "+dataList.get(position).getPricePerLot());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
@@ -171,7 +204,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
     }
 
     public class ViewHolders extends RecyclerView.ViewHolder {
-        TextView txt_product_name,product_price;
+        TextView txt_product_name,product_price,variety,grade,city,txt_quoteprice;;
         ImageView product_img,fav;
         TextView addcart;
         CardView cardview;
@@ -185,6 +218,10 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             this.addcart =itemView.findViewById(R.id.addcart);
             this.cardview =itemView.findViewById(R.id.cardview);
             this.fav = itemView.findViewById(R.id.fav);
+            this.variety = itemView.findViewById(R.id.variety);
+            this.grade = itemView.findViewById(R.id.grade);
+            this.city = itemView.findViewById(R.id.city);
+            this.txt_quoteprice = itemView.findViewById(R.id.txt_quoteprice);
         }
     }
 }

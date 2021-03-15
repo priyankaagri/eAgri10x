@@ -247,8 +247,8 @@ getonlyFeature();
                     if(featuredonly.size()>0)
                     {
                         onlyFeaturedAdapter = new OnlyFeaturedAdapter(featuredonly, context);
-                        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(onlyFeaturedAdapter);
-                        only_feature_rv.setAdapter(wrapper);
+                      //  InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(onlyFeaturedAdapter);
+                        only_feature_rv.setAdapter(onlyFeaturedAdapter);
                     }
 
 

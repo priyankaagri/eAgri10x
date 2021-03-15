@@ -21,7 +21,6 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-
         <View
             android:id="@+id/imagePadding2"
             android:layout_width="match_parent"
@@ -35,9 +34,8 @@
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
-
         android:src="@drawable/potato_dwn" />
 
 
@@ -225,7 +223,7 @@
             <EditText
                 android:paddingLeft="10dp"
                 android:id="@+id/entervalue"
-        android:inputType="number"
+                android:inputType="number"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.7"

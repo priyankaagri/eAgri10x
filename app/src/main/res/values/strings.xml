@@ -54,6 +54,13 @@
     <string name="wehole_garins">Wholesome &amp;</string>
     <string name="premimu_garins">primium garins</string>
 
+    <string name="name">Name</string>
+    <string name="phon_numbr">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="commodity">Commodity</string>
+    <string name="varity">Variety</string>
+    <string name="price_per_kg">Price pr kg</string>
+    <string name="submit">SUBMIT</string>
 
     <string name="Mobile_number">"Your Mobile Number"</string>
     <string name="verify_account">"Verify Account"</string>

@@ -66,17 +66,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 
         String strimg =  dataList.get(position).getCommodityID()+".png";
 
-//        Picasso.with(context).load("https://data.agri10x.com/images/products/"+strimg).placeholder(R.mipmap.ic_launcher).fit().into(holder.product_img, new com.squareup.picasso.Callback() {
-//            @Override
-//            public void onSuccess() {
-//                Log.d("imgload","imgload");
-//            }
-//
-//            @Override
-//            public void onError() {
-//                Log.d("imgload","unimgload");
-//            }
-//        });
+
 
         Picasso picasso = new Picasso.Builder(context)
                 .listener(new Picasso.Listener() {

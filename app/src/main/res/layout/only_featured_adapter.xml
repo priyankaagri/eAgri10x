@@ -16,9 +16,9 @@
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
         <RelativeLayout
-            android:visibility="gone"
+
             android:background="@drawable/featured_bg"
-            android:layout_width="100dp"
+            android:layout_width="60dp"
             android:layout_height="20dp">
             <LinearLayout
 
@@ -34,7 +34,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Featured"
+                    android:text="Live"
                     android:textSize="14sp"
                     android:textColor="@color/white"/>
             </LinearLayout>

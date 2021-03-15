@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -83,12 +86,11 @@ public class HomePageActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-
+//onBackPressed();
         int count = getSupportFragmentManager().getBackStackEntryCount();
-
+        Log.e("Log count",count+"");
         if (count == 1) {
-           finish();
-//additional code
+            open();
         } else {
             if(mNetworkMonitor.isConnected()){
                 Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
@@ -96,6 +98,29 @@ public class HomePageActivity extends AppCompatActivity {
             getSupportFragmentManager().popBackStack();
         }
 
+    }
+
+
+    public void open() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Are you sure, You wanted to exit from the application");
+        alertDialogBuilder.setPositiveButton("yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
+
+//Toast.makeText(MainActivity.this, "You clicked yes button", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 

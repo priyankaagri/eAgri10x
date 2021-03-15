@@ -26,8 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.agri10x.Adapter.HomeCategoryAdapter;
-import com.mobile.agri10x.Adapter.TopPicksAdapter;
-import com.mobile.agri10x.Adapter.DailyDealsAdapter;
+import com.mobile.agri10x.Adapter.TopPicksNegotiableAdapter;
+import com.mobile.agri10x.Adapter.DailyDealsFeaturedAdapter;
 import com.mobile.agri10x.Adapter.ImageAdapter;
 import com.mobile.agri10x.Adapter.OnlyFeaturedAdapter;
 import com.mobile.agri10x.R;
@@ -45,6 +45,7 @@ import com.mobile.agri10x.models.QueryTopicks;
 import com.mobile.agri10x.models.QueryDailyDeals;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
 import com.yarolegovich.discretescrollview.DSVOrientation;
@@ -53,6 +54,8 @@ import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -127,6 +130,13 @@ public class HomeFragment extends Fragment {
         query.setQuery(querydata);
 
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetHomeProduct> loginCall = apiService.wsgetHomeProduct("123456",
                 query);
@@ -141,13 +151,13 @@ public class HomeFragment extends Fragment {
                 dealofDay.addAll(response.body().getData());
                 if(dealofDay.size()>0)
                 {
-                    DailyDealsAdapter dailyDealsAdapter = new DailyDealsAdapter(dealofDay, context, false);
+                    DailyDealsFeaturedAdapter dailyDealsAdapter = new DailyDealsFeaturedAdapter(dealofDay, context, false);
                     recycler_dailydeals.setAdapter(dailyDealsAdapter);
                 }
 
                 gettoppicks();
                 } else {
-
+                    gettoppicks();
                     Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -168,6 +178,13 @@ public class HomeFragment extends Fragment {
         GetQueryTopicPicks query=new GetQueryTopicPicks();
         query.setQuery(queryTopicData);
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetHomeProduct> loginCall = apiService.wsgetHomeProductTopic("123456",
                 query);
@@ -182,12 +199,12 @@ public class HomeFragment extends Fragment {
                     toppicks.addAll(response.body().getData());
                     if(toppicks.size()>0)
                     {
-                        TopPicksAdapter adapterTopPicks = new TopPicksAdapter(toppicks, context,false);
+                        TopPicksNegotiableAdapter adapterTopPicks = new TopPicksNegotiableAdapter(toppicks, context,false);
                         recycler_toppics.setAdapter(adapterTopPicks);
                     }
 getonlyFeature();
                 } else {
-
+                    getonlyFeature();
                     Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -208,6 +225,13 @@ getonlyFeature();
         getQueryFeaturedOnly.setQuery(queryFeatureOnly);
 
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetHomeProduct> loginCall = apiService.wsgetFeatureOnlyProduct("123456",
                 getQueryFeaturedOnly);
@@ -275,6 +299,13 @@ getonlyFeature();
         catArraylist.clear();
         dialog = new Alert().pleaseWait();
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         Call<GetCategories> call = apiService.getCategories();
         call.enqueue(new Callback<GetCategories>() {
             @Override
@@ -306,6 +337,7 @@ for (int i = 0; i < catArraylist.size(); i++) {
                     getDailyDeals();
                 } else {
                     dialog.dismiss();
+                    getDailyDeals();
                     Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -386,13 +418,13 @@ for (int i = 0; i < catArraylist.size(); i++) {
         txt_ViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.setFragment(new SeeAllDailyDealsFragment());
+                HomePageActivity.setFragment(new SeeAllDailyDealsFeaturedFragment());
             }
         });
         txt_Viewsee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.setFragment(new SeeAllTopPicksFragment());
+                HomePageActivity.setFragment(new SeeAllTopPicksNegotialbeFragment());
             }
         });
 

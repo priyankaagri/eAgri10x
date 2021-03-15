@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:background="@color/white"
-    tools:context=".Fragments.SeeAllDailyDealsFragment">
+    android:background="@color/white"
+    tools:context=".Fragments.SeeAllDailyDealsFeaturedFragment">
     <RelativeLayout
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
@@ -30,12 +30,12 @@ android:background="@color/white"
             android:textStyle="bold" />
 
     </RelativeLayout>
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_below="@+id/toolbar1"
-    android:layout_marginTop="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/recyle_allDailydeals"/>
+    <com.todkars.shimmer.ShimmerRecyclerView
+        android:layout_below="@+id/toolbar1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyle_allDailydeals"/>
 
 
 </RelativeLayout>

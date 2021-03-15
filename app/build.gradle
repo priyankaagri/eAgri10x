@@ -58,4 +58,7 @@ dependencies {
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.yarolegovich:discrete-scrollview:1.5.1'
+    implementation 'com.todkars:shimmer-recyclerview:0.4.0'
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
+
 }

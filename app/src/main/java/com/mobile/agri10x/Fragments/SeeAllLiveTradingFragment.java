@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.ArrayMap;
@@ -20,9 +21,13 @@ import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetLiveTradesData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
+import com.todkars.shimmer.ShimmerRecyclerView;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,14 +39,15 @@ import retrofit2.Response;
 
 public class SeeAllLiveTradingFragment extends Fragment {
     List<GetLiveTradesData> livetradelist = new ArrayList<>();
-    RecyclerView recyle_livetrade;
+    ShimmerRecyclerView recyle_livetrade;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_see_all_live_trading, container, false);
         recyle_livetrade=view.findViewById(R.id.recyle_livetrade);
-        recyle_livetrade.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyle_livetrade.showShimmer();
+        recyle_livetrade.setLayoutManager(new GridLayoutManager(getActivity(),2),R.layout.item_shimmer_daily_deals);
         getLiveTrade();
         return  view;
     }
@@ -53,6 +59,13 @@ public class SeeAllLiveTradingFragment extends Fragment {
         jsonParams.put("orderID","");
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetLiveTrades> loginCall = apiService.wsgetlivetrades("123456",
                 body);
@@ -61,14 +74,15 @@ public class SeeAllLiveTradingFragment extends Fragment {
             @Override
             public void onResponse(Call<GetLiveTrades> call,
                                    Response<GetLiveTrades> response) {
-
+                recyle_livetrade.hideShimmer();
                 Log.d("livetrade",response.toString());
                 if (response.isSuccessful()) {
-                     livetradelist.addAll(response.body().getData());
+                    livetradelist.addAll(response.body().getData());
                     if(livetradelist.size()>0)
                     {
                         LiveTradeAdapter liveTradeAdapter = new LiveTradeAdapter(livetradelist, getActivity(),true);
                         recyle_livetrade.setAdapter(liveTradeAdapter);
+                        liveTradeAdapter.notifyDataSetChanged();
                     }
                 }
                 else {
@@ -79,7 +93,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
             @Override
             public void onFailure(Call<GetLiveTrades> call,
                                   Throwable t) {
-
+                recyle_livetrade.hideShimmer();
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });

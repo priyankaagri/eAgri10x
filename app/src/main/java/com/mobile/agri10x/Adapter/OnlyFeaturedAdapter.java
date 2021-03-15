@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.util.ArrayMap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +63,33 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
     public void onBindViewHolder(@NonNull OnlyFeaturedAdapter.ViewHolders holder, int position) {
 
 
-//        Picasso.with(context)
-//                .load("https://data.agri10x.com/images/products/"+dataList.get(position).getCommodityID()+".png")
-//                .into(holder.product_img);
+
+        String strimg =  dataList.get(position).getCommodityID()+".png";
+
+//        Picasso.with(context).load("https://data.agri10x.com/images/products/"+strimg).placeholder(R.mipmap.ic_launcher).fit().into(holder.product_img, new com.squareup.picasso.Callback() {
+//            @Override
+//            public void onSuccess() {
+//                Log.d("imgload","imgload");
+//            }
+//
+//            @Override
+//            public void onError() {
+//                Log.d("imgload","unimgload");
+//            }
+//        });
+
+        Picasso picasso = new Picasso.Builder(context)
+                .listener(new Picasso.Listener() {
+                    @Override
+                    public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+                     Log.d("exception", String.valueOf(exception));
+                    }
+                })
+                .build();
+        picasso.load("https://data.agri10x.com/images/products/"+strimg)
+                .fit()
+                .into(holder.product_img);
+
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
         holder.product_price.setText("Price/KG : "+"₹ "+dataList.get(position).getPricePerLot());
         holder.txt_varity.setText(dataList.get(position).getVarietyName());

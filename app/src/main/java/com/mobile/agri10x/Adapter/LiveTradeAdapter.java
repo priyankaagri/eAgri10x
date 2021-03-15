@@ -173,6 +173,13 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
 
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
+
+                    TextView variety= dialog.findViewById(R.id.variety);
+                    variety.setText(response.body().getData().get(0).getVarietyName());
+
+                    TextView grade= dialog.findViewById(R.id.grade);
+                    grade.setText("Grade "+response.body().getData().get(0).getGrade());
+
                     dialog.show();
                 }
                 else {

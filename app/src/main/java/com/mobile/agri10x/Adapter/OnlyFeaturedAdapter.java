@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +67,13 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 
         String strimg =  dataList.get(position).getCommodityID()+".png";
 
+        boolean featuredvalue = dataList.get(position).getFeatured();
+
+        if(featuredvalue){
+            holder.featured_value.setVisibility(View.VISIBLE);
+        }else{
+            holder.featured_value.setVisibility(View.GONE);
+        }
 
 
         Picasso picasso = new Picasso.Builder(context)
@@ -169,6 +177,12 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
 
+                    TextView variety= dialog.findViewById(R.id.variety);
+                    variety.setText(response.body().getData().get(0).getVarietyName());
+
+                    TextView grade= dialog.findViewById(R.id.grade);
+                    grade.setText("Grade "+response.body().getData().get(0).getGrade());
+
                     EditText entervalue = dialog.findViewById(R.id.entervalue);
                     dialog.show();
                 }
@@ -198,6 +212,8 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
         ImageView product_img;
         TextView addcart;
         CardView cardview;
+        RelativeLayout featured_value;
+
 
 
         public ViewHolders(@NonNull View itemView) {
@@ -208,6 +224,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
             this.addcart =itemView.findViewById(R.id.addcart);
             this.cardview =itemView.findViewById(R.id.cardview);
             this.txt_varity = itemView.findViewById(R.id.txt_varity);
+            this.featured_value = itemView.findViewById(R.id.featured_value);
         }
     }
 }

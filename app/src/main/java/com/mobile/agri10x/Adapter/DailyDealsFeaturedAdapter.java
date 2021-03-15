@@ -91,7 +91,7 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
         holder.city.setText(dataList.get(position).getCity());
         holder.grade.setText("Grade "+dataList.get(position).getGrade());
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
-        holder.product_price.setText("Rs "+dataList.get(position).getPricePerLot());
+        holder.product_price.setText("Price/KG: "+""+"₹ "+dataList.get(position).getPricePerLot());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,6 +175,12 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
 
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
+
+                    TextView variety= dialog.findViewById(R.id.variety);
+                    variety.setText(response.body().getData().get(0).getVarietyName());
+
+                    TextView grade= dialog.findViewById(R.id.grade);
+                    grade.setText("Grade "+response.body().getData().get(0).getGrade());
 
                     EditText entervalue = dialog.findViewById(R.id.entervalue);
 

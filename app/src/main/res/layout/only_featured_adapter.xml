@@ -16,7 +16,8 @@
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
         <RelativeLayout
-
+            android:visibility="gone"
+           android:id="@+id/featured_value"
             android:background="@drawable/featured_bg"
             android:layout_width="60dp"
             android:layout_height="20dp">

@@ -193,6 +193,12 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
 
+                    TextView variety= dialog.findViewById(R.id.variety);
+                    variety.setText(response.body().getData().get(0).getVarietyName());
+
+                    TextView grade= dialog.findViewById(R.id.grade);
+                    grade.setText("Grade "+response.body().getData().get(0).getGrade());
+
                     EditText entervalue = dialog.findViewById(R.id.entervalue);
                     dialog.show();
                 }

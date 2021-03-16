@@ -36,7 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
-      />
+        />
 
 
     <LinearLayout
@@ -237,16 +237,26 @@
 
                 android:textColor="@color/white" />
             <EditText
+                android:hint="500"
                 android:layout_marginHorizontal="2dp"
                 android:id="@+id/entervalue"
                 android:inputType="number"
                 android:padding="5dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/proxima_nova_alt_bold"
                 android:background="@drawable/btn_white"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
 
             </EditText>
+            <TextView
+                android:layout_marginTop="2dp"
+                android:textAlignment="center"
+                android:padding="5dp"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Kg."/>
         </LinearLayout>
 
     </LinearLayout>

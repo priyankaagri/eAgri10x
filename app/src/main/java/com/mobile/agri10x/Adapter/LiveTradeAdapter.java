@@ -92,13 +92,11 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(SessionManager.isLoggedIn(context)){
+
                     String str_orderId=dataList.get(position).getOrderID();
                     String str_grade = dataList.get(position).getGrade();
                     callApiProductDetail(str_orderId,position,str_grade);
-                }else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
             }
         });
 
@@ -156,7 +154,11 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                     add_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context, "Clicked Add Button!", Toast.LENGTH_SHORT).show();
+                            if(SessionManager.isLoggedIn(context)){
+
+                            }else {
+                                context.startActivity(new Intent(context,LoginActivity.class));
+                            }
                         }
                     });
                     TextView comodity_txt = dialog.findViewById(R.id.comodity_txt);

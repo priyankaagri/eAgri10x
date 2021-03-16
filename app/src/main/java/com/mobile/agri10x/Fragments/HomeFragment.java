@@ -420,13 +420,13 @@ for (int i = 0; i < catArraylist.size(); i++) {
         txt_ViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.setFragment(new SeeAllDailyDealsFeaturedFragment());
+                HomePageActivity.setFragment(new SeeAllDailyDealsFeaturedFragment(),"dailyDeals");
             }
         });
         txt_Viewsee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.setFragment(new SeeAllTopPicksNegotialbeFragment());
+                HomePageActivity.setFragment(new SeeAllTopPicksNegotialbeFragment(),"seetoppicks");
             }
         });
 

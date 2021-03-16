@@ -106,7 +106,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             }
         });
         holder.grade.setText("Grade "+dataList.get(position).getGrade());
-        holder.city.setText("Grade "+dataList.get(position).getCity());
+        holder.city.setText(dataList.get(position).getCity());
         holder.variety.setText(dataList.get(position).getVarietyName());
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
         holder.product_price.setText("Price/KG : "+"₹ "+dataList.get(position).getPricePerLot());

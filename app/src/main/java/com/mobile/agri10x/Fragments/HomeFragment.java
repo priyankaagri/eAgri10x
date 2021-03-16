@@ -221,7 +221,7 @@ getonlyFeature();
 
     private void getonlyFeature() {
         QueryFeatureOnly queryFeatureOnly=new QueryFeatureOnly();
-        queryFeatureOnly.setFeatured(false);
+        queryFeatureOnly.setFeatured(true);
         GetQueryFeaturedOnly getQueryFeaturedOnly=new GetQueryFeaturedOnly();
         getQueryFeaturedOnly.setQuery(queryFeatureOnly);
 
@@ -327,7 +327,7 @@ for (int i = 0; i < catArraylist.size(); i++) {
 
                     if (catArraylist.size() > 0) {
                         HomeCategoryAdapter adapterShopDetails = new HomeCategoryAdapter(catArraylist, context);
-                        caltogerylist_recycle.setAdapter(adapterShopDetails);
+                     //   caltogerylist_recycle.setAdapter(adapterShopDetails);
                         adapterShopDetails.notifyDataSetChanged();
                         ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(),
                                 R.layout.simple_spinner_dropdown_item,
@@ -437,7 +437,7 @@ for (int i = 0; i < catArraylist.size(); i++) {
         CommodityUnit = view.findViewById(R.id.catagaryname_id);
         recycler_dailydeals = view.findViewById(R.id.recycler_dailydeals);
         recycler_toppics = view.findViewById(R.id.recycler_toppics);
-        caltogerylist_recycle = view.findViewById(R.id.caltogerylist_recycle);
+     //   caltogerylist_recycle = view.findViewById(R.id.caltogerylist_recycle);
         txt_ViewAll = view.findViewById(R.id.txt_ViewAll);
         txt_Viewsee = view.findViewById(R.id.txt_Viewsee);
         only_feature_rv = view.findViewById(R.id.only_feature_rv);
@@ -449,7 +449,7 @@ for (int i = 0; i < catArraylist.size(); i++) {
         linearLayoutManager3 = new LinearLayoutManager(getActivity());
 
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        caltogerylist_recycle.setLayoutManager(linearLayoutManager);
+        //caltogerylist_recycle.setLayoutManager(linearLayoutManager);
 
         linearLayoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
         recycler_dailydeals.setLayoutManager(linearLayoutManager2);

@@ -169,6 +169,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 
         jsonParams.put("flag", strflag);
         jsonParams.put("role", strrole);
+      //  Firstname Lastname DOB
 
 
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());

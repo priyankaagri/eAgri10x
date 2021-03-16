@@ -29,7 +29,7 @@
             <ImageView
 
                 android:id="@+id/product_img"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 />
@@ -145,7 +145,7 @@
                 android:textAllCaps="true"
                 android:padding="10dp"
                 android:text="quote your price"
-                android:background="#F6B048"
+                android:background="@color/orange"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 />

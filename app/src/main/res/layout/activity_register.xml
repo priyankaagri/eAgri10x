@@ -2,12 +2,11 @@
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:id="@+id/container"
+    android:background="@color/gray"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
 
-    >
     <RelativeLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -16,6 +15,7 @@
             android:id="@+id/backarrow"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
             android:src="@drawable/backarrow"/>
         <ImageView
             android:id="@+id/call"
@@ -30,186 +30,269 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_marginTop="40dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"
-            android:textSize="25sp"
-            android:fontFamily="@font/proxima_nova_alt_bold"
-            android:text="Register"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" />
-        <TextView
+        <LinearLayout
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:fontFamily="@font/proxima_nova_alt_light"
-            android:text="@string/we_will_send"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/mobilenumbertxt"
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="10dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:background="@color/white"
-                android:id="@+id/mobilenumber"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:text="Register"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter 10 Digit Mobile Number"
+                android:gravity="center_horizontal" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:text="@string/we_will_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mobilenumbertxt"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:background="@color/white"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter 10 Digit Mobile Number"
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <EditText
+                android:id="@+id/mobilenumber"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_marginTop="@dimen/activity_margin_medium"
+                android:hint="@string/enter_digit"
+                android:textSize="15sp"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:layout_marginHorizontal="20dp"
                 android:maxLength="10"
-                android:inputType="number"
-                android:maxLines="1"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
+                android:fontFamily="@font/proximanova_regular"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_color"
+                android:background="@drawable/edt_txt_background"
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp"
                 android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Register As"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_weight="6"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/proxima_nova_alt_bold"/>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_weight="4"
-                    android:layout_marginHorizontal="20dp"
                     android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/farmer_btn"
                         android:layout_width="match_parent"
-                        android:padding="10dp"
-                        android:layout_weight="5"
-                        android:text="@string/farmer"
+                        android:layout_height="match_parent"
+                        android:text="Register As"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/proxima_nova_bold"
-                        android:background="@drawable/filll_back"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:id="@+id/trader_btn"
-                        android:layout_width="match_parent"
-                        android:padding="10dp"
-                        android:layout_weight="5"
-                        android:text="@string/trder"
+                        android:layout_weight="6"
+                        android:textSize="20dp"
                         android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:fontFamily="@font/proxima_nova_bold"
-                        android:background="@drawable/hollow_back"
-                        android:layout_height="wrap_content"/>
+                        android:fontFamily="@font/proxima_nova_alt_bold"/>
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="4"
+                        android:layout_marginHorizontal="20dp"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/farmer_btn"
+                            android:layout_width="match_parent"
+                            android:padding="10dp"
+                            android:layout_weight="5"
+                            android:text="@string/farmer"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/proxima_nova_bold"
+                            android:background="@drawable/filll_back"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/trader_btn"
+                            android:layout_width="match_parent"
+                            android:padding="10dp"
+                            android:layout_weight="5"
+                            android:text="@string/trder"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:fontFamily="@font/proxima_nova_bold"
+                            android:background="@drawable/hollow_back"
+                            android:layout_height="wrap_content"/>
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-        <Button
-            android:fontFamily="@font/proxima_nova_bold"
-            android:id="@+id/btn_next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="send otp"
-            android:padding="10dp"
-            android:background="@drawable/btn_round_corner"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="40dp"/>
 
-
-        <LinearLayout
-
-            android:layout_marginHorizontal="30dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="3"
-            android:layout_weight="1">
-
-            <View
-
+            <EditText
+                android:id="@+id/fname_edt_txt"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/gray"
-                android:layout_weight="1"/>
+                android:padding="10dp"
+                android:hint="@string/fname_str"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:inputType="text"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_color"
+                android:background="@drawable/edt_txt_background"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/lname_edt_txt"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Lname_str"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:inputType="textPersonName"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_color"
+                android:background="@drawable/edt_txt_background"
+                android:layout_height="wrap_content"/>
+
             <TextView
-                android:padding="5dp"
-                android:textSize="18sp"
-                android:fontFamily="@font/proxima_nova_alt_light"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OR"/>
-            <View
+                android:paddingLeft="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/dateofbirth"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/dob_txt"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/gray"
-                android:layout_weight="1"/>
+                android:padding="10dp"
+                android:hint="@string/ddmmyy"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:inputType="textPersonName"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/calendar_new"
+                android:textColorHint="@color/text_color"
+                android:background="@drawable/edt_txt_background"
+                android:layout_height="wrap_content"/>
+
+
+            <Button
+                android:fontFamily="@font/proxima_nova_bold"
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="send otp"
+                android:padding="10dp"
+                android:background="@drawable/btn_round_corner"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="40dp"/>
+
+
+            <LinearLayout
+
+                android:layout_marginHorizontal="40dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/text_color"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:padding="5dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OR"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/text_color"
+                    android:layout_weight="1"/>
+
+
+            </LinearLayout>
+            <TextView
+
+                android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:text="Already have an account?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" />
+            <Button
+                android:id="@+id/login"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="click here to LOGIN"
+                android:padding="10dp"
+                android:background="@drawable/btn_round_corner"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginRight="40dp"
+                />
+
 
 
         </LinearLayout>
-        <TextView
-
-            android:fontFamily="@font/proxima_nova_alt_condensed_bold"
-            android:textAlignment="center"
-            android:layout_marginTop="50dp"
-            android:text="Already have an account?"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" />
-        <Button
-               android:id="@+id/login"
-            android:fontFamily="@font/proxima_nova_bold"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="click here to LOGIN"
-            android:padding="10dp"
-            android:background="@drawable/btn_round_corner"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            />
-
-
-
-    </LinearLayout>
     </ScrollView>
 </LinearLayout>

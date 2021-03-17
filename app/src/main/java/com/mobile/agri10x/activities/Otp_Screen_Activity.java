@@ -1,8 +1,5 @@
 package com.mobile.agri10x.activities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -20,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetResendOTP;
@@ -51,12 +51,13 @@ public class Otp_Screen_Activity extends AppCompatActivity {
     ImageView img_arrow;
     AlertDialog dialog, dialogresend;
     private LiveNetworkMonitor mNetworkMonitor;
+    String DATEOFBIRTH, FirstName = "", LastName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp__screen_);
-        mNetworkMonitor=new LiveNetworkMonitor(this);
+        mNetworkMonitor = new LiveNetworkMonitor(this);
 
         img_arrow = findViewById(R.id.img_arrow);
         btn_varify_otp = findViewById(R.id.btn_varify_otp);
@@ -71,6 +72,11 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 
             strflag = bundle.getString("flag");
             strrole = bundle.getString("role");
+
+            FirstName = bundle.getString("FirstName");
+            LastName = bundle.getString("LastName");
+            DATEOFBIRTH = bundle.getString("DOB");
+
         }
         img_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,9 +175,12 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 
         jsonParams.put("flag", strflag);
         jsonParams.put("role", strrole);
-      //  Firstname Lastname DOB
 
+        jsonParams.put("Firstname", FirstName);
+        jsonParams.put("Lastname", LastName);
+        jsonParams.put("DOB", DATEOFBIRTH);
 
+//Firstname Lastname DOB
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
@@ -294,14 +303,14 @@ public class Otp_Screen_Activity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        if(mNetworkMonitor.isConnected()){
+        if (mNetworkMonitor.isConnected()) {
             Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
         }
     }
 
     public class JWTUtils {
 
-        public  void decoded(String JWTEncoded) throws Exception {
+        public void decoded(String JWTEncoded) throws Exception {
             try {
                 String[] split = JWTEncoded.split("\\.");
                 Log.d("JWT_DECODED", "Header: " + getJson(split[0]));
@@ -313,13 +322,13 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                 String iat = obj.getString("iat");
                 String role = obj.getString("role");
                 String exp = obj.getString("exp");
-                SessionManager.addUserDetails(mobile,iat,role,exp);
+                SessionManager.addUserDetails(mobile, iat, role, exp);
             } catch (UnsupportedEncodingException e) {
                 //Error
             }
         }
 
-        private  String getJson(String strEncoded) throws UnsupportedEncodingException{
+        private String getJson(String strEncoded) throws UnsupportedEncodingException {
             byte[] decodedBytes = Base64.decode(strEncoded, Base64.URL_SAFE);
             return new String(decodedBytes, "UTF-8");
         }

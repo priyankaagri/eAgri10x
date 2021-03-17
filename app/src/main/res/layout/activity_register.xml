@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/backarrow"/>
+            android:src="@drawable/back_arrow_new"/>
         <ImageView
             android:id="@+id/call"
             android:layout_marginRight="10dp"
@@ -37,67 +37,135 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_marginTop="10dp"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                android:fontFamily="@font/proxima_nova_bold"
+                android:textSize="30sp"
+                android:fontFamily="@font/proxima_nova_scosf_condensed_bold"
                 android:text="Register"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginBottom="25dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                android:gravity="start" />
+
             <TextView
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textAlignment="center"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:paddingLeft="13dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/fname"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/fname_edt_txt"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:hint="@string/fname_str"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:inputType="text"
+                android:layout_marginHorizontal="25dp"
+                android:fontFamily="@font/proximanova_regular"
                 android:textColor="@color/black"
-                android:fontFamily="@font/proxima_nova_bold"
-                android:text="@string/we_will_send"
+                android:textColorHint="@color/text_color"
+
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingLeft="13dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/lname"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/lname_edt_txt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                android:padding="10dp"
+
+                android:hint="@string/Lname_str"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:inputType="textPersonName"
+                android:layout_marginHorizontal="25dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_color"
+
+                android:layout_height="wrap_content"/>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/mobilenumbertxt"
-                android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:visibility="gone"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingLeft="13dp"
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:background="@color/white"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter 10 Digit Mobile Number"
-                    android:maxLength="10"
-                    android:inputType="number"
-                    android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-
+                android:paddingTop="15dp"
+                android:textSize="18dp"
+                android:paddingBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/phon_numbr"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
             <EditText
                 android:id="@+id/mobilenumber"
                 android:layout_width="match_parent"
-                android:padding="10dp"
-                android:layout_marginTop="@dimen/activity_margin_medium"
                 android:hint="@string/enter_digit"
                 android:textSize="15sp"
                 android:singleLine="true"
                 android:inputType="phone"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="25dp"
                 android:maxLength="10"
                 android:fontFamily="@font/proximanova_regular"
                 android:textColor="@color/black"
                 android:textColorHint="@color/text_color"
-                android:background="@drawable/edt_txt_background"
+
                 android:layout_height="wrap_content"/>
 
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/dateofbirth"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/dob_txt"
+                android:layout_width="match_parent"
+
+                android:hint="@string/ddmmyy"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:inputType="textPersonName"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/calendar_new"
+                android:textColorHint="@color/text_color"
+
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/text_color"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="1dp">
+
+            </View>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
@@ -107,7 +175,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
 
@@ -163,66 +231,6 @@
 
             </LinearLayout>
 
-
-            <EditText
-                android:id="@+id/fname_edt_txt"
-                android:layout_width="match_parent"
-                android:padding="10dp"
-                android:hint="@string/fname_str"
-                android:textSize="14sp"
-                android:singleLine="true"
-                android:inputType="text"
-                android:layout_marginHorizontal="20dp"
-                android:fontFamily="@font/proximanova_regular"
-                android:textColor="@color/black"
-                android:textColorHint="@color/text_color"
-                android:background="@drawable/edt_txt_background"
-                android:layout_height="wrap_content"/>
-
-            <EditText
-                android:id="@+id/lname_edt_txt"
-                android:layout_width="match_parent"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
-                android:hint="@string/Lname_str"
-                android:textSize="14sp"
-                android:singleLine="true"
-                android:inputType="textPersonName"
-                android:layout_marginHorizontal="20dp"
-                android:fontFamily="@font/proximanova_regular"
-                android:textColor="@color/black"
-                android:textColorHint="@color/text_color"
-                android:background="@drawable/edt_txt_background"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:paddingLeft="15dp"
-                android:paddingBottom="10dp"
-                android:paddingTop="15dp"
-                android:textSize="18dp"
-                android:layout_marginLeft="15dp"
-                android:text="@string/dateofbirth"
-                android:fontFamily="@font/proxima_nova_alt_bold"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/dob_txt"
-                android:layout_width="match_parent"
-                android:padding="10dp"
-                android:hint="@string/ddmmyy"
-                android:textSize="14sp"
-                android:singleLine="true"
-                android:inputType="textPersonName"
-                android:layout_marginHorizontal="20dp"
-                android:fontFamily="@font/proximanova_regular"
-                android:textColor="@color/black"
-                android:drawableRight="@drawable/calendar_new"
-                android:textColorHint="@color/text_color"
-                android:background="@drawable/edt_txt_background"
-                android:layout_height="wrap_content"/>
-
-
             <Button
                 android:fontFamily="@font/proxima_nova_bold"
                 android:id="@+id/btn_next"
@@ -233,7 +241,7 @@
                 android:background="@drawable/btn_round_corner"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="10dp"/>
 
 
             <LinearLayout

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Update_Profile_Activity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/toolbar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/but_back"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24" />
+
+                <TextView
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/but_back"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/but_back"
+                    android:text="User Details"
+                    android:textColor="@color/black"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" First Name"/>
+                <EditText
+                    android:id="@+id/et_firstname"
+                    android:inputType="textPersonName"
+                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                    android:hint="abc"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Last Name"/>
+                <EditText
+                    android:id="@+id/et_lastname"
+                    android:inputType="textPersonName"
+                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                    android:hint="abc"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" DOB"/>
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/et_city"
+                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                    android:hint="23"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Email Id"/>
+                <EditText
+                    android:drawableRight="@drawable/verifiedicon"
+                    android:id="@+id/et_email"
+                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                    android:hint="xxx@gmail.com"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Phone Number"/>
+                <EditText
+
+                    android:enabled="true"
+                    android:id="@+id/et_mobilenumber"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                    android:hint="**********"
+                    android:drawableRight="@drawable/verified_icon"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/save_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SAVE"
+                android:padding="10dp"
+                android:background="@drawable/btn_round_corner"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="40dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -40,7 +40,7 @@ public interface AgriInvestor {
     Call<GetHomeProduct> wsgetFeatureOnlyProduct(@Header("x-auth-token") String token, @Body GetQueryFeaturedOnly getQueryFeaturedOnly);
     @POST("m/displayProducts")
     Call<GetLiveTrades>wsgetlivetrades(@Header("x-auth-token") String token, @Body RequestBody params);
-    @GET("m/getProductsInCart")
+    @POST("m/getProductsInCart")
     Call<GetProductsInCart>wsgetProductinCart(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addToCart")
     Call<GetAddProductToCart>wsGetAddproducttocart(@Header("x-auth-token") String token, @Body RequestBody params);

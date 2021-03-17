@@ -24,6 +24,7 @@ import com.mobile.agri10x.models.GetProductsInCartData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.retrofit.SSLCertificateManagment;
+import com.mobile.agri10x.utils.SessionManager;
 import com.todkars.shimmer.ShimmerRecyclerView;
 
 import org.json.JSONObject;
@@ -51,8 +52,7 @@ public class Cart_Fragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_cart_view, container, false);
         recyle_livetrade=view.findViewById(R.id.recyle_cart_view);
         sub_toatl_txt=view.findViewById(R.id.sub_toatl_txt);
-        recyle_livetrade.showShimmer();
-        recyle_livetrade.setLayoutManager(new GridLayoutManager(getActivity(),1), R.layout.item_shimmer_daily_deals);
+
         getProductinCart();
         return  view;
     }
@@ -60,7 +60,8 @@ public class Cart_Fragment extends Fragment {
     private void getProductinCart() {
         ProductsInCartlist.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
-        jsonParams.put("userID","6049b58bc2005f88ccad2f2e");
+        jsonParams.put("userID",SessionManager.getKeyTokenUser(getContext()));
+        Log.d("getuserid",SessionManager.getKeyTokenUser(getContext()));
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -81,9 +82,11 @@ public class Cart_Fragment extends Fragment {
                 Log.d("ProductinCart",response.toString());
                 if (response.isSuccessful()) {
                     ProductsInCartlist.addAll(response.body().getData());
-                    sub_toatl_txt.setText(response.body().getSubTotal());
+                    sub_toatl_txt.setText("₹ "+String.valueOf(response.body().getSubTotal()));
                     if(ProductsInCartlist.size()>0)
                     {
+                        recyle_livetrade.setLayoutManager(new GridLayoutManager(getActivity(),1), R.layout.item_shimmer_daily_deals);
+                        recyle_livetrade.showShimmer();
                         TradeValueAddCartProductList tradeValueAdpter = new TradeValueAddCartProductList(ProductsInCartlist, getActivity(),true);
                         recyle_livetrade.setAdapter(tradeValueAdpter);
                         tradeValueAdpter.notifyDataSetChanged();

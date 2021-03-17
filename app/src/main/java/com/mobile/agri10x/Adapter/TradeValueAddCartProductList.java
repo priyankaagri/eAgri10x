@@ -47,10 +47,10 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         holder.product_price.setText("₹ "+ProductsInCartlist.get(position).getPrice());
         holder.product_name.setText(ProductsInCartlist.get(position).getName());
         holder.product_garde.setText(ProductsInCartlist.get(position).getGrade());
-        holder.product_quantity.setText(ProductsInCartlist.get(position).getQuantity());
+        holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
-        holder.total_price.setText(ProductsInCartlist.get(position).getPrice());
-        holder.product_total_weight.setText(ProductsInCartlist.get(position).getWeight());
+        holder.total_price.setText(String.valueOf(ProductsInCartlist.get(position).getPrice()));
+        holder.product_total_weight.setText(String.valueOf(ProductsInCartlist.get(position).getWeight()));
 
         String productimg =  ProductsInCartlist.get(position).getCommodityID()+".png";
         Picasso picasso = new Picasso.Builder(context)

@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
        // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<GetOTP> loginCall = apiService.wsgetOTP(body);
+        final Call<GetOTP> loginCall = apiService.wsgetOTP("123456",body);
         loginCall.enqueue(new Callback<GetOTP>() {
             @SuppressLint("WrongConstant")
             @Override

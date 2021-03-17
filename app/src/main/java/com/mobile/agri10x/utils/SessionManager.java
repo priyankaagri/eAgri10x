@@ -51,12 +51,13 @@ public class SessionManager {
         editor.commit();
     }
 
-    public static void addUserDetails(String mobile, String iat, String role, String exp,String token) {
+    public static void addUserDetails(String mobile, String iat, String role, String exp,String tokenuserid) {
+        editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_MOBILE, mobile);
         editor.putString(KEY_IAT, iat);
         editor.putString(KEY_ROLE, role);
         editor.putString(KEY_EXP, exp);
-        editor.putString(KEY_TOKEN_USER,token);
+        editor.putString(KEY_TOKEN_USER,tokenuserid);
         editor.commit();
     }
 

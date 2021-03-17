@@ -20,14 +20,15 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface AgriInvestor {
     @POST("m/getOTPNew")
-    Call<GetOTP> wsgetOTP(@Body RequestBody params);
-    @POST("m/verifyOTP")
-    Call<VerifyOTP> wsgetVerifyOTP(@Body RequestBody params);
+    Call<GetOTP> wsgetOTP(@Header("x-auth-token") String token,@Body RequestBody params);
+    @POST("m/verifyOTPNew")
+    Call<VerifyOTP> wsgetVerifyOTP(@Header("x-auth-token") String token,@Body RequestBody params);
     @POST("m/resendOTP")
-    Call<GetResendOTP> wsgetresendOTP(@Body RequestBody params);
+    Call<GetResendOTP> wsgetresendOTP(@Header("x-auth-token") String token,@Body RequestBody params);
     @POST("m/homepageProducts")
     Call<GetHomeProduct> wsgetHomeProduct(@Header("x-auth-token") String token,@Body GetQueryDailyDeals getQueryDailyDeals);
     @GET("m/getCategories")

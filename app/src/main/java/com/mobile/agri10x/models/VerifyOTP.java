@@ -7,16 +7,16 @@ public class VerifyOTP{
 
     @SerializedName("out")
     @Expose
-    private Boolean out;
+    private Integer out;
     @SerializedName("token")
     @Expose
     private String token;
 
-    public Boolean getOut() {
+    public Integer getOut() {
         return out;
     }
 
-    public void setOut(Boolean out) {
+    public void setOut(Integer out) {
         this.out = out;
     }
 

@@ -140,7 +140,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<GetResendOTP> loginCall = apiService.wsgetresendOTP(
+        final Call<GetResendOTP> loginCall = apiService.wsgetresendOTP("123456",
                 body);
         loginCall.enqueue(new Callback<GetResendOTP>() {
             @SuppressLint("WrongConstant")
@@ -184,7 +184,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<VerifyOTP> loginCall = apiService.wsgetVerifyOTP(
+        final Call<VerifyOTP> loginCall = apiService.wsgetVerifyOTP("123456",
                 body);
         loginCall.enqueue(new Callback<VerifyOTP>() {
             @SuppressLint("WrongConstant")
@@ -195,9 +195,9 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 // Log.d("verifyOTP",response.toString());
                 if (response.isSuccessful()) {
 // Log.d("getresponse",response.body().getType());
-                    if (response.body().getOut()) {
+                    if (response.body().getOut() == 5) {
                         Log.e("token", "" + response.body().getToken());
-                        new SessionManager(Otp_Screen_Activity.this).createLoginSession(response.body().getToken());
+                      //  new SessionManager(Otp_Screen_Activity.this).createLoginSession(response.body().getToken());
 
                         try {
                             new JWTUtils().decoded(response.body().getToken());
@@ -209,7 +209,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                         finish();
 
 
-                    } else if (!response.body().getOut()) {
+                    } else  {
 
                         Toast.makeText(Otp_Screen_Activity.this, "You Entered wrong OTP.", Toast.LENGTH_SHORT).show();
                     }

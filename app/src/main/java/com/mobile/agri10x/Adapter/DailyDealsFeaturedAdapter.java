@@ -1,12 +1,16 @@
 package com.mobile.agri10x.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
+import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
@@ -36,6 +42,7 @@ import org.json.JSONObject;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +52,7 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
     Context context;
     private List<GetHomeProductData> dataList;
     boolean check;
-
+    AlertDialog dialog;
 
 
     public DailyDealsFeaturedAdapter(List<GetHomeProductData> featuredproductlist, Context context, boolean check) {
@@ -135,6 +142,16 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
                     TextView add_btn= dialog.findViewById(R.id.addcart);
                     ImageView shareiamge= dialog.findViewById(R.id.shareiamge);
                     ImageView productimage = dialog.findViewById(R.id.productimage);
+                    EditText entervalue = dialog.findViewById(R.id.entervalue);
+                    TextView comodity_txt = dialog.findViewById(R.id.comodity_txt);
+                    TextView location_txt = dialog.findViewById(R.id.location_txt);
+                    TextView packaging_txt = dialog.findViewById(R.id.packaging_txt);
+                    TextView avilablequantity_txt = dialog.findViewById(R.id.avilablequantity_txt);
+                    TextView price_txt = dialog.findViewById(R.id.price_txt);
+                    TextView variety= dialog.findViewById(R.id.variety);
+                    TextView grade= dialog.findViewById(R.id.grade);
+
+
                     String strimgdetail =  response.body().getData().get(0).getCommodityID()+".png";
                     Picasso picasso = new Picasso.Builder(context)
                             .listener(new Picasso.Listener() {
@@ -156,36 +173,48 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
                     add_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(SessionManager.isLoggedIn(context)){
+                            String str_enterValue= entervalue.getText().toString();
 
+                            if(TextUtils.isEmpty(str_enterValue)){
+                                Toast.makeText(context, "Please enter your choice", Toast.LENGTH_SHORT).show();
                             }else {
-                                context.startActivity(new Intent(context,LoginActivity.class));
+                                if(SessionManager.isLoggedIn(context)){
+                                    int int_enterValue= Integer.parseInt(entervalue.getText().toString());
+                                    if(int_enterValue%50==0 && int_enterValue>=500){
+                                        String quantity= String.valueOf(int_enterValue/10);
+                                        CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName());
+                                    }else {
+                                        Toast.makeText(context, "Please enter interms of multiple of 500", Toast.LENGTH_SHORT).show();
+                                    }
+                                }else {
+                                    context.startActivity(new Intent(context,LoginActivity.class));
+                                }
                             }
-                        }
 
+                        }
                     });
-                    TextView comodity_txt = dialog.findViewById(R.id.comodity_txt);
+
                     comodity_txt.setText(response.body().getData().get(0).getCommodityName());
 
-                    TextView location_txt = dialog.findViewById(R.id.location_txt);
+
                     location_txt.setText(response.body().getData().get(0).getCity()+" , "+response.body().getData().get(0).getState());
 
-                    TextView packaging_txt = dialog.findViewById(R.id.packaging_txt);
+
                     packaging_txt.setText("Packaging Size : "+" "+response.body().getData().get(0).getLotSize()+" kg");
 
-                    TextView avilablequantity_txt = dialog.findViewById(R.id.avilablequantity_txt);
+
                     avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getWeight()+" kg");
 
-                    TextView price_txt = dialog.findViewById(R.id.price_txt);
+
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
 
-                    TextView variety= dialog.findViewById(R.id.variety);
+
                     variety.setText(response.body().getData().get(0).getVarietyName());
 
-                    TextView grade= dialog.findViewById(R.id.grade);
+
                     grade.setText("Grade "+response.body().getData().get(0).getGrade());
 
-                    EditText entervalue = dialog.findViewById(R.id.entervalue);
+
 
 
                     dialog.show();
@@ -205,6 +234,74 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
         });
     }
 
+    private void CallApiaddTOCard(String orderID,String grade,String quantity,String commodityname) {
+        dialog=new Alert().pleaseWait();
+        Map<String, Object> jsonParams = new ArrayMap<>();
+//put something inside the map, could be null
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+        jsonParams.put("m_orderID",orderID);
+
+        jsonParams.put("quantity",quantity);
+        jsonParams.put("grade",grade);
+        jsonParams.put("status","Just added to cart!");
+        Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetAddProductToCart> loginCall = apiService.wsGetAddproducttocart("123456",body);
+        loginCall.enqueue(new Callback<GetAddProductToCart>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetAddProductToCart> call,
+                                   Response<GetAddProductToCart> response) {
+                dialog.dismiss();
+                Log.d("addtocart",response.toString());
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetAddProductToCart> call,
+                                  Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    public class Alert {
+        public void alert(String title, String body) {
+            final AlertDialog.Builder Alert = new AlertDialog.Builder(context);
+            Alert.setCancelable(false)
+                    .setTitle(title)
+                    .setMessage(body);
+            Alert.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            Alert.create().show();
+        }
+
+
+        public AlertDialog pleaseWait() {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
+            View mView = ((Activity)context).getLayoutInflater().inflate(R.layout.alert_progress_spinning, null);
+            ProgressBar pb = mView.findViewById(R.id.progressBar);
+            mBuilder.setView(mView);
+            mBuilder.setCancelable(false);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+            return dialog;
+        }
+
+
+    }
 
     @Override
     public int getItemCount() {

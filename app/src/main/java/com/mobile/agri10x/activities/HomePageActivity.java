@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mobile.agri10x.Fragments.Cart_Fragment;
 import com.mobile.agri10x.Fragments.HomeFragment;
 import com.mobile.agri10x.Fragments.MenuFragment;
 import com.mobile.agri10x.Fragments.SeeAllLiveTradingFragment;
@@ -128,7 +129,29 @@ public class HomePageActivity extends AppCompatActivity {
 
                         break;
                     case R.id.tab_cart:
+                        int id2 = item.getItemId();
+                        Fragment f6 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                        if (id2 == R.id.tab_cart && !(f6 instanceof Cart_Fragment)) {
+                            Cart_Fragment fragment = new Cart_Fragment();
+                            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.nav_host_fragment, fragment,"cart");
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                                @Override
+                                public void onBackStackChanged() {
+                                    FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
+                                    Fragment currentFragment = fragmentManager.findFragmentByTag("cart");
+                                    if (currentFragment != null && (currentFragment instanceof SeeAllLiveTradingFragment)) {
+                                        bottomNavigationView.getMenu().getItem(1).setChecked(true);
 
+                                    } else {
+
+                                    }
+                                }
+                            });
+                        }
                         break;
                     case R.id.tab_menu:
                         int id3 = item.getItemId();

@@ -322,7 +322,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                 String iat = obj.getString("iat");
                 String role = obj.getString("role");
                 String exp = obj.getString("exp");
-                SessionManager.addUserDetails(mobile, iat, role, exp);
+                SessionManager.addUserDetails(mobile, iat, role, exp,token);
             } catch (UnsupportedEncodingException e) {
                 //Error
             }

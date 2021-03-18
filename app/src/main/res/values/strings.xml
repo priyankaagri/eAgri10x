@@ -73,12 +73,30 @@
     <string name="total_amout">Total Trade Amount</string>
     <string name="txttt_amount">XXXXXX</string>
     <string name="qunty">Quantity</string>
-    <string name="total_weight">Total Weight(KG)</string>
+    <string name="priceperkg">Price/KG</string>
+    <string name="total_weight">Total Weight (KG)</string>
     <string name="Mobile_number">"Your Mobile Number"</string>
     <string name="verify_account">"Verify Account"</string>
     <string name="we_will_send">"We will send an SMS With a Confirmation code to this number"</string>
     <string name="verification">"Please Type Verification code send to +91XXXXXXXXXX"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="book_order">Book Order</string>
+    <string name="purches">Purchase</string>
+    <string name="booking">Booking</string>
+    <string name="billing_Address">Billing Address</string>
+    <string name="add_new_address">+ Add new address</string>
+    <string name="deivery_address">Delivery Address</string>
+    <string name="booking_ammount">Booking Amount *</string>
+    <string name="paytext">* Pay 75% and avail 5% discount</string>
+    <string name="delivery_notes">Delivery Notes</string>
+    <string name="please_deleiver_it_before">Please deliver it before 6pm</string>
+    <string name="please_deliver_goods">Goods are packed as mentioned</string>
+    <string name="packaging_details">Packaging Details</string>
+    <string name="trade_total_value">Trade Value Total</string>
+    <string name="trade_amount">Trade Amount</string>
+    <string name="convi_charge">CONVENIENCE CHARGES @2%</string>
+    <string name="heading_fee">HANDLING FEES @ 2%</string>
+    <string name="commision">COMMISION @ 1%</string>
+    <string name="total_tade_amount">Total Trade Amount</string>
 </resources>

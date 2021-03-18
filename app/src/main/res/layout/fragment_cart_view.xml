@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".Fragments.SeeAllDailyDealsFeaturedFragment">
-
+<LinearLayout
+    android:layout_marginBottom="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <RelativeLayout
+
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,12 +22,12 @@
 
         <ImageView
             android:id="@+id/but_back"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/close" />
-
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/black" />
         <TextView
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/but_back"
@@ -29,7 +35,7 @@
             android:layout_toRightOf="@+id/but_back"
             android:text="Trade Value"
             android:textColor="@color/black"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -46,83 +52,40 @@
         android:text="@string/cart_txt"
         android:textColor="@color/appgreen"
         android:textSize="@dimen/text_size_small1" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.todkars.shimmer.ShimmerRecyclerView
-            android:id="@+id/recyle_cart_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_layout"
-            android:visibility="visible" />
-
-        <LinearLayout
-            android:id="@+id/bottom_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="5"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/sub_toatl_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="5"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-
-                    android:textColor="@color/appgreen"
-                    android:textSize="@dimen/text_size_medium" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="5"
-                    android:fontFamily="@font/proximanova_regular"
-                    android:text="@string/total_amout"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_medium" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5">
-
-                <Button
-                    android:id="@+id/checkout_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_margin_medium"
-                    android:layout_marginVertical="@dimen/activity_margin_medium"
-                    android:padding="@dimen/text_margin_large"
-                    android:text="@string/chcekout"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/activity_margin_medium">
-
-                </Button>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </RelativeLayout>
+<com.todkars.shimmer.ShimmerRecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/recyle_cart_view"
+   />
 
 
 </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+
+
+
+            <Button
+                android:id="@+id/checkout_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_margin_medium"
+
+                android:padding="10dp"
+                android:text="@string/chcekout"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_margin_medium">
+
+            </Button>
+
+
+
+    </LinearLayout>
+</RelativeLayout>

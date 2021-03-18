@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,14 +45,16 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
     public void onBindViewHolder(@NonNull ViewHolers holder, int position) {
 
 
-        holder.product_price.setText("₹ "+ProductsInCartlist.get(position).getPrice());
         holder.product_name.setText(ProductsInCartlist.get(position).getName());
-        holder.product_garde.setText(ProductsInCartlist.get(position).getGrade());
+        holder.product_garde.setText("Grade: "+ProductsInCartlist.get(position).getGrade());
         holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
         holder.total_price.setText(String.valueOf(ProductsInCartlist.get(position).getPrice()));
         holder.product_total_weight.setText(String.valueOf(ProductsInCartlist.get(position).getWeight()));
+        holder.avlstock.setText(String.valueOf("Avl Quantity : "+ProductsInCartlist.get(position).getTotalAvailable()+" KG"));
+        double totol_price=ProductsInCartlist.get(position).getQuantity()*ProductsInCartlist.get(position).getWeight();
 
+        holder.product_price.setText("Total : ₹ "+totol_price);
         String productimg =  ProductsInCartlist.get(position).getCommodityID()+".png";
         Picasso picasso = new Picasso.Builder(context)
                 .listener(new Picasso.Listener() {
@@ -62,7 +65,7 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
                 })
                 .build();
         picasso.load("https://data.agri10x.com/images/products/"+productimg)
-                .fit()
+
                 .into(holder.product_img);
 
     }
@@ -73,7 +76,8 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
     }
 
     public class ViewHolers extends RecyclerView.ViewHolder {
-        TextView product_total_weight,product_quantity,total_price,product_garde,product_varity,product_name,product_price;
+        TextView total_price,product_garde,product_varity,product_name,product_price,product_quantity,avlstock,packingsize;
+EditText product_total_weight;
         ImageView product_img;
         CardView cardview;
         public ViewHolers(@NonNull View itemView) {
@@ -81,13 +85,15 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
 
             this.product_total_weight =itemView.findViewById(R.id.product_total_weight);
             this.product_quantity =itemView.findViewById(R.id.product_quantity);
-            this.total_price =itemView.findViewById(R.id.total_price);
+            this.total_price =itemView.findViewById(R.id.totol_price);
             this.product_garde =itemView.findViewById(R.id.product_garde);
             this.product_varity =itemView.findViewById(R.id.product_varity);
             this.product_name =itemView.findViewById(R.id.product_name);
             this.product_price =itemView.findViewById(R.id.product_price);
             this.product_img =itemView.findViewById(R.id.product_img);
             this.cardview =itemView.findViewById(R.id.cardview);
+            this.avlstock =itemView.findViewById(R.id.avlstock);
+            this.packingsize =itemView.findViewById(R.id.packingsize);
         }
     }
 }

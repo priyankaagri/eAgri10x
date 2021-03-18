@@ -27,6 +27,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddProductToCart;
@@ -257,6 +258,7 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
                 dialog.dismiss();
                 Log.d("addtocart",response.toString());
                 if (response.isSuccessful()) {
+                    HomePageActivity.getProductinCart();
                     Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();
                 }
                 else {

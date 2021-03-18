@@ -40,7 +40,7 @@ public class MenuFragment extends Fragment {
                 showAlertDialogButtonClicked();
             }
         });
-        mBackImage=view.findViewById(R.id.menuButtonBack);
+        mBackImage=view.findViewById(R.id.but_back);
         mBackImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

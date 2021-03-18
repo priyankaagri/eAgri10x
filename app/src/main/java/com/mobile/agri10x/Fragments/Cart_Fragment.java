@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetProductsInCartData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -41,18 +44,33 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Cart_Fragment extends Fragment {
-
+   ImageView but_back;
     ShimmerRecyclerView recyle_livetrade;
     List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
     TextView sub_toatl_txt;
-
+Button checkout_btn;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_cart_view, container, false);
+        but_back=view.findViewById(R.id.but_back);
+        checkout_btn=view.findViewById(R.id.checkout_btn);
+        checkout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.setFragment(new Trade_Value_Total_Fragment(),"tradevaluetotal");
+            }
+        });
+        but_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.removeFragment(new Cart_Fragment());
+            }
+        });
         recyle_livetrade=view.findViewById(R.id.recyle_cart_view);
-        sub_toatl_txt=view.findViewById(R.id.sub_toatl_txt);
-
+        //sub_toatl_txt=view.findViewById(R.id.sub_toatl_txt);
+        recyle_livetrade.setLayoutManager(new GridLayoutManager(getActivity(),1), R.layout.item_shimmer_card_view);
+        recyle_livetrade.showShimmer();
         getProductinCart();
         return  view;
     }
@@ -82,11 +100,10 @@ public class Cart_Fragment extends Fragment {
                 Log.d("ProductinCart",response.toString());
                 if (response.isSuccessful()) {
                     ProductsInCartlist.addAll(response.body().getData());
-                    sub_toatl_txt.setText("₹ "+String.valueOf(response.body().getSubTotal()));
+                 //   sub_toatl_txt.setText("₹ "+String.valueOf(response.body().getSubTotal()));
                     if(ProductsInCartlist.size()>0)
                     {
-                        recyle_livetrade.setLayoutManager(new GridLayoutManager(getActivity(),1), R.layout.item_shimmer_daily_deals);
-                        recyle_livetrade.showShimmer();
+
                         TradeValueAddCartProductList tradeValueAdpter = new TradeValueAddCartProductList(ProductsInCartlist, getActivity(),true);
                         recyle_livetrade.setAdapter(tradeValueAdpter);
                         tradeValueAdpter.notifyDataSetChanged();

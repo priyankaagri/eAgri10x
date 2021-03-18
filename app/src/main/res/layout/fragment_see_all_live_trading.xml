@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".Fragments.SeeAllDailyDealsFeaturedFragment">
     <RelativeLayout
@@ -11,14 +12,16 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp">
-
         <ImageView
             android:id="@+id/but_back"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/black" />
+
 
         <TextView
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/but_back"
@@ -26,7 +29,7 @@
             android:layout_toRightOf="@+id/but_back"
             android:text="Live Trade"
             android:textColor="@color/black"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </RelativeLayout>

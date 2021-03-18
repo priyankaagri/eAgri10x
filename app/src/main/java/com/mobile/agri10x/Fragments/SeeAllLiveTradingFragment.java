@@ -13,10 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mobile.agri10x.Adapter.LiveTradeAdapter;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetLiveTradesData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -40,15 +42,24 @@ import retrofit2.Response;
 public class SeeAllLiveTradingFragment extends Fragment {
     List<GetLiveTradesData> livetradelist = new ArrayList<>();
     ShimmerRecyclerView recyle_livetrade;
+    ImageView but_back;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_see_all_live_trading, container, false);
+        but_back=view.findViewById(R.id.but_back);
+        but_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.removeFragment(new SeeAllLiveTradingFragment());
+            }
+        });
         recyle_livetrade=view.findViewById(R.id.recyle_livetrade);
         recyle_livetrade.showShimmer();
         recyle_livetrade.setLayoutManager(new GridLayoutManager(getActivity(),2),R.layout.item_shimmer_daily_deals);
         getLiveTrade();
+
         return  view;
     }
 

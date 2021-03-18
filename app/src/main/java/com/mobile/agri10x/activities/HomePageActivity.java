@@ -6,26 +6,50 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 import com.mobile.agri10x.Fragments.Cart_Fragment;
 import com.mobile.agri10x.Fragments.HomeFragment;
 import com.mobile.agri10x.Fragments.MenuFragment;
 import com.mobile.agri10x.Fragments.SeeAllLiveTradingFragment;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.models.GetProductsInCart;
+import com.mobile.agri10x.models.GetProductsInCartData;
+import com.mobile.agri10x.retrofit.AgriInvestor;
+import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
+import com.mobile.agri10x.utils.SessionManager;
+
+import org.json.JSONObject;
+
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomePageActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
+  public static   List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
     public static FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     public static BottomNavigationView bottomNavigationView;
@@ -59,14 +83,12 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }
         });
+        getProductinCart();
 // mFragmentManager = getSupportFragmentManager();
 // mFragmentTransaction = mFragmentManager.beginTransaction();
 // mFragmentTransaction.replace(R.id.nav_host_fragment, new HomeFragment()).commit();
 
-        int menuItemId = bottomNavigationView.getMenu().getItem(2).getItemId();
-        BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(menuItemId);
-        badge.setBackgroundColor(getResources().getColor(R.color.appgreen));
-        badge.setNumber(0);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -74,6 +96,7 @@ public class HomePageActivity extends AppCompatActivity {
                     case R.id.tab_home:
 
                         int id = item.getItemId();
+                        getProductinCart();
                         Fragment f = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id == R.id.tab_home && !(f instanceof HomeFragment)) {
                             HomeFragment fragment = new HomeFragment();
@@ -101,7 +124,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                         break;
                     case R.id.tab_livetrade:
-
+                        getProductinCart();
                         int id1 = item.getItemId();
                         Fragment f2 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id1 == R.id.tab_livetrade && !(f2 instanceof SeeAllLiveTradingFragment)) {
@@ -129,6 +152,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                         break;
                     case R.id.tab_cart:
+                        getProductinCart();
                         int id2 = item.getItemId();
                         Fragment f6 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id2 == R.id.tab_cart && !(f6 instanceof Cart_Fragment)) {
@@ -154,6 +178,7 @@ public class HomePageActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.tab_menu:
+                        getProductinCart();
                         int id3 = item.getItemId();
                         Fragment f4 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id3 == R.id.tab_menu && !(f4 instanceof MenuFragment)) {
@@ -185,6 +210,52 @@ public class HomePageActivity extends AppCompatActivity {
         });
 
     }
+
+    public static void getProductinCart() {
+        ProductsInCartlist.clear();
+        Map<String, Object> jsonParams = new ArrayMap<>();
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+        Log.d("getuserid",SessionManager.getKeyTokenUser(context));
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        final Call<GetProductsInCart> ProductinCart = apiService.wsgetProductinCart("123456",
+                body);
+        ProductinCart.enqueue(new Callback<GetProductsInCart>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetProductsInCart> call,
+                                   Response<GetProductsInCart> response) {
+
+                Log.d("ProductinCart",response.toString());
+                if (response.isSuccessful()) {
+                    ProductsInCartlist.addAll(response.body().getData());
+                    int menuItemId = bottomNavigationView.getMenu().getItem(2).getItemId();
+                    BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(menuItemId);
+                    badge.setBackgroundColor(context.getResources().getColor(R.color.appgreen));
+                    badge.setNumber(ProductsInCartlist.size());
+
+                }
+                else {
+                    Toast.makeText(context,"Something went wrong!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetProductsInCart> call,
+                                  Throwable t) {
+                Toast.makeText(context,"Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     public static void setFragment(Fragment fragment,String tag)
     {
         FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();

@@ -87,6 +87,19 @@ Button checkout_btn;
                 fragmentTransaction.commit();
             }
         });
+        btn_purchaes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PurchaseOrderFargment fragment = new PurchaseOrderFargment(); // replace your custom fragment class
+                Bundle bundle = new Bundle();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                bundle.putString("value", String.valueOf(amt)); // use as per your need
+                fragment.setArguments(bundle);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                fragmentTransaction.commit();
+            }
+        });
         but_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

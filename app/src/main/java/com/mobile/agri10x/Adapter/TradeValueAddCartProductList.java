@@ -84,13 +84,20 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
         holder.total_price.setText(String.valueOf(ProductsInCartlist.get(position).getPrice()));
-      
-        holder.avlstock.setText(String.valueOf("Avl Quantity : "+ProductsInCartlist.get(position).getTotalAvailable()+" KG"));
-        String valueofedt = holder.product_total_weight.getText().toString();
-        double doublevalueofedt = Double.parseDouble(holder.product_total_weight.getText().toString());
-        double totol_price=ProductsInCartlist.get(position).getPrice()*doublevalueofedt;
 
+        holder.avlstock.setText(String.valueOf("Avl Quantity : "+ProductsInCartlist.get(position).getTotalAvailable()*ProductsInCartlist.get(position).getWeight()+" KG"));
+
+        String test = String.valueOf(ProductsInCartlist.get(position).getQuantity());
+        holder.product_total_weight.setText(""+Double.parseDouble(test)*ProductsInCartlist.get(position).getWeight());
+
+
+        String value = holder.product_total_weight.getText().toString();
+        double totol_price=ProductsInCartlist.get(position).getPrice()*Double.parseDouble(value);
         holder.product_price.setText("Total : ₹ "+totol_price);
+
+
+
+
         String productimg =  ProductsInCartlist.get(position).getCommodityID()+".png";
         Picasso picasso = new Picasso.Builder(context)
                 .listener(new Picasso.Listener() {
@@ -122,16 +129,16 @@ holder.txt_update.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
 int getWaight=holder.getAdapterPosition();
         String str_enterValue = holder.product_total_weight.getText().toString();
-
+        double totalweight = ProductsInCartlist.get(position).getTotalAvailable()*ProductsInCartlist.get(position).getWeight();
         if(TextUtils.isEmpty(str_enterValue)){
             Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
         }else {
             if(SessionManager.isLoggedIn(context)){
-                int int_enterValue= Integer.parseInt(holder.product_total_weight.getText().toString());
+                double int_enterValue= Double.parseDouble(holder.product_total_weight.getText().toString());
                 if(int_enterValue%50==0){
 
                     if(int_enterValue>=500){
-                        if (ProductsInCartlist.get(getWaight).getWeight()>=int_enterValue){
+                        if (totalweight>=int_enterValue){
                             String quantity= String.valueOf(int_enterValue/50);
                             CallApiUpdateCard(ProductsInCartlist.get(getWaight).getUserProductID(),quantity);
 
@@ -179,7 +186,7 @@ holder.img_remove.setOnClickListener(new View.OnClickListener() {
             public void onResponse(Call<UpdateCart> call,
                                    Response<UpdateCart> response) {
                 dialog2.dismiss();
-                Log.d("removecart",response.toString());
+                Log.d("updatecart",response.toString());
                 if (response.isSuccessful()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 //
@@ -219,10 +226,11 @@ Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
                 dialog.dismiss();
                 Log.d("removecart",response.toString());
                 if (response.isSuccessful()) {
-                    ProductsInCartlist.remove(position);
-                    tradeValueAddCartProductList.notifyDataSetChanged();
+//                    ProductsInCartlist.remove(position);
+//                    tradeValueAddCartProductList.notifyDataSetChanged();
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     HomePageActivity.getProductinCart();
+                    HomePageActivity.setFragment(new Cart_Fragment(),"cart");
                 }
                 else {
 

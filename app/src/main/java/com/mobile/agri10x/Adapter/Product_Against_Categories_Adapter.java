@@ -213,7 +213,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                     packaging_txt.setText("Packaging Size : "+" "+response.body().getData().get(0).getLotSize()+" kg");
 
 
-                    avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getWeight()+" kg");
+                    avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getLotSize()*response.body().getData().get(0).getTotalAvailable()+" kg");
 
 
                     price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());

@@ -31,7 +31,6 @@ import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddProductToCart;
-import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetLiveTradesData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
@@ -176,7 +175,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                             String str_enterValue= entervalue.getText().toString();
 
                             if(TextUtils.isEmpty(str_enterValue)){
-                                Toast.makeText(context, "Please enter your choice", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
                             }else {
                                 if(SessionManager.isLoggedIn(context)){
                                     int int_enterValue= Integer.parseInt(entervalue.getText().toString());

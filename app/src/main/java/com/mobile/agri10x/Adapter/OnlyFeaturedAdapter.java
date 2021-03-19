@@ -16,7 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -177,7 +176,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                             String str_enterValue= entervalue.getText().toString();
 
                             if(TextUtils.isEmpty(str_enterValue)){
-                                Toast.makeText(context, "Please enter your choice", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
                             }else {
                                 if(SessionManager.isLoggedIn(context)){
                                     int int_enterValue= Integer.parseInt(entervalue.getText().toString());

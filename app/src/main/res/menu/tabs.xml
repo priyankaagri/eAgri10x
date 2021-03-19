@@ -13,7 +13,7 @@
 
         android:id="@+id/tab_cart"
         android:icon="@drawable/cart_bn"
-        android:title="@string/cart" />
+        android:title="@string/tradevalue" />
     <item
         android:id="@+id/tab_offer"
         android:visible="false"

@@ -11,7 +11,9 @@ import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetQueryDailyDeals;
 import com.mobile.agri10x.models.GetQueryFeaturedOnly;
 import com.mobile.agri10x.models.GetQueryTopicPicks;
+import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
+import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.VerifyOTP;
 
 import okhttp3.RequestBody;
@@ -45,6 +47,8 @@ public interface AgriInvestor {
     Call<GetProductsInCart>wsgetProductinCart(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addToCart")
     Call<GetAddProductToCart>wsGetAddproducttocart(@Header("x-auth-token") String token, @Body RequestBody params);
-
-
+    @POST("m/removeProduct")
+    Call<GetRemoveProduct>wsGetRemoveProduct(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/updateCart")
+    Call<UpdateCart>wsGetUpdateCart(@Header("x-auth-token") String token, @Body RequestBody params);
 }

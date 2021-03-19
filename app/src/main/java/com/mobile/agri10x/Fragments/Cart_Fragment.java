@@ -1,6 +1,13 @@
 package com.mobile.agri10x.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.Log;
@@ -14,8 +21,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
@@ -45,7 +55,9 @@ import retrofit2.Response;
 
 public class Cart_Fragment extends Fragment {
    ImageView but_back;
+
     ShimmerRecyclerView recyle_livetrade;
+    TradeValueAddCartProductList tradeValueAdpter;
     List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
     TextView sub_toatl_txt;
 Button checkout_btn;
@@ -74,7 +86,6 @@ Button checkout_btn;
         getProductinCart();
         return  view;
     }
-
     private void getProductinCart() {
         ProductsInCartlist.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
@@ -104,7 +115,7 @@ Button checkout_btn;
                     if(ProductsInCartlist.size()>0)
                     {
 
-                        TradeValueAddCartProductList tradeValueAdpter = new TradeValueAddCartProductList(ProductsInCartlist, getActivity(),true);
+                        tradeValueAdpter = new TradeValueAddCartProductList(ProductsInCartlist, getActivity(),true);
                         recyle_livetrade.setAdapter(tradeValueAdpter);
                         tradeValueAdpter.notifyDataSetChanged();
                     }

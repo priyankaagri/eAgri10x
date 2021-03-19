@@ -40,14 +40,14 @@
 
     <string name="home">Home</string>
     <string name="payment">Payment</string>
-    <string name="cart">Cart</string>
+    <string name="tradevalue">Trade Value</string>
     <string name="menu">Menu</string>
     <string name="offer">Offer</string>
 
     <string name="vegitabl">Vegitables</string>
     <string name="spixce">Spices</string>
     <string name="furits">Fruits</string>
-    <string name="vegpulesr">Pules</string>
+    <string name="vegpulesr">Pulses</string>
     <string name="gaisins">Grains</string>
 
     <string name="contact_us">Contact Us</string>
@@ -59,14 +59,14 @@
     <string name="email">Email</string>
     <string name="commodity">Commodity</string>
     <string name="varity">Variety</string>
-    <string name="price_per_kg">Price pr kg</string>
+    <string name="price_per_kg">Price pr KG</string>
     <string name="submit">SUBMIT</string>
 
     <string name="fname_str"> First Name *</string>
     <string name="Lname_str"> Last Name *</string>
     <string name="dateofbirth">Date Of Birth</string>
     <string name="ddmmyy">dd-mm-yyyy</string>
-    <string name="cart_txt">*Minimum Order Quantity is 500kg and multiple of 50kg only</string>
+    <string name="cart_txt">*Minimum Order Quantity is 500 KG and multiple of 50 KG only</string>
 
     <string name="enter_digit">Enter 10 Digit Mobile Number *</string>
     <string name="chcekout">CHECKOUT</string>
@@ -74,7 +74,7 @@
     <string name="txttt_amount">XXXXXX</string>
     <string name="qunty">Quantity</string>
     <string name="priceperkg">Price/KG</string>
-    <string name="total_weight">Total Weight (KG)</string>
+    <string name="total_weight">  Total Weight (KG)</string>
     <string name="Mobile_number">"Your Mobile Number"</string>
     <string name="verify_account">"Verify Account"</string>
     <string name="we_will_send">"We will send an SMS With a Confirmation code to this number"</string>

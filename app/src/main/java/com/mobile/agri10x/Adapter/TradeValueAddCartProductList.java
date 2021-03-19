@@ -1,36 +1,70 @@
 package com.mobile.agri10x.Adapter;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.agri10x.Fragments.Cart_Fragment;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
+import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.GetProductsInCartData;
+import com.mobile.agri10x.models.GetRemoveProduct;
+import com.mobile.agri10x.models.UpdateCart;
+import com.mobile.agri10x.retrofit.AgriInvestor;
+import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.utils.SessionManager;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValueAddCartProductList.ViewHolers> {
     Context context;
+    AlertDialog dialog,dialog2;
+    View prevselected=null;
     List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
     boolean check;
+    TradeValueAddCartProductList tradeValueAddCartProductList;
+
 
     public TradeValueAddCartProductList(List<GetProductsInCartData> productsInCartlist, Context context, boolean check) {
         this.context=context;
         this.ProductsInCartlist=productsInCartlist;
         this.check =check;
+
+        tradeValueAddCartProductList=this;
     }
 
     @NonNull
@@ -42,7 +76,7 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolers holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolers holder, final int position) {
 
 
         holder.product_name.setText(ProductsInCartlist.get(position).getName());
@@ -64,22 +98,171 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
                     }
                 })
                 .build();
-        picasso.load("https://data.agri10x.com/images/products/"+productimg)
+        holder.product_total_weight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (prevselected!=null)
+                {
+                    prevselected.setVisibility(View.INVISIBLE);
+                    prevselected=holder.txt_update;
+                }else
+                {
+                    prevselected=holder.txt_update;
+                }
+                holder.txt_update.setVisibility(View.VISIBLE);
+                // Address_Show.cheout.setEnabled(true);
 
-                .into(holder.product_img);
+            }
+        });
+
+holder.txt_update.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        String str_enterValue = holder.product_total_weight.getText().toString();
+
+        if(TextUtils.isEmpty(str_enterValue)){
+            Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
+        }else {
+            if(SessionManager.isLoggedIn(context)){
+                int int_enterValue= Integer.parseInt(str_enterValue);
+                if(int_enterValue%50==0 && int_enterValue>=500){
+                    String quantity= String.valueOf(int_enterValue/10);
+                    CallApiUpdateCard(holder,ProductsInCartlist.get(position).getUserProductID(),quantity);
+                }else {
+                    Toast.makeText(context, "Please enter interms of multiple of 500", Toast.LENGTH_SHORT).show();
+                }
+            }else {
+                context.startActivity(new Intent(context, LoginActivity.class));
+            }
+        }
 
     }
+});
+        picasso.load("https://data.agri10x.com/images/products/"+productimg).into(holder.product_img);
+holder.img_remove.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        CallApiRemoveProduct(ProductsInCartlist.get(position).getUserProductID(),position);
+    }
+});
+    }
 
+    private void CallApiUpdateCard(ViewHolers holder, String userProductID, String quantity) {
+        dialog2=new Alert().pleaseWait();
+        Map<String, Object> jsonParams = new ArrayMap<>();
+//put something inside the map, could be null
+        jsonParams.put("quantity", quantity);
+        jsonParams.put("userProductID",userProductID);
+        Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<UpdateCart> loginCall = apiService.wsGetUpdateCart("123456",body);
+        loginCall.enqueue(new Callback<UpdateCart>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<UpdateCart> call,
+                                   Response<UpdateCart> response) {
+                dialog2.dismiss();
+                Log.d("removecart",response.toString());
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                  holder.product_total_weight.setText(response.body().getData().getQuantity());
+        HomePageActivity.setFragment(new Cart_Fragment(),"cart");
+                }
+                else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdateCart> call,
+                                  Throwable t) {
+                dialog2.dismiss();
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void CallApiRemoveProduct(String userProductID,int position) {
+        dialog=new Alert().pleaseWait();
+        Map<String, Object> jsonParams = new ArrayMap<>();
+//put something inside the map, could be null
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+        jsonParams.put("userProductID",userProductID);
+Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetRemoveProduct> loginCall = apiService.wsGetRemoveProduct("123456",body);
+        loginCall.enqueue(new Callback<GetRemoveProduct>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetRemoveProduct> call,
+                                   Response<GetRemoveProduct> response) {
+                dialog.dismiss();
+                Log.d("removecart",response.toString());
+                if (response.isSuccessful()) {
+                    ProductsInCartlist.remove(position);
+                    tradeValueAddCartProductList.notifyDataSetChanged();
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    HomePageActivity.getProductinCart();
+                }
+                else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetRemoveProduct> call,
+                                  Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    public class Alert {
+        public void alert(String title, String body) {
+            final AlertDialog.Builder Alert = new AlertDialog.Builder(context);
+            Alert.setCancelable(false)
+                    .setTitle(title)
+                    .setMessage(body);
+            Alert.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            Alert.create().show();
+        }
+
+
+        public AlertDialog pleaseWait() {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
+            View mView = ((Activity) context).getLayoutInflater().inflate(R.layout.alert_progress_deleting, null);
+            ProgressBar pb = mView.findViewById(R.id.progressBar);
+            mBuilder.setView(mView);
+            mBuilder.setCancelable(false);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+            return dialog;
+        }
+    }
     @Override
     public int getItemCount() {
         return ProductsInCartlist.size();
     }
 
     public class ViewHolers extends RecyclerView.ViewHolder {
-        TextView total_price,product_garde,product_varity,product_name,product_price,product_quantity,avlstock,packingsize;
+        TextView total_price,product_garde,product_varity,product_name,product_price,product_quantity,avlstock,packingsize,txt_update;
 EditText product_total_weight;
-        ImageView product_img;
+        ImageView product_img,img_remove;
         CardView cardview;
+        LinearLayout lledt;
+
         public ViewHolers(@NonNull View itemView) {
             super(itemView);
 
@@ -94,6 +277,9 @@ EditText product_total_weight;
             this.cardview =itemView.findViewById(R.id.cardview);
             this.avlstock =itemView.findViewById(R.id.avlstock);
             this.packingsize =itemView.findViewById(R.id.packingsize);
+            this.img_remove =itemView.findViewById(R.id.img_remove);
+            this.txt_update =itemView.findViewById(R.id.txt_update);
+            this.lledt = itemView.findViewById(R.id.lledt);
         }
     }
 }

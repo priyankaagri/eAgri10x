@@ -88,6 +88,7 @@
     <string name="add_new_address">+ Add new address</string>
     <string name="deivery_address">Delivery Address</string>
     <string name="booking_ammount">Booking Amount *</string>
+    <string name="booking_amt">Booking Amount</string>
     <string name="paytext">* Pay 75% and avail 5% discount</string>
     <string name="delivery_notes">Delivery Notes</string>
     <string name="please_deleiver_it_before">Please deliver it before 6pm</string>
@@ -99,6 +100,7 @@
     <string name="heading_fee">HANDLING FEES @ 2%</string>
     <string name="commision">COMMISION @ 1%</string>
     <string name="total_tade_amount">Total Trade Amount</string>
+
 
     <string name="total_tarade_amount">Total Trade Amount</string>
     <string name="next_btn">Next</string>

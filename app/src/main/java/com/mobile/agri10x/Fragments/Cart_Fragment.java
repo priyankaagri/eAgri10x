@@ -22,7 +22,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,7 +57,7 @@ import retrofit2.Response;
 
 public class Cart_Fragment extends Fragment {
    ImageView but_back;
-
+    double amt;
    ShimmerRecyclerView recyle_livetrade;
     TradeValueAddCartProductList tradeValueAdpter;
 
@@ -74,7 +76,15 @@ Button checkout_btn;
         btn_orderbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.setFragment(new BookOrderFragment(),"book");
+//                HomePageActivity.setFragment(new BookOrderFragment(),"book");
+                BookOrderFragment fragment = new BookOrderFragment(); // replace your custom fragment class
+                Bundle bundle = new Bundle();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                bundle.putString("value", String.valueOf(amt)); // use as per your need
+                fragment.setArguments(bundle);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                fragmentTransaction.commit();
             }
         });
         but_back.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +134,7 @@ Button checkout_btn;
                     Log.d("withhandlefees", String.valueOf(withhandlefees));
                     Log.d("withcommision", String.valueOf(withcommision));
 
-                    double amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
+                  amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
 
                     totaltradeamount.setText("₹ "+amt);
                     if(ProductsInCartlist.size()>0)

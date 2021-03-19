@@ -6,6 +6,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".Fragments.SeeAllDailyDealsFeaturedFragment">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/toolbar1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="10dp"-->
+<!--        android:layout_marginTop="20dp">-->
+<!--        <ImageView-->
+<!--            android:id="@+id/but_back"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@drawable/ic_baseline_arrow_back_24"-->
+<!--            app:tint="@color/black" />-->
+
+
+<!--        <TextView-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@id/but_back"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_toRightOf="@+id/but_back"-->
+<!--            android:text="Categories"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold" />-->
+<!--<ImageView-->
+<!--    android:src="@drawable/filter"-->
+<!--    android:layout_width="30dp"-->
+<!--    android:layout_height="40dp"-->
+<!--    android:layout_alignParentRight="true"/>-->
+<!--    </RelativeLayout>-->
+
     <RelativeLayout
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
@@ -22,7 +54,7 @@
 
         <TextView
             android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/but_back"
             android:layout_marginLeft="20dp"
@@ -31,11 +63,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
-<ImageView
-    android:src="@drawable/filter"
-    android:layout_width="30dp"
-    android:layout_height="40dp"
-    android:layout_alignParentRight="true"/>
+
     </RelativeLayout>
     <com.todkars.shimmer.ShimmerRecyclerView
         android:layout_below="@+id/toolbar1"

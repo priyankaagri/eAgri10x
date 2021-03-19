@@ -13,6 +13,7 @@ import com.mobile.agri10x.models.GetQueryFeaturedOnly;
 import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
+import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.models.getAddress;
@@ -58,4 +59,6 @@ public interface AgriInvestor {
     Call<getAddressData>wsGetAddress(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getCommAccToCat")
     Call<getCommAccToCat>wsGetCommAccToCat(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/getUserByID")
+    Call<GetUserByID>wsGetUserById(@Header("x-auth-token") String token, @Body RequestBody params);
 }

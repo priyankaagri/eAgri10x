@@ -19,12 +19,24 @@
         android:layout_below="@id/imagePadding"
         android:background="@drawable/diloag_background"
         android:gravity="bottom"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
 
         <View
             android:id="@+id/imagePadding2"
+            android:layout_weight="9"
             android:layout_width="match_parent"
             android:layout_height="110dp" />
+        <ImageView
+            android:id="@+id/close_dialog"
+            android:layout_width="40dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="60dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:src="@drawable/close"
+            android:layout_height="match_parent"/>
+
 
     </LinearLayout>
 

@@ -20,6 +20,8 @@ import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetLiveTradesData;
+import com.mobile.agri10x.models.getCommAccToCat;
+import com.mobile.agri10x.models.getCommAccToCatDatum;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.retrofit.SSLCertificateManagment;
@@ -39,9 +41,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Product_Against_Categories_Fragment extends Fragment {
-    List<GetLiveTradesData> productincategorylist = new ArrayList<>();
+    List<getCommAccToCatDatum> productincategorylist = new ArrayList<>();
     ShimmerRecyclerView recyle_productCategories;
     ImageView but_back;
+    String catid;
 
 
     @Override
@@ -59,16 +62,18 @@ public class Product_Against_Categories_Fragment extends Fragment {
         recyle_productCategories=view.findViewById(R.id.recyle_productCategories);
         recyle_productCategories.showShimmer();
         recyle_productCategories.setLayoutManager(new GridLayoutManager(getActivity(),2),R.layout.item_shimmer_daily_deals);
-        getProductIncategories();
+        catid = getArguments().getString("value");
+        Log.d("getCatid",catid);
+        getProductIncategories(catid);
         return  view;
 
     }
 
-    private void getProductIncategories(){
+    private void getProductIncategories(String catid){
         productincategorylist.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
-        jsonParams.put("orderID","");
+        jsonParams.put("categoryID",catid);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -79,13 +84,13 @@ public class Product_Against_Categories_Fragment extends Fragment {
             e.printStackTrace();
         }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<GetLiveTrades> loginCall = apiService.wsgetlivetrades("123456",
+        final Call<getCommAccToCat> loginCall = apiService.wsGetCommAccToCat("123456",
                 body);
-        loginCall.enqueue(new Callback<GetLiveTrades>() {
+        loginCall.enqueue(new Callback<getCommAccToCat>() {
             @SuppressLint("WrongConstant")
             @Override
-            public void onResponse(Call<GetLiveTrades> call,
-                                   Response<GetLiveTrades> response) {
+            public void onResponse(Call<getCommAccToCat> call,
+                                   Response<getCommAccToCat> response) {
                 recyle_productCategories.hideShimmer();
                 Log.d("livetrade",response.toString());
                 if (response.isSuccessful()) {
@@ -95,6 +100,8 @@ public class Product_Against_Categories_Fragment extends Fragment {
                         Product_Against_Categories_Adapter liveTradeAdapter = new Product_Against_Categories_Adapter(productincategorylist, getActivity(),true);
                         recyle_productCategories.setAdapter(liveTradeAdapter);
                         liveTradeAdapter.notifyDataSetChanged();
+                    }else{
+                        Toast.makeText(getActivity(),"Showing 0 products", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
@@ -103,7 +110,7 @@ public class Product_Against_Categories_Fragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<GetLiveTrades> call,
+            public void onFailure(Call<getCommAccToCat> call,
                                   Throwable t) {
                 recyle_productCategories.hideShimmer();
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();

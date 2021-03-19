@@ -150,7 +150,14 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                     TextView variety= dialog.findViewById(R.id.variety);
                     TextView grade= dialog.findViewById(R.id.grade);
 
+                    ImageView close_dialog = dialog.findViewById(R.id.close_dialog);
 
+                    close_dialog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
                     String strimgdetail =  response.body().getData().get(0).getCommodityID()+".png";
                     Picasso picasso = new Picasso.Builder(context)
                             .listener(new Picasso.Listener() {

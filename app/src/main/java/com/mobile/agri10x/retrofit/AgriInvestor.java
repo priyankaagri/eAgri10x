@@ -17,6 +17,7 @@ import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getAddressData;
+import com.mobile.agri10x.models.getCommAccToCat;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -55,4 +56,6 @@ public interface AgriInvestor {
     Call<UpdateCart>wsGetUpdateCart(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getAddress")
     Call<getAddressData>wsGetAddress(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/getCommAccToCat")
+    Call<getCommAccToCat>wsGetCommAccToCat(@Header("x-auth-token") String token, @Body RequestBody params);
 }

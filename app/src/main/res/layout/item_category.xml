@@ -7,16 +7,17 @@
     android:layout_width="120dp"
     android:layout_height="wrap_content">
 <ImageView
-    android:src="@drawable/potato_dwn"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
+
+    android:layout_width="60dp"
+    android:layout_height="60dp"
     android:id="@+id/img_categories"/>
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/txt_categoryname"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:fontFamily="@font/proxima_nova_bold"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        />

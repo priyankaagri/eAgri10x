@@ -169,7 +169,14 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     TextView variety= dialog.findViewById(R.id.variety);
                     TextView grade= dialog.findViewById(R.id.grade);
+                    ImageView close_dialog = dialog.findViewById(R.id.close_dialog);
 
+                    close_dialog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
                     String strimgdetail =  response.body().getData().get(0).getCommodityID()+".png";
                     Picasso picasso = new Picasso.Builder(context)
                             .listener(new Picasso.Listener() {

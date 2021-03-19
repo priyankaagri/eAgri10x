@@ -68,7 +68,7 @@ holder.lin_category.setOnClickListener(new View.OnClickListener() {
         Product_Against_Categories_Fragment fragment = new Product_Against_Categories_Fragment(); // replace your custom fragment class
         Bundle bundle = new Bundle();
         FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
-        bundle.putString("","value"); // use as per your need
+        bundle.putString("value",dataList.get(position).getId()); // use as per your need
         fragment.setArguments(bundle);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.nav_host_fragment,fragment);

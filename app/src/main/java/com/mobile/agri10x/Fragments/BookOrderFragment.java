@@ -1,6 +1,7 @@
 package com.mobile.agri10x.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,15 +11,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobile.agri10x.Adapter.SimpleListAdapter;
 import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
+import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.getAddress;
@@ -29,6 +33,8 @@ import com.mobile.agri10x.utils.SessionManager;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -39,6 +45,10 @@ import retrofit2.Response;
 
 
 public class BookOrderFragment extends Fragment {
+    Context context;
+    SimpleListAdapter mSimpleListAdapter;
+    List<GetCities> getstateArrayList = new ArrayList<>();
+    ArrayList<String> statecategory = new ArrayList<>();
 EditText fname_edt_txt,lname_edt_txt,deliverynote,packagingdatail;
         Spinner addressspinner_billing,addressspinner_delivery,addressspinner_booking_amount;
                 TextView totalamt,checkout_btne,paywithecollect,bookingamt,pendingamt;
@@ -50,6 +60,7 @@ EditText fname_edt_txt,lname_edt_txt,deliverynote,packagingdatail;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_book_order, container, false);
+        context = view.getContext();
         pendingamt = view.findViewById(R.id.pendingamt);
         bookingamt = view.findViewById(R.id.bookingamt);
         fname_edt_txt=view.findViewById(R.id.fname_edt_txt);
@@ -69,7 +80,7 @@ EditText fname_edt_txt,lname_edt_txt,deliverynote,packagingdatail;
         Log.d("getamt",amt);
         Callapiforname();
         CallapigetAddress();
-
+        callcities();
 
         but_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,5 +158,55 @@ EditText fname_edt_txt,lname_edt_txt,deliverynote,packagingdatail;
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void callcities() {
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        final Call<List<GetCities>> loginCall = apiService.wsgetCities(
+                "123456");
+        loginCall.enqueue(new Callback<List<GetCities>>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<List<GetCities>> call,
+                                   Response<List<GetCities>> response) {
+
+                if (response.isSuccessful()) {
+                    getstateArrayList = response.body();
+                    Log.d("getresponse", String.valueOf(getstateArrayList.size()));
+
+
+
+
+
+                    if(!getstateArrayList.isEmpty()){
+
+
+                        //                    Commoditycategory.add("Select");
+                        for(int i=0; i < getstateArrayList.size();i++){
+                            statecategory.add(getstateArrayList.get(i).getState());
+                        }
+                        Log.d("statehold", String.valueOf(statecategory.size()));
+
+                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
+                       // commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
+
+
+                    }else{
+
+                        statecategory.add("No Data");
+                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
+                        //commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GetCities>> call,
+                                  Throwable t) {
+                Toast.makeText(getContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

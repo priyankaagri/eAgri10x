@@ -3,6 +3,7 @@ package com.mobile.agri10x.retrofit;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetCategories;
+import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetLiveTrades;
@@ -19,6 +20,8 @@ import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getAddressData;
 import com.mobile.agri10x.models.getCommAccToCat;
+
+import java.util.List;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -61,4 +64,6 @@ public interface AgriInvestor {
     Call<getCommAccToCat>wsGetCommAccToCat(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getUserByID")
     Call<GetUserByID>wsGetUserById(@Header("x-auth-token") String token, @Body RequestBody params);
+    @GET("getTradeCommodity")
+    Call<List<GetCities>> wsgetCities(@Header("x-auth-token") String token);
 }

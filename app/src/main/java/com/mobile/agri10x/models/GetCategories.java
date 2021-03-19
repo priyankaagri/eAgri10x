@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class GetCategories {
+
     @SerializedName("data")
     @Expose
     private List<GetCategoriesData> data = null;
@@ -17,4 +18,5 @@ public class GetCategories {
     public void setData(List<GetCategoriesData> data) {
         this.data = data;
     }
+
 }

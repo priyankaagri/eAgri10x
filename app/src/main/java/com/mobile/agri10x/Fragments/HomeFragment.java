@@ -65,7 +65,9 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView recycler_dailydeals, recycler_toppics, caltogerylist_recycle, OfferShopListRecyclerView;
+    RecyclerView recycler_dailydeals, recycler_toppics, recycle_category, OfferShopListRecyclerView;
+    ArrayList<GetCategoriesData>categorieslist;
+
     DiscreteScrollView only_feature_rv;
     TextView txt_ViewAll, txt_Viewsee,txt_signups;
     AlertDialog dialog;
@@ -107,6 +109,10 @@ public class HomeFragment extends Fragment {
         }
         // GetDailyDealProducts();
         // FetauredproductApi();
+        categorieslist=new ArrayList<>();
+        recycle_category=view.findViewById(R.id.recycle_category);
+        recycle_category.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+
 
         GetCatogerylist();
 
@@ -203,7 +209,7 @@ public class HomeFragment extends Fragment {
                         TopPicksNegotiableAdapter adapterTopPicks = new TopPicksNegotiableAdapter(toppicks, context,false);
                         recycler_toppics.setAdapter(adapterTopPicks);
                     }
-getonlyFeature();
+                    getonlyFeature();
                 } else {
                     getonlyFeature();
                     Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
@@ -308,7 +314,7 @@ getonlyFeature();
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-        Call<GetCategories> call = apiService.getCategories();
+        Call<GetCategories> call = apiService.getCategories("123456");
         call.enqueue(new Callback<GetCategories>() {
             @Override
             public void onResponse(Call<GetCategories> call, Response<GetCategories> response) {
@@ -318,16 +324,19 @@ getonlyFeature();
                 if (response.isSuccessful()) {
                     dialog.dismiss();
                     catArraylist.addAll(response.body().getData());
+                    categorieslist.addAll(response.body().getData());
                     // catArraylist = response.body().getData();
-category.add("Category");
-for (int i = 0; i < catArraylist.size(); i++) {
+               // category.add("Category");
+                for (int i = 0; i < catArraylist.size(); i++) {
 
                         category.add(response.body().getData().get(i).getCategoryName());
                     }
 
                     if (catArraylist.size() > 0) {
+
+
                         HomeCategoryAdapter adapterShopDetails = new HomeCategoryAdapter(catArraylist, context);
-                     //   caltogerylist_recycle.setAdapter(adapterShopDetails);
+                        recycle_category.setAdapter(adapterShopDetails);
                         adapterShopDetails.notifyDataSetChanged();
                         ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(),
                                 R.layout.simple_spinner_dropdown_item,

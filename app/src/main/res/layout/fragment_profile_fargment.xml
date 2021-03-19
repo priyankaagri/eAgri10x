@@ -101,11 +101,12 @@
                     android:layout_height="wrap_content"
                     android:text=" Email Id"/>
                 <EditText
-                    android:drawableRight="@drawable/verifiedicon"
+                    android:drawableRight="@drawable/iconverify"
                     android:id="@+id/et_email"
                     android:fontFamily="@font/proxima_nova_alt_condensed_bold"
                     android:hint="xxx@gmail.com"
                     android:layout_marginTop="10dp"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -123,7 +124,7 @@
                     android:maxLength="10"
                     android:fontFamily="@font/proxima_nova_alt_condensed_bold"
                     android:hint="**********"
-                    android:drawableRight="@drawable/verified_icon"
+                    android:drawableRight="@drawable/iconverify"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>

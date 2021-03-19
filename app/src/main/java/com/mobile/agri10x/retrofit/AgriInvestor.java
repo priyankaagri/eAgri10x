@@ -34,7 +34,7 @@ public interface AgriInvestor {
     @POST("m/homepageProducts")
     Call<GetHomeProduct> wsgetHomeProduct(@Header("x-auth-token") String token,@Body GetQueryDailyDeals getQueryDailyDeals);
     @GET("m/getCategories")
-    Call<GetCategories> getCategories();
+    Call<GetCategories> getCategories(@Header("x-auth-token") String token);
     @POST("m/homepageProducts")
     Call<GetHomeProduct> wsgetHomeProductTopic(@Header("x-auth-token") String token,@Body GetQueryTopicPicks getQueryTopicPicks);
     @POST("m/displayProducts")

@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:text="@string/fname"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
                 android:layout_height="wrap_content"/>
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:hint="@string/entrnamef"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:fontFamily="@font/proximanova_regular"
                 android:layout_height="wrap_content"
                 />
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:text="@string/lname"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
                 android:layout_height="wrap_content"/>
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:hint="@string/enternamel"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:fontFamily="@font/proximanova_regular"
                 android:layout_height="wrap_content"
                 />
@@ -119,7 +119,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_weight="6"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/proxima_nova_alt_bold"/>
 

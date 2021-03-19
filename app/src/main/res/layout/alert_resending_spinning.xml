@@ -9,7 +9,7 @@
         android:paddingVertical="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:gravity="center"
         android:text="Resending OTP..."/>
 

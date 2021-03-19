@@ -56,21 +56,25 @@ import retrofit2.Response;
 public class Cart_Fragment extends Fragment {
    ImageView but_back;
 
-    ShimmerRecyclerView recyle_livetrade;
+   ShimmerRecyclerView recyle_livetrade;
     TradeValueAddCartProductList tradeValueAdpter;
+
     List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
-    TextView sub_toatl_txt;
+    TextView totaltradeamount,btn_orderbook,btn_purchaes,txt_tradeamt;
 Button checkout_btn;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_cart_view, container, false);
         but_back=view.findViewById(R.id.but_back);
-        checkout_btn=view.findViewById(R.id.checkout_btn);
-        checkout_btn.setOnClickListener(new View.OnClickListener() {
+        totaltradeamount=view.findViewById(R.id.totaltradeamount);
+        btn_orderbook = view.findViewById(R.id.btn_orderbook);
+        btn_purchaes = view.findViewById(R.id.btn_purchaes);
+        txt_tradeamt = view.findViewById(R.id.txt_tradeamt);
+        btn_orderbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.setFragment(new Trade_Value_Total_Fragment(),"tradevaluetotal");
+                HomePageActivity.setFragment(new BookOrderFragment(),"book");
             }
         });
         but_back.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +115,18 @@ Button checkout_btn;
                 Log.d("ProductinCart",response.toString());
                 if (response.isSuccessful()) {
                     ProductsInCartlist.addAll(response.body().getData());
-                 //   sub_toatl_txt.setText("₹ "+String.valueOf(response.body().getSubTotal()));
+                    double subTotal=response.body().getSubTotal();
+
+                    double withconveniencecharge = (subTotal / 100.0f) *2;
+                    double withhandlefees = (subTotal / 100.0f) *2;
+                    double withcommision = (subTotal / 100.0f) *1;
+                    Log.d("withconveniencecharge", String.valueOf(withconveniencecharge));
+                    Log.d("withhandlefees", String.valueOf(withhandlefees));
+                    Log.d("withcommision", String.valueOf(withcommision));
+
+                    double amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
+
+                    totaltradeamount.setText("₹ "+amt);
                     if(ProductsInCartlist.size()>0)
                     {
 

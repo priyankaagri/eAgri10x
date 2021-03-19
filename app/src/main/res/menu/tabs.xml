@@ -2,11 +2,13 @@
     <item
         android:iconTint="@color/purple_200"
         android:id="@+id/tab_home"
+
         android:icon="@drawable/home_bn"
         android:title="@string/home" />
     <item
         android:iconTint="@color/black"
         android:id="@+id/tab_livetrade"
+
         android:icon="@drawable/livetrade_bn"
         android:title="@string/live_trade" />
     <item
@@ -14,11 +16,6 @@
         android:id="@+id/tab_cart"
         android:icon="@drawable/cart_bn"
         android:title="@string/tradevalue" />
-    <item
-        android:id="@+id/tab_offer"
-        android:visible="false"
-        android:icon="@drawable/offer"
-        android:title="@string/offer" />
 
     <item
         android:id="@+id/tab_menu"

@@ -99,4 +99,15 @@
     <string name="heading_fee">HANDLING FEES @ 2%</string>
     <string name="commision">COMMISION @ 1%</string>
     <string name="total_tade_amount">Total Trade Amount</string>
+
+    <string name="total_tarade_amount">Total Trade Amount</string>
+    <string name="next_btn">Next</string>
+    <string name="upto_onelak">* Upto 1 lakh INR</string>
+    <string name="morethenone">* More than 1 lakh</string>
+    <string name="paynow_withgateway">PAY NOW WITH GATEWAY</string>
+    <string name="paynow_withWCOLLECT">PAY NOW WITH E-COLLECT</string>
+    <string name="order_summery">Order Summary</string>
+
+    <string name="handing_fee">HANDING FEE @ 2%</string>
+    <string name="pending_amount">Pending Amount</string>
 </resources>

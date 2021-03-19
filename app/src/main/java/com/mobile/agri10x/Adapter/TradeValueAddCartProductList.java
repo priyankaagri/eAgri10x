@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -63,7 +64,6 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         this.context=context;
         this.ProductsInCartlist=productsInCartlist;
         this.check =check;
-
         tradeValueAddCartProductList=this;
     }
 
@@ -84,9 +84,11 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
         holder.total_price.setText(String.valueOf(ProductsInCartlist.get(position).getPrice()));
-        holder.product_total_weight.setText(String.valueOf(ProductsInCartlist.get(position).getWeight()));
+      
         holder.avlstock.setText(String.valueOf("Avl Quantity : "+ProductsInCartlist.get(position).getTotalAvailable()+" KG"));
-        double totol_price=ProductsInCartlist.get(position).getQuantity()*ProductsInCartlist.get(position).getWeight();
+        String valueofedt = holder.product_total_weight.getText().toString();
+        double doublevalueofedt = Double.parseDouble(holder.product_total_weight.getText().toString());
+        double totol_price=ProductsInCartlist.get(position).getPrice()*doublevalueofedt;
 
         holder.product_price.setText("Total : ₹ "+totol_price);
         String productimg =  ProductsInCartlist.get(position).getCommodityID()+".png";
@@ -118,19 +120,31 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
 holder.txt_update.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-
+int getWaight=holder.getAdapterPosition();
         String str_enterValue = holder.product_total_weight.getText().toString();
 
         if(TextUtils.isEmpty(str_enterValue)){
             Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
         }else {
             if(SessionManager.isLoggedIn(context)){
-                int int_enterValue= Integer.parseInt(str_enterValue);
-                if(int_enterValue%50==0 && int_enterValue>=500){
-                    String quantity= String.valueOf(int_enterValue/10);
-                    CallApiUpdateCard(holder,ProductsInCartlist.get(position).getUserProductID(),quantity);
+                int int_enterValue= Integer.parseInt(holder.product_total_weight.getText().toString());
+                if(int_enterValue%50==0){
+
+                    if(int_enterValue>=500){
+                        if (ProductsInCartlist.get(getWaight).getWeight()>=int_enterValue){
+                            String quantity= String.valueOf(int_enterValue/50);
+                            CallApiUpdateCard(ProductsInCartlist.get(getWaight).getUserProductID(),quantity);
+
+                        }else {
+                            Toast.makeText(context, "Stock is not available for this product.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }else {
+                        Toast.makeText(context, "Minimum Trade Quantity Required is 500 KG", Toast.LENGTH_SHORT).show();
+                    }
+
                 }else {
-                    Toast.makeText(context, "Please enter interms of multiple of 500", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Please enter in terms of multiple of 500", Toast.LENGTH_SHORT).show();
                 }
             }else {
                 context.startActivity(new Intent(context, LoginActivity.class));
@@ -148,12 +162,12 @@ holder.img_remove.setOnClickListener(new View.OnClickListener() {
 });
     }
 
-    private void CallApiUpdateCard(ViewHolers holder, String userProductID, String quantity) {
+    private void CallApiUpdateCard(String userProductID, String quantity) {
         dialog2=new Alert().pleaseWait();
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("quantity", quantity);
-        jsonParams.put("userProductID",userProductID);
+        jsonParams.put("updateThis",userProductID);
         Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
@@ -168,7 +182,7 @@ holder.img_remove.setOnClickListener(new View.OnClickListener() {
                 Log.d("removecart",response.toString());
                 if (response.isSuccessful()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-//                  holder.product_total_weight.setText(response.body().getData().getQuantity());
+//
         HomePageActivity.setFragment(new Cart_Fragment(),"cart");
                 }
                 else {

@@ -90,10 +90,12 @@ public class HomePageActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 switch (item.getItemId()) {
                     case R.id.tab_home:
 
                         int id = item.getItemId();
+
                         getProductinCart();
                         Fragment f = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id == R.id.tab_home && !(f instanceof HomeFragment)) {
@@ -111,7 +113,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     FragmentManager fragmentManager = (FragmentManager) context.getSupportFragmentManager();
                                     Fragment currentFragment = fragmentManager.findFragmentByTag("home");
                                     if (currentFragment != null && (currentFragment instanceof HomeFragment)) {
-                                        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+                                        bottomNavigationView.getMenu().findItem(id).setChecked(true);
 
                                     } else {
 
@@ -124,6 +126,7 @@ public class HomePageActivity extends AppCompatActivity {
                     case R.id.tab_livetrade:
                         getProductinCart();
                         int id1 = item.getItemId();
+
                         Fragment f2 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id1 == R.id.tab_livetrade && !(f2 instanceof SeeAllLiveTradingFragment)) {
                             SeeAllLiveTradingFragment fragment = new SeeAllLiveTradingFragment();
@@ -138,7 +141,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
                                     Fragment currentFragment = fragmentManager.findFragmentByTag("livetrade");
                                     if (currentFragment != null && (currentFragment instanceof SeeAllLiveTradingFragment)) {
-                                        bottomNavigationView.getMenu().getItem(1).setChecked(true);
+                                        bottomNavigationView.getMenu().findItem(id1).setChecked(true);
 
                                     } else {
 
@@ -152,6 +155,8 @@ public class HomePageActivity extends AppCompatActivity {
                     case R.id.tab_cart:
                         getProductinCart();
                         int id2 = item.getItemId();
+                        Log.d("hvghv", String.valueOf(id2));
+
                         Fragment f6 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id2 == R.id.tab_cart && !(f6 instanceof Cart_Fragment)) {
                             Cart_Fragment fragment = new Cart_Fragment();
@@ -165,8 +170,8 @@ public class HomePageActivity extends AppCompatActivity {
                                 public void onBackStackChanged() {
                                     FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
                                     Fragment currentFragment = fragmentManager.findFragmentByTag("cart");
-                                    if (currentFragment != null && (currentFragment instanceof SeeAllLiveTradingFragment)) {
-                                        bottomNavigationView.getMenu().getItem(1).setChecked(true);
+                                    if (currentFragment != null && (currentFragment instanceof Cart_Fragment)) {
+                                        bottomNavigationView.getMenu().findItem(id2).setChecked(true);
 
                                     } else {
 
@@ -192,7 +197,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
                                     Fragment currentFragment = fragmentManager.findFragmentByTag("menu");
                                     if (currentFragment != null && (currentFragment instanceof MenuFragment)) {
-                                        bottomNavigationView.getMenu().getItem(4).setChecked(true);
+                                        bottomNavigationView.getMenu().findItem(id3).setChecked(true);
 
                                     } else {
 

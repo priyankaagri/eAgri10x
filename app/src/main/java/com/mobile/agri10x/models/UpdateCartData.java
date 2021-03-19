@@ -8,18 +8,33 @@ public class UpdateCartData {
     @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("__v")
+    @SerializedName("userID")
     @Expose
-    private Integer v;
-    @SerializedName("createdAt")
+    private String userID;
+    @SerializedName("m_orderID")
     @Expose
-    private String createdAt;
+    private String mOrderID;
     @SerializedName("quantity")
     @Expose
     private Integer quantity;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("grade")
+    @Expose
+    private String grade;
+    @SerializedName("price")
+    @Expose
+    private Integer price;
+    @SerializedName("createdAt")
+    @Expose
+    private String createdAt;
     @SerializedName("updatedAt")
     @Expose
     private String updatedAt;
+    @SerializedName("__v")
+    @Expose
+    private Integer v;
 
     public String getId() {
         return id;
@@ -29,20 +44,20 @@ public class UpdateCartData {
         this.id = id;
     }
 
-    public Integer getV() {
-        return v;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setV(Integer v) {
-        this.v = v;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public String getMOrderID() {
+        return mOrderID;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setMOrderID(String mOrderID) {
+        this.mOrderID = mOrderID;
     }
 
     public Integer getQuantity() {
@@ -53,12 +68,52 @@ public class UpdateCartData {
         this.quantity = quantity;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public String getUpdatedAt() {
         return updatedAt;
     }
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Integer getV() {
+        return v;
+    }
+
+    public void setV(Integer v) {
+        this.v = v;
     }
 
 }

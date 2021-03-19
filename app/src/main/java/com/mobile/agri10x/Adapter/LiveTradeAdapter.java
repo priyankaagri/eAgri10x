@@ -179,11 +179,22 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                             }else {
                                 if(SessionManager.isLoggedIn(context)){
                                     int int_enterValue= Integer.parseInt(entervalue.getText().toString());
-                                    if(int_enterValue%50==0 && int_enterValue>=500){
-                                        String quantity= String.valueOf(int_enterValue/10);
-                                        CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName());
+                                    if(int_enterValue%50==0){
+
+                                        if(int_enterValue>=500){
+                                            if (response.body().getData().get(0).getWeight()>=int_enterValue){
+                                                String quantity= String.valueOf(int_enterValue/50);
+                                                CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName());
+                                            }else {
+                                                Toast.makeText(context, "Stock is not available for this product.", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                        }else {
+                                            Toast.makeText(context, "Minimum Trade Quantity Required is 500 KG", Toast.LENGTH_SHORT).show();
+                                        }
+
                                     }else {
-                                        Toast.makeText(context, "Please enter interms of multiple of 500", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Please enter in terms of multiple of 500", Toast.LENGTH_SHORT).show();
                                     }
                                 }else {
                                     context.startActivity(new Intent(context,LoginActivity.class));

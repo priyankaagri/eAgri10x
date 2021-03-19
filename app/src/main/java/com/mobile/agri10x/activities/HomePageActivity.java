@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.ArrayMap;
@@ -81,7 +82,11 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }
         });
-        getProductinCart();
+        if(SessionManager.isLoggedIn(HomePageActivity.this)){
+            getProductinCart();
+        }
+
+
 // mFragmentManager = getSupportFragmentManager();
 // mFragmentTransaction = mFragmentManager.beginTransaction();
 // mFragmentTransaction.replace(R.id.nav_host_fragment, new HomeFragment()).commit();
@@ -96,7 +101,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                         int id = item.getItemId();
 
-                        getProductinCart();
+
                         Fragment f = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                         if (id == R.id.tab_home && !(f instanceof HomeFragment)) {
                             HomeFragment fragment = new HomeFragment();
@@ -124,7 +129,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                         break;
                     case R.id.tab_livetrade:
-                        getProductinCart();
+
                         int id1 = item.getItemId();
 
                         Fragment f2 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
@@ -153,32 +158,38 @@ public class HomePageActivity extends AppCompatActivity {
 
                         break;
                     case R.id.tab_cart:
-                        getProductinCart();
-                        int id2 = item.getItemId();
-                        Log.d("hvghv", String.valueOf(id2));
+                        if(SessionManager.isLoggedIn(HomePageActivity.this)){
+                            getProductinCart();
+                            int id2 = item.getItemId();
+                            Log.d("hvghv", String.valueOf(id2));
 
-                        Fragment f6 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                        if (id2 == R.id.tab_cart && !(f6 instanceof Cart_Fragment)) {
-                            Cart_Fragment fragment = new Cart_Fragment();
-                            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.nav_host_fragment, fragment,"cart");
-                            fragmentTransaction.addToBackStack(null);
-                            fragmentTransaction.commit();
-                            getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-                                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                @Override
-                                public void onBackStackChanged() {
-                                    FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
-                                    Fragment currentFragment = fragmentManager.findFragmentByTag("cart");
-                                    if (currentFragment != null && (currentFragment instanceof Cart_Fragment)) {
-                                        bottomNavigationView.getMenu().findItem(id2).setChecked(true);
+                            Fragment f6 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                            if (id2 == R.id.tab_cart && !(f6 instanceof Cart_Fragment)) {
+                                Cart_Fragment fragment = new Cart_Fragment();
+                                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.nav_host_fragment, fragment,"cart");
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
+                                getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                                    @Override
+                                    public void onBackStackChanged() {
+                                        FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
+                                        Fragment currentFragment = fragmentManager.findFragmentByTag("cart");
+                                        if (currentFragment != null && (currentFragment instanceof Cart_Fragment)) {
+                                            bottomNavigationView.getMenu().findItem(id2).setChecked(true);
 
-                                    } else {
+                                        } else {
 
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
                         }
+                        else {
+                            startActivity(new Intent(HomePageActivity.this,LoginActivity.class));
+                        }
+
                         break;
                     case R.id.tab_menu:
                         getProductinCart();

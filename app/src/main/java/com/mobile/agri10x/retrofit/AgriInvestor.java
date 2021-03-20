@@ -59,7 +59,7 @@ public interface AgriInvestor {
     @POST("m/updateCart")
     Call<UpdateCart>wsGetUpdateCart(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getAddress")
-    Call<getAddressData>wsGetAddress(@Header("x-auth-token") String token, @Body RequestBody params);
+    Call<getAddress>wsGetAddress(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getCommAccToCat")
     Call<getCommAccToCat>wsGetCommAccToCat(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getUserByID")

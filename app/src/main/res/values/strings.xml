@@ -112,4 +112,17 @@
 
     <string name="handing_fee">HANDING FEE @ 2%</string>
     <string name="pending_amount">Pending Amount</string>
+
+
+    <string name="delivery_title">Delivery Address</string>
+    <string name="tv_contact_name_id">Contact Person Name</string>
+    <string name="save">Save</string>
+    <string name="tv_mobile_no_id">Mobile Number</string>
+    <string name="tv_street_address1">Street Address 1</string>
+    <string name="tv_street_address2">Street Address 2 (Option)</string>
+    <string name="tv_state">State</string>
+    <string name="tv_city">City</string>
+    <string name="tv_pincode">Pincode</string>
+    <string name="tv_address_type">Address Type</string>
+    <string name="billing_title">Billing Address</string>
 </resources>

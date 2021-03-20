@@ -22,6 +22,7 @@ import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetUserByID;
+import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getAddressData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
@@ -180,12 +181,12 @@ public class PurchaseOrderFargment extends Fragment {
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<getAddressData> loginCall = apiService.wsGetAddress("123456",body);
-        loginCall.enqueue(new Callback<getAddressData>() {
+        final Call<getAddress> loginCall = apiService.wsGetAddress("123456",body);
+        loginCall.enqueue(new Callback<getAddress>() {
             @SuppressLint("WrongConstant")
             @Override
-            public void onResponse(Call<getAddressData> call,
-                                   Response<getAddressData> response) {
+            public void onResponse(Call<getAddress> call,
+                                   Response<getAddress> response) {
 
                 Log.d("getapiaddress",response.toString());
                 if (response.isSuccessful()) {
@@ -198,7 +199,7 @@ public class PurchaseOrderFargment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<getAddressData> call,
+            public void onFailure(Call<getAddress> call,
                                   Throwable t) {
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }

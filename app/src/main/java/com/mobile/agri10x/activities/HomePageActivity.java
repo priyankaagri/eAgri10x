@@ -20,13 +20,13 @@ import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.mobile.agri10x.Fragments.Cart_Fragment;
+import com.mobile.agri10x.Fragments.TradeValueAddCart;
 import com.mobile.agri10x.Fragments.HomeFragment;
 import com.mobile.agri10x.Fragments.MenuFragment;
 import com.mobile.agri10x.Fragments.SeeAllLiveTradingFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetProductsInCart;
-import com.mobile.agri10x.models.GetProductsInCartData;
+import com.mobile.agri10x.models.GetProductsInCartProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.retrofit.SSLCertificateManagment;
@@ -48,7 +48,7 @@ import retrofit2.Response;
 
 public class HomePageActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
-  public static   List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
+  public static   List<GetProductsInCartProductData> ProductsInCartlist = new ArrayList<>();
     public static FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     public static BottomNavigationView bottomNavigationView;
@@ -164,8 +164,8 @@ public class HomePageActivity extends AppCompatActivity {
                             Log.d("hvghv", String.valueOf(id2));
 
                             Fragment f6 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                            if (id2 == R.id.tab_cart && !(f6 instanceof Cart_Fragment)) {
-                                Cart_Fragment fragment = new Cart_Fragment();
+                            if (id2 == R.id.tab_cart && !(f6 instanceof TradeValueAddCart)) {
+                                TradeValueAddCart fragment = new TradeValueAddCart();
                                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment,"cart");
                                 fragmentTransaction.addToBackStack(null);
@@ -176,7 +176,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onBackStackChanged() {
                                         FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
                                         Fragment currentFragment = fragmentManager.findFragmentByTag("cart");
-                                        if (currentFragment != null && (currentFragment instanceof Cart_Fragment)) {
+                                        if (currentFragment != null && (currentFragment instanceof TradeValueAddCart)) {
                                             bottomNavigationView.getMenu().findItem(id2).setChecked(true);
 
                                         } else {
@@ -249,7 +249,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                 Log.d("ProductinCart",response.toString());
                 if (response.isSuccessful()) {
-                    ProductsInCartlist.addAll(response.body().getData());
+                    ProductsInCartlist.addAll(response.body().getProducts());
                     int menuItemId = bottomNavigationView.getMenu().getItem(2).getItemId();
                     BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(menuItemId);
                     badge.setBackgroundColor(context.getResources().getColor(R.color.appgreen));

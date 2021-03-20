@@ -1,13 +1,6 @@
 package com.mobile.agri10x.Fragments;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.Log;
@@ -21,13 +14,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
@@ -35,7 +24,7 @@ import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetProductsInCart;
-import com.mobile.agri10x.models.GetProductsInCartData;
+import com.mobile.agri10x.models.GetProductsInCartProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.retrofit.SSLCertificateManagment;
@@ -55,13 +44,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Cart_Fragment extends Fragment {
+public class TradeValueAddCart extends Fragment {
    ImageView but_back;
     double amt;
    ShimmerRecyclerView recyle_livetrade;
     TradeValueAddCartProductList tradeValueAdpter;
 
-    List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
+    List<GetProductsInCartProductData> ProductsInCartlist = new ArrayList<>();
     TextView totaltradeamount,btn_orderbook,btn_purchaes,txt_tradeamt;
 Button checkout_btn;
     @Nullable
@@ -103,7 +92,7 @@ Button checkout_btn;
         but_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.removeFragment(new Cart_Fragment());
+                HomePageActivity.removeFragment(new TradeValueAddCart());
             }
         });
         recyle_livetrade=view.findViewById(R.id.recyle_cart_view);
@@ -137,7 +126,7 @@ Button checkout_btn;
                 recyle_livetrade.hideShimmer();
                 Log.d("ProductinCart",response.toString());
                 if (response.isSuccessful()) {
-                    ProductsInCartlist.addAll(response.body().getData());
+                    ProductsInCartlist.addAll(response.body().getProducts());
                     double subTotal=response.body().getSubTotal();
 
                     double withconveniencecharge = (subTotal / 100.0f) *2;

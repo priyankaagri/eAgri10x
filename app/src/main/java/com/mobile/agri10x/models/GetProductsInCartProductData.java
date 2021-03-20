@@ -3,7 +3,7 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetProductsInCartData {
+public class GetProductsInCartProductData {
     @SerializedName("userID")
     @Expose
     private String userID;
@@ -18,10 +18,10 @@ public class GetProductsInCartData {
     private String variety;
     @SerializedName("price")
     @Expose
-    private double price;
+    private Integer price;
     @SerializedName("weight")
     @Expose
-    private double weight;
+    private Integer weight;
     @SerializedName("quantity")
     @Expose
     private Integer quantity;
@@ -70,7 +70,7 @@ public class GetProductsInCartData {
         this.variety = variety;
     }
 
-    public double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
@@ -78,7 +78,7 @@ public class GetProductsInCartData {
         this.price = price;
     }
 
-    public double getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
@@ -125,4 +125,5 @@ public class GetProductsInCartData {
     public void setTotalAvailable(Integer totalAvailable) {
         this.totalAvailable = totalAvailable;
     }
+
 }

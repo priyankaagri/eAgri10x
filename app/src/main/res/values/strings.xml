@@ -101,6 +101,18 @@
     <string name="commision">COMMISION @ 1%</string>
     <string name="total_tade_amount">Total Trade Amount</string>
 
+    <string name="menu_payment">Payments</string>
+    <string name="menu_addstock">Add Stock</string>
+    <string name="menu_managestock">Manage Stock</string>
+    <string name="menu_your_orders">Your Orders</string>
+    <string name="menu_wish_list">Your Wish List</string>
+    <string name="menu_refer_earn"><![CDATA[Refer & Earn]]></string>
+    <string name="menu_about_us">About Us</string>
+    <string name="menu_contst_us">Contact Us</string>
+    <string name="menu_share_app">Share App</string>
+    <string name="tv_version_1_0_0">Version 1.0.0</string>
+    <string name="tv_profile">Profile</string>
+    <string name="menu_verified_account">Verify Account</string>
 
     <string name="total_tarade_amount">Total Trade Amount</string>
     <string name="next_btn">Next</string>

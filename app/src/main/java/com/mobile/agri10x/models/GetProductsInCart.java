@@ -9,9 +9,9 @@ public class GetProductsInCart {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("data")
+    @SerializedName("products")
     @Expose
-    private List<GetProductsInCartData> data = null;
+    private List<GetProductsInCartProductData> products = null;
     @SerializedName("subTotal")
     @Expose
     private Integer subTotal;
@@ -27,12 +27,12 @@ public class GetProductsInCart {
         this.message = message;
     }
 
-    public List<GetProductsInCartData> getData() {
-        return data;
+    public List<GetProductsInCartProductData> getProducts() {
+        return products;
     }
 
-    public void setData(List<GetProductsInCartData> data) {
-        this.data = data;
+    public void setProducts(List<GetProductsInCartProductData> products) {
+        this.products = products;
     }
 
     public Integer getSubTotal() {

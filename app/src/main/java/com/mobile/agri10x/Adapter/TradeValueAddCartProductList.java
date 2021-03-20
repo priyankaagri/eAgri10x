@@ -7,15 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,11 +24,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.agri10x.Fragments.Cart_Fragment;
+import com.mobile.agri10x.Fragments.TradeValueAddCart;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
-import com.mobile.agri10x.models.GetProductsInCartData;
+import com.mobile.agri10x.models.GetProductsInCartProductData;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -55,12 +52,12 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
     Context context;
     AlertDialog dialog,dialog2;
     View prevselected=null;
-    List<GetProductsInCartData> ProductsInCartlist = new ArrayList<>();
+    List<GetProductsInCartProductData> ProductsInCartlist = new ArrayList<>();
     boolean check;
     TradeValueAddCartProductList tradeValueAddCartProductList;
 
 
-    public TradeValueAddCartProductList(List<GetProductsInCartData> productsInCartlist, Context context, boolean check) {
+    public TradeValueAddCartProductList(List<GetProductsInCartProductData> productsInCartlist, Context context, boolean check) {
         this.context=context;
         this.ProductsInCartlist=productsInCartlist;
         this.check =check;
@@ -190,7 +187,8 @@ holder.img_remove.setOnClickListener(new View.OnClickListener() {
                 if (response.isSuccessful()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 //
-        HomePageActivity.setFragment(new Cart_Fragment(),"cart");
+                    HomePageActivity.removeFragment(new TradeValueAddCart());
+        HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
                 }
                 else {
 
@@ -230,7 +228,8 @@ Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
 //                    tradeValueAddCartProductList.notifyDataSetChanged();
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     HomePageActivity.getProductinCart();
-                    HomePageActivity.setFragment(new Cart_Fragment(),"cart");
+                    HomePageActivity.removeFragment(new TradeValueAddCart());
+                    HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
                 }
                 else {
 

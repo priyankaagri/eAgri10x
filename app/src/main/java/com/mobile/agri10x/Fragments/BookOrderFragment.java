@@ -27,7 +27,10 @@ import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetCities;
+import com.mobile.agri10x.models.GetCreateBooking;
 import com.mobile.agri10x.models.GetUserByID;
+import com.mobile.agri10x.models.QueryCreatebooking;
+import com.mobile.agri10x.models.QueryCreatebookingCartData;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getAddressData;
@@ -62,14 +65,15 @@ public class BookOrderFragment extends Fragment {
         Spinner addressspinner_billing,addressspinner_delivery,addressspinner_booking_amount;
                 TextView totalamt,checkout_btne,paywithecollect,bookingamt,pendingamt;
                 ImageView but_back;
-    String amt;
+    String amt="",billingaddressID="",shippingaddressId="",strdelnote="",strpercentval="",strbookingamtval="",strpendingamtval="",strpackagingdetails="",
+            strmobileno="",struserid="",strdelcontactperosn="";
     double damt;
     double pendingamount;
     private static final String[] bookamount = new String[]{
-           "25%","50%","75%"
+           "Select Booking Amount","25%","50%","75%"
     };
-    SearchableSpinner spinner_state_billing_id,spinner_city_billing_id;
-                TextView addDeliveryaddress,add_billingAddress,spinner_state_deliv_id,spinner_city_deliv_id;
+    SearchableSpinner spinner_state_billing_id,spinner_city_billing_id,spinner_state_deliv_id,spinner_city_deliv_id;
+                TextView addDeliveryaddress,add_billingAddress;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -99,8 +103,85 @@ public class BookOrderFragment extends Fragment {
         Log.d("getamt", String.valueOf(damt));
         Callapiforname();
         CallapigetAddress();
-        //callcities();
-        callpercentageofamt(25,damt);
+
+
+        addressspinner_delivery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String pos = addressspinner_billing.getSelectedItem().toString();
+
+                Log.d("selectedaddship",pos);
+                for(int i= 0 ;i < billingadd.size() ; i++)
+                {
+                    String addstr = billingadd.get(i).getAddressLine1()+" , "+billingadd.get(i).getAddressLine2()+" , "+billingadd.get(i).getCity()+" , "+billingadd.get(i).getState()+" , "+billingadd.get(i).getPincode()+" , India";
+                    if(pos.equals(addstr)){
+                        shippingaddressId = billingadd.get(i).getId();
+
+                    }
+                }
+
+             //   Log.d("shiip_add_id",shippingaddressId);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+   addressspinner_billing.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+       @Override
+       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                   String pos = addressspinner_billing.getSelectedItem().toString();
+
+        Log.d("selectedaddbilling",pos);
+        for(int i= 0 ;i < billingadd.size() ; i++)
+        {
+            String addstr = billingadd.get(i).getAddressLine1()+" , "+billingadd.get(i).getAddressLine2()+" , "+billingadd.get(i).getCity()+" , "+billingadd.get(i).getState()+" , "+billingadd.get(i).getPincode()+" , India";
+            if(pos.equals(addstr)){
+                billingaddressID = billingadd.get(i).getId();
+
+            }
+        }
+
+       // Log.d("billing_add_id",billingaddressID);
+       }
+
+       @Override
+       public void onNothingSelected(AdapterView<?> parent) {
+
+       }
+   });
+
+        checkout_btne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                struserid = SessionManager.getKeyTokenUser(getActivity());
+                strmobileno = SessionManager.getmobilePref(getActivity());
+                strdelnote = deliverynote.getText().toString();
+
+
+        strbookingamtval = bookingamt.getText().toString();
+                strbookingamtval = strbookingamtval.replaceAll("₹", "");
+        strpendingamtval = pendingamt.getText().toString();
+                strpendingamtval = strpendingamtval.replaceAll("₹", "");
+        strpackagingdetails = packagingdatail.getText().toString();
+        strdelcontactperosn = "";
+        Log.d("getbookingvalue",strpercentval);
+        // && validateDelNot(strdelnote)
+ //&& validateContactPerson(strdelcontactperosn)
+                //&& validatePackageDetail(strpackagingdetails)
+                if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
+                && validateperval(strpercentval)  && validateBookingamt(strbookingamtval) &&  validatePendingAmt(strpendingamtval)
+              && validateMobileNo(strmobileno) )
+
+                {
+                    callapicreatebooking(struserid, billingaddressID, shippingaddressId, strdelnote, strpercentval, strbookingamtval, strpendingamtval, strdelcontactperosn, strmobileno, strpackagingdetails);
+                }
+
+            }
+        });
         add_billingAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,14 +214,20 @@ public class BookOrderFragment extends Fragment {
                 Object item = adapterView.getItemAtPosition(position);
                 if (item != null) {
                     if(item.equals("25%")){
+                        strpercentval = "0.25";
                         callpercentageofamt(25,damt);
                     }else if(item.equals("50%"))
                     {
+                        strpercentval = "0.50";
                         callpercentageofamt(50,damt);
                     }else if(item.equals("75%"))
                     {
+                        strpercentval = "0.75";
                         callpercentageofamt(75,damt);
+                    }else if(item.equals("Select Booking Amount")){
+                        strpercentval = "Select Booking Amount";
                     }
+
                   //  Toast.makeText(getContext(), item.toString(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -150,11 +237,139 @@ public class BookOrderFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 // TODO Auto-generated method stub
-
+                         strpercentval = "Select Booking Amount";
             }
         });
         return view;
     }
+
+    private boolean validateMobileNo(String strmobileno) {
+        if (strmobileno.isEmpty() || strmobileno.length() < 10 ) {
+            Toast.makeText(getActivity(),
+                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateContactPerson(String strdelcontactperosn) {
+        if (strdelcontactperosn.isEmpty() || strdelcontactperosn == null  ) {
+            Toast.makeText(getActivity(),
+                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validatePendingAmt(String strpendingamtval) {
+        if (strpendingamtval.isEmpty() || strpendingamtval == null  ) {
+            Toast.makeText(getActivity(),
+                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateBookingamt(String strbookingamtval) {
+        if (strbookingamtval.isEmpty() || strbookingamtval == null  ) {
+            Toast.makeText(getActivity(),
+                    "Booking Amount Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateperval(String strpercentval) {
+        if (strpercentval.isEmpty() || strpercentval == null  || strpercentval.equals("Select Booking Amount")) {
+            Toast.makeText(getActivity(),
+                    "Select Booking Amount", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateshippingadd(String shippingaddressId) {
+        if (shippingaddressId.isEmpty() || shippingaddressId == null ) {
+            Toast.makeText(getActivity(),
+                    "Delivery  Address Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validatebillingAdressID(String billingaddressID) {
+        if (billingaddressID.isEmpty() || billingaddressID == null ) {
+            Toast.makeText(getActivity(),
+                    "Billing Address Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateUserId(String struserid) {
+        if (struserid.isEmpty() || struserid == null ) {
+            Toast.makeText(getActivity(),
+                    "Userid required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+
+    private void callapicreatebooking(String struserid, String billingaddressID, String shippingaddressId,String strdelnote,String strpercentval,
+    String strbookingamtval,String strpendingamtval,String strdelcontactperosn,String strmobileno,String strpackagingdetails) {
+        QueryCreatebookingCartData  queryCreatebookingCartData = new QueryCreatebookingCartData();
+        queryCreatebookingCartData.setMessage("Success");
+        queryCreatebookingCartData.setProducts(TradeValueAddCart.ProductsInCartlist);
+        queryCreatebookingCartData.setSubTotal(TradeValueAddCart.subTotal);
+        queryCreatebookingCartData.setTotalKgs(TradeValueAddCart.totalkgs);
+
+
+        QueryCreatebooking queryCreatebooking = new QueryCreatebooking();
+        queryCreatebooking.setUserid(struserid);
+        queryCreatebooking.setBillingAddressID(billingaddressID);
+        queryCreatebooking.setShippingAddressID(shippingaddressId);
+        queryCreatebooking.setOrderNotes(strdelnote);
+        queryCreatebooking.setPercentage(Double.parseDouble(strpercentval));
+        queryCreatebooking.setBookingAmount(Double.parseDouble(strbookingamtval));
+        queryCreatebooking.setPendingAmount(Double.parseDouble(strpendingamtval));
+        queryCreatebooking.setDeliveryContactPerson(strdelcontactperosn);
+        queryCreatebooking.setDeliveryContactPerson(strmobileno);
+        queryCreatebooking.setPackagingDetails(strpackagingdetails);
+        queryCreatebooking.setCartData(queryCreatebookingCartData);
+
+
+
+
+// RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        final Call<GetCreateBooking> loginCall = apiService.wsCreateBooking(
+                "123456", queryCreatebooking);
+        loginCall.enqueue(new Callback<GetCreateBooking>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetCreateBooking> call,
+                                   Response<GetCreateBooking> response) {
+
+                Log.d("resendotpres", response.toString());
+                if (response.isSuccessful()) {
+String bookingid= response.body().getData().getId();
+Log.d("getbookingid",bookingid);
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetCreateBooking> call,
+                                  Throwable t) {
+
+            }
+        });
+    }
+
+
 
     private void callpercentageofamt(int percentvalue, double damt) {
         if(percentvalue ==25){
@@ -290,6 +505,8 @@ public class BookOrderFragment extends Fragment {
                     deliveryadrressstringlist.add("Select Address");
                     billingadd.addAll(response.body().getData());
                     Log.d("getaddressbilling", String.valueOf(billingadd.size()));
+
+
                     for(int i=0; i < billingadd.size();i++){
                         String addstr = billingadd.get(i).getAddressLine1()+" , "+billingadd.get(i).getAddressLine2()+" , "+billingadd.get(i).getCity()+" , "+billingadd.get(i).getState()+" , "+billingadd.get(i).getPincode()+" , India";
                         billingadrressstringlist.add(addstr);

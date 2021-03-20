@@ -49,8 +49,9 @@ public class TradeValueAddCart extends Fragment {
     double amt;
    ShimmerRecyclerView recyle_livetrade;
     TradeValueAddCartProductList tradeValueAdpter;
-
-    List<GetProductsInCartProductData> ProductsInCartlist = new ArrayList<>();
+    public static double subTotal;
+    public  static  double totalkgs;
+    public  static  List<GetProductsInCartProductData> ProductsInCartlist = new ArrayList<>();
     TextView totaltradeamount,btn_orderbook,btn_purchaes,txt_tradeamt;
 Button checkout_btn;
     @Nullable
@@ -66,19 +67,26 @@ Button checkout_btn;
             @Override
             public void onClick(View v) {
 //                HomePageActivity.setFragment(new BookOrderFragment(),"book");
-                BookOrderFragment fragment = new BookOrderFragment(); // replace your custom fragment class
-                Bundle bundle = new Bundle();
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                bundle.putString("value", String.valueOf(amt)); // use as per your need
-                fragment.setArguments(bundle);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
-                fragmentTransaction.commit();
+                if(ProductsInCartlist.size() >0){
+                    BookOrderFragment fragment = new BookOrderFragment(); // replace your custom fragment class
+                    Bundle bundle = new Bundle();
+                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                    bundle.putString("value", String.valueOf(amt)); // use as per your need
+                    fragment.setArguments(bundle);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                    fragmentTransaction.commit();
+                }
+                else{
+                    Toast.makeText(getActivity(),"No data available", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         btn_purchaes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(ProductsInCartlist.size() >0){
                 PurchaseOrderFargment fragment = new PurchaseOrderFargment(); // replace your custom fragment class
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -87,6 +95,10 @@ Button checkout_btn;
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                 fragmentTransaction.commit();
+                }
+                else{
+                    Toast.makeText(getActivity(),"No data available", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         but_back.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +139,8 @@ Button checkout_btn;
                 Log.d("ProductinCart",response.toString());
                 if (response.isSuccessful()) {
                     ProductsInCartlist.addAll(response.body().getProducts());
-                    double subTotal=response.body().getSubTotal();
+                    subTotal=response.body().getSubTotal();
+                                   totalkgs=response.body().getTotalKgs();
 
                     double withconveniencecharge = (subTotal / 100.0f) *2;
                     double withhandlefees = (subTotal / 100.0f) *2;
@@ -145,6 +158,8 @@ Button checkout_btn;
                         tradeValueAdpter = new TradeValueAddCartProductList(ProductsInCartlist, getActivity(),true);
                         recyle_livetrade.setAdapter(tradeValueAdpter);
                         tradeValueAdpter.notifyDataSetChanged();
+                    }else{
+                        Toast.makeText(getActivity(),"No data available", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {

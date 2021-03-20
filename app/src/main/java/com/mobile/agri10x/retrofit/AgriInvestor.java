@@ -5,6 +5,7 @@ import com.mobile.agri10x.models.GetAddAddress;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCities;
+import com.mobile.agri10x.models.GetCreateBooking;
 import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetLiveTrades;
@@ -16,6 +17,7 @@ import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.GetUserByID;
+import com.mobile.agri10x.models.QueryCreatebooking;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.models.getAddress;
@@ -67,4 +69,7 @@ public interface AgriInvestor {
     Call<GetUserByID>wsGetUserById(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addAddress")
     Call<GetAddAddress>wsGetAddAddress(@Header("x-auth-token") String token, @Body RequestBody params);
+
+    @POST("m/createBooking")
+    Call<GetCreateBooking> wsCreateBooking(@Header("x-auth-token") String token, @Body QueryCreatebooking queryCreatebooking);
 }

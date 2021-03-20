@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:padding="10dp"
 
-                android:hint="@string/Lname_str"
+                android:hint="@string/lname_str"
                 android:textSize="14sp"
                 android:singleLine="true"
                 android:inputType="textPersonName"

@@ -63,7 +63,7 @@
     <string name="submit">SUBMIT</string>
 
     <string name="fname_str"> First Name *</string>
-    <string name="Lname_str"> Last Name *</string>
+    <string name="lname_str"> Last Name *</string>
     <string name="dateofbirth">Date Of Birth</string>
     <string name="ddmmyy">dd-mm-yyyy</string>
     <string name="cart_txt">*Minimum Order Quantity is 500 KG and multiple of 50 KG only</string>

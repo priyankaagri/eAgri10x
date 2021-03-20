@@ -77,7 +77,7 @@ public class PurchaseOrderFargment extends Fragment {
         Log.d("getamt",amt);
         Callapiforname();
         CallapigetAddress();
-        callcities();
+        //callcities();
 
         but_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,53 +89,53 @@ public class PurchaseOrderFargment extends Fragment {
         return view;
     }
 
-    private void callcities() {
-        AgriInvestor apiService = ApiHandler.getApiService();
-        final Call<List<GetCities>> loginCall = apiService.wsgetCities(
-                "123456");
-        loginCall.enqueue(new Callback<List<GetCities>>() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onResponse(Call<List<GetCities>> call,
-                                   Response<List<GetCities>> response) {
-
-                if (response.isSuccessful()) {
-                    getstateArrayList = response.body();
-                    Log.d("getresponse", String.valueOf(getstateArrayList.size()));
-
-
-
-
-
-                    if(!getstateArrayList.isEmpty()){
-
-
-                        //                    Commoditycategory.add("Select");
-                        for(int i=0; i < getstateArrayList.size();i++){
-                            statecategory.add(getstateArrayList.get(i).getState());
-                        }
-                        Log.d("statehold", String.valueOf(statecategory.size()));
-
-                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
-                        // commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
-
-
-                    }else{
-
-                        statecategory.add("No Data");
-                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
-                        //commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<GetCities>> call,
-                                  Throwable t) {
-                Toast.makeText(getContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    private void callcities() {
+//        AgriInvestor apiService = ApiHandler.getApiService();
+//        final Call<List<GetCities>> loginCall = apiService.wsgetCities(
+//                "123456");
+//        loginCall.enqueue(new Callback<List<GetCities>>() {
+//            @SuppressLint("WrongConstant")
+//            @Override
+//            public void onResponse(Call<List<GetCities>> call,
+//                                   Response<List<GetCities>> response) {
+//
+//                if (response.isSuccessful()) {
+//                    getstateArrayList = response.body();
+//                    Log.d("getresponse", String.valueOf(getstateArrayList.size()));
+//
+//
+//
+//
+//
+//                    if(!getstateArrayList.isEmpty()){
+//
+//
+//                        //                    Commoditycategory.add("Select");
+//                        for(int i=0; i < getstateArrayList.size();i++){
+//                            statecategory.add(getstateArrayList.get(i).getState());
+//                        }
+//                        Log.d("statehold", String.valueOf(statecategory.size()));
+//
+//                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
+//                        // commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
+//
+//
+//                    }else{
+//
+//                        statecategory.add("No Data");
+//                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
+//                        //commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<GetCities>> call,
+//                                  Throwable t) {
+//                Toast.makeText(getContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     private void Callapiforname() {
         Map<String, Object> jsonParams = new ArrayMap<>();

@@ -34,15 +34,15 @@ import com.mobile.agri10x.models.getAddressData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
+import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -99,7 +99,7 @@ public class BookOrderFragment extends Fragment {
         Log.d("getamt", String.valueOf(damt));
         Callapiforname();
         CallapigetAddress();
-        callcities();
+        //callcities();
         callpercentageofamt(25,damt);
         add_billingAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,9 +295,9 @@ public class BookOrderFragment extends Fragment {
                         billingadrressstringlist.add(addstr);
                         deliveryadrressstringlist.add(addstr);
                     }
-                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1, billingadrressstringlist);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, billingadrressstringlist);
                     addressspinner_billing.setAdapter(adapter1);
-                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1, deliveryadrressstringlist);
+                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, deliveryadrressstringlist);
                     addressspinner_delivery.setAdapter(adapter2);
 
                 }
@@ -315,51 +315,51 @@ public class BookOrderFragment extends Fragment {
         });
     }
 
-    private void callcities() {
-
-        AgriInvestor apiService = ApiHandler.getApiService();
-        final Call<List<GetCities>> loginCall = apiService.wsgetCities(
-                "123456");
-        loginCall.enqueue(new Callback<List<GetCities>>() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onResponse(Call<List<GetCities>> call,
-                                   Response<List<GetCities>> response) {
-
-                if (response.isSuccessful()) {
-                    getstateArrayList = response.body();
-                    Log.d("getresponse", String.valueOf(getstateArrayList.size()));
-
-
-
-                    if(!getstateArrayList.isEmpty()){
-
-
-                        //                    Commoditycategory.add("Select");
-                        for(int i=0; i < getstateArrayList.size();i++){
-                            statecategory.add(getstateArrayList.get(i).getState());
-                        }
-                        Log.d("statehold", String.valueOf(statecategory.size()));
-
-                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
-                        spinner_state_billing_id.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
-
-
-                    }else{
-
-                        statecategory.add("No Data");
-                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
-                        //commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<GetCities>> call,
-                                  Throwable t) {
-                Toast.makeText(getContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
+//    private void callcities() {
+//
+//        AgriInvestor apiService = ApiHandler.getApiService();
+//        final Call<List<GetCities>> loginCall = apiService.wsgetCities(
+//                "123456");
+//        loginCall.enqueue(new Callback<List<GetCities>>() {
+//            @SuppressLint("WrongConstant")
+//            @Override
+//            public void onResponse(Call<List<GetCities>> call,
+//                                   Response<List<GetCities>> response) {
+//
+//                if (response.isSuccessful()) {
+//                    getstateArrayList = response.body();
+//                    Log.d("getresponse", String.valueOf(getstateArrayList.size()));
+//
+//
+//
+//                    if(!getstateArrayList.isEmpty()){
+//
+//
+//                        //                    Commoditycategory.add("Select");
+//                        for(int i=0; i < getstateArrayList.size();i++){
+//                            statecategory.add(getstateArrayList.get(i).getState());
+//                        }
+//                        Log.d("statehold", String.valueOf(statecategory.size()));
+//
+//                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
+//                        spinner_state_billing_id.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
+//
+//
+//                    }else{
+//
+//                        statecategory.add("No Data");
+//                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
+//                        //commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<GetCities>> call,
+//                                  Throwable t) {
+//                Toast.makeText(getContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//    }
 }

@@ -84,9 +84,9 @@
     <string name="book_order">Book Order</string>
     <string name="purches">Purchase</string>
     <string name="booking">Booking</string>
-    <string name="billing_Address">Billing Address</string>
+    <string name="billing_Address">Billing Address *</string>
     <string name="add_new_address">+ Add new address</string>
-    <string name="deivery_address">Delivery Address</string>
+    <string name="deivery_address">Delivery Address *</string>
     <string name="booking_ammount">Booking Amount *</string>
     <string name="booking_amt">Booking Amount</string>
     <string name="paytext">* Pay 75% and avail 5% discount</string>
@@ -127,14 +127,14 @@
 
 
     <string name="delivery_title">Delivery Address</string>
-    <string name="tv_contact_name_id">Contact Person Name</string>
+    <string name="tv_contact_name_id">Contact Person Name *</string>
     <string name="save">Save</string>
-    <string name="tv_mobile_no_id">Mobile Number</string>
-    <string name="tv_street_address1">Street Address 1</string>
+    <string name="tv_mobile_no_id">Mobile Number *</string>
+    <string name="tv_street_address1">Street Address 1 *</string>
     <string name="tv_street_address2">Street Address 2 (Option)</string>
     <string name="tv_state">State</string>
     <string name="tv_city">City</string>
-    <string name="tv_pincode">Pincode</string>
-    <string name="tv_address_type">Address Type</string>
+    <string name="tv_pincode">Pincode *</string>
+    <string name="tv_address_type">Address Type *</string>
     <string name="billing_title">Billing Address</string>
 </resources>

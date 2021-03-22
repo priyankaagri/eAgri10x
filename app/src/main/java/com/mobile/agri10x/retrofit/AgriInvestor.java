@@ -3,6 +3,7 @@ package com.mobile.agri10x.retrofit;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddAddress;
 import com.mobile.agri10x.models.GetAddProductToCart;
+import com.mobile.agri10x.models.GetBookingDeatils;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetCities;
@@ -70,9 +71,10 @@ public interface AgriInvestor {
     Call<GetUserByID>wsGetUserById(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addAddress")
     Call<GetAddAddress>wsGetAddAddress(@Header("x-auth-token") String token, @Body RequestBody params);
-
     @POST("m/createBooking")
     Call<GetCreateBooking> wsCreateBooking(@Header("x-auth-token") String token, @Body QueryCreatebooking queryCreatebooking);
+    @POST("m/getBookingDetails")
+    Call<GetBookingDeatils> wsGetBookingDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/checkEcollect")
     Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
 

@@ -211,7 +211,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                                         if(int_enterValue>=500){
                                             if (response.body().getData().get(0).getWeight()>=int_enterValue){
                                                 String quantity= String.valueOf(int_enterValue/50);
-                                                CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName());
+                                                CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName(),response.body().getData().get(0).getPricePerLot());
                                             }else {
                                                 Toast.makeText(context, "Stock is not available for this product.", Toast.LENGTH_SHORT).show();
                                             }
@@ -269,7 +269,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
         });
     }
 
-    private void CallApiaddTOCard(String orderID,String grade,String quantity,String commodityname) {
+    private void CallApiaddTOCard(String orderID,String grade,String quantity,String commodityname,double price) {
         dialog=new Alert().pleaseWait();
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
@@ -278,6 +278,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
         jsonParams.put("quantity",quantity);
         jsonParams.put("grade",grade);
+        jsonParams.put("price",price);
         jsonParams.put("status","Just added to cart!");
         Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());

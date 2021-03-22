@@ -14,10 +14,10 @@ public class GetProductsInCart {
     private List<GetProductsInCartProductData> products = null;
     @SerializedName("subTotal")
     @Expose
-    private Integer subTotal;
+    private double subTotal;
     @SerializedName("totalKgs")
     @Expose
-    private Integer totalKgs;
+    private double totalKgs;
 
     public String getMessage() {
         return message;
@@ -35,7 +35,7 @@ public class GetProductsInCart {
         this.products = products;
     }
 
-    public Integer getSubTotal() {
+    public double getSubTotal() {
         return subTotal;
     }
 
@@ -43,7 +43,7 @@ public class GetProductsInCart {
         this.subTotal = subTotal;
     }
 
-    public Integer getTotalKgs() {
+    public double getTotalKgs() {
         return totalKgs;
     }
 

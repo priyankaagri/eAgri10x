@@ -4,6 +4,7 @@ import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddAddress;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetCategories;
+import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCreateBooking;
 import com.mobile.agri10x.models.GetFeatureOnlyProduct;
@@ -72,4 +73,8 @@ public interface AgriInvestor {
 
     @POST("m/createBooking")
     Call<GetCreateBooking> wsCreateBooking(@Header("x-auth-token") String token, @Body QueryCreatebooking queryCreatebooking);
+    @POST("m/checkEcollect")
+    Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
+
+
 }

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.Update_Profile_Activity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/toolbar1"
                 android:layout_width="match_parent"
@@ -22,124 +24,200 @@
                 android:layout_marginTop="20dp">
 
                 <ImageView
-                    android:id="@+id/but_back"
+                    android:id="@+id/btn_back_profile_id"
                     android:layout_width="40dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_baseline_arrow_back_24"
                     app:tint="@color/black" />
 
                 <TextView
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@id/but_back"
+                    android:layout_alignBaseline="@id/btn_back_profile_id"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@+id/but_back"
+                    android:layout_toRightOf="@+id/btn_back_profile_id"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
                     android:text="User Details"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </RelativeLayout>
+
             <LinearLayout
-                android:layout_marginTop="25dp"
-                android:layout_marginHorizontal="20dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:fontFamily="@font/proxima_nova_bold"
-                    android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" First Name"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_bold"
+                        android:text=" First Name"
+                        android:textSize="14sp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" *"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
                 <EditText
                     android:id="@+id/et_firstname"
-                    android:inputType="textPersonName"
-                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
-                    android:hint="abc"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/proxima_nova_bold"
-                    android:textSize="14sp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:hint="abc"
+                    android:inputType="textPersonName"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_first_error_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:text="@string/first_name_field_required"
+                    android:textColor="@color/red"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Last Name"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_bold"
+                        android:text=" Last Name"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" *"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
                 <EditText
                     android:id="@+id/et_lastname"
-                    android:inputType="textPersonName"
-                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:hint="abc"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:inputType="textPersonName" />
 
                 <TextView
-                    android:visibility="gone"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/proxima_nova_bold"
-                    android:textSize="14sp"
+                    android:id="@+id/tv_last_error_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:text="@string/last_name_field_required"
+                    android:textColor="@color/red"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" DOB"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:text=" DOB"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
                 <EditText
-                    android:visibility="gone"
                     android:id="@+id/et_city"
-                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:hint="23"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:visibility="gone" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/proxima_nova_bold"
-                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Email Id"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:text=" Email Id"
+                    android:textSize="14sp" />
+
                 <EditText
-                    android:drawableRight="@drawable/iconverify"
                     android:id="@+id/et_email"
-                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
-                    android:hint="xxx@gmail.com"
-                    android:layout_marginTop="10dp"
-
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/proxima_nova_bold"
-                    android:textSize="14sp"
+                    android:drawableRight="@drawable/iconverify"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:hint="xxx@gmail.com" />
+
+                <TextView
+                    android:id="@+id/tv_email_error_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:text="@string/enter_valide_email_id"
+                    android:textColor="@color/red"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Phone Number"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:text=" Phone Number"
+                    android:textSize="14sp" />
+
                 <EditText
 
-                    android:enabled="true"
                     android:id="@+id/et_mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:drawableRight="@drawable/iconverify"
+                    android:enabled="true"
+                    android:focusable="false"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:hint="**********"
                     android:inputType="number"
                     android:maxLength="10"
-                    android:fontFamily="@font/proxima_nova_alt_condensed_bold"
-                    android:hint="**********"
-                    android:drawableRight="@drawable/iconverify"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:text="8983847941" />
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/save_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SAVE"
-                android:padding="10dp"
-                android:background="@drawable/btn_round_corner"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="40dp"/>
+                android:background="@drawable/btn_round_corner"
+                android:padding="10dp"
+                android:text="SAVE" />
         </LinearLayout>
     </ScrollView>
 

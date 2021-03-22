@@ -137,4 +137,12 @@
     <string name="tv_pincode">Pincode *</string>
     <string name="tv_address_type">Address Type *</string>
     <string name="billing_title">Billing Address</string>
+
+    <string name="first_name_field_required">Please enter valid First Name.</string>
+    <string name="last_name_field_required">Please enter valid Last Name.</string>
+    <string name="enter_valide_email_id">Please enter valid Email Id.</string>
+
+
+    <string name="add_stock">Add Stock</string>
+    <string name="manage_stock">Manage Stock</string>
 </resources>

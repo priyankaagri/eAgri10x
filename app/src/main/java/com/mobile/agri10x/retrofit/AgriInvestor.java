@@ -23,6 +23,7 @@ import com.mobile.agri10x.models.GetQueryFeaturedOnly;
 import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
+import com.mobile.agri10x.models.GetStates;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.QueryCreateCheckOut;
 import com.mobile.agri10x.models.QueryCreatebooking;
@@ -93,5 +94,8 @@ public interface AgriInvestor {
     Call<GetOrderCheckOutHandling> wsCheckOrderCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("/m/bookingCheckoutHandling")
     Call<GetBookingCheckOutHandling> wsCheckBookingCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
-
+    @GET("m/getStates")
+    Call<GetStates> wsGetStates(@Header("x-auth-token") String token);
+    @POST("m/getCities")
+    Call<GetCities> wsGetCities(@Header("x-auth-token") String token, @Body RequestBody params);
 }

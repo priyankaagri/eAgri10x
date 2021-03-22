@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.mobile.agri10x.Adapter.SimpleListAdapter;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
+import com.mobile.agri10x.models.GetBookingDeatils;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCreateBooking;
 import com.mobile.agri10x.models.GetUserByID;
@@ -271,6 +272,7 @@ public class PurchaseOrderFargment extends Fragment {
                 if (response.isSuccessful()) {
                     String bookingid= response.body().getData().getId();
                     Log.d("getbookingid",bookingid);
+                    callcreatebookingdeatils(bookingid);
                 } else {
 
                 }
@@ -280,6 +282,45 @@ public class PurchaseOrderFargment extends Fragment {
             public void onFailure(Call<GetCreateBooking> call,
                                   Throwable t) {
 
+            }
+        });
+    }
+
+    private void callcreatebookingdeatils(String bookingid) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+
+        jsonParams.put("bookingID",bookingid);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetBookingDeatils> loginCall = apiService.wsGetBookingDeatils("123456",body);
+        loginCall.enqueue(new Callback<GetBookingDeatils>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetBookingDeatils> call,
+                                   Response<GetBookingDeatils> response) {
+
+                Log.d("bookdeatils",response.toString());
+                if (response.isSuccessful()) {
+
+                    if(response.body().getMessage().equals("Success")){
+
+                    }else{
+
+                    }
+
+                }
+                else {
+
+                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetBookingDeatils> call,
+                                  Throwable t) {
+                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }

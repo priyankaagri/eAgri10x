@@ -226,6 +226,9 @@ public class BookOrderFragment extends Fragment {
                         callpercentageofamt(75,damt);
                     }else if(item.equals("Select Booking Amount")){
                         strpercentval = "Select Booking Amount";
+
+                        bookingamt.setText("");
+                        pendingamt.setText("");
                     }
 
                   //  Toast.makeText(getContext(), item.toString(), Toast.LENGTH_SHORT).show();

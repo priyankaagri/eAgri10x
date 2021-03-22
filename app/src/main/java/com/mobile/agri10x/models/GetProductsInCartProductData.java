@@ -18,10 +18,10 @@ public class GetProductsInCartProductData {
     private String variety;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private Double price;
     @SerializedName("weight")
     @Expose
-    private Integer weight;
+    private Double weight;
     @SerializedName("quantity")
     @Expose
     private Integer quantity;
@@ -70,19 +70,19 @@ public class GetProductsInCartProductData {
         this.variety = variety;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public Integer getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 

@@ -9,7 +9,7 @@ public class QueryCreateCheckOut {
     private String userid;
     @SerializedName("orderAmount")
     @Expose
-    private Integer orderAmount;
+    private double orderAmount;
     @SerializedName("billingAddressID")
     @Expose
     private String billingAddressID;
@@ -40,11 +40,11 @@ public class QueryCreateCheckOut {
         this.userid = userid;
     }
 
-    public Integer getOrderAmount() {
+    public double getOrderAmount() {
         return orderAmount;
     }
 
-    public void setOrderAmount(Integer orderAmount) {
+    public void setOrderAmount(double orderAmount) {
         this.orderAmount = orderAmount;
     }
 

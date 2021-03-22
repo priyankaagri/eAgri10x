@@ -14,10 +14,10 @@ public class QueryCreateCheckOutData {
     private List<GetProductsInCartProductData> products = null;
     @SerializedName("subTotal")
     @Expose
-    private Integer subTotal;
+    private double subTotal;
     @SerializedName("totalKgs")
     @Expose
-    private Integer totalKgs;
+    private double totalKgs;
 
     public String getMessage() {
         return message;
@@ -35,19 +35,19 @@ public class QueryCreateCheckOutData {
         this.products = products;
     }
 
-    public Integer getSubTotal() {
+    public double getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(Integer subTotal) {
+    public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
 
-    public Integer getTotalKgs() {
+    public double getTotalKgs() {
         return totalKgs;
     }
 
-    public void setTotalKgs(Integer totalKgs) {
+    public void setTotalKgs(double totalKgs) {
         this.totalKgs = totalKgs;
     }
 }

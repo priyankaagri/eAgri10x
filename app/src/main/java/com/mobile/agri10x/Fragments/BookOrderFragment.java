@@ -40,6 +40,9 @@ import com.mobile.agri10x.models.getAddressData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentData;
+import com.razorpay.PaymentResultWithDataListener;
 
 
 import org.json.JSONObject;
@@ -56,7 +59,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class BookOrderFragment extends Fragment {
+public class BookOrderFragment extends Fragment implements PaymentResultWithDataListener {
     Context context;
     SimpleListAdapter mSimpleListAdapter;
     List<GetCities> getstateArrayList = new ArrayList<>();
@@ -64,12 +67,14 @@ public class BookOrderFragment extends Fragment {
     ArrayList<String> billingadrressstringlist = new ArrayList<>();
     ArrayList<String> deliveryadrressstringlist = new ArrayList<>();
     ArrayList<getAddressData> billingadd = new ArrayList<>();
+    
     EditText fname_edt_txt,lname_edt_txt,deliverynote,packagingdatail;
         Spinner addressspinner_billing,addressspinner_delivery,addressspinner_booking_amount;
                 TextView totalamt,checkout_btne,paywithecollect,bookingamt,pendingamt;
                 ImageView but_back;
     String amt="",billingaddressID="",shippingaddressId="",strdelnote="",strpercentval="",strbookingamtval="",strpendingamtval="",strpackagingdetails="",
             strmobileno="",struserid="",strdelcontactperosn="";
+    String order_id="", payment_id= "",signature="";
     double damt;
     double pendingamount;
     private static final String[] bookamount = new String[]{
@@ -454,6 +459,8 @@ String razorpay_id = response.body().getData().getRazorpayOrderid();
 double amount = response.body().getData().getAmount();
 String key = response.body().getData().getKey();
 boolean initialpayment = response.body().getData().getInitiatePayment();
+
+                        startpayment(razorpay_id,amount,key);
                     }else{
 Toast.makeText(getActivity(),"Data not found",Toast.LENGTH_SHORT).show();
                     }
@@ -471,6 +478,42 @@ Toast.makeText(getActivity(),"Data not found",Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void startpayment(String razorpay_id, double amount, String key) {
+
+        final BookOrderFragment  activity = this;
+
+        final Checkout co = new Checkout();
+        co.setKeyID(key);
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", "Agri10x");
+            options.put("description", "(ICognitive Global Pvt Ltd)");
+//You can omit the image option to fetch the image from dashboard
+            options.put("image", "https://data.agri10x.com/images/Icognitive%20logo2.png");
+            options.put("currency", "INR");
+            options.put("theme.color", "#5FA30F");
+            options.put("order_id", razorpay_id);
+            String payment = String.valueOf(amount);        //orderamount.getText().toString();
+// amount is in paise so please multiple it by 100
+//Payment failed Invalid amount (should be passed in integer paise. Minimum value is 100 paise, i.e. ₹ 1)
+            double total = Double.parseDouble(payment);
+//            total = total * 100;
+            options.put("amount", total);
+
+//            JSONObject preFill = new JSONObject();
+//            preFill.put("email", "kamal.bunkar07@gmail.com");
+//            preFill.put("contact", "9144040888");
+
+//            options.put("prefill", preFill);
+
+            co.open(getActivity(), options);
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
 
@@ -633,6 +676,25 @@ Toast.makeText(getActivity(),"Data not found",Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onPaymentSuccess(String s, PaymentData paymentData) {
+        order_id = paymentData.getOrderId();
+        payment_id = paymentData.getPaymentId();
+        signature = paymentData.getSignature();
+
+        callcheckouthandle(order_id,payment_id,signature);
+
+        Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature);
+    }
+
+    private void callcheckouthandle(String order_id, String payment_id, String signature) {
+    }
+
+    @Override
+    public void onPaymentError(int i, String s, PaymentData paymentData) {
+
     }
 
 //    private void callcities() {

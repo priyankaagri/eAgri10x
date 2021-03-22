@@ -8,6 +8,7 @@ import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCreateBooking;
+import com.mobile.agri10x.models.GetCreateOrder;
 import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetLiveTrades;
@@ -77,6 +78,8 @@ public interface AgriInvestor {
     Call<GetBookingDeatils> wsGetBookingDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/checkEcollect")
     Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/createOrder")
+    Call<GetCreateOrder> wsCheckOrder(@Header("x-auth-token") String token, @Body RequestBody params);
 
 
 }

@@ -30,6 +30,7 @@ import com.mobile.agri10x.models.GetBookingDeatils;
 import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCreateBooking;
+import com.mobile.agri10x.models.GetCreateOrder;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.QueryCreatebooking;
 import com.mobile.agri10x.models.QueryCreatebookingCartData;
@@ -404,6 +405,10 @@ Log.d("getbookingid",bookingid);
 
                     if(response.body().getMessage().equals("Success")){
 
+                        double  bookingamout = response.body().getData().get(0).getBookingAmount();
+                        String userid = response.body().getData().get(0).getUserID();
+                        Log.d("param",bookingamout+ " "+ userid);
+                        callCreateOder(bookingamout,userid);
                     }else{
 
                     }
@@ -417,6 +422,51 @@ Log.d("getbookingid",bookingid);
 
             @Override
             public void onFailure(Call<GetBookingDeatils> call,
+                                  Throwable t) {
+                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void callCreateOder(double bookingamout, String userid) {
+
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+
+        jsonParams.put("Userid",userid);
+        jsonParams.put("amount",bookingamout);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetCreateOrder> loginCall = apiService.wsCheckOrder("123456",body);
+        loginCall.enqueue(new Callback<GetCreateOrder>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetCreateOrder> call,
+                                   Response<GetCreateOrder> response) {
+
+                Log.d("bookdeatils",response.toString());
+                if (response.isSuccessful()) {
+
+                    if(response.body().getMessage().equals("Success")){
+
+String razorpay_id = response.body().getData().getRazorpayOrderid();
+double amount = response.body().getData().getAmount();
+String key = response.body().getData().getKey();
+boolean initialpayment = response.body().getData().getInitiatePayment();
+                    }else{
+
+                    }
+
+                }
+                else {
+
+                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetCreateOrder> call,
                                   Throwable t) {
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }

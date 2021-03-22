@@ -437,6 +437,7 @@
                 >
 
                 <ImageView
+                    android:padding="8dp"
                     android:id="@+id/iv_menu_aboutus_id"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
@@ -487,6 +488,7 @@
                 >
 
                 <ImageView
+                    android:padding="8dp"
                     android:id="@+id/iv_menu_contact_us_id"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
@@ -537,6 +539,7 @@
                 >
 
                 <ImageView
+                    android:padding="8dp"
                     android:id="@+id/iv_menu_shareapp_id"
                     android:layout_width="32dp"
                     android:layout_height="32dp"

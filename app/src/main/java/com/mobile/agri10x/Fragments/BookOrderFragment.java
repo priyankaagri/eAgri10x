@@ -203,7 +203,14 @@ public class BookOrderFragment extends Fragment {
         paywithecollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.setFragment(new Payment_E_Collection_Fragment(),"parmentecollect");
+                strbookingamtval = bookingamt.getText().toString();
+                strbookingamtval = strbookingamtval.replaceAll("₹", "");
+              if(validateBookingamt(strbookingamtval))  {
+                  Bundle bundle = new Bundle();
+                  bundle.putString("amount", strbookingamtval);
+                    HomePageActivity.setFragment(new Payment_E_Collection_Fragment(),"parmentecollect");
+                }
+
             }
         });
         addressspinner_booking_amount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

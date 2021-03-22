@@ -8,6 +8,8 @@ import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCreateBooking;
+import com.mobile.agri10x.models.GetCreateCheckout;
+import com.mobile.agri10x.models.GetCreateCheckoutDetails;
 import com.mobile.agri10x.models.GetCreateOrder;
 import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetHomeProduct;
@@ -20,6 +22,7 @@ import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.GetUserByID;
+import com.mobile.agri10x.models.QueryCreateCheckOut;
 import com.mobile.agri10x.models.QueryCreatebooking;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.VerifyOTP;
@@ -76,6 +79,10 @@ public interface AgriInvestor {
     Call<GetCreateBooking> wsCreateBooking(@Header("x-auth-token") String token, @Body QueryCreatebooking queryCreatebooking);
     @POST("m/getBookingDetails")
     Call<GetBookingDeatils> wsGetBookingDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/createCheckout")
+    Call<GetCreateCheckout> wsGetCreateCheckOut(@Header("x-auth-token") String token, @Body QueryCreateCheckOut queryCreateCheckOut);
+    @POST("m/getCheckoutDetails")
+    Call<GetCreateCheckoutDetails> wsGetCheckoutDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/checkEcollect")
     Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/createOrder")

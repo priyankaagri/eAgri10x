@@ -455,7 +455,7 @@ double amount = response.body().getData().getAmount();
 String key = response.body().getData().getKey();
 boolean initialpayment = response.body().getData().getInitiatePayment();
                     }else{
-
+Toast.makeText(getActivity(),"Data not found",Toast.LENGTH_SHORT).show();
                     }
 
                 }

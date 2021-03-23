@@ -138,6 +138,20 @@
     <string name="tv_address_type">Address Type *</string>
     <string name="billing_title">Billing Address</string>
 
+
+    <string name="varity_id">Variety</string>
+    <string name="priceperkg_id">Price/KG</string>
+    <string name="quantity_id">Quantity(in KG)</string>
+    <string name="valid_from">Valid From</string>
+    <string name="valid_to">Valid To</string>
+    <string name="add_stock_d">ADD STOCK</string>
+    <string name="addresss">Address</string>
+    <string name="talukaa">Taluka</string>
+    <string name="pincode_txt">Pincode</string>
+    <string name="country_txt">Country</string>
+    <string name="tv_verity_add_stock">Veriety</string>
+    <string name="tv_commodity">Commodity</string>
+
     <string name="first_name_field_required">Please enter valid First Name.</string>
     <string name="last_name_field_required">Please enter valid Last Name.</string>
     <string name="enter_valide_email_id">Please enter valid Email Id.</string>

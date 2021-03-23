@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.core.widget.NestedScrollView
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/toolbar_add_stock"
                 android:layout_width="match_parent"
@@ -28,18 +30,584 @@
                     app:tint="@color/black" />
 
                 <TextView
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/btn_back_add_stock_id"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/btn_back_add_stock_id"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
                     android:text="@string/add_stock"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:text="@string/tv_commodity"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                    android:id="@+id/spinner_commodity_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:padding="4dp"
+
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_weight="1"
+                    android:background="@color/black"
+                    android:visibility="gone"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:text="@string/varity_id"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                    android:id="@+id/spinner_variety_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:padding="4dp"
+
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_weight="1"
+                    android:background="@color/black"
+                    android:visibility="gone"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:paddingLeft="8dp"
+                        android:text="@string/quantity_id"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_quantity_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:hint="@string/quantity_id"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:paddingStart="4dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:paddingLeft="8dp"
+                        android:text="@string/priceperkg_id"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_priceperkg_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:hint="@string/priceperkg_id"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:paddingStart="4dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_valid_from_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableRight="@drawable/calendar_new"
+                        android:hint="@string/valid_from"
+                        android:padding="15dp">
+
+                    </TextView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/text_color">
+
+                    </View>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_valid_date_to_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableRight="@drawable/calendar_new"
+                        android:hint="@string/valid_to"
+                        android:padding="15dp">
+
+                    </TextView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/text_color">
+
+                    </View>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="15dp"
+                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:paddingLeft="8dp"
+                            android:text="@string/addresss"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_address_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:hint="@string/addresss"
+                        android:inputType="textPersonName"
+                        android:padding="15dp"
+                        android:paddingStart="4dp"
+                        android:singleLine="true"
+
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:paddingLeft="8dp"
+                            android:text="@string/talukaa"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_taluka_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:hint="@string/talukaa"
+                        android:inputType="textPersonName"
+                        android:padding="15dp"
+                        android:paddingStart="4dp"
+                        android:singleLine="true"
+
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/proxima_nova_alt_light"
+                                android:paddingTop="16dp"
+                                android:text="@string/tv_state"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                            android:background="@color/darkgrey"
+                            android:id="@+id/spinner_state_id"
+                            android:layout_width="match_parent"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/proxima_nova_alt_light"
+                                android:paddingLeft="8dp"
+                                android:paddingTop="16dp"
+                                android:text="@string/tv_city"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                            android:background="@color/darkgrey"
+                            android:id="@+id/spinner_city_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/spinner_state"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:paddingStart="0dp"
+
+                        android:visibility="gone" />
+
+                    <Spinner
+                        android:id="@+id/spinner_city"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:paddingStart="0dp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/proxima_nova_alt_light"
+                                android:paddingLeft="8dp"
+                                android:text="@string/pincode_txt"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/edt_pincode_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:hint="@string/pincode_txt"
+                            android:inputType="textPersonName"
+                            android:padding="15dp"
+                            android:paddingStart="4dp"
+                            android:singleLine="true"
+                            android:textColorHint="@color/text_color"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/pincode_txt"
+                            android:padding="15dp">
+
+                        </TextView>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginRight="10dp"
+                            />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/proxima_nova_alt_light"
+                                android:paddingLeft="8dp"
+                                android:text="@string/country_txt"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/edt_country_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:hint="@string/country_txt"
+                            android:inputType="textPersonName"
+                            android:padding="15dp"
+                            android:paddingStart="4dp"
+                            android:singleLine="true"
+                            android:textColorHint="@color/text_color"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/country_txt"
+                            android:padding="15dp">
+
+                        </TextView>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                           />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/btn_round_corner"
+                android:text="@string/add_stock_d"></Button>
+
+
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+
+
+    </ScrollView>
 </LinearLayout>

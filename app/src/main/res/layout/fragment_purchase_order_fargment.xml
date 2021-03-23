@@ -45,6 +45,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -54,6 +55,7 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:visibility="gone"
                 android:id="@+id/fname_edt_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,6 +72,7 @@
 
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -80,6 +83,7 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:visibility="gone"
                 android:id="@+id/lname_edt_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -194,6 +198,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="+ Add new Address"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:textSize="18sp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="16dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_contact_name_id"
+                    />
+                <EditText
+                    android:id="@+id/contactpersonname"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/tv_contact_name_id"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="15sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_mobile_no_id"
+                    />
+                <EditText
+                    android:id="@+id/contactNumber"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:layout_marginBottom="15dp"
+                    android:hint="@string/tv_mobile_no_id"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="15sp" />
 
             </LinearLayout>
             <LinearLayout

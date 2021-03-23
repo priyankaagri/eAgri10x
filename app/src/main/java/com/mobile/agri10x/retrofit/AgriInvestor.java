@@ -26,6 +26,7 @@ import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.GetStates;
+import com.mobile.agri10x.models.GetStockByID;
 import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.GetVarieties;
@@ -111,5 +112,7 @@ public interface AgriInvestor {
     Call<GetCommodityById> wsGetCommodityByID(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("/m/getVarieties")
     Call<GetVarieties> wsGetVarieties(@Header("x-auth-token")String token, @Body RequestBody params);
+    @POST("/m/getStockbyUserID")
+    Call<GetStockByID> wsGetStockByID(@Header("x-auth-token")String token, @Body RequestBody params);
 
 }

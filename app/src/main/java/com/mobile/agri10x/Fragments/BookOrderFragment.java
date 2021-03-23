@@ -144,7 +144,6 @@ public class BookOrderFragment extends Fragment {
         edt_packagingdatail=view.findViewById(R.id.packagingdatail);
         totalamt=view.findViewById(R.id.totalamt);
         paywithgateway=view.findViewById(R.id.checkout_btne);
-
         paywithecollect=view.findViewById(R.id.paywithecollect);
         addDeliveryaddress=view.findViewById(R.id.addDeliveryaddress);
         add_billingAddress=view.findViewById(R.id.add_billingAddress);
@@ -287,14 +286,14 @@ public class BookOrderFragment extends Fragment {
                 strpackagingdetails = edt_packagingdatail.getText().toString();
 
                 Log.d("valuestosend",struserid+" "+billingaddressID+" "+shippingaddressId+" "+strdelcontactperosn+" "+strmobileno+
-                        " "+strpercentinpoint+" "+strbookingamtasparam+" "+strpendingamtasparam+" "+strpackagingdetails+" "+strdelnote);
+                        " "+strpercentinpoint+" "+strbookingamtasparam+" "+strpendingamtasparam+" "+strdelnote+" "+strpackagingdetails);
 
                 if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
                         && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno)
                         && validateperval(strpercentinpoint)  && validateBookingamt(strbookingamtasparam) &&  validatePendingAmt(strpendingamtasparam))
 
                 {
-                    callapicreatebooking(struserid, billingaddressID, shippingaddressId, strdelnote, strpercentinpoint, strbookingamtasparam, strpendingamtasparam, strdelcontactperosn, strmobileno, strpackagingdetails);
+                    callapicreatebooking(struserid, billingaddressID, shippingaddressId, strdelcontactperosn, strmobileno, strpercentinpoint, strbookingamtasparam, strpendingamtasparam, strdelnote, strpackagingdetails);
                 }
 
             }
@@ -1008,7 +1007,7 @@ public class BookOrderFragment extends Fragment {
     }
 
     private boolean validateaddresstype(String addrressType) {
-        if (addrressType.isEmpty() || addrressType == null) {
+        if (addrressType.isEmpty() || addrressType == null ||addrressType.equals("Select Address Type")) {
             Toast.makeText(getActivity(),
                     "Address Type is required", Toast.LENGTH_SHORT).show();
             return false;
@@ -1079,8 +1078,8 @@ public class BookOrderFragment extends Fragment {
 
 
 
-    private void callapicreatebooking(String struserid, String billingaddressID, String shippingaddressId,String strdelnote,String strpercentval,
-    String strbookingamtval,String strpendingamtval,String strdelcontactperosn,String strmobileno,String strpackagingdetails) {
+    private void callapicreatebooking(String struserid, String billingaddressID, String shippingaddressId,String strdelcontactperosn,String strmobileno,
+    String strpercentinpoint,String strbookingamtasparam,String strpendingamtasparam,String strdelnote,String strpackagingdetails) {
         dialog=new Alert().pleaseWait();
 
         QueryCreatebookingCartData  queryCreatebookingCartData = new QueryCreatebookingCartData();
@@ -1095,9 +1094,9 @@ public class BookOrderFragment extends Fragment {
         queryCreatebooking.setBillingAddressID(billingaddressID);
         queryCreatebooking.setShippingAddressID(shippingaddressId);
         queryCreatebooking.setOrderNotes(strdelnote);
-        queryCreatebooking.setPercentage(Double.parseDouble(strpercentval));
-        queryCreatebooking.setBookingAmount(Double.parseDouble(strbookingamtval));
-        queryCreatebooking.setPendingAmount(Double.parseDouble(strpendingamtval));
+        queryCreatebooking.setPercentage(Double.parseDouble(strpercentinpoint));
+        queryCreatebooking.setBookingAmount(Double.parseDouble(strbookingamtasparam));
+        queryCreatebooking.setPendingAmount(Double.parseDouble(strpendingamtasparam));
         queryCreatebooking.setDeliveryContactPerson(strdelcontactperosn);
         queryCreatebooking.setDeliveryContactPerson(strmobileno);
         queryCreatebooking.setPackagingDetails(strpackagingdetails);

@@ -248,12 +248,14 @@
                 </LinearLayout>
 
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:padding="4dp"
+
                     android:id="@+id/spinner_state_deliv_id"
+                    android:paddingStart="0dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
+
 
                     />
                 <View
@@ -298,8 +300,9 @@
 
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
 
-                    android:paddingStart="0dp"
+
                     android:id="@+id/spinner_city_deliv_id"
+                    android:paddingStart="0dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"

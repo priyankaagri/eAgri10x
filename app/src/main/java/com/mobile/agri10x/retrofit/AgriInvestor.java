@@ -24,10 +24,12 @@ import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.GetStates;
+import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.QueryCreateCheckOut;
 import com.mobile.agri10x.models.QueryCreatebooking;
 import com.mobile.agri10x.models.UpdateCart;
+import com.mobile.agri10x.models.UpdateUser;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getAddressData;
@@ -75,7 +77,9 @@ public interface AgriInvestor {
     @POST("m/getCommAccToCat")
     Call<getCommAccToCat>wsGetCommAccToCat(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getUserByID")
-    Call<GetUserByID>wsGetUserById(@Header("x-auth-token") String token, @Body RequestBody params);
+    Call<GetUser>wsGetUserById(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/updateUser")
+    Call<UpdateUser> wsGetUpdateUser(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addAddress")
     Call<GetAddAddress>wsGetAddAddress(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/createBooking")

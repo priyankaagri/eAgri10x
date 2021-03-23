@@ -37,6 +37,7 @@ import com.mobile.agri10x.models.GetCreateBooking;
 import com.mobile.agri10x.models.GetCreateOrder;
 import com.mobile.agri10x.models.GetStates;
 import com.mobile.agri10x.models.GetStatesDatum;
+import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.QueryCreatebooking;
 import com.mobile.agri10x.models.QueryCreatebookingCartData;
@@ -325,12 +326,12 @@ public class BookOrderFragment extends Fragment {
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<GetUserByID> loginCall = apiService.wsGetUserById("123456",body);
-        loginCall.enqueue(new Callback<GetUserByID>() {
+        final Call<GetUser> loginCall = apiService.wsGetUserById("123456",body);
+        loginCall.enqueue(new Callback<GetUser>() {
             @SuppressLint("WrongConstant")
             @Override
-            public void onResponse(Call<GetUserByID> call,
-                                   Response<GetUserByID> response) {
+            public void onResponse(Call<GetUser> call,
+                                   Response<GetUser> response) {
 
                 Log.d("getnameapi",response.toString());
                 if (response.isSuccessful()) {
@@ -345,7 +346,7 @@ public class BookOrderFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<GetUserByID> call,
+            public void onFailure(Call<GetUser> call,
                                   Throwable t) {
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }

@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.ArrayMap;
@@ -20,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ import com.mobile.agri10x.Adapter.SimpleListAdapter;
 import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
+import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.GetAddAddress;
 import com.mobile.agri10x.models.GetBookingDeatils;
 import com.mobile.agri10x.models.GetCheckCollect;
@@ -71,6 +75,7 @@ import retrofit2.Response;
 public class BookOrderFragment extends Fragment {
     Activity activity;
     Context context;
+    AlertDialog dialog;
     SimpleListAdapter mSimpleListAdapter;
     List<GetStatesDatum> getstateArrayList = new ArrayList<>();
     List<GetCitiesDatum> getCityeArrayList = new ArrayList<>();
@@ -218,9 +223,8 @@ public class BookOrderFragment extends Fragment {
         Log.d("getbookingvalue",strpercentval);
 
                 if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
-                        && validateMobileNo(strmobileno) && validateContactPerson(strdelcontactperosn)
-                && validateperval(strpercentval)  && validateBookingamt(strbookingamtval) &&  validatePendingAmt(strpendingamtval)
-           )
+                         && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno)
+                && validateperval(strpercentval)  && validateBookingamt(strbookingamtval) &&  validatePendingAmt(strpendingamtval))
 
                 {
                     callapicreatebooking(struserid, billingaddressID, shippingaddressId, strdelnote, strpercentval, strbookingamtval, strpendingamtval, strdelcontactperosn, strmobileno, strpackagingdetails);
@@ -922,7 +926,7 @@ public class BookOrderFragment extends Fragment {
     private boolean validateContactPerson(String strdelcontactperosn) {
         if (strdelcontactperosn.isEmpty() || strdelcontactperosn == null  ) {
             Toast.makeText(getActivity(),
-                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
+                    "Contact Person Name Required", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -1056,6 +1060,8 @@ public class BookOrderFragment extends Fragment {
 
     private void callapicreatebooking(String struserid, String billingaddressID, String shippingaddressId,String strdelnote,String strpercentval,
     String strbookingamtval,String strpendingamtval,String strdelcontactperosn,String strmobileno,String strpackagingdetails) {
+        dialog=new Alert().pleaseWait();
+
         QueryCreatebookingCartData  queryCreatebookingCartData = new QueryCreatebookingCartData();
         queryCreatebookingCartData.setMessage("Success");
         queryCreatebookingCartData.setProducts(TradeValueAddCart.ProductsInCartlist);
@@ -1090,8 +1096,9 @@ public class BookOrderFragment extends Fragment {
             public void onResponse(Call<GetCreateBooking> call,
                                    Response<GetCreateBooking> response) {
 
-                Log.d("resendotpres", response.toString());
+                Log.d("createbooking", response.toString());
                 if (response.isSuccessful()) {
+
  bookingid= response.body().getData().getId();
 Log.d("getbookingid",bookingid);
 
@@ -1104,6 +1111,7 @@ Log.d("getbookingid",bookingid);
             @Override
             public void onFailure(Call<GetCreateBooking> call,
                                   Throwable t) {
+
 
             }
         });
@@ -1124,7 +1132,7 @@ Log.d("getbookingid",bookingid);
             @Override
             public void onResponse(Call<GetBookingDeatils> call,
                                    Response<GetBookingDeatils> response) {
-
+                dialog.dismiss();
                 Log.d("bookdeatils",response.toString());
                 if (response.isSuccessful()) {
 
@@ -1148,6 +1156,7 @@ Log.d("getbookingid",bookingid);
             @Override
             public void onFailure(Call<GetBookingDeatils> call,
                                   Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
@@ -1251,4 +1260,33 @@ Toast.makeText(getActivity(),"im there",Toast.LENGTH_SHORT).show();
 
     }
 
+    public class Alert {
+        public void alert(String title, String body) {
+            final AlertDialog.Builder Alert = new AlertDialog.Builder(getActivity());
+            Alert.setCancelable(false)
+                    .setTitle(title)
+                    .setMessage(body);
+            Alert.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            Alert.create().show();
+        }
+
+
+        public AlertDialog pleaseWait() {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+            View mView = getLayoutInflater().inflate(R.layout.alert_progress_spinning, null);
+            ProgressBar pb = mView.findViewById(R.id.progressBar);
+            mBuilder.setView(mView);
+            mBuilder.setCancelable(false);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+            return dialog;
+        }
+
+
+    }
 }

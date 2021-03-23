@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/proxima_nova_alt_light"
-                    android:hint="abc"
+                    android:hint="Enter First Name"
                     android:inputType="textPersonName"
 
                     />
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/proxima_nova_alt_light"
-                    android:hint="abc"
+                    android:hint="Enter Last Name"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -168,7 +168,7 @@
                     android:layout_marginTop="10dp"
                     android:drawableRight="@drawable/iconverify"
                     android:fontFamily="@font/proxima_nova_alt_light"
-                    android:hint="xxx@gmail.com" />
+           />
 
                 <TextView
                     android:id="@+id/tv_email_error_id"
@@ -204,7 +204,7 @@
                     android:hint="**********"
                     android:inputType="number"
                     android:maxLength="10"
-                    android:text="8983847941" />
+                  />
 
             </LinearLayout>
 

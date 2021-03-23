@@ -33,10 +33,10 @@ public class GetBookingDeatilsDatum {
     private Double percentage;
     @SerializedName("Booking_Amount")
     @Expose
-    private Integer bookingAmount;
+    private double bookingAmount;
     @SerializedName("Pending_Amount")
     @Expose
-    private Integer pendingAmount;
+    private double pendingAmount;
     @SerializedName("Partial_Payment")
     @Expose
     private Boolean partialPayment;
@@ -137,7 +137,7 @@ public class GetBookingDeatilsDatum {
         this.percentage = percentage;
     }
 
-    public Integer getBookingAmount() {
+    public double getBookingAmount() {
         return bookingAmount;
     }
 
@@ -145,7 +145,7 @@ public class GetBookingDeatilsDatum {
         this.bookingAmount = bookingAmount;
     }
 
-    public Integer getPendingAmount() {
+    public double getPendingAmount() {
         return pendingAmount;
     }
 

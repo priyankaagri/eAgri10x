@@ -30,10 +30,10 @@ public class GetCreateBookData {
     private Double percentage;
     @SerializedName("Booking_Amount")
     @Expose
-    private Integer bookingAmount;
+    private double bookingAmount;
     @SerializedName("Pending_Amount")
     @Expose
-    private Integer pendingAmount;
+    private double pendingAmount;
     @SerializedName("Partial_Payment")
     @Expose
     private Boolean partialPayment;
@@ -129,19 +129,19 @@ public class GetCreateBookData {
         this.percentage = percentage;
     }
 
-    public Integer getBookingAmount() {
+    public double getBookingAmount() {
         return bookingAmount;
     }
 
-    public void setBookingAmount(Integer bookingAmount) {
+    public void setBookingAmount(double bookingAmount) {
         this.bookingAmount = bookingAmount;
     }
 
-    public Integer getPendingAmount() {
+    public double getPendingAmount() {
         return pendingAmount;
     }
 
-    public void setPendingAmount(Integer pendingAmount) {
+    public void setPendingAmount(double pendingAmount) {
         this.pendingAmount = pendingAmount;
     }
 

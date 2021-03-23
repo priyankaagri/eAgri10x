@@ -30,6 +30,7 @@ import com.mobile.agri10x.Fragments.YourOrderFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetBookingCheckOutHandling;
 import com.mobile.agri10x.models.GetCheckCollect;
+import com.mobile.agri10x.models.GetOrderCheckOutHandling;
 import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetProductsInCartProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -63,7 +64,8 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
     public static BottomNavigationView bottomNavigationView;
     static AppCompatActivity context;
     private LiveNetworkMonitor mNetworkMonitor;
-    String order_id="", payment_id= "",signature="", bookingid="";
+    String order_id="", payment_id= "",signature="", bookingid_frombookorderfrag="";
+    boolean getbookorpurchase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -343,7 +345,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
             Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
         }
     }
-      public  void startpayment(String razorpay_id, double amount, String key) {
+      public  void startpayment(String razorpay_id, double amount, String key,String bookingid,boolean isbooking) {
 
           final HomePageActivity activity= this;
 
@@ -373,6 +375,8 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
 //            options.put("prefill", preFill);
 
               co.open(activity, options);
+              bookingid_frombookorderfrag = bookingid;
+              getbookorpurchase = isbooking;
           } catch (Exception e) {
               Toast.makeText(HomePageActivity.this, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
               e.printStackTrace();
@@ -384,12 +388,17 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
         order_id = paymentData.getOrderId();
         payment_id = paymentData.getPaymentId();
         signature = paymentData.getSignature();
+if(getbookorpurchase){
+    callcheckouthandleforbook(order_id,payment_id,signature,bookingid_frombookorderfrag);
+}else{
+    callcheckouthandleforpurchase(order_id,payment_id,signature,bookingid_frombookorderfrag);
+}
 
-callcheckouthandle(order_id,payment_id,signature,bookingid);
-        Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature+" "+bookingid);
+        Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature+" "+bookingid_frombookorderfrag);
 
 
     }
+
 
 
 
@@ -397,15 +406,62 @@ callcheckouthandle(order_id,payment_id,signature,bookingid);
     public void onPaymentError(int i, String s, PaymentData paymentData) {
         Log.d("paymenterroe",s);
     }
+    private void callcheckouthandleforpurchase(String order_id, String payment_id, String signature, String bookingid_frombookorderfrag) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
 
+        jsonParams.put("razorpay_payment_id",payment_id);
+        jsonParams.put("razorpay_order_id",order_id);
+        jsonParams.put("razorpay_signature",signature);
+        jsonParams.put("bookingID",bookingid_frombookorderfrag);
+        jsonParams.put("Userid",SessionManager.getKeyTokenUser(HomePageActivity.this));
 
-    private void callcheckouthandle(String order_id, String payment_id, String signature, String bookingid) {
+        Log.d("getparamsforpurchase",payment_id+" "+order_id+" "+signature+" "+bookingid_frombookorderfrag);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetOrderCheckOutHandling> loginCall = apiService.wsCheckOrderCheckOutHandling("123456",body);
+        loginCall.enqueue(new Callback<GetOrderCheckOutHandling>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetOrderCheckOutHandling> call,
+                                   Response<GetOrderCheckOutHandling> response) {
+
+                Log.d("getnameapi",response.toString());
+                if (response.isSuccessful()) {
+
+                    if(response.body().getMessage().equals("Payment Successful")){
+                        HomePageActivity.removeFragment(new Payment_E_Collection_Fragment());
+                        HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
+
+                        Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(HomePageActivity.this,"Payment Failed",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                else {
+
+                    Toast.makeText(HomePageActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetOrderCheckOutHandling> call,
+                                  Throwable t) {
+                Toast.makeText(HomePageActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void callcheckouthandleforbook(String order_id, String payment_id, String signature, String bookingid) {
         Map<String, Object> jsonParams = new ArrayMap<>();
 
         jsonParams.put("razorpay_payment_id",payment_id);
         jsonParams.put("razorpay_order_id",order_id);
         jsonParams.put("razorpay_signature",signature);
         jsonParams.put("bookingID",bookingid);
+        jsonParams.put("Userid",SessionManager.getKeyTokenUser(HomePageActivity.this));
 
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();

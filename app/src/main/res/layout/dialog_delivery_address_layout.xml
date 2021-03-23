@@ -54,6 +54,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -74,7 +75,7 @@
                         android:paddingTop="16dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/tv_contact_name_id"
-                         />
+                        />
 
                 </LinearLayout>
 
@@ -94,6 +95,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -114,7 +116,7 @@
                         android:paddingTop="16dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/tv_mobile_no_id"
-                         />
+                        />
 
                 </LinearLayout>
 
@@ -135,6 +137,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -160,6 +163,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/addressline1"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -204,7 +208,7 @@
 
                 <EditText
                     android:paddingStart="4dp"
-
+                    android:id="@+id/addressline2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -250,7 +254,6 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
 
                     />
                 <View
@@ -301,7 +304,7 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
+
                     />
                 <View
                     android:visibility="gone"
@@ -339,10 +342,11 @@
                         android:paddingTop="16dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/tv_pincode"
-                         />
+                        />
 
                 </LinearLayout>
                 <EditText
+                    android:id="@+id/pincode_txt"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -382,13 +386,13 @@
                         android:paddingTop="16dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/tv_address_type"
-                         />
+                        />
 
                 </LinearLayout>
 
                 <Spinner
-                    android:paddingStart="0dp"
                     android:id="@+id/spinner_address_type_deliv_id"
+                    android:paddingStart="0dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
@@ -416,8 +420,8 @@
                 android:gravity="center">
 
                 <Button
+                    android:id="@+id/btn_save_delivery_add_id"
 
-                    android:id="@+id/btn_save_dilevery_add_id"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"

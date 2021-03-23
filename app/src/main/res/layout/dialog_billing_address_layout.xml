@@ -79,6 +79,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/addressline1"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -123,7 +124,7 @@
 
                 <EditText
                     android:paddingStart="4dp"
-
+                    android:id="@+id/addressline2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -169,7 +170,7 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
+
 
                     />
                 <View
@@ -220,7 +221,7 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
+
                     />
                 <View
                     android:visibility="gone"
@@ -262,6 +263,7 @@
 
                 </LinearLayout>
                 <EditText
+                    android:id="@+id/pincode_txt"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

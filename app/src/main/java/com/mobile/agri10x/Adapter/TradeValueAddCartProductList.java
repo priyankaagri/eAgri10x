@@ -80,7 +80,10 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         holder.product_garde.setText("Grade: "+ProductsInCartlist.get(position).getGrade());
         holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
-        holder.total_price.setText(String.valueOf(ProductsInCartlist.get(position).getPrice()));
+
+        String totl_pric = String.format("%.2f", (ProductsInCartlist.get(position).getPrice()));
+        holder.total_price.setText(totl_pric);
+
 
         holder.avlstock.setText(String.valueOf("Avl Quantity : "+ProductsInCartlist.get(position).getTotalAvailable()*ProductsInCartlist.get(position).getWeight()+" KG"));
 
@@ -89,8 +92,10 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
 
 
         String value = holder.product_total_weight.getText().toString();
-        double totol_price=ProductsInCartlist.get(position).getPrice()*Double.parseDouble(value);
-        holder.product_price.setText("Total : ₹ "+totol_price);
+        String pricepeoduct = String.format("%.2f", ProductsInCartlist.get(position).getPrice()*Double.parseDouble(value));
+// double totol_price=ProductsInCartlist.get(position).getPrice()*Double.parseDouble(value);
+        holder.product_price.setText("Total : ₹ "+pricepeoduct);
+
 
 
 

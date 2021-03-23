@@ -96,7 +96,9 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                 .into(holder.product_img);
 
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
-        holder.product_price.setText("Price/KG : "+"₹ "+dataList.get(position).getPricePerLot());
+        String pricepeoduct = String.format("%.2f", dataList.get(position).getPricePerLot());
+        holder.product_price.setText("Price/KG : "+"₹ "+pricepeoduct);
+
         holder.txt_varity.setText(dataList.get(position).getVarietyName());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,7 +226,8 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                     avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getLotSize()*response.body().getData().get(0).getTotalAvailable()+" kg");
 
 
-                    price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
+                    String pricepeoduct = String.format("%.2f", response.body().getData().get(0).getPricePerLot());
+                    price_txt.setText("Price/KG: "+""+"₹ "+pricepeoduct);
 
 
                     variety.setText(response.body().getData().get(0).getVarietyName());

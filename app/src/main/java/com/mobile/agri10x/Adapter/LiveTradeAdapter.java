@@ -95,7 +95,9 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                 .fit()
                 .into(holder.product_img);
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
-        holder.product_price.setText("Price/KG : "+"₹ "+dataList.get(position).getPricePerLot());
+        String pricepeoduct = String.format("%.2f", dataList.get(position).getPricePerLot());
+        holder.product_price.setText("Price/KG : "+"₹ "+pricepeoduct);
+
         holder.product_location.setText(dataList.get(position).getCity()+" "+ dataList.get(position).getState());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override

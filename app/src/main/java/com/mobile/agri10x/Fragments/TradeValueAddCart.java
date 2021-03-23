@@ -151,7 +151,9 @@ Button checkout_btn;
 
                   amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
 
-                    totaltradeamount.setText("₹ "+amt);
+                    String pricepeoduct = String.format("%.2f", subTotal + withconveniencecharge + withhandlefees + withcommision);
+
+                    totaltradeamount.setText("₹ " + pricepeoduct);
                     if(ProductsInCartlist.size()>0)
                     {
 

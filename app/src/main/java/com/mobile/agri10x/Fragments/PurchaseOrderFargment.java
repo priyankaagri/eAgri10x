@@ -77,6 +77,7 @@ public class PurchaseOrderFargment extends Fragment implements PaymentResultWith
     String order_id="", payment_id= "",signature="";
     double damt;
     double pendingamount;
+    boolean isbooking = false;
     private static final String[] bookamount = new String[]{
             "Select Booking Amount","25%","50%","75%"
     };
@@ -106,7 +107,9 @@ public class PurchaseOrderFargment extends Fragment implements PaymentResultWith
         but_back=view.findViewById(R.id.but_back);
         amt = getArguments().getString("value");
         damt = Double.parseDouble(amt);
-        totalamt.setText("₹ "+damt);
+        String pricepeoduct = String.format("%.2f", Double.parseDouble(amt));
+
+        totalamt.setText("₹ " + pricepeoduct);
         Log.d("getamt",amt);
         Callapiforname();
         CallapigetAddress();
@@ -119,20 +122,22 @@ public class PurchaseOrderFargment extends Fragment implements PaymentResultWith
                 strdelnote = deliverynote.getText().toString();
 
                strbookingamt = totalamt.getText().toString();
-
+                strbookingamtval = totalamt.getText().toString();
+                strbookingamtval = strbookingamtval.replaceAll("₹", "");
+                Log.d("strbookingamtval",strbookingamtval);
                 strpackagingdetails = packagingdatail.getText().toString();
                 strdelcontactperosn = "";
                 Log.d("getbookingvalue",strpercentval);
                 // && validateDelNot(strdelnote)
                 //&& validateContactPerson(strdelcontactperosn)
                 //&& validatePackageDetail(strpackagingdetails)
-                if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
-                        && validateperval(strpercentval)  && validateBookingamt(strbookingamtval) &&  validatePendingAmt(strpendingamtval)
-                        && validateMobileNo(strmobileno) )
-
-                {
-                    callapicreatebooking(struserid, billingaddressID, shippingaddressId, strdelnote, strbookingamt, strdelcontactperosn, strmobileno, strpackagingdetails);
-                }
+//                if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
+//                        && validateperval(strpercentval)  && validateBookingamt(strbookingamtval) &&  validatePendingAmt(strpendingamtval)
+//                        && validateMobileNo(strmobileno) )
+//
+//                {
+                    callapicreatebooking(struserid, billingaddressID, shippingaddressId, strdelnote, strbookingamtval, strdelcontactperosn, strmobileno, strpackagingdetails);
+             //   }
 
             }
         });
@@ -238,6 +243,241 @@ public class PurchaseOrderFargment extends Fragment implements PaymentResultWith
         });
         return view;
     }
+    private void callpercentageofamt(int percentvalue, double damt) {
+        if(percentvalue ==25){
+            double withtwetyfive = (damt / 100.0f) *25;
+            bookingamt.setText("₹ "+withtwetyfive);
+            pendingamount = damt - withtwetyfive;
+            pendingamt.setText("₹ "+pendingamount);
+        }
+        else if(percentvalue == 50){
+            double withfifty = (damt / 100.0f) *50;
+            bookingamt.setText("₹ "+withfifty);
+            pendingamount = damt - withfifty;
+            pendingamt.setText("₹ "+pendingamount);
+        }
+
+        else if (percentvalue == 75){
+
+            double withseventyfive = (damt / 100.0f) *75;
+            bookingamt.setText("₹ "+withseventyfive);
+            pendingamount = damt - withseventyfive;
+            pendingamt.setText("₹ "+pendingamount);
+        }
+    }
+    private void deliveryAddressDialog() {
+        Dialog deliveryAddressDialog;
+        deliveryAddressDialog = new Dialog(context);
+        //dialog.setContentView(R.layout.quate_for_price);
+        deliveryAddressDialog.setContentView(R.layout.dialog_delivery_address_layout);
+// dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
+        deliveryAddressDialog.getWindow().setLayout(width,height);
+        //dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        deliveryAddressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        deliveryAddressDialog.setCancelable(true);
+        deliveryAddressDialog.setCanceledOnTouchOutside(true);
+        deliveryAddressDialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+        ImageView cancle_btn= deliveryAddressDialog.findViewById(R.id.cancle_btn);
+        spinner_state_deliv_id=deliveryAddressDialog.findViewById(R.id.spinner_state_deliv_id);
+        spinner_city_deliv_id=deliveryAddressDialog.findViewById(R.id.spinner_city_deliv_id);
+        cancle_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deliveryAddressDialog.dismiss();
+            }
+        });
+        deliveryAddressDialog.show();
+    }
+
+    private void billingAddressDialog() {
+        Dialog dialog;
+        dialog = new Dialog(context);
+        //dialog.setContentView(R.layout.quate_for_price);
+        dialog.setContentView(R.layout.dialog_billing_address_layout);
+// dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
+        dialog.getWindow().setLayout(width,height);
+        //dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+        ImageView cancle_btn= dialog.findViewById(R.id.cancle_btn);
+        spinner_state_billing_id=dialog.findViewById(R.id.spinner_state_billing_id);
+        spinner_city_billing_id=dialog.findViewById(R.id.spinner_city_billing_id);
+
+        cancle_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+    private void Callapiforname() {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(getActivity()));
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetUserByID> loginCall = apiService.wsGetUserById("123456",body);
+        loginCall.enqueue(new Callback<GetUserByID>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetUserByID> call,
+                                   Response<GetUserByID> response) {
+
+                Log.d("getnameapi",response.toString());
+                if (response.isSuccessful()) {
+
+                    fname_edt_txt.setText(response.body().getData().getFirstname());
+                    lname_edt_txt.setText(response.body().getData().getLastname());
+                }
+                else {
+
+                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetUserByID> call,
+                                  Throwable t) {
+                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void CallapigetAddress() {
+
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+
+        jsonParams.put("userID",SessionManager.getKeyTokenUser(getActivity()));
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<getAddress> loginCall = apiService.wsGetAddress("123456",body);
+        loginCall.enqueue(new Callback<getAddress>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<getAddress> call,
+                                   Response<getAddress> response) {
+
+                Log.d("getapiaddress",response.toString());
+
+
+                if (response.isSuccessful()) {
+                    billingadrressstringlist.add("Select Address");
+                    deliveryadrressstringlist.add("Select Address");
+                    billingadd.addAll(response.body().getData());
+                    Log.d("getaddressbilling", String.valueOf(billingadd.size()));
+
+
+                    for(int i=0; i < billingadd.size();i++){
+                        String addstr = billingadd.get(i).getAddressLine1()+" , "+billingadd.get(i).getAddressLine2()+" , "+billingadd.get(i).getCity()+" , "+billingadd.get(i).getState()+" , "+billingadd.get(i).getPincode()+" , India";
+                        billingadrressstringlist.add(addstr);
+                        deliveryadrressstringlist.add(addstr);
+                    }
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, billingadrressstringlist);
+                    addressspinner_billing.setAdapter(adapter1);
+                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, deliveryadrressstringlist);
+                    addressspinner_delivery.setAdapter(adapter2);
+
+                }
+                else {
+
+                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<getAddress> call,
+                                  Throwable t) {
+                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean validateMobileNo(String strmobileno) {
+        if (strmobileno.isEmpty() || strmobileno.length() < 10 ) {
+            Toast.makeText(getActivity(),
+                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+    private boolean validateContactPerson(String strdelcontactperosn) {
+        if (strdelcontactperosn.isEmpty() || strdelcontactperosn == null  ) {
+            Toast.makeText(getActivity(),
+                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validatePendingAmt(String strpendingamtval) {
+        if (strpendingamtval.isEmpty() || strpendingamtval == null  ) {
+            Toast.makeText(getActivity(),
+                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateBookingamt(String strbookingamtval) {
+        if (strbookingamtval.isEmpty() || strbookingamtval == null  ) {
+            Toast.makeText(getActivity(),
+                    "Booking Amount Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateperval(String strpercentval) {
+        if (strpercentval.isEmpty() || strpercentval == null  || strpercentval.equals("Select Booking Amount")) {
+            Toast.makeText(getActivity(),
+                    "Select Booking Amount", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+
+    private boolean validateshippingadd(String shippingaddressId) {
+        if (shippingaddressId.isEmpty() || shippingaddressId == null ) {
+            Toast.makeText(getActivity(),
+                    "Delivery  Address Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validatebillingAdressID(String billingaddressID) {
+        if (billingaddressID.isEmpty() || billingaddressID == null ) {
+            Toast.makeText(getActivity(),
+                    "Billing Address Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateUserId(String struserid) {
+        if (struserid.isEmpty() || struserid == null ) {
+            Toast.makeText(getActivity(),
+                    "Userid required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+
+
+
+
 
     private void callapicreatebooking(String struserid, String billingaddressID, String shippingaddressId,String strdelnote,String strbookingamt
                                      ,String strdelcontactperosn,String strmobileno,String strpackagingdetails) {
@@ -291,11 +531,13 @@ public class PurchaseOrderFargment extends Fragment implements PaymentResultWith
         });
     }
 
+
     private void callcreatecheckoutdeatils(String bookingid) {
+
         Map<String, Object> jsonParams = new ArrayMap<>();
 
 
-        jsonParams.put("bookingID",bookingid);
+        jsonParams.put("checkoutID",bookingid);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
@@ -310,7 +552,7 @@ public class PurchaseOrderFargment extends Fragment implements PaymentResultWith
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Success")){
-                        double  bookingamout = response.body().getData().getOrderAmount();
+                        int  bookingamout = response.body().getData().getOrderAmount();
                         String userid = response.body().getData().getUserID();
                         Log.d("param",bookingamout+ " "+ userid);
                         callCreateOder(bookingamout,userid);
@@ -418,286 +660,10 @@ public class PurchaseOrderFargment extends Fragment implements PaymentResultWith
         }
     }
 
-    private boolean validateMobileNo(String strmobileno) {
-        if (strmobileno.isEmpty() || strmobileno.length() < 10 ) {
-            Toast.makeText(getActivity(),
-                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateContactPerson(String strdelcontactperosn) {
-        if (strdelcontactperosn.isEmpty() || strdelcontactperosn == null  ) {
-            Toast.makeText(getActivity(),
-                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validatePendingAmt(String strpendingamtval) {
-        if (strpendingamtval.isEmpty() || strpendingamtval == null  ) {
-            Toast.makeText(getActivity(),
-                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateBookingamt(String strbookingamtval) {
-        if (strbookingamtval.isEmpty() || strbookingamtval == null  ) {
-            Toast.makeText(getActivity(),
-                    "Booking Amount Required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateperval(String strpercentval) {
-        if (strpercentval.isEmpty() || strpercentval == null  || strpercentval.equals("Select Booking Amount")) {
-            Toast.makeText(getActivity(),
-                    "Select Booking Amount", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateshippingadd(String shippingaddressId) {
-        if (shippingaddressId.isEmpty() || shippingaddressId == null ) {
-            Toast.makeText(getActivity(),
-                    "Delivery  Address Required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validatebillingAdressID(String billingaddressID) {
-        if (billingaddressID.isEmpty() || billingaddressID == null ) {
-            Toast.makeText(getActivity(),
-                    "Billing Address Required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateUserId(String struserid) {
-        if (struserid.isEmpty() || struserid == null ) {
-            Toast.makeText(getActivity(),
-                    "Userid required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-    private void callpercentageofamt(int percentvalue, double damt) {
-        if(percentvalue ==25){
-            double withtwetyfive = (damt / 100.0f) *25;
-            bookingamt.setText("₹ "+withtwetyfive);
-            pendingamount = damt - withtwetyfive;
-            pendingamt.setText("₹ "+pendingamount);
-        }
-        else if(percentvalue == 50){
-            double withfifty = (damt / 100.0f) *50;
-            bookingamt.setText("₹ "+withfifty);
-            pendingamount = damt - withfifty;
-            pendingamt.setText("₹ "+pendingamount);
-        }
-
-        else if (percentvalue == 75){
-
-            double withseventyfive = (damt / 100.0f) *75;
-            bookingamt.setText("₹ "+withseventyfive);
-            pendingamount = damt - withseventyfive;
-            pendingamt.setText("₹ "+pendingamount);
-        }
-    }
-    private void deliveryAddressDialog() {
-        Dialog deliveryAddressDialog;
-        deliveryAddressDialog = new Dialog(context);
-        //dialog.setContentView(R.layout.quate_for_price);
-        deliveryAddressDialog.setContentView(R.layout.dialog_delivery_address_layout);
-// dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
-        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
-        deliveryAddressDialog.getWindow().setLayout(width,height);
-        //dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        deliveryAddressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        deliveryAddressDialog.setCancelable(true);
-        deliveryAddressDialog.setCanceledOnTouchOutside(true);
-        deliveryAddressDialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-        ImageView cancle_btn= deliveryAddressDialog.findViewById(R.id.cancle_btn);
-        spinner_state_deliv_id=deliveryAddressDialog.findViewById(R.id.spinner_state_deliv_id);
-        spinner_city_deliv_id=deliveryAddressDialog.findViewById(R.id.spinner_city_deliv_id);
-        cancle_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deliveryAddressDialog.dismiss();
-            }
-        });
-        deliveryAddressDialog.show();
-    }
-
-    private void billingAddressDialog() {
-        Dialog dialog;
-        dialog = new Dialog(context);
-        //dialog.setContentView(R.layout.quate_for_price);
-        dialog.setContentView(R.layout.dialog_billing_address_layout);
-// dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
-        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
-        dialog.getWindow().setLayout(width,height);
-        //dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(true);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-        ImageView cancle_btn= dialog.findViewById(R.id.cancle_btn);
-        spinner_state_billing_id=dialog.findViewById(R.id.spinner_state_billing_id);
-        spinner_city_billing_id=dialog.findViewById(R.id.spinner_city_billing_id);
-
-        cancle_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-    }
 
 
-//    private void callcities() {
-//        AgriInvestor apiService = ApiHandler.getApiService();
-//        final Call<List<GetCities>> loginCall = apiService.wsgetCities(
-//                "123456");
-//        loginCall.enqueue(new Callback<List<GetCities>>() {
-//            @SuppressLint("WrongConstant")
-//            @Override
-//            public void onResponse(Call<List<GetCities>> call,
-//                                   Response<List<GetCities>> response) {
-//
-//                if (response.isSuccessful()) {
-//                    getstateArrayList = response.body();
-//                    Log.d("getresponse", String.valueOf(getstateArrayList.size()));
-//
-//
-//
-//
-//
-//                    if(!getstateArrayList.isEmpty()){
-//
-//
-//                        //                    Commoditycategory.add("Select");
-//                        for(int i=0; i < getstateArrayList.size();i++){
-//                            statecategory.add(getstateArrayList.get(i).getState());
-//                        }
-//                        Log.d("statehold", String.valueOf(statecategory.size()));
-//
-//                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
-//                        // commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
-//
-//
-//                    }else{
-//
-//                        statecategory.add("No Data");
-//                        mSimpleListAdapter = new SimpleListAdapter(context, statecategory);
-//                        //commodity.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, statecategory));
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<GetCities>> call,
-//                                  Throwable t) {
-//                Toast.makeText(getContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
-    private void Callapiforname() {
-        Map<String, Object> jsonParams = new ArrayMap<>();
 
 
-        jsonParams.put("userID", SessionManager.getKeyTokenUser(getActivity()));
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
-        AgriInvestor apiService = ApiHandler.getApiService();
-// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<GetUserByID> loginCall = apiService.wsGetUserById("123456",body);
-        loginCall.enqueue(new Callback<GetUserByID>() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onResponse(Call<GetUserByID> call,
-                                   Response<GetUserByID> response) {
-
-                Log.d("getnameapi",response.toString());
-                if (response.isSuccessful()) {
-
-                    fname_edt_txt.setText(response.body().getData().getFirstname());
-                    lname_edt_txt.setText(response.body().getData().getLastname());
-                }
-                else {
-
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetUserByID> call,
-                                  Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void CallapigetAddress() {
-
-        Map<String, Object> jsonParams = new ArrayMap<>();
-
-
-        jsonParams.put("userID",SessionManager.getKeyTokenUser(getActivity()));
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
-        AgriInvestor apiService = ApiHandler.getApiService();
-// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<getAddress> loginCall = apiService.wsGetAddress("123456",body);
-        loginCall.enqueue(new Callback<getAddress>() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onResponse(Call<getAddress> call,
-                                   Response<getAddress> response) {
-
-                Log.d("getapiaddress",response.toString());
-
-
-                if (response.isSuccessful()) {
-                    billingadrressstringlist.add("Select Address");
-                    deliveryadrressstringlist.add("Select Address");
-                    billingadd.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(billingadd.size()));
-
-
-                    for(int i=0; i < billingadd.size();i++){
-                        String addstr = billingadd.get(i).getAddressLine1()+" , "+billingadd.get(i).getAddressLine2()+" , "+billingadd.get(i).getCity()+" , "+billingadd.get(i).getState()+" , "+billingadd.get(i).getPincode()+" , India";
-                        billingadrressstringlist.add(addstr);
-                        deliveryadrressstringlist.add(addstr);
-                    }
-                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, billingadrressstringlist);
-                    addressspinner_billing.setAdapter(adapter1);
-                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, deliveryadrressstringlist);
-                    addressspinner_delivery.setAdapter(adapter2);
-
-                }
-                else {
-
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<getAddress> call,
-                                  Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public void onPaymentSuccess(String s, PaymentData paymentData) {

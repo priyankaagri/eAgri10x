@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,12 +39,14 @@
         android:layout_marginTop="@dimen/activity_margin_large">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -55,6 +56,7 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:visibility="gone"
                 android:id="@+id/fname_edt_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,6 +73,7 @@
 
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -81,6 +84,7 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:visibility="gone"
                 android:id="@+id/lname_edt_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,105 +98,157 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/text_color"
                 android:textSize="16sp" />
-             <LinearLayout
-            android:layout_marginTop="15dp"
-                 android:layout_marginHorizontal="15dp"
-                 android:background="@drawable/address_bg"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="@string/billing_Address"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/card_border"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <Spinner
-
-                    android:id="@+id/addressspinner_billing"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown" />
-
-
-            </LinearLayout>
-                 <TextView
-                     android:id="@+id/add_billingAddress"
-                     android:background="@drawable/backgroun_hollow"
-                     android:layout_marginHorizontal="15dp"
-                    android:layout_marginVertical="15dp"
-                     android:padding="10dp"
-                     android:textStyle="bold"
-                  android:textAlignment="center"
-                     android:textColor="@color/black"
-                     android:fontFamily="@font/proxima_nova_bold"
-                     android:textSize="16sp"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:text="+ Add new Address"/>
-            </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginHorizontal="15dp"
-            android:background="@drawable/address_bg"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="@string/deivery_address"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/card_border"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <Spinner
-                    android:id="@+id/addressspinner_delivery"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown" />
-
-            </LinearLayout>
-            <TextView
-android:id="@+id/addDeliveryaddress"
-                android:background="@drawable/backgroun_hollow"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginVertical="15dp"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:fontFamily="@font/proxima_nova_bold"
-                android:textSize="16sp"
+                android:background="@drawable/address_bg"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+ Add new Address"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:text="@string/billing_Address"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/card_border"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <Spinner
+
+                        android:id="@+id/addressspinner_billing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
+
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/add_billingAddress"
+                    android:background="@drawable/backgroun_hollow"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="15dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+ Add new Address"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                android:background="@drawable/address_bg"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:text="@string/deivery_address"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/card_border"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <Spinner
+                        android:id="@+id/addressspinner_delivery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/addDeliveryaddress"
+                    android:background="@drawable/backgroun_hollow"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="15dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+ Add new Address"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:textSize="18sp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="16dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_contact_name_id"
+                    />
+                <EditText
+                    android:id="@+id/contactpersonname"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/tv_contact_name_id"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="15sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_mobile_no_id"
+                    />
+                <EditText
+                    android:id="@+id/contactNumber"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:layout_marginBottom="15dp"
+                    android:hint="@string/tv_mobile_no_id"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -245,12 +301,12 @@ android:id="@+id/addDeliveryaddress"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/card_border"
                 android:orientation="vertical"
-               >
+                >
                 <Spinner
                     android:id="@+id/addressspinner_booking_amount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                     />
+                    />
 
 
             </LinearLayout>

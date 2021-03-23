@@ -96,7 +96,10 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                 .fit()
                 .into(holder.product_img);
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
-        holder.product_price.setText("Price/KG : "+"₹ "+dataList.get(position).getPricePerLot());
+        String pricepeoduct = String.format("%.2f", dataList.get(position).getPricePerLot());
+        holder.product_price.setText("Price/KG : "+"₹ "+pricepeoduct);
+
+
         holder.product_location.setText(dataList.get(position).getCity()+" "+ dataList.get(position).getState());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,8 +226,10 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
 
                     avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getLotSize()*response.body().getData().get(0).getTotalAvailable()+" kg");
 
+                    String pricepeoduct = String.format("%.2f", response.body().getData().get(0).getPricePerLot());
 
-                    price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
+                    price_txt.setText("Price/KG: "+""+"₹ "+pricepeoduct);
+
 
 
                     variety.setText(response.body().getData().get(0).getVarietyName());

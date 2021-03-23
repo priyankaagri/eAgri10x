@@ -98,4 +98,5 @@ public interface AgriInvestor {
     Call<GetStates> wsGetStates(@Header("x-auth-token") String token);
     @POST("m/getCities")
     Call<GetCities> wsGetCities(@Header("x-auth-token") String token, @Body RequestBody params);
+
 }

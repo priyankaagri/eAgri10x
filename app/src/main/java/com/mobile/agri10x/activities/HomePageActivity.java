@@ -20,11 +20,16 @@ import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mobile.agri10x.Fragments.BookOrderFragment;
+import com.mobile.agri10x.Fragments.Payment_E_Collection_Fragment;
 import com.mobile.agri10x.Fragments.TradeValueAddCart;
 import com.mobile.agri10x.Fragments.HomeFragment;
 import com.mobile.agri10x.Fragments.MenuFragment;
 import com.mobile.agri10x.Fragments.SeeAllLiveTradingFragment;
+import com.mobile.agri10x.Fragments.YourOrderFragment;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.models.GetBookingCheckOutHandling;
+import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetProductsInCartProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -32,6 +37,9 @@ import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentData;
+import com.razorpay.PaymentResultWithDataListener;
 
 import org.json.JSONObject;
 
@@ -41,12 +49,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomePageActivity extends AppCompatActivity {
+public class HomePageActivity extends AppCompatActivity implements PaymentResultWithDataListener {
     FragmentManager fragmentManager;
   public static   List<GetProductsInCartProductData> ProductsInCartlist = new ArrayList<>();
     public static FragmentManager mFragmentManager;
@@ -54,7 +63,7 @@ public class HomePageActivity extends AppCompatActivity {
     public static BottomNavigationView bottomNavigationView;
     static AppCompatActivity context;
     private LiveNetworkMonitor mNetworkMonitor;
-
+    String order_id="", payment_id= "",signature="", bookingid="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -334,6 +343,105 @@ public class HomePageActivity extends AppCompatActivity {
             Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
         }
     }
+      public  void startpayment(String razorpay_id, double amount, String key) {
+
+          final HomePageActivity activity= this;
+
+          final Checkout co = new Checkout();
+          co.setKeyID(key);
+
+          try {
+              JSONObject options = new JSONObject();
+              options.put("name", "Agri10x");
+              options.put("description", "(ICognitive Global Pvt Ltd)");
+//You can omit the image option to fetch the image from dashboard
+              options.put("image", "https://data.agri10x.com/images/Icognitive%20logo2.png");
+              options.put("currency", "INR");
+              options.put("theme.color", "#5FA30F");
+              options.put("order_id", razorpay_id);
+              String payment = String.valueOf(amount);        //orderamount.getText().toString();
+// amount is in paise so please multiple it by 100
+//Payment failed Invalid amount (should be passed in integer paise. Minimum value is 100 paise, i.e. ₹ 1)
+              double total = Double.parseDouble(payment);
+//            total = total * 100;
+              options.put("amount", 1);//total
+
+//            JSONObject preFill = new JSONObject();
+//            preFill.put("email", "kamal.bunkar07@gmail.com");
+//            preFill.put("contact", "9144040888");
+
+//            options.put("prefill", preFill);
+
+              co.open(activity, options);
+          } catch (Exception e) {
+              Toast.makeText(HomePageActivity.this, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+              e.printStackTrace();
+          }
+      }
+
+    @Override
+    public void onPaymentSuccess(String s, PaymentData paymentData) {
+        order_id = paymentData.getOrderId();
+        payment_id = paymentData.getPaymentId();
+        signature = paymentData.getSignature();
+
+callcheckouthandle(order_id,payment_id,signature,bookingid);
+        Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature+" "+bookingid);
 
 
+    }
+
+
+
+    @Override
+    public void onPaymentError(int i, String s, PaymentData paymentData) {
+        Log.d("paymenterroe",s);
+    }
+
+
+    private void callcheckouthandle(String order_id, String payment_id, String signature, String bookingid) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+        jsonParams.put("razorpay_payment_id",payment_id);
+        jsonParams.put("razorpay_order_id",order_id);
+        jsonParams.put("razorpay_signature",signature);
+        jsonParams.put("bookingID",bookingid);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetBookingCheckOutHandling> loginCall = apiService.wsCheckBookingCheckOutHandling("123456",body);
+        loginCall.enqueue(new Callback<GetBookingCheckOutHandling>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetBookingCheckOutHandling> call,
+                                   Response<GetBookingCheckOutHandling> response) {
+
+                Log.d("getnameapi",response.toString());
+                if (response.isSuccessful()) {
+
+                    if(response.body().getMessage().equals("Payment Successful")){
+                        HomePageActivity.removeFragment(new Payment_E_Collection_Fragment());
+                        HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
+
+                        Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(HomePageActivity.this,"Payment Failed",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                else {
+
+                    Toast.makeText(HomePageActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetBookingCheckOutHandling> call,
+                                  Throwable t) {
+                Toast.makeText(HomePageActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

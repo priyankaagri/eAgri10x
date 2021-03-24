@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -21,10 +21,10 @@
 
 
         <TextView
-            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/but_back"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/but_back"
             android:text="Menu"
@@ -36,29 +36,30 @@
 
 
     <androidx.core.widget.NestedScrollView
-        android:layout_below="@id/toolbar1"
-        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar1"
+        android:layout_marginTop="24dp"
         android:background="@android:color/white"
         android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/darkgrey"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/rl_menu_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
-                >
+                android:padding="8dp">
 
                 <ImageView
+
                     android:id="@+id/iv_menu_profile_id"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
@@ -91,22 +92,15 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/rl_menu_verified_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
-
-                >
+                android:padding="8dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_menu_verify_account_id"
@@ -141,22 +135,14 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
-
             <RelativeLayout
                 android:id="@+id/rl_menu_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
-
-                >
+                android:padding="8dp">
 
                 <ImageView
                     android:id="@+id/iv_menu_payment_id"
@@ -191,20 +177,15 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
 
             <RelativeLayout
                 android:id="@+id/rl_menu_add_stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
+                android:padding="8dp"
 
                 >
 
@@ -241,21 +222,14 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
             <RelativeLayout
                 android:id="@+id/rl_menu_manage_stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
-
-                >
+                android:padding="8dp">
 
                 <ImageView
                     android:id="@+id/iv_menu_managestock_id"
@@ -290,22 +264,14 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
-
             <RelativeLayout
                 android:id="@+id/rl_menu_your_orders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
-
-                >
+                android:padding="8dp">>
 
                 <ImageView
                     android:id="@+id/iv_menu_yourorders_id"
@@ -340,20 +306,15 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
 
             <RelativeLayout
                 android:id="@+id/rl_menu_your_wish_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-                >
+                android:padding="8dp">
 
                 <ImageView
                     android:id="@+id/iv_menu_yourwishlist_id"
@@ -388,21 +349,10 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
-
             <RelativeLayout
-                android:background="@color/gray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-
-
-                >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/iv_menu_referearn_id"
@@ -433,17 +383,18 @@
                 android:id="@+id/rl_menu_about_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-                >
+                android:padding="8dp">
 
                 <ImageView
-                    android:padding="8dp"
                     android:id="@+id/iv_menu_aboutus_id"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
+                    android:padding="8dp"
                     android:src="@drawable/about__menu"
                     android:textAlignment="center" />
 
@@ -471,30 +422,22 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
-
             <RelativeLayout
                 android:id="@+id/rl_menu_contact_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
-
-                >
+                android:padding="8dp">>
 
                 <ImageView
-                    android:padding="8dp"
                     android:id="@+id/iv_menu_contact_us_id"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
+                    android:padding="8dp"
                     android:src="@drawable/contactus_menu"
                     android:textAlignment="center" />
 
@@ -503,10 +446,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/iv_menu_contact_us_id"
-                    android:layout_toRightOf="@+id/iv_menu_contact_us_id"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
+                    android:layout_toRightOf="@+id/iv_menu_contact_us_id"
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_contst_us"
                     android:textColor="@color/black"
@@ -522,30 +465,22 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/gray" />
-
-
             <RelativeLayout
                 android:id="@+id/rl_menu_share_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
                 android:orientation="horizontal"
-
-
-                >
+                android:padding="8dp">
 
                 <ImageView
-                    android:padding="8dp"
                     android:id="@+id/iv_menu_shareapp_id"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
+                    android:padding="8dp"
                     android:src="@drawable/shareapp_menu"
                     android:textAlignment="center" />
 
@@ -554,10 +489,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/iv_menu_shareapp_id"
-                    android:layout_toRightOf="@+id/iv_menu_shareapp_id"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
+                    android:layout_toRightOf="@+id/iv_menu_shareapp_id"
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_share_app"
                     android:textColor="@color/black"
@@ -577,33 +512,30 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/gray"
+                android:orientation="horizontal">
 
-                >
                 <Button
-                    android:layout_marginTop="24dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:id="@+id/btn_menu_logout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/btn_round_corner"
                     android:text="Logout"
                     android:visibility="visible" />
 
                 <TextView
-                    android:textAlignment="center"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/btn_menu_logout"
                     android:id="@+id/tv_menu_version"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_menu_logout"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="24dp"
                     android:text="@string/tv_version_1_0_0"
-                    />
+                    android:textAlignment="center" />
             </RelativeLayout>
         </LinearLayout>
 

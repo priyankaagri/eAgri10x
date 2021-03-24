@@ -54,8 +54,10 @@ import org.json.JSONObject;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
 import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
@@ -152,9 +154,12 @@ public class BookOrderFragment extends Fragment {
         amt = getArguments().getString("value");
         damt = Double.parseDouble(amt);
 
+        double number = Double.parseDouble(amt);
+        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+        String currency = format.format(number);
+        System.out.println("Currency in INDIA : " + currency);
         String pricepeoduct = String.format("%.2f", Double.parseDouble(amt));
-
-        totalamt.setText("₹ " + pricepeoduct);
+        totalamt.setText(currency);
         Log.d("getamt", String.valueOf(damt));
 
         callapigetAddress();

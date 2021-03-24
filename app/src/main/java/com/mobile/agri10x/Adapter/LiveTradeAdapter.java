@@ -39,7 +39,9 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -95,8 +97,12 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                 .fit()
                 .into(holder.product_img);
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
+        double number = dataList.get(position).getPricePerLot();
+        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+        String currency = format.format(number);
+        System.out.println("Currency herereee: " + currency);
         String pricepeoduct = String.format("%.2f", dataList.get(position).getPricePerLot());
-        holder.product_price.setText("Price/KG : "+"₹ "+pricepeoduct);
+        holder.product_price.setText("Price/KG : "+currency);
 
         holder.product_location.setText(dataList.get(position).getCity()+" "+ dataList.get(position).getState());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
@@ -225,7 +231,11 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                     avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getLotSize()*response.body().getData().get(0).getTotalAvailable()+" kg");
 
 
-                    price_txt.setText("Price/KG: "+""+"₹ "+response.body().getData().get(0).getPricePerLot());
+                    double number1 = response.body().getData().get(0).getPricePerLot();
+                    NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+                    String currency1 = format1.format(number1);
+                    System.out.println("Currency in INDIA : " + currency1);
+                    price_txt.setText("Price/KG: "+currency1);
 
 
                     variety.setText(response.body().getData().get(0).getVarietyName());

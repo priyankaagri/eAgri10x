@@ -58,8 +58,10 @@ import org.json.JSONObject;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
@@ -154,8 +156,12 @@ public class PurchaseOrderFargment extends Fragment  {
         damt = Double.parseDouble(amt);
         String pricepeoduct = String.format("%.2f", Double.parseDouble(amt));
 
-        totalamt.setText("₹ " + pricepeoduct);
-        Log.d("getamt",amt);
+        double number1 = Double.parseDouble(amt);
+        NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+        String currency1 = format1.format(number1);
+        System.out.println("Currency in INDIA : " + currency1);
+       // String pricepeoduct = String.format("%.2f", Double.parseDouble(amt));
+        totalamt.setText(currency1);
 
         callapigetAddress();
 

@@ -40,7 +40,9 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -96,8 +98,13 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                 .into(holder.product_img);
 
         holder.txt_product_name.setText(dataList.get(position).getCommodityName());
+
+        double number1 = dataList.get(position).getPricePerLot();
+        NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+        String currency1 = format1.format(number1);
+        System.out.println("Currency in INDIA : " + currency1);
         String pricepeoduct = String.format("%.2f", dataList.get(position).getPricePerLot());
-        holder.product_price.setText("Price/KG : "+"₹ "+pricepeoduct);
+        holder.product_price.setText("Price/KG : "+currency1);
 
         holder.txt_varity.setText(dataList.get(position).getVarietyName());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
@@ -225,9 +232,12 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 
                     avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getLotSize()*response.body().getData().get(0).getTotalAvailable()+" kg");
 
-
+                    double number = response.body().getData().get(0).getPricePerLot();
+                    NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+                    String currency = format.format(number);
+                    System.out.println("Currency in INDIA : " + currency);
                     String pricepeoduct = String.format("%.2f", response.body().getData().get(0).getPricePerLot());
-                    price_txt.setText("Price/KG: "+""+"₹ "+pricepeoduct);
+                    price_txt.setText("Price/KG: "+currency);
 
 
                     variety.setText(response.body().getData().get(0).getVarietyName());

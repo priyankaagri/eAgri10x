@@ -35,8 +35,10 @@ import org.json.JSONObject;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import okhttp3.RequestBody;
@@ -151,9 +153,12 @@ Button checkout_btn;
 
                   amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
 
+                    double number = subTotal + withconveniencecharge + withhandlefees + withcommision;
+                    NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+                    String currency = format.format(number);
+                    System.out.println("Currency in INDIA : " + currency);
                     String pricepeoduct = String.format("%.2f", subTotal + withconveniencecharge + withhandlefees + withcommision);
-
-                    totaltradeamount.setText("₹ " + pricepeoduct);
+                    totaltradeamount.setText(currency);
                     if(ProductsInCartlist.size()>0)
                     {
 

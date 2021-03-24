@@ -38,8 +38,10 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -81,8 +83,12 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
 
+        double number1 = ProductsInCartlist.get(position).getPrice();
+        NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+        String currency1 = format1.format(number1);
+        System.out.println("Currency in INDIA : " + currency1);
         String totl_pric = String.format("%.2f", (ProductsInCartlist.get(position).getPrice()));
-        holder.total_price.setText(totl_pric);
+        holder.total_price.setText(currency1);
 
 
         holder.avlstock.setText(String.valueOf("Avl Quantity : "+ProductsInCartlist.get(position).getTotalAvailable()*ProductsInCartlist.get(position).getWeight()+" KG"));
@@ -92,10 +98,12 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
 
 
         String value = holder.product_total_weight.getText().toString();
-        String pricepeoduct = String.format("%.2f", ProductsInCartlist.get(position).getPrice()*Double.parseDouble(value));
-// double totol_price=ProductsInCartlist.get(position).getPrice()*Double.parseDouble(value);
-        holder.product_price.setText("Total : ₹ "+pricepeoduct);
 
+        double number = ProductsInCartlist.get(position).getPrice() * Double.parseDouble(value);
+        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+        String currency = format.format(number);
+        String pricepeoduct = String.format("%.2f", ProductsInCartlist.get(position).getPrice() * Double.parseDouble(value));
+        holder.product_price.setText("Total: " + currency);
 
 
 

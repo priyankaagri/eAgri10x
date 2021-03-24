@@ -9,7 +9,7 @@
     tools:context=".Fragments.SeeAllDailyDealsFeaturedFragment">
 <LinearLayout
     android:id="@+id/lin1"
-    android:layout_marginBottom="56dp"
+   android:layout_above="@+id/totallayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -67,6 +67,7 @@
 </LinearLayout>
 
 <RelativeLayout
+    android:id="@+id/totallayout"
     android:layout_marginHorizontal="10dp"
     android:layout_marginBottom="60dp"
     android:layout_alignParentBottom="true"

@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.agri10x.Fragments.TradeValueAddCart;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
@@ -198,6 +199,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
 
                                         if(int_enterValue>=500){
                                             if (response.body().getData().get(0).getWeight()>=int_enterValue){
+                                                dialog.dismiss();
                                                 String quantity= String.valueOf(int_enterValue/50);
                                                 CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName(),response.body().getData().get(0).getPricePerLot());
                                             }else {
@@ -286,6 +288,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                 if (response.isSuccessful()) {
                     HomePageActivity.getProductinCart();
                     Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();
+                    HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
                 }
                 else {
 

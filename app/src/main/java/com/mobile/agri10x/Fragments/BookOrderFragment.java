@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetAddAddress;
+import com.mobile.agri10x.models.GetBookOrder;
 import com.mobile.agri10x.models.GetBookingDeatils;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCitiesDatum;
@@ -1161,7 +1162,7 @@ Log.d("getbookingid",bookingid);
                         double  bookingamout = response.body().getData().get(0).getBookingAmount();
                         String userid = response.body().getData().get(0).getUserID();
                         Log.d("param",bookingamout+ " "+ userid);
-                        callCreateOder(bookingamout,userid);
+                        callCreateOder(bookingamout,userid,bookingid);
                     }else{
 
                     }
@@ -1182,22 +1183,23 @@ Log.d("getbookingid",bookingid);
         });
     }
 
-    private void callCreateOder(double bookingamout, String userid) {
+    private void callCreateOder(double bookingamout, String userid,String bookingid) {
 
         Map<String, Object> jsonParams = new ArrayMap<>();
 
 
         jsonParams.put("Userid",userid);
         jsonParams.put("amount",bookingamout);
+        jsonParams.put("Order_ID",bookingid);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<GetCreateOrder> loginCall = apiService.wsCheckOrder("123456",body);
-        loginCall.enqueue(new Callback<GetCreateOrder>() {
+        final Call<GetBookOrder> loginCall = apiService.wsBookOrder("123456",body);
+        loginCall.enqueue(new Callback<GetBookOrder>() {
             @SuppressLint("WrongConstant")
             @Override
-            public void onResponse(Call<GetCreateOrder> call,
-                                   Response<GetCreateOrder> response) {
+            public void onResponse(Call<GetBookOrder> call,
+                                   Response<GetBookOrder> response) {
 
                 Log.d("bookdeatils",response.toString());
                 if (response.isSuccessful()) {
@@ -1222,7 +1224,7 @@ Toast.makeText(getActivity(),"Data not found",Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<GetCreateOrder> call,
+            public void onFailure(Call<GetBookOrder> call,
                                   Throwable t) {
                 Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
             }

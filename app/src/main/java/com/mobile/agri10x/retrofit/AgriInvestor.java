@@ -3,6 +3,7 @@ package com.mobile.agri10x.retrofit;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddAddress;
 import com.mobile.agri10x.models.GetAddProductToCart;
+import com.mobile.agri10x.models.GetBookOrder;
 import com.mobile.agri10x.models.GetBookingCheckOutHandling;
 import com.mobile.agri10x.models.GetBookingDeatils;
 import com.mobile.agri10x.models.GetCategories;
@@ -90,18 +91,20 @@ public interface AgriInvestor {
     Call<GetCreateBooking> wsCreateBooking(@Header("x-auth-token") String token, @Body QueryCreatebooking queryCreatebooking);
     @POST("m/getBookingDetails")
     Call<GetBookingDeatils> wsGetBookingDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/bookOrder")
+    Call<GetBookOrder> wsBookOrder(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/createCheckout")
     Call<GetCreateCheckout> wsGetCreateCheckOut(@Header("x-auth-token") String token, @Body QueryCreateCheckOut queryCreateCheckOut);
     @POST("m/getCheckoutDetails")
     Call<GetCreateCheckoutDetails> wsGetCheckoutDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
-    @POST("m/checkEcollect")
-    Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/createOrder")
     Call<GetCreateOrder> wsCheckOrder(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("/m/orderCheckoutHandling")
     Call<GetOrderCheckOutHandling> wsCheckOrderCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("/m/bookingCheckoutHandling")
     Call<GetBookingCheckOutHandling> wsCheckBookingCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
+    @POST("m/checkEcollect")
+    Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
     @GET("m/getStates")
     Call<GetStates> wsGetStates(@Header("x-auth-token") String token);
     @POST("m/getCities")

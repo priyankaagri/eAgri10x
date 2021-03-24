@@ -68,7 +68,7 @@
                 </LinearLayout>
 
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:id="@+id/spinner_commodity_id"
+                    android:id="@+id/spinner_commodity"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
@@ -116,7 +116,8 @@
                 </LinearLayout>
 
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:id="@+id/spinner_variety_id"
+                    android:id="@+id/spinner_variety"
+
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
@@ -164,7 +165,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/edt_quantity_id"
+                    android:id="@+id/edt_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -203,7 +204,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/edt_priceperkg_id"
+                    android:id="@+id/edt_priceperkg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -232,7 +233,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txt_valid_from_id"
+                        android:id="@+id/txt_valid_from"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -258,7 +259,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txt_valid_date_to_id"
+                        android:id="@+id/txt_valid_to"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -279,11 +280,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@drawable/background_grayplane"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
-
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -311,17 +312,17 @@
                     </LinearLayout>
 
                     <EditText
-                        android:id="@+id/edt_address_id"
+                        android:id="@+id/edt_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginHorizontal="15dp"
                         android:fontFamily="@font/proxima_nova_alt_light"
-                        android:hint="@string/addresss"
+                        android:hint="Address"
                         android:inputType="textPersonName"
                         android:padding="15dp"
                         android:paddingStart="4dp"
                         android:singleLine="true"
-
+                        android:textColorHint="@color/text_color"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -350,7 +351,7 @@
                     </LinearLayout>
 
                     <EditText
-                        android:id="@+id/edt_taluka_id"
+                        android:id="@+id/edt_taluka"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -360,9 +361,77 @@
                         android:padding="15dp"
                         android:paddingStart="4dp"
                         android:singleLine="true"
-
                         android:textSize="15sp" />
+
+
+
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:paddingLeft="8dp"
+                            android:text="State"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:id="@+id/spinner_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/darkgrey"/>
+
+
+
+                </LinearLayout>   <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:paddingLeft="8dp"
+                        android:text="City"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                    android:id="@+id/spinner_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/darkgrey"/>
+
+
+
+            </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -371,75 +440,12 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:fontFamily="@font/proxima_nova_alt_light"
-                                android:paddingTop="16dp"
-                                android:text="@string/tv_state"
-                                android:textColor="@color/black"
-                                android:textSize="18sp" />
 
-                        </LinearLayout>
-
-                        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                            android:background="@color/darkgrey"
-                            android:id="@+id/spinner_state_id"
-                            android:layout_width="match_parent"
-                            android:layout_marginHorizontal="8dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:fontFamily="@font/proxima_nova_alt_light"
-                                android:paddingLeft="8dp"
-                                android:paddingTop="16dp"
-                                android:text="@string/tv_city"
-                                android:textColor="@color/black"
-                                android:textSize="18sp" />
-
-                        </LinearLayout>
-
-                        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                            android:background="@color/darkgrey"
-                            android:id="@+id/spinner_city_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginHorizontal="8dp"
-                            android:layout_weight="1" />
-                    </LinearLayout>
 
                     <Spinner
-                        android:id="@+id/spinner_state"
+
                         style="@style/Widget.AppCompat.Spinner.Underlined"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -449,7 +455,7 @@
                         android:visibility="gone" />
 
                     <Spinner
-                        android:id="@+id/spinner_city"
+
                         style="@style/Widget.AppCompat.Spinner.Underlined"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -492,7 +498,7 @@
                         </LinearLayout>
 
                         <EditText
-                            android:id="@+id/edt_pincode_id"
+                            android:id="@+id/edt_pincode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="20dp"
@@ -556,7 +562,7 @@
                         </LinearLayout>
 
                         <EditText
-                            android:id="@+id/edt_country_id"
+                            android:id="@+id/edt_country"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="20dp"
@@ -590,13 +596,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginLeft="10dp"
-                           />
+                            />
                     </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>
 
             <Button
+                android:id="@+id/btn_addstock"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="20dp"

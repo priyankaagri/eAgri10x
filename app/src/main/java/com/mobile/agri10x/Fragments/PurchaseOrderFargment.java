@@ -1098,10 +1098,10 @@ public class PurchaseOrderFargment extends Fragment  {
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Success")){
-                        int  bookingamout = response.body().getData().getOrderAmount();
+                        int  purchaseamount = response.body().getData().getOrderAmount();
                         String userid = response.body().getData().getUserID();
-                        Log.d("param",bookingamout+ " "+ userid);
-                        callCreateOder(bookingamout,userid,orderid);
+                        Log.d("param",purchaseamount+ " "+ userid);
+                        callCreateOder(purchaseamount,userid,orderid);
 
                     }else{
 
@@ -1122,13 +1122,14 @@ public class PurchaseOrderFargment extends Fragment  {
         });
     }
 
-    private void callCreateOder(double bookingamout, String userid,String orderid) {
+    private void callCreateOder(double purchaseamount, String userid,String orderid) {
 
         Map<String, Object> jsonParams = new ArrayMap<>();
 
 
         jsonParams.put("Userid",userid);
-        jsonParams.put("amount",bookingamout);
+        jsonParams.put("amount",purchaseamount);
+        jsonParams.put("Order_ID",orderid);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);

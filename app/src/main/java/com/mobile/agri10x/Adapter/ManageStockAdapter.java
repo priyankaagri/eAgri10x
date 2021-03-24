@@ -54,10 +54,10 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
             holder.varified_value.setBackgroundResource(R.drawable.featured_red);
             holder.verified.setText("Non Verified");
         }
-        String strimg = stocklist.get(position).getId() + ".png";
+        String strimg = stocklist.get(position).getCommodityID()+".png";
         Log.d("stockimage", strimg);
-        String imm = "https://data.agri10x.com/images/products/" + strimg;
-        Log.d("immmm", imm);
+        String imageurl = "https://data.agri10x.com/images/products/"+strimg;
+        Log.d("managestockimageurl", imageurl);
         Picasso picasso = new Picasso.Builder(context)
                 .listener(new Picasso.Listener() {
                     @Override
@@ -66,7 +66,7 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
                     }
                 })
                 .build();
-        picasso.load("https://data.agri10x.com/images/products/" + strimg)
+        picasso.load(imageurl)
                 .into(holder.product_image);
     }
 

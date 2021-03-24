@@ -10,6 +10,9 @@ public class GetStockByIDDatum {
     @SerializedName("commodityName")
     @Expose
     private String commodityName;
+    @SerializedName("commodityID")
+    @Expose
+    private String commodityID;
     @SerializedName("varietyName")
     @Expose
     private String varietyName;
@@ -49,6 +52,14 @@ public class GetStockByIDDatum {
 
     public void setCommodityName(String commodityName) {
         this.commodityName = commodityName;
+    }
+
+    public String getCommodityID() {
+        return commodityID;
+    }
+
+    public void setCommodityID(String commodityID) {
+        this.commodityID = commodityID;
     }
 
     public String getVarietyName() {
@@ -114,5 +125,4 @@ public class GetStockByIDDatum {
     public void setId(String id) {
         this.id = id;
     }
-
 }

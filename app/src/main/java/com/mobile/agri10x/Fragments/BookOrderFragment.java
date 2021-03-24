@@ -420,23 +420,59 @@ public class BookOrderFragment extends Fragment {
     private void callpercentageofamt(int percentvalue, double damt) {
         if(percentvalue ==25){
             double withtwetyfive = (damt / 100.0f) *25;
-            bookingamt.setText("₹ "+withtwetyfive);
+
+
+
+            double number = (damt / 100.0f) *25;
+            NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+            String currency = format.format(number);
+            bookingamt.setText(currency);
+
+
             pendingamount = damt - withtwetyfive;
-            pendingamt.setText("₹ "+pendingamount);
+            double N1 = pendingamount;
+            NumberFormat formatP = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+            String currencyprice = formatP.format(N1);
+            pendingamt.setText(currencyprice);
+
         }
         else if(percentvalue == 50){
             double withfifty = (damt / 100.0f) *50;
-            bookingamt.setText("₹ "+withfifty);
+
+
+            double number = (damt / 100.0f) *50;
+            NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+            String currency = format.format(number);
+            bookingamt.setText(currency);
+
+
+//bookingamt.setText("₹ "+withfifty);
             pendingamount = damt - withfifty;
-            pendingamt.setText("₹ "+pendingamount);
+// pendingamt.setText("₹ "+pendingamount);
+            double N1 = pendingamount;
+            NumberFormat formatP = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+            String currencyprice = formatP.format(N1);
+            pendingamt.setText(currencyprice);
         }
 
         else if (percentvalue == 75){
 
             double withseventyfive = (damt / 100.0f) *75;
-            bookingamt.setText("₹ "+withseventyfive);
+
+            double number = (damt / 100.0f) *75;
+            NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+            String currency = format.format(number);
+            bookingamt.setText(currency);
+
+
+// bookingamt.setText("₹ "+withseventyfive);
             pendingamount = damt - withseventyfive;
-            pendingamt.setText("₹ "+pendingamount);
+// pendingamt .setText("₹ "+pendingamount);
+
+            double N1 = pendingamount;
+            NumberFormat formatP = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+            String currencyprice = formatP.format(N1);
+            pendingamt.setText(currencyprice);
         }
     }
 

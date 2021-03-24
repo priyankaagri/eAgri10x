@@ -249,6 +249,7 @@
 
                 android:textColor="@color/white" />
             <EditText
+                android:digits="0123456789"
                 android:text="500"
                 android:textAlignment="center"
                 android:layout_marginHorizontal="2dp"

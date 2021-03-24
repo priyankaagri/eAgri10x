@@ -33,6 +33,7 @@ import com.mobile.agri10x.models.GetStockByID;
 import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.GetVarieties;
+import com.mobile.agri10x.models.NegotiateRate;
 import com.mobile.agri10x.models.QueryCreateCheckOut;
 import com.mobile.agri10x.models.QueryCreatebooking;
 import com.mobile.agri10x.models.UpdateCart;
@@ -123,6 +124,8 @@ public interface AgriInvestor {
     Call<GetAddNewStock> wsGetAddNewStock(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("/m/getStockbyUserID")
     Call<GetStockByID> wsGetStockByID(@Header("x-auth-token")String token, @Body RequestBody params);
+    @POST("/m/negotiateRate")
+    Call<NegotiateRate> wsGetNegotiateRate(@Header("x-auth-token")String token, @Body RequestBody params);
 
 
 }

@@ -66,9 +66,11 @@
 
                     <EditText
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:id="@+id/edt_txt_name"
                         android:layout_width="match_parent"
                         android:padding="15dp"
                         android:hint="@string/name"
+                        android:editable="false"
                         android:textSize="15sp"
                         android:singleLine="true"
                         android:inputType="textPersonName"
@@ -108,12 +110,14 @@
 
                     </LinearLayout>
                     <EditText
+                        android:id="@+id/edt_txt_phone"
                         android:layout_width="match_parent"
                         android:padding="15dp"
                         android:hint="@string/phon_numbr"
-                        android:textSize="15sp"
-                        android:inputType="phone"
                         android:digits="0123456789"
+                        android:textSize="15sp"
+                        android:inputType="number"
+                        android:editable="false"
                         android:layout_marginHorizontal="20dp"
                         android:fontFamily="@font/proximanova_regular"
                         android:textColor="@color/black"
@@ -152,10 +156,12 @@
 
                     </LinearLayout>
                     <EditText
+                        android:id="@+id/edit_txt_emailid"
                         android:layout_width="match_parent"
                         android:padding="15dp"
                         android:hint="@string/email"
                         android:textSize="15sp"
+                        android:editable="false"
                         android:inputType="textEmailAddress"
                         android:layout_marginHorizontal="20dp"
                         android:fontFamily="@font/proximanova_regular"
@@ -193,12 +199,15 @@
 
                     </LinearLayout>
                     <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:id="@+id/edt_txt_comodity"
                         android:layout_width="match_parent"
                         android:padding="15dp"
                         android:hint="@string/commodity"
                         android:textSize="15sp"
                         android:layout_marginHorizontal="20dp"
                         android:inputType="textPersonName"
+                        android:editable="false"
                         android:fontFamily="@font/proximanova_regular"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_color"
@@ -240,6 +249,8 @@
 
                     </LinearLayout>
                     <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:id="@+id/edt_txt_varity"
                         android:layout_width="match_parent"
                         android:padding="15dp"
                         android:hint="@string/varity"
@@ -247,6 +258,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:fontFamily="@font/proximanova_regular"
                         android:textColor="@color/black"
+                        android:editable="false"
                         android:inputType="textPersonName"
                         android:textColorHint="@color/text_color"
                         android:background="@drawable/edt_txt_background"
@@ -281,6 +293,8 @@
 
                     </LinearLayout>
                     <EditText
+
+                        android:id="@+id/edt_txt_price_per_kg"
                         android:layout_width="match_parent"
                         android:padding="15dp"
                         android:hint="@string/price_per_kg"

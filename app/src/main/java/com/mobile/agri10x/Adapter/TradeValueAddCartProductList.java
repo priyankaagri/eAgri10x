@@ -171,12 +171,39 @@ int getWaight=holder.getAdapterPosition();
     }
 });
         picasso.load("https://data.agri10x.com/images/products/"+productimg).into(holder.product_img);
-holder.img_remove.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        CallApiRemoveProduct(ProductsInCartlist.get(position).getUserProductID(),position);
-    }
-});
+        holder.img_remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
+                builder.setTitle("Remove Product!");
+                builder.setMessage("Are you sure you want to Remove?");
+// add the buttons
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+// do something like...
+                        CallApiRemoveProduct(ProductsInCartlist.get(position).getUserProductID(), position);
+                    }
+
+
+                });
+
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+// do something like...
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Cancel", null);
+// create and show the alert dialog
+                androidx.appcompat.app.AlertDialog dialog = builder.create();
+                dialog.show();
+
+
+            }
+        });
     }
 
     private void CallApiUpdateCard(String userProductID, String quantity) {

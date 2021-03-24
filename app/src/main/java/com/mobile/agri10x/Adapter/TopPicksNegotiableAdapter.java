@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -33,6 +34,7 @@ import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetHomeProductData;
+import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.SessionManager;
@@ -56,7 +58,13 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
     private List<GetHomeProductData> dataList;
     boolean check;
     AlertDialog dialog;
-
+    Dialog Quitpricedialog;
+    ImageView cancle_btn;
+    EditText edit_txt_emailid;
+    EditText edt_txt_phone;
+    EditText edt_txt_name,edt_txt_varity,edt_txt_comodity,edt_txt_price_per_kg;
+    Button submit_btn;
+    String name_fromdialog="",telephone_fromdialog="",email_fromdialog="",commodityName_fromdialog="",varietyName_fromdialog="",priceperkg_fromdialog="";
     public TopPicksNegotiableAdapter(List<GetHomeProductData> toppicksproductlist, Context context, boolean check) {
         this.dataList=toppicksproductlist;
         this.context=context;
@@ -99,24 +107,128 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
         holder.txt_quoteprice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog;
-                dialog = new Dialog(context);
-                dialog.setContentView(R.layout.quate_for_price);
-// dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.setCancelable(true);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-                ImageView cancle_btn= dialog.findViewById(R.id.cancle_btn);
-                cancle_btn.setOnClickListener(new View.OnClickListener() {
+                String useridstring = SessionManager.getKeyTokenUser(context);
+                if(useridstring.equalsIgnoreCase("NULL")){
+                    Toast.makeText(context, "Please SignIn First!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Quitpricedialog = new Dialog(context);
+                    Quitpricedialog.setContentView(R.layout.quate_for_price);
+                    Quitpricedialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    Quitpricedialog.setCancelable(true);
+                    Quitpricedialog.setCanceledOnTouchOutside(true);
+                    Quitpricedialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+                    cancle_btn = Quitpricedialog.findViewById(R.id.cancle_btn);
+                    edit_txt_emailid = Quitpricedialog.findViewById(R.id.edit_txt_emailid);
+                    edt_txt_phone = Quitpricedialog.findViewById(R.id.edt_txt_phone);
+                    edt_txt_name = Quitpricedialog.findViewById(R.id.edt_txt_name);
+                    edt_txt_varity = Quitpricedialog.findViewById(R.id.edt_txt_varity);
+                    edt_txt_comodity = Quitpricedialog.findViewById(R.id.edt_txt_comodity);
+                    edt_txt_price_per_kg = Quitpricedialog.findViewById(R.id.edt_txt_price_per_kg);
+                    submit_btn = Quitpricedialog.findViewById(R.id.submit_btn);
+                    if(SessionManager.isLoggedIn(context)) {
+                        edt_txt_name.setFocusable(false);
+                        edt_txt_name.setEnabled(false);
+                        edt_txt_name.setCursorVisible(false);
+                        edt_txt_name.setKeyListener(null);
+
+                        edt_txt_comodity.setFocusable(false);
+                        edt_txt_comodity.setEnabled(false);
+                        edt_txt_comodity.setCursorVisible(false);
+                        edt_txt_comodity.setKeyListener(null);
+
+
+                        edt_txt_varity.setFocusable(false);
+                        edt_txt_varity.setEnabled(false);
+                        edt_txt_varity.setCursorVisible(false);
+                        edt_txt_varity.setKeyListener(null);
+
+                        edt_txt_phone.setFocusable(false);
+                        edt_txt_phone.setEnabled(false);
+                        edt_txt_phone.setCursorVisible(false);
+                        edt_txt_phone.setKeyListener(null);
+
+                        edit_txt_emailid.setFocusable(false);
+                        edit_txt_emailid.setEnabled(false);
+                        edit_txt_emailid.setCursorVisible(false);
+                        edit_txt_emailid.setKeyListener(null);
+
+                        getUserProfileData();
+                    }
+
+                    submit_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                                name_fromdialog = edt_txt_name.getText().toString();
+                                telephone_fromdialog = edt_txt_phone.getText().toString();
+                                email_fromdialog = edit_txt_emailid.getText().toString();
+                                commodityName_fromdialog = edt_txt_comodity.getText().toString();
+                                varietyName_fromdialog = edt_txt_varity.getText().toString();
+                                priceperkg_fromdialog = edt_txt_price_per_kg.getText().toString();
+
+
+                                if(validateName(name_fromdialog) && validateTele(telephone_fromdialog) && validateEmail(email_fromdialog) && validateCommodity(commodityName_fromdialog)
+                                && validateVariety(varietyName_fromdialog) && validateprice(priceperkg_fromdialog))
+                                {
+                                    callnegotiateprice(name_fromdialog,telephone_fromdialog,email_fromdialog,commodityName_fromdialog,varietyName_fromdialog,priceperkg_fromdialog);
+                                }
+
+                        }
+                    });
+                    cancle_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Quitpricedialog.dismiss();
+                        }
+                    });
+                    Quitpricedialog.show();
+                }
+
+
+            }
+            private void getUserProfileData() {
+                Map<String, Object> jsonParams = new ArrayMap<>();
+                Log.d("fjkjfj", SessionManager.getKeyTokenUser(context));
+                jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+                AgriInvestor apiService = ApiHandler.getApiService();
+                final Call<GetUser> userdata = apiService.wsGetUserById("123456", body);
+                userdata.enqueue(new Callback<GetUser>() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public void onResponse(Call<GetUser> call, Response<GetUser> response) {
+                        Log.d("getnameapinameresponse", response.toString());
+
+                        if (response.isSuccessful()) {
+
+                            edt_txt_name.setText(response.body().getData().getFirstname() + " " + response.body().getData().getLastname());
+                            String number = response.body().getData().getTelephone().substring(2, 12);
+                            edt_txt_phone.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.iconverify, 0);
+                            edt_txt_phone.setText(number);
+                            edit_txt_emailid.setText(response.body().getData().getEmail());
+                            edt_txt_varity.setText(dataList.get(position).getVarietyName());
+                            edt_txt_comodity.setText(dataList.get(position).getCommodityName());
+
+                        } else {
+                            Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GetUser> call,
+                                          Throwable t) {
+                        Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
                     }
                 });
-                dialog.show();
+
             }
+
+
+
+
+
         });
+
+
         holder.grade.setText("Grade "+dataList.get(position).getGrade());
         holder.city.setText(dataList.get(position).getCity());
         holder.variety.setText(dataList.get(position).getVarietyName());
@@ -138,6 +250,63 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             }
         });
 
+    }
+
+    private void callnegotiateprice(String name_fromdialog, String telephone_fromdialog, String email_fromdialog, String commodityName_fromdialog, String varietyName_fromdialog, String priceperkg_fromdialog) {
+    }
+
+    private boolean validateprice(String priceperkg_fromdialog) {
+        if (priceperkg_fromdialog.isEmpty() || priceperkg_fromdialog == null  ) {
+            Toast.makeText(context,
+                    "Price Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateVariety(String varietyName_fromdialog) {
+        if (varietyName_fromdialog.isEmpty() || varietyName_fromdialog == null  ) {
+            Toast.makeText(context,
+                    "Variety Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateCommodity(String commodityName_fromdialog) {
+        if (commodityName_fromdialog.isEmpty() || commodityName_fromdialog == null  ) {
+            Toast.makeText(context,
+                    "Commodity Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateEmail(String email_fromdialog) {
+        if (email_fromdialog.isEmpty() || email_fromdialog == null  ) {
+            Toast.makeText(context,
+                    "Email Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateTele(String telephone_fromdialog) {
+        if (telephone_fromdialog.isEmpty() || telephone_fromdialog.length() < 10 ) {
+            Toast.makeText(context,
+                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateName(String name_fromdialog) {
+        if (name_fromdialog.isEmpty() || name_fromdialog == null  ) {
+            Toast.makeText(context,
+                    "Name Required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private void callApiProductDetail(String str_orderId, int position, String str_grade) {

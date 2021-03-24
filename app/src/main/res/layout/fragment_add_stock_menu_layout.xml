@@ -140,6 +140,44 @@
 
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/recyclerview_features"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp" />
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:paddingLeft="8dp"
+                    android:text="Discription"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edt_discription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/proxima_nova_alt_light"
+                android:hint="Discription"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                android:paddingStart="4dp"
+                android:singleLine="true"
+                android:textColorHint="@color/text_color"
+                android:textSize="15sp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -171,7 +209,8 @@
                     android:layout_marginHorizontal="20dp"
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:hint="@string/quantity_id"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
+                    android:digits="0123456789"
                     android:padding="15dp"
                     android:paddingStart="4dp"
                     android:singleLine="true"
@@ -210,7 +249,8 @@
                     android:layout_marginHorizontal="20dp"
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:hint="@string/priceperkg_id"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
+                    android:digits="0123456789"
                     android:padding="15dp"
                     android:paddingStart="4dp"
                     android:singleLine="true"
@@ -305,6 +345,7 @@
                             android:layout_marginHorizontal="15dp"
                             android:fontFamily="@font/proxima_nova_alt_light"
                             android:paddingLeft="8dp"
+
                             android:text="@string/addresss"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
@@ -318,7 +359,7 @@
                         android:layout_marginHorizontal="15dp"
                         android:fontFamily="@font/proxima_nova_alt_light"
                         android:hint="Address"
-                        android:inputType="textPersonName"
+                        android:inputType="textPostalAddress"
                         android:padding="15dp"
                         android:paddingStart="4dp"
                         android:singleLine="true"
@@ -357,7 +398,8 @@
                         android:layout_marginHorizontal="20dp"
                         android:fontFamily="@font/proxima_nova_alt_light"
                         android:hint="@string/talukaa"
-                        android:inputType="textPersonName"
+                        android:inputType="textPostalAddress"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:padding="15dp"
                         android:paddingStart="4dp"
                         android:singleLine="true"
@@ -399,39 +441,40 @@
 
 
 
-                </LinearLayout>   <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
-                        android:paddingLeft="8dp"
-                        android:text="City"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:paddingLeft="8dp"
+                            android:text="City"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:id="@+id/spinner_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/darkgrey"/>
+
+
 
                 </LinearLayout>
-
-                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:id="@+id/spinner_city"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/darkgrey"/>
-
-
-
-            </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -504,7 +547,9 @@
                             android:layout_marginHorizontal="20dp"
                             android:fontFamily="@font/proxima_nova_alt_light"
                             android:hint="@string/pincode_txt"
-                            android:inputType="textPersonName"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:digits="0123456789"
                             android:padding="15dp"
                             android:paddingStart="4dp"
                             android:singleLine="true"
@@ -562,6 +607,7 @@
                         </LinearLayout>
 
                         <EditText
+
                             android:id="@+id/edt_country"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -571,8 +617,9 @@
                             android:inputType="textPersonName"
                             android:padding="15dp"
                             android:paddingStart="4dp"
+                            android:text="India"
+                            android:enabled="false"
                             android:singleLine="true"
-                            android:textColorHint="@color/text_color"
                             android:textSize="15sp" />
 
                     </LinearLayout>

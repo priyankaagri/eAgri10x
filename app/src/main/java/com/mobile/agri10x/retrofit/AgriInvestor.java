@@ -16,6 +16,7 @@ import com.mobile.agri10x.models.GetCreateCheckout;
 import com.mobile.agri10x.models.GetCreateCheckoutDetails;
 import com.mobile.agri10x.models.GetCreateOrder;
 import com.mobile.agri10x.models.GetFeatureOnlyProduct;
+import com.mobile.agri10x.models.GetFeaturesbyCommodity;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetOTP;
@@ -117,5 +118,7 @@ public interface AgriInvestor {
     Call<GetVarieties> wsGetVarieties(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("/m/getStockbyUserID")
     Call<GetStockByID> wsGetStockByID(@Header("x-auth-token")String token, @Body RequestBody params);
+    @POST("/m/getFeatures")
+    Call<GetFeaturesbyCommodity> wsGetFeaturesbyCommodity(@Header("x-auth-token")String token, @Body RequestBody params);
 
 }

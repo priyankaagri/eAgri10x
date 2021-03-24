@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -31,23 +32,25 @@
 
                 <RelativeLayout
                     android:id="@+id/varified_value"
-                    android:layout_width="60dp"
-                    android:layout_height="20dp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/featured_bg"
                     android:visibility="visible">
 
                     <LinearLayout
+                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:id="@+id/verified"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="5dp"
-                            android:padding="2dp"
-                            android:text="Verified"
+                            android:padding="5dp"
+                            android:text="Non Verified"
                             android:textColor="@color/white"
-                            android:textSize="8sp" />
+                            android:textSize="10sp" />
                     </LinearLayout>
 
                 </RelativeLayout>
@@ -99,6 +102,7 @@
                                 android:textSize="20sp" />
 
                             <TextView
+                                android:textAlignment="textEnd"
                                 android:id="@+id/txt_product_price"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -107,7 +111,8 @@
                                 android:gravity="center"
 
                                 android:textColor="@color/appgreen"
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                tools:ignore="RtlCompat" />
 
                         </LinearLayout>
 
@@ -133,14 +138,13 @@
                             android:textSize="16sp" />
 
                         <TextView
+
                             android:id="@+id/txt_product_location"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/proximanova_regular"
                             android:paddingHorizontal="15dp"
                             android:paddingVertical="10dp"
-
-
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 

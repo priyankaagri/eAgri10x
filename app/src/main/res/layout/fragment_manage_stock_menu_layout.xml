@@ -5,49 +5,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/toolbar_manage_stock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp">
-
-            <ImageView
-                android:id="@+id/btn_back_manage_stock_id"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/btn_back_manage_stock_id"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/btn_back_manage_stock_id"
-                android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="@string/menu_managestock"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-    </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/toolbar_manage_stock"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp">
 
-        <com.todkars.shimmer.ShimmerRecyclerView
-            android:id="@+id/recyle_cart_view"
+        <ImageView
+            android:id="@+id/btn_back_manage_stock_id"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/black" />
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_marginBottom="20dp"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/btn_back_manage_stock_id"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/btn_back_manage_stock_id"
+            android:fontFamily="@font/proxima_nova_alt_bold"
+            android:text="@string/menu_managestock"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
+
+
+    <com.todkars.shimmer.ShimmerRecyclerView
+        android:id="@+id/recycleview_manage_stock"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content" />
+
+
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.mobile.agri10x.retrofit;
 
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddAddress;
+import com.mobile.agri10x.models.GetAddNewStock;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetBookOrder;
 import com.mobile.agri10x.models.GetBookingCheckOutHandling;
@@ -116,9 +117,12 @@ public interface AgriInvestor {
     Call<GetCommodityById> wsGetCommodityByID(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("/m/getVarieties")
     Call<GetVarieties> wsGetVarieties(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/getStockbyUserID")
-    Call<GetStockByID> wsGetStockByID(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("/m/getFeatures")
     Call<GetFeaturesbyCommodity> wsGetFeaturesbyCommodity(@Header("x-auth-token")String token, @Body RequestBody params);
+    @POST("/m/addNewStock")
+    Call<GetAddNewStock> wsGetAddNewStock(@Header("x-auth-token")String token, @Body RequestBody params);
+    @POST("/m/getStockbyUserID")
+    Call<GetStockByID> wsGetStockByID(@Header("x-auth-token")String token, @Body RequestBody params);
+
 
 }

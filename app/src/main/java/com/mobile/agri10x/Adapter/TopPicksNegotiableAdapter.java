@@ -34,14 +34,19 @@ import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetHomeProductData;
+import com.mobile.agri10x.models.GetStockByID;
 import com.mobile.agri10x.models.GetUser;
+import com.mobile.agri10x.models.NegotiateRate;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
@@ -170,6 +175,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                                 if(validateName(name_fromdialog) && validateTele(telephone_fromdialog) && validateEmail(email_fromdialog) && validateCommodity(commodityName_fromdialog)
                                 && validateVariety(varietyName_fromdialog) && validateprice(priceperkg_fromdialog))
                                 {
+                                    Quitpricedialog.dismiss();
                                     callnegotiateprice(name_fromdialog,telephone_fromdialog,email_fromdialog,commodityName_fromdialog,varietyName_fromdialog,priceperkg_fromdialog);
                                 }
 
@@ -253,6 +259,53 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
     }
 
     private void callnegotiateprice(String name_fromdialog, String telephone_fromdialog, String email_fromdialog, String commodityName_fromdialog, String varietyName_fromdialog, String priceperkg_fromdialog) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+        jsonParams.put("name", name_fromdialog);
+        jsonParams.put("telephone", telephone_fromdialog);
+        jsonParams.put("email", email_fromdialog);
+        jsonParams.put("commodityName", commodityName_fromdialog);
+        jsonParams.put("varietyName", varietyName_fromdialog);
+        jsonParams.put("pricePerkg", priceperkg_fromdialog);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+//AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<NegotiateRate> loginCall = apiService.wsGetNegotiateRate("123456",
+                body);
+        loginCall.enqueue(new Callback<NegotiateRate>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<NegotiateRate> call,
+                                   Response<NegotiateRate> response) {
+
+                Log.d("resFeatureonly", response.toString());
+                if (response.isSuccessful()) {
+
+                    Toast.makeText(context, "Your request has been submitted successfully,\n" +
+                            "our sales team will get back to you shortly", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NegotiateRate> call,
+                                  Throwable t) {
+
+ Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     private boolean validateprice(String priceperkg_fromdialog) {

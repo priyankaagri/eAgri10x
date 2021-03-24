@@ -203,31 +203,34 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
 
                         break;
                     case R.id.tab_menu:
-                        getProductinCart();
-                        int id3 = item.getItemId();
-                        Fragment f4 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                        if (id3 == R.id.tab_menu && !(f4 instanceof MenuFragment)) {
-                            MenuFragment fragment = new MenuFragment();
-                            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.nav_host_fragment, fragment,"menu");
-                            fragmentTransaction.addToBackStack(null);
-                            fragmentTransaction.commit();
-                            getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-                                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                @Override
-                                public void onBackStackChanged() {
-                                    FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
-                                    Fragment currentFragment = fragmentManager.findFragmentByTag("menu");
-                                    if (currentFragment != null && (currentFragment instanceof MenuFragment)) {
-                                        bottomNavigationView.getMenu().findItem(id3).setChecked(true);
+                        if(SessionManager.isLoggedIn(HomePageActivity.this)) {
+                            getProductinCart();
+                            int id3 = item.getItemId();
+                            Fragment f4 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                            if (id3 == R.id.tab_menu && !(f4 instanceof MenuFragment)) {
+                                MenuFragment fragment = new MenuFragment();
+                                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.nav_host_fragment, fragment, "menu");
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
+                                getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                                    @Override
+                                    public void onBackStackChanged() {
+                                        FragmentManager fragmentManager = (FragmentManager) context.getSupportFragmentManager();
+                                        Fragment currentFragment = fragmentManager.findFragmentByTag("menu");
+                                        if (currentFragment != null && (currentFragment instanceof MenuFragment)) {
+                                            bottomNavigationView.getMenu().findItem(id3).setChecked(true);
 
-                                    } else {
+                                        } else {
 
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
+                        } else {
+                            startActivity(new Intent(HomePageActivity.this,LoginActivity.class));
                         }
-
                         break;
                 }
                 return true;

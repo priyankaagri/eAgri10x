@@ -43,8 +43,11 @@ public class Payment_E_Collection_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_payment__e__collection_, container, false);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            amountstr = bundle.getString("amount");
+        }
 
-        amountstr = getArguments().getString("message");
         Log.d("getamount",amountstr);
         ihavemadepayment = view.findViewById(R.id.ihavemadepayment);
         mBackImage=view.findViewById(R.id.but_back);
@@ -52,7 +55,7 @@ public class Payment_E_Collection_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                HomePageActivity.removeFragment(new MenuFragment());
+                HomePageActivity.removeFragment(new Payment_E_Collection_Fragment());
             }
         });
         

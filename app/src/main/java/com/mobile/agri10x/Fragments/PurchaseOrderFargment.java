@@ -9,7 +9,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.ArrayMap;
 import android.util.Log;
@@ -307,9 +309,16 @@ public class PurchaseOrderFargment extends Fragment  {
                 strpurchaseamount = totalamt.getText().toString();
                 strpurchaseamount = strpurchaseamount.replaceAll("₹", "");
                 if(validatePurchaseAmount(strpurchaseamount))  {
+
+
+                    Payment_E_Collection_Fragment fragment = new Payment_E_Collection_Fragment(); // replace your custom fragment class
                     Bundle bundle = new Bundle();
-                    bundle.putString("amount", strpurchaseamount);
-                    HomePageActivity.setFragment(new Payment_E_Collection_Fragment(),"parmentecollect");
+                    FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
+                    bundle.putString("amount",strpurchaseamount); // use as per your need
+                    fragment.setArguments(bundle);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                    fragmentTransaction.commit();
                 }
 
             }

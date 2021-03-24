@@ -213,6 +213,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:inputType="textPersonName"
                     android:padding="15dp"
@@ -236,6 +237,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"
+                    android:digits="0123456789"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:fontFamily="@font/proxima_nova_alt_light"
@@ -331,6 +333,7 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:id="@+id/deliverynote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -357,6 +360,7 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:id="@+id/packagingdatail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

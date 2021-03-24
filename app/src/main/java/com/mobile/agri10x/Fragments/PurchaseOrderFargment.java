@@ -135,6 +135,8 @@ public class PurchaseOrderFargment extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_purchase_order_fargment, container, false);
         context = view.getContext();
+        edt_contactNumber = view.findViewById(R.id.edt_contactNumber);
+        edt_contactpersonname = view.findViewById(R.id.edt_contactpersonname);
         pendingamt = view.findViewById(R.id.pendingamt);
         add_billingAddress = view.findViewById(R.id.add_billingAddress);
         addDeliveryaddress = view.findViewById(R.id.addDeliveryaddress);
@@ -287,6 +289,8 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 strpurchaseamount = totalamt.getText().toString();
                 strpurchaseamount = strpurchaseamount.replaceAll("₹", "");
+                strpurchaseamount = strpurchaseamount.replaceAll(",","");
+                strpurchaseamount = strpurchaseamount.replaceAll("\\s","");
 
 
                 strpackagingdetails = edt_packagingdatail.getText().toString();
@@ -308,6 +312,8 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onClick(View v) {
                 strpurchaseamount = totalamt.getText().toString();
                 strpurchaseamount = strpurchaseamount.replaceAll("₹", "");
+                strpurchaseamount = strpurchaseamount.replaceAll(",","");
+                strpurchaseamount = strpurchaseamount.replaceAll("\\s","");
                 if(validatePurchaseAmount(strpurchaseamount))  {
 
 

@@ -138,8 +138,8 @@ public class BookOrderFragment extends Fragment {
         bookingamt = view.findViewById(R.id.bookingamt);
         fname_edt_txt=view.findViewById(R.id.fname_edt_txt);
         lname_edt_txt=view.findViewById(R.id.lname_edt_txt);
-        edt_contactNumber= view.findViewById(R.id.contactNumber);
-        edt_contactpersonname = view.findViewById(R.id.contactpersonname);
+        edt_contactNumber= view.findViewById(R.id.edt_contactNumber);
+        edt_contactpersonname = view.findViewById(R.id.edt_contactpersonname);
         spin_billingaddress=view.findViewById(R.id.addressspinner_billing);
         spin_deladdress=view.findViewById(R.id.addressspinner_delivery);
         ss_selectamoutper=view.findViewById(R.id.addressspinner_booking_amount);
@@ -287,9 +287,14 @@ public class BookOrderFragment extends Fragment {
 
                 strbookingamtasparam = bookingamt.getText().toString();
                 strbookingamtasparam = strbookingamtasparam.replaceAll("₹", "");
+                strbookingamtasparam = strbookingamtasparam.replaceAll(",","");
+                strbookingamtasparam = strbookingamtasparam.replaceAll("\\s","");
+
 
                 strpendingamtasparam = pendingamt.getText().toString();
                 strpendingamtasparam = strpendingamtasparam.replaceAll("₹", "");
+                strpendingamtasparam = strpendingamtasparam.replaceAll(",","");
+                strpendingamtasparam = strpendingamtasparam.replaceAll("\\s","");
 
                 strpackagingdetails = edt_packagingdatail.getText().toString();
 
@@ -311,6 +316,8 @@ public class BookOrderFragment extends Fragment {
             public void onClick(View v) {
                 strbookingamtasparam = bookingamt.getText().toString();
                 strbookingamtasparam = strbookingamtasparam.replaceAll("₹", "");
+                strbookingamtasparam = strbookingamtasparam.replaceAll(",","");
+                strbookingamtasparam = strbookingamtasparam.replaceAll("\\s","");
               if(validateBookingamt(strbookingamtasparam))  {
                   Payment_E_Collection_Fragment fragment = new Payment_E_Collection_Fragment(); // replace your custom fragment class
                   Bundle bundle = new Bundle();

@@ -211,7 +211,7 @@
                     android:text="@string/tv_contact_name_id"
                     />
                 <EditText
-                    android:id="@+id/contactpersonname"
+                    android:id="@+id/edt_contactpersonname"
                     android:layout_marginTop="10dp"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"
@@ -236,7 +236,7 @@
                     android:text="@string/tv_mobile_no_id"
                     />
                 <EditText
-                    android:id="@+id/contactNumber"
+                    android:id="@+id/edt_contactNumber"
                     android:layout_marginTop="10dp"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"

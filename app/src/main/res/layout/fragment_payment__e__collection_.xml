@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/proximanova_regular"
                 android:text="Please find below the E-Collect Details. You can transfer the payment amount using your netbanking."
                 android:textColor="@color/black"

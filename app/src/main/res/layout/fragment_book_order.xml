@@ -118,16 +118,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/card_border"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:orientation="vertical">
 
                     <Spinner
-
                         android:id="@+id/addressspinner_billing"
                         android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
                         android:spinnerMode="dropdown" />
 
@@ -168,19 +167,23 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/card_border"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:orientation="vertical">
 
                     <Spinner
                         android:id="@+id/addressspinner_delivery"
                         android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
                         android:spinnerMode="dropdown" />
 
+
                 </LinearLayout>
+
+
+
                 <TextView
                     android:id="@+id/addDeliveryaddress"
                     android:background="@drawable/backgroun_hollow"

@@ -87,7 +87,7 @@ public class ManageStockFragment extends Fragment {
                 if (response.isSuccessful()) {
                     listmanagestock.addAll(response.body().getData());
                     Log.d("getsizefeat", String.valueOf(listmanagestock.size()));
-                    if (listmanagestock.size() >= 0) {
+                    if (listmanagestock.size() > 0) {
                         manageStockAdapter = new ManageStockAdapter(getActivity(), listmanagestock);
                         recycleview_manage_stock.setAdapter(manageStockAdapter);
                     }

@@ -271,4 +271,9 @@
 \n\nThe Company, in its sole discretion, reserves the exclusive right to interpret, administer and apply this Policy, to make any exceptions to it, and to change this Policy at any time and for any reason. The provisions of this Policy do not establish contractual rights, in whole or in part, between the Company and the recipient of the Policy. The Company reserves the right to modify, amend, or terminate this Policy at any time. This Policy is the property of iCognitive Global Private Limited (Agri10x) and is the recipient’s responsibility to review the intranet publication of this Policy to ensure the most current version is being referenced before taking action based on any printed copy, which may be outdated.
 
     </string>
+
+    <string name="str_get_support">Get Support</string>
+    <string name="str_any_support">For any support request regards your orders or deliveries please feel free to speak with us at below</string>
+    <string name="str_call_us">Call us - 1800-121-2243</string>
+    <string name="str_mail_us">Mail us - info@agri10x.com</string>
 </resources>

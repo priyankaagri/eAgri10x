@@ -125,7 +125,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_round"
             android:padding="10dp"
-            android:text="purches"
+            android:text="PURCHASE"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"

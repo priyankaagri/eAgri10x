@@ -73,6 +73,7 @@ import retrofit2.Response;
 public class AddStockFragment extends Fragment implements OnItemClickListener {
     private ImageView mBackButton;
     public ArrayList<String> featuresids = new ArrayList<>();
+    public ArrayList<String> emptyfeaturesid = new ArrayList<>();
     SearchableSpinner spinner_commodity, spinner_variety, spinner_state, spinner_city;
     EditText edt_quantity, edt_priceperkg, edt_address, edt_taluka, edt_pincode, edt_country, edt_discription;
     TextView txt_valid_from, txt_valid_to;
@@ -124,7 +125,9 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
         recyclerview_features.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         btn_back_add_stock_id.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+
                 HomePageActivity.removeFragment(new AddStockFragment());
             }
         });
@@ -272,7 +275,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                 Log.d("getvalues",str_quantity+" "+str_priceperkg+" "+str_address+" "+str_taluka+" "+str_pincode+" "+str_country+" "+str_discription+" "+str_commodityid+" "+str_varietyid);
                 if (validatecommodity(str_commodityid) && validatevariety(str_varietyid)&&validatediscription(str_discription) && validatequantity(str_quantity) && validatepriceperkg(str_priceperkg) &&
                         validatedatefrom(strDatefrom) && validatedateto(strDateto) && validateaddress(str_address) && validatetaluka(str_taluka) &&
-                        validatestate(str_state) && validatecity(str_city) && validatepincode(str_pincode) && validatecountry(str_country))
+                        validatestate(str_state) && validatecity(str_city) && validatepincode(str_pincode) && validatecountry(str_country) && validatefeatures(featuresids))
                 {
                     callApiaddStock(str_commodityid, str_varietyid, str_discription, str_quantity, str_priceperkg, strDatefrom, strDateto, str_address, str_taluka, str_state, str_city, str_pincode, str_country);
 
@@ -342,10 +345,12 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     private void callApiaddStock(String str_commodityid, String str_varietyid, String str_discription, String str_quantity, String str_priceperkg, String strDatefrom, String strDateto, String str_address, String str_taluka, String str_state, String str_city, String str_pincode, String str_country) {
         Map<String, Object> jsonParams = new ArrayMap<>();
         jsonParams.put("commodityID", str_commodityid);
-        if (featuresids.size() > 0) {
-            jsonParams.put("featureID", featuresids);
-        }
-        jsonParams.put("featureID", "");
+//        if (featuresids.size() > 0) {
+//            jsonParams.put("featureID", featuresids);
+//        }else{
+//            jsonParams.put("featureID", emptyfeaturesid);
+//        }
+        jsonParams.put("featureID", featuresids);
         jsonParams.put("varietyID", str_varietyid);
         jsonParams.put("userID", SessionManager.getKeyTokenUser(getActivity()));
         jsonParams.put("stockQuantity", str_quantity);
@@ -407,7 +412,14 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
         }
         return true;
     }
-
+    private boolean validatefeatures(ArrayList<String> featuresids) {
+        if(recyclerview_features.getVisibility()==View.VISIBLE && featuresids.size()== 0) {
+            Toast.makeText(getActivity(),
+                    "Select Features", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
     private boolean validatepincode(String str_pincode) {
         if (str_pincode.isEmpty() || str_pincode.length() < 6) {
             Toast.makeText(getActivity(),

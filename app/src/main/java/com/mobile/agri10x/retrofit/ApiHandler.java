@@ -33,6 +33,7 @@ public class ApiHandler {
     private static final long HTTP_TIMEOUT = TimeUnit.SECONDS.toMillis(60);
     private static AgriInvestor apiService;
     static OkHttpClient okHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
+
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(DEV_BASE_URL)

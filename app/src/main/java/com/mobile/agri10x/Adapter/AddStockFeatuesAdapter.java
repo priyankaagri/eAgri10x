@@ -53,13 +53,24 @@ public class AddStockFeatuesAdapter  extends RecyclerView.Adapter<AddStockFeatue
         {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
-                if ( isChecked )
+                if (isChecked )
                 {
-                    // perform logic
+// perform logic
                     featuresids.add(featurelist.get(position).getId());
-                    Toast.makeText(context, "isChecked - " + featurelist.get(position).getId(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context, "isChecked - " + featurelist.get(position).getId(), Toast.LENGTH_SHORT).show();
                     Log.d("idss", String.valueOf(featuresids));
                     onItemClickListener.OnItemClick(featuresids);
+
+                }else {
+                    if(featuresids.size()>0){
+                        if(featuresids.contains(featurelist.get(position).getId())){
+                            featuresids.remove(featurelist.get(position).getId());
+                        }else {
+
+                        }
+                        Log.d("idssize", String.valueOf(featuresids));
+                    }
+
 
                 }
 

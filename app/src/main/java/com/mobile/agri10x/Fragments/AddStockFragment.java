@@ -101,7 +101,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_stock_menu_layout, container, false);
-        spinner_commodity = view.findViewById(R.id.spinner_commodity);
+        spinner_commodity =  (SearchableSpinner) view.findViewById(R.id.spinner_commodity);
         spinner_variety = view.findViewById(R.id.spinner_variety);
         edt_quantity = view.findViewById(R.id.edt_quantity);
         edt_priceperkg = view.findViewById(R.id.edt_priceperkg);

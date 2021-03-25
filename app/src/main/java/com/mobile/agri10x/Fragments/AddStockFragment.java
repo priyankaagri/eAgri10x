@@ -69,7 +69,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-@RequiresApi(api = Build.VERSION_CODES.N)
+
 public class AddStockFragment extends Fragment implements OnItemClickListener {
     private ImageView mBackButton;
     public ArrayList<String> featuresids = new ArrayList<>();

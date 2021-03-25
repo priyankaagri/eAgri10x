@@ -742,4 +742,14 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
         Log.d("featuresidsfomfrag", String.valueOf(featuresids));
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (spinner_state != null && spinner_commodity != null && spinner_state != null && spinner_city != null) {
+            spinner_state.hideEdit();
+            spinner_commodity.hideEdit();
+            spinner_variety.hideEdit();
+            spinner_city.hideEdit();
+        }
+    }
 }

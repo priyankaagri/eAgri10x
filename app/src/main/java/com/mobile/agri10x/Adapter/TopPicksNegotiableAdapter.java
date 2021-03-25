@@ -131,31 +131,31 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                     edt_txt_price_per_kg = Quitpricedialog.findViewById(R.id.edt_txt_price_per_kg);
                     submit_btn = Quitpricedialog.findViewById(R.id.submit_btn);
                     if(SessionManager.isLoggedIn(context)) {
-                        edt_txt_name.setFocusable(false);
-                        edt_txt_name.setEnabled(false);
-                        edt_txt_name.setCursorVisible(false);
-                        edt_txt_name.setKeyListener(null);
-
-                        edt_txt_comodity.setFocusable(false);
-                        edt_txt_comodity.setEnabled(false);
-                        edt_txt_comodity.setCursorVisible(false);
-                        edt_txt_comodity.setKeyListener(null);
-
-
-                        edt_txt_varity.setFocusable(false);
-                        edt_txt_varity.setEnabled(false);
-                        edt_txt_varity.setCursorVisible(false);
-                        edt_txt_varity.setKeyListener(null);
-
-                        edt_txt_phone.setFocusable(false);
-                        edt_txt_phone.setEnabled(false);
-                        edt_txt_phone.setCursorVisible(false);
-                        edt_txt_phone.setKeyListener(null);
-
-                        edit_txt_emailid.setFocusable(false);
-                        edit_txt_emailid.setEnabled(false);
-                        edit_txt_emailid.setCursorVisible(false);
-                        edit_txt_emailid.setKeyListener(null);
+//                        edt_txt_name.setFocusable(false);
+//                        edt_txt_name.setEnabled(false);
+//                        edt_txt_name.setCursorVisible(false);
+//                        edt_txt_name.setKeyListener(null);
+//
+//                        edt_txt_comodity.setFocusable(false);
+//                        edt_txt_comodity.setEnabled(false);
+//                        edt_txt_comodity.setCursorVisible(false);
+//                        edt_txt_comodity.setKeyListener(null);
+//
+//
+//                        edt_txt_varity.setFocusable(false);
+//                        edt_txt_varity.setEnabled(false);
+//                        edt_txt_varity.setCursorVisible(false);
+//                        edt_txt_varity.setKeyListener(null);
+//
+//                        edt_txt_phone.setFocusable(false);
+//                        edt_txt_phone.setEnabled(false);
+//                        edt_txt_phone.setCursorVisible(false);
+//                        edt_txt_phone.setKeyListener(null);
+//
+//                        edit_txt_emailid.setFocusable(false);
+//                        edit_txt_emailid.setEnabled(false);
+//                        edit_txt_emailid.setCursorVisible(false);
+//                        edit_txt_emailid.setKeyListener(null);
 
                         getUserProfileData();
                     }
@@ -208,7 +208,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
                             edt_txt_name.setText(response.body().getData().getFirstname() + " " + response.body().getData().getLastname());
                             String number = response.body().getData().getTelephone().substring(2, 12);
-                            edt_txt_phone.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.iconverify, 0);
+                          //  edt_txt_phone.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.iconverify, 0);
                             edt_txt_phone.setText(number);
                             edit_txt_emailid.setText(response.body().getData().getEmail());
                             edt_txt_varity.setText(dataList.get(position).getVarietyName());

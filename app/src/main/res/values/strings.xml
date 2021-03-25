@@ -59,7 +59,7 @@
     <string name="email">Email</string>
     <string name="commodity">Commodity</string>
     <string name="varity">Variety</string>
-    <string name="price_per_kg">Price pr KG</string>
+    <string name="price_per_kg">Price per KG</string>
     <string name="submit">SUBMIT</string>
 
     <string name="fname_str"> First Name *</string>

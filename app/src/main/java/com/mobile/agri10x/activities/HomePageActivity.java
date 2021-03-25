@@ -369,7 +369,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
 //Payment failed Invalid amount (should be passed in integer paise. Minimum value is 100 paise, i.e. ₹ 1)
               double total = Double.parseDouble(payment);
 //            total = total * 100;
-              options.put("amount", 1);//total
+              options.put("amount", total);
 
 //            JSONObject preFill = new JSONObject();
 //            preFill.put("email", "kamal.bunkar07@gmail.com");

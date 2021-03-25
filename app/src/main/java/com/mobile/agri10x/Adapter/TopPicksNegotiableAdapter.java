@@ -289,7 +289,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                 if (response.isSuccessful()) {
 
                     Toast.makeText(context, "Your request has been submitted successfully,\n" +
-                            "our sales team will get back to you shortly", Toast.LENGTH_SHORT).show();
+                            "our sales team will get back to you shortly", Toast.LENGTH_LONG).show();
 
                 } else {
 

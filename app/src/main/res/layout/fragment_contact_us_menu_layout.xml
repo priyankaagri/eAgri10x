@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -35,56 +34,57 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
+
     <RelativeLayout
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-
-            android:id="@+id/img_contact"
-            android:layout_width="240dp"
-            android:layout_height="220dp"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="64dp"
-            android:src="@drawable/ic_contact" />
-
-        <TextView
-            android:id="@+id/txt_get_support"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img_contact"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/proxima_nova_bold"
-            android:text="@string/str_get_support"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
 
-        <TextView
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_get_support"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/proxima_nova_alt_light"
-            android:textSize="18sp"
-            android:text="@string/str_any_support"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            />
+            <ImageView
 
+                android:id="@+id/img_contact"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_contact" />
+
+            <TextView
+                android:id="@+id/txt_get_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:text="@string/str_get_support"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/proxima_nova_alt_light"
+                android:textSize="18sp"
+                android:text="@string/str_any_support"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:orientation="vertical"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/txt_call_us_id"
@@ -102,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:text="@string/str_mail_us"
                 android:textAlignment="center"

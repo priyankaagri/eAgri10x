@@ -14,7 +14,7 @@ public class NegotiateRateData {
     private String name;
     @SerializedName("telephone")
     @Expose
-    private Integer telephone;
+    private Long telephone;
     @SerializedName("email")
     @Expose
     private String email;
@@ -47,11 +47,11 @@ public class NegotiateRateData {
         this.name = name;
     }
 
-    public Integer getTelephone() {
+    public Long getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(Integer telephone) {
+    public void setTelephone(Long telephone) {
         this.telephone = telephone;
     }
 

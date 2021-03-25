@@ -69,7 +69,7 @@ public class ContactUsFragment extends Fragment {
         email.putExtra(Intent.EXTRA_TEXT, message);
 
         //need this to prompts email client only
-        email.setType("message/rfc822");
+       // email.setType("message/rfc822");
 
         startActivity(Intent.createChooser(email, "Choose an Email client :"));
 

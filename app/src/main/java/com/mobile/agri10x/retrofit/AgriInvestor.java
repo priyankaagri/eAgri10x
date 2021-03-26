@@ -3,6 +3,7 @@ package com.mobile.agri10x.retrofit;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.FilterProducts;
 import com.mobile.agri10x.models.FilterState;
+import com.mobile.agri10x.models.GetADDWishlist;
 import com.mobile.agri10x.models.GetAddAddress;
 import com.mobile.agri10x.models.GetAddNewStock;
 import com.mobile.agri10x.models.GetAddProductToCart;
@@ -26,10 +27,12 @@ import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetLot;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetOrderCheckOutHandling;
+import com.mobile.agri10x.models.GetProductInWhishList;
 import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetQueryDailyDeals;
 import com.mobile.agri10x.models.GetQueryFeaturedOnly;
 import com.mobile.agri10x.models.GetQueryTopicPicks;
+import com.mobile.agri10x.models.GetRemoveFromWishlist;
 import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.GetStates;
@@ -138,6 +141,12 @@ public interface AgriInvestor {
     Call<GetGrades> wsGetGrades(@Header("x-auth-token") String token);
     @GET("/m/filterState")
     Call<FilterState> wsFilterState(@Header("x-auth-token") String token);
+    @POST("/m/addToWishList")
+    Call<GetADDWishlist> wsAddWishlist(@Header("x-auth-token") String token , @Body RequestBody params);
+    @POST("m/getProductsInWishlist")
+    Call<GetProductInWhishList> wsGetProductInWhishlist(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("/m/removeProductFromWishlist")
+    Call<GetRemoveFromWishlist> wsGetRemoveFromWiishList(@Header("x-auth-token") String token, @Body RequestBody params);
 
 
 }

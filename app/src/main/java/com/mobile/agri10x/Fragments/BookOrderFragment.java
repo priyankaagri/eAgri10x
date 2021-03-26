@@ -153,6 +153,8 @@ public class BookOrderFragment extends Fragment {
         addDeliveryaddress=view.findViewById(R.id.addDeliveryaddress);
         add_billingAddress=view.findViewById(R.id.add_billingAddress);
         but_back=view.findViewById(R.id.but_back);
+
+
         amt = getArguments().getString("value");
         damt = Double.parseDouble(amt);
 

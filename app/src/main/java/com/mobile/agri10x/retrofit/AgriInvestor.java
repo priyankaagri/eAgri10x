@@ -37,12 +37,14 @@ import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.GetStates;
 import com.mobile.agri10x.models.GetStockByID;
+import com.mobile.agri10x.models.GetSubmitContactForm;
 import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.GetVarieties;
 import com.mobile.agri10x.models.NegotiateRate;
 import com.mobile.agri10x.models.QueryCreateCheckOut;
 import com.mobile.agri10x.models.QueryCreatebooking;
+import com.mobile.agri10x.models.QuerySubmitForm;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.UpdateUser;
 import com.mobile.agri10x.models.VerifyOTP;
@@ -143,10 +145,11 @@ public interface AgriInvestor {
     Call<FilterState> wsFilterState(@Header("x-auth-token") String token);
     @POST("/m/addToWishList")
     Call<GetADDWishlist> wsAddWishlist(@Header("x-auth-token") String token , @Body RequestBody params);
-    @POST("m/getProductsInWishlist")
+    @POST("/m/getProductsInWishlist")
     Call<GetProductInWhishList> wsGetProductInWhishlist(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("/m/removeProductFromWishlist")
     Call<GetRemoveFromWishlist> wsGetRemoveFromWiishList(@Header("x-auth-token") String token, @Body RequestBody params);
-
+@POST("/m/submitContactForm")
+    Call<GetSubmitContactForm> wsGetSumitContactForm(@Header("x-auth-token")String token,@Body QuerySubmitForm querySubmitForm);
 
 }

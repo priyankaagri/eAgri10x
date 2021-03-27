@@ -83,12 +83,17 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
 
-        double number1 = ProductsInCartlist.get(position).getPrice();
-        NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
-        String currency1 = format1.format(number1);
-        System.out.println("Currency in INDIA : " + currency1);
-        String totl_pric = String.format("%.2f", (ProductsInCartlist.get(position).getPrice()));
-        holder.total_price.setText(currency1);
+        if(ProductsInCartlist.get(position).getPrice() != null){
+            double number1 = ProductsInCartlist.get(position).getPrice();
+            NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+            String currency1 = format1.format(number1);
+            System.out.println("Currency in INDIA : " + currency1);
+            String totl_pric = String.format("%.2f", (ProductsInCartlist.get(position).getPrice()));
+            holder.total_price.setText(currency1);
+        }else{
+
+        }
+
 
 
         holder.avlstock.setText(String.valueOf("Avl Quantity : "+ProductsInCartlist.get(position).getTotalAvailable()*ProductsInCartlist.get(position).getWeight()+" KG"));
@@ -96,14 +101,16 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
         String test = String.valueOf(ProductsInCartlist.get(position).getQuantity());
         holder.product_total_weight.setText(""+Double.parseDouble(test)*ProductsInCartlist.get(position).getWeight());
 
+if(ProductsInCartlist.get(position).getPrice() != null){
+    String value = holder.product_total_weight.getText().toString();
 
-        String value = holder.product_total_weight.getText().toString();
+    double number = ProductsInCartlist.get(position).getPrice() * Double.parseDouble(value);
+    NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+    String currency = format.format(number);
+    String pricepeoduct = String.format("%.2f", ProductsInCartlist.get(position).getPrice() * Double.parseDouble(value));
+    holder.product_price.setText("Total: " + currency);
+}
 
-        double number = ProductsInCartlist.get(position).getPrice() * Double.parseDouble(value);
-        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
-        String currency = format.format(number);
-        String pricepeoduct = String.format("%.2f", ProductsInCartlist.get(position).getPrice() * Double.parseDouble(value));
-        holder.product_price.setText("Total: " + currency);
 
 
 
@@ -177,7 +184,7 @@ int getWaight=holder.getAdapterPosition();
 
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
                 builder.setTitle("Remove Product!");
-                builder.setMessage("Are you sure you want to Remove?");
+                builder.setMessage("Are you sure you want to remove?");
 // add the buttons
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override

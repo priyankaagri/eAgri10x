@@ -276,4 +276,11 @@
     <string name="str_any_support">For any support request regards your orders or deliveries please feel free to speak with us at below</string>
     <string name="str_call_us">Call us - 1800-121-2243</string>
     <string name="str_mail_us">Mail us - info@agri10x.com</string>
+
+
+    <string name="worker_form">Worker Form</string>
+    <string name="select_atleast">Select Atleast one from them</string>
+    <string name="i_am_reper">I am a  Reaper</string>
+    <string name="i_am_sower">I am a  Sower</string>
+    <string name="i_am_loader">I am a  Loader</string>
 </resources>

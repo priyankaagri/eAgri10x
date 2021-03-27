@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/hollow_back"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:orientation="vertical"
+                android:layout_marginRight="15dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/cancle_btn"
+                    android:layout_width="20dp"
+                    android:src="@drawable/close"
+                    android:layout_height="20dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="15dp"
+                    android:textSize="22sp"
+                    android:gravity="left"
+                    android:layout_gravity="left"
+                    android:textColor="@color/appgreen"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/worker_form"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="15dp"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/fname"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" *"
+                        android:visibility="visible"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:id="@+id/edt_txt_fname"
+                    android:layout_width="match_parent"
+                    android:padding="15dp"
+                    android:hint="@string/fname"
+                    android:editable="false"
+                    android:textSize="15sp"
+                    android:singleLine="true"
+                    android:inputType="textPersonName"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proximanova_regular"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/text_color"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="15dp"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/lname"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" *"
+                        android:visibility="visible"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:id="@+id/edt_txt_lname"
+                    android:layout_width="match_parent"
+                    android:padding="15dp"
+                    android:hint="@string/lname"
+                    android:editable="false"
+                    android:textSize="15sp"
+                    android:singleLine="true"
+                    android:inputType="textPersonName"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proximanova_regular"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/text_color"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="15dp"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/phon_numbr"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" *"
+                        android:visibility="visible"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/edt_txt_phone"
+                    android:layout_width="match_parent"
+                    android:padding="15dp"
+                    android:hint="@string/phon_numbr"
+                    android:digits="0123456789"
+                    android:textSize="15sp"
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:editable="false"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proximanova_regular"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/text_color"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="15dp"
+                            android:textSize="18sp"
+                            android:layout_marginLeft="15dp"
+                            android:text="@string/tv_state"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/red"
+                            android:text=" *"
+                            android:visibility="visible"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="wrap_content">
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+
+                        android:id="@+id/spinner_state_billing_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    android:visibility="gone"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="20dp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="15dp"
+                            android:textSize="18sp"
+                            android:layout_marginLeft="15dp"
+                            android:text="@string/tv_city"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/red"
+                            android:text=" *"
+                            android:visibility="visible"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="wrap_content">
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:id="@+id/spinner_city_billing_id"
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_height="wrap_content"
+                        />
+                </LinearLayout>
+
+
+                <View
+                    android:visibility="gone"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:layout_weight="1"
+                    android:padding="15dp"
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:textSize="16sp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/appgreen"
+                android:text="@string/select_atleast"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/reaper_check"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:text="@string/i_am_reper"
+                    android:layout_height="wrap_content">
+
+                </CheckBox>
+
+                <CheckBox
+                    android:id="@+id/sower_check"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:text="@string/i_am_sower"
+                    android:layout_height="wrap_content">
+
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/loader_check"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:text="@string/i_am_loader"
+                    android:layout_height="wrap_content">
+
+                </CheckBox>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/btn_round_corner"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="15dp"></Button>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

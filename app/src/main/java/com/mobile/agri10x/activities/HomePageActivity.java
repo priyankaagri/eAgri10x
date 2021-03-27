@@ -140,31 +140,33 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
 
                         break;
                     case R.id.tab_livetrade:
+//                        if(SessionManager.isLoggedIn(HomePageActivity.this)) {
 
-                        int id1 = item.getItemId();
+                            int id1 = item.getItemId();
+                            Log.d("hvghv", String.valueOf(id1));
+                            Fragment f2 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                            if (id1 == R.id.tab_livetrade && !(f2 instanceof SeeAllLiveTradingFragment)) {
+                                SeeAllLiveTradingFragment fragment = new SeeAllLiveTradingFragment();
+                                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.nav_host_fragment, fragment, "livetrade");
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
+                                getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                                    @Override
+                                    public void onBackStackChanged() {
+                                        FragmentManager fragmentManager = (FragmentManager) context.getSupportFragmentManager();
+                                        Fragment currentFragment = fragmentManager.findFragmentByTag("livetrade");
+                                        if (currentFragment != null && (currentFragment instanceof SeeAllLiveTradingFragment)) {
+                                            bottomNavigationView.getMenu().findItem(id1).setChecked(true);
 
-                        Fragment f2 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                        if (id1 == R.id.tab_livetrade && !(f2 instanceof SeeAllLiveTradingFragment)) {
-                            SeeAllLiveTradingFragment fragment = new SeeAllLiveTradingFragment();
-                            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.nav_host_fragment, fragment,"livetrade");
-                            fragmentTransaction.addToBackStack(null);
-                            fragmentTransaction.commit();
-                            getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-                                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                @Override
-                                public void onBackStackChanged() {
-                                    FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
-                                    Fragment currentFragment = fragmentManager.findFragmentByTag("livetrade");
-                                    if (currentFragment != null && (currentFragment instanceof SeeAllLiveTradingFragment)) {
-                                        bottomNavigationView.getMenu().findItem(id1).setChecked(true);
+                                        } else {
 
-                                    } else {
-
+                                        }
                                     }
-                                }
-                            });
-                        }
+                                });
+                            }
+
 //setFragment(new SeeAllLiveTradingFragment(),"see");
 
                         break;
@@ -265,6 +267,14 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
                 if (response.isSuccessful()) {
                     ProductsInCartlist.addAll(response.body().getProducts());
                     int menuItemId = bottomNavigationView.getMenu().getItem(2).getItemId();
+                    FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
+                    Fragment currentFragment = fragmentManager.findFragmentByTag("cart");
+                    if (currentFragment != null && (currentFragment instanceof TradeValueAddCart)) {
+                        bottomNavigationView.getMenu().getItem(2).setChecked(true);
+
+                    } else {
+
+                    }
                     BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(menuItemId);
                     badge.setBackgroundColor(context.getResources().getColor(R.color.appgreen));
                     badge.setNumber(ProductsInCartlist.size());

@@ -43,7 +43,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:textColor="@color/black"
-                android:text="Potato"
+
                 android:textSize="15sp" />
 
 
@@ -65,8 +65,8 @@ android:layout_marginTop="8dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/product_price"
 android:layout_centerInParent="true"
-                android:fontFamily="@font/proxima_nova_bold"
-                android:textStyle="bold"
+                android:fontFamily="@font/proxima_nova_alt_light"
+
                 android:textColor="@color/black"
                 android:textSize="12sp" />
             <RatingBar

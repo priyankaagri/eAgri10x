@@ -542,6 +542,7 @@ android:visibility="gone"
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/farmer_rel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp">
@@ -579,6 +580,7 @@ android:visibility="gone"
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/trader_rel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp">
@@ -691,8 +693,84 @@ android:visibility="gone"
 
 
                 </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/transportation_rel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/transportation">
+
+                    </ImageView>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="Transportation"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="@dimen/second_card_view"
+                        android:background="@drawable/radius_button"
+                        android:padding="10dp"
+                        android:textAllCaps="true"
+                        android:text="Connect With Us"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
 
 
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/wearhouse_rel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/wearhouse">
+
+                    </ImageView>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="Warehouse"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="@dimen/second_card_view"
+                        android:background="@drawable/radius_button"
+                        android:padding="10dp"
+                        android:textAllCaps="true"
+                        android:text="Connect With Us"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+
+                </RelativeLayout>
             </LinearLayout>
 
             <TextView

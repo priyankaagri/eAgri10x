@@ -1,5 +1,6 @@
 package com.mobile.agri10x.retrofit;
 
+import com.mobile.agri10x.Fragments.QueryWearHouseForm;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.FilterProducts;
 import com.mobile.agri10x.models.FilterState;
@@ -19,7 +20,6 @@ import com.mobile.agri10x.models.GetCreateBooking;
 import com.mobile.agri10x.models.GetCreateCheckout;
 import com.mobile.agri10x.models.GetCreateCheckoutDetails;
 import com.mobile.agri10x.models.GetCreateOrder;
-import com.mobile.agri10x.models.GetFeatureOnlyProduct;
 import com.mobile.agri10x.models.GetFeaturesbyCommodity;
 import com.mobile.agri10x.models.GetGrades;
 import com.mobile.agri10x.models.GetHomeProduct;
@@ -37,22 +37,19 @@ import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.GetStates;
 import com.mobile.agri10x.models.GetStockByID;
-import com.mobile.agri10x.models.GetSubmitContactForm;
+import com.mobile.agri10x.models.GetWorkerForm;
 import com.mobile.agri10x.models.GetUser;
-import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.models.GetVarieties;
 import com.mobile.agri10x.models.NegotiateRate;
 import com.mobile.agri10x.models.QueryCreateCheckOut;
 import com.mobile.agri10x.models.QueryCreatebooking;
-import com.mobile.agri10x.models.QuerySubmitForm;
+import com.mobile.agri10x.models.QueryWorkerForm;
+import com.mobile.agri10x.models.QuerytransportForm;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.UpdateUser;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.models.getAddress;
-import com.mobile.agri10x.models.getAddressData;
 import com.mobile.agri10x.models.getCommAccToCat;
-
-import java.util.List;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -60,7 +57,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface AgriInvestor {
     @POST("m/getOTPNew")
@@ -150,6 +146,9 @@ public interface AgriInvestor {
     @POST("/m/removeProductFromWishlist")
     Call<GetRemoveFromWishlist> wsGetRemoveFromWiishList(@Header("x-auth-token") String token, @Body RequestBody params);
 @POST("/m/submitContactForm")
-    Call<GetSubmitContactForm> wsGetSumitContactForm(@Header("x-auth-token")String token,@Body QuerySubmitForm querySubmitForm);
-
+    Call<GetWorkerForm> wsGetWorkerForm(@Header("x-auth-token")String token, @Body QueryWorkerForm querySubmitForm);
+    @POST("/m/submitContactForm")
+    Call<GetWorkerForm> wsTransportForm(@Header("x-auth-token")String token, @Body QuerytransportForm querytransportForm);
+    @POST("/m/submitContactForm")
+    Call<GetWorkerForm> wsWearHouseForm(@Header("x-auth-token")String token,@Body QueryWearHouseForm queryWearHouseForm);
 }

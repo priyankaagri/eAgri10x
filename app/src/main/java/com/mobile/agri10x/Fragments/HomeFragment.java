@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,10 +51,10 @@ import com.mobile.agri10x.models.GetQueryFeaturedOnly;
 import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetStates;
 import com.mobile.agri10x.models.GetStatesDatum;
-import com.mobile.agri10x.models.GetSubmitContactForm;
+import com.mobile.agri10x.models.GetWorkerForm;
 import com.mobile.agri10x.models.QueryFeatureOnly;
-import com.mobile.agri10x.models.QuerySubmitData;
-import com.mobile.agri10x.models.QuerySubmitForm;
+import com.mobile.agri10x.models.QueryWorkerData;
+import com.mobile.agri10x.models.QueryWorkerForm;
 import com.mobile.agri10x.models.QueryTopicks;
 import com.mobile.agri10x.models.QueryDailyDeals;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -86,7 +85,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
-    RelativeLayout worker_rel,fpo_rel;
+    RelativeLayout worker_rel,fpo_rel,trader_rel,farmer_rel;
     Dialog dialogforwantwork;
     ImageView cancle_btn;
     Button btn_submit;
@@ -162,6 +161,36 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
                 getActivity().startActivity(myIntent);
+            }
+        });
+        farmer_rel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(SessionManager.isLoggedIn(getContext()))
+                {
+
+                    HomePageActivity.setFragment(new MenuFragment(),"menu");
+                }else{
+                    Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                    getActivity().startActivity(myIntent);
+
+
+                }
+            }
+        });
+        trader_rel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(SessionManager.isLoggedIn(getContext()))
+                {
+
+                    HomePageActivity.setFragment(new MenuFragment(),"menu");
+                }else{
+                    Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                    getActivity().startActivity(myIntent);
+
+
+                }
             }
         });
         fpo_rel.setOnClickListener(new View.OnClickListener() {
@@ -706,6 +735,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void Initview(View view) {
+        farmer_rel = view.findViewById(R.id.farmer_rel);
+        trader_rel = view.findViewById(R.id.trader_rel);
         fpo_rel = view.findViewById(R.id.fpo_rel);
         worker_rel = view.findViewById(R.id.worker_rel);
         CommodityUnit = view.findViewById(R.id.catagaryname_id);
@@ -777,7 +808,7 @@ if(loader_check.isChecked()){
 }else{
     loader_check_boolean = false;
 }
-        QuerySubmitData querySubmitData = new QuerySubmitData();
+        QueryWorkerData querySubmitData = new QueryWorkerData();
         querySubmitData.setFirstName(firstname);
         querySubmitData.setLastName(lastname);
         querySubmitData.setWorkerphone(phonenumber);
@@ -789,7 +820,7 @@ if(loader_check.isChecked()){
         querySubmitData.setTemplate("workerForm");
 
 
-        QuerySubmitForm querySubmitForm = new QuerySubmitForm();
+        QueryWorkerForm querySubmitForm = new QueryWorkerForm();
         querySubmitForm.setData(querySubmitData);
 
         AgriInvestor apiService = ApiHandler.getApiService();
@@ -800,18 +831,18 @@ if(loader_check.isChecked()){
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-        Call<GetSubmitContactForm> call = apiService.wsGetSumitContactForm("123456", querySubmitForm);
-        call.enqueue(new Callback<GetSubmitContactForm>() {
+        Call<GetWorkerForm> call = apiService.wsGetWorkerForm("123456", querySubmitForm);
+        call.enqueue(new Callback<GetWorkerForm>() {
             @Override
-            public void onResponse(Call<GetSubmitContactForm> call, Response<GetSubmitContactForm> response) {
+            public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
                 formdialog.dismiss();
-                Log.d("submitform", response.toString());
+                Log.d("sworkerform", response.toString());
                 Toast.makeText(context,"Thank you for submitting the form. We will get back to you soon",Toast.LENGTH_LONG).show();
                 dialogforwantwork.dismiss();
             }
 
             @Override
-            public void onFailure(Call<GetSubmitContactForm> call, Throwable t) {
+            public void onFailure(Call<GetWorkerForm> call, Throwable t) {
                 formdialog.dismiss();
                 dialogforwantwork.dismiss();
                 Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();

@@ -3,16 +3,16 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class QuerySubmitForm {
+public class QueryWorkerForm {
     @SerializedName("data")
     @Expose
-    private QuerySubmitData data;
+    private QueryWorkerData data;
 
-    public QuerySubmitData getData() {
+    public QueryWorkerData getData() {
         return data;
     }
 
-    public void setData(QuerySubmitData data) {
+    public void setData(QueryWorkerData data) {
         this.data = data;
     }
 }

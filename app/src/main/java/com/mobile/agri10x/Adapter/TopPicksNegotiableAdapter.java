@@ -87,11 +87,11 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolders holder, int position) {
-        if(check){
-            holder.fav.setVisibility(View.VISIBLE);
-        }else{
-            holder.fav.setVisibility(View.GONE);
-        }
+//        if(check){
+//            holder.fav.setVisibility(View.VISIBLE);
+//        }else{
+//            holder.fav.setVisibility(View.GONE);
+//        }
 
 
         String strimg =  dataList.get(position).getCommodityID()+".png";

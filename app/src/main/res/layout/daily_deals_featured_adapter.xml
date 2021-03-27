@@ -70,6 +70,7 @@
                 android:textColor="@color/black"
                 android:textSize="10sp" />
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/fav"
                 android:src="@drawable/ic_baseline_favorite_border_24"
                 android:layout_alignParentEnd="true"

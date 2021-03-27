@@ -142,6 +142,7 @@ public class HomeFragment extends Fragment {
         {
             //txt_signups.setText(SessionManager.getmobilePref(getActivity().getApplicationContext()));
             txt_signups.setText(" ");
+
         }else{
             txt_signups.setText("Sign In");
         }

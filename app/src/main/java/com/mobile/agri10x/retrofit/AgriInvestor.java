@@ -27,6 +27,7 @@ import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetLot;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetOrderCheckOutHandling;
+import com.mobile.agri10x.models.GetOrderList;
 import com.mobile.agri10x.models.GetProductInWhishList;
 import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetQueryDailyDeals;
@@ -151,4 +152,10 @@ public interface AgriInvestor {
     Call<GetWorkerForm> wsTransportForm(@Header("x-auth-token")String token, @Body QuerytransportForm querytransportForm);
     @POST("/m/submitContactForm")
     Call<GetWorkerForm> wsWearHouseForm(@Header("x-auth-token")String token,@Body QueryWearHouseForm queryWearHouseForm);
+    @POST("/m/getOrderList")
+    Call<GetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
+
+
+
+
 }

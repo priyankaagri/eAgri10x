@@ -92,11 +92,13 @@ public class YourWishListFragment extends Fragment  {
                     arrayListwishlist.addAll(response.body().getData());
 
                     Log.d("getsizewishlist", String.valueOf(arrayListwishlist.size()));
-                    if (arrayListwishlist.size() >= 0) {
+                    if (arrayListwishlist.size() > 0) {
 
 
                         wishlistAdapter = new WishlistAdapter(getActivity(), arrayListwishlist);
                         recycleview_wishlist_stock.setAdapter(wishlistAdapter);
+                    }else{
+                        Toast.makeText(getActivity(),"Wishlist is empty",Toast.LENGTH_SHORT).show();
                     }
 
 

@@ -1031,7 +1031,7 @@ public class HomeFragment extends Fragment {
                 if (response.isSuccessful()) {
                     featuredonly.addAll(response.body().getData());
                     Log.d("getsizefeat", String.valueOf(featuredonly.size()));
-                    if(featuredonly.size()>=0)
+                    if(featuredonly.size()> 0)
                     {
                         onlyFeaturedAdapter = new OnlyFeaturedAdapter(featuredonly, context);
                         InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(onlyFeaturedAdapter);

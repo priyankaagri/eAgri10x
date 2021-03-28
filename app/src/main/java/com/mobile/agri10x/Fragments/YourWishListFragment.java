@@ -93,6 +93,8 @@ public class YourWishListFragment extends Fragment  {
 
                     Log.d("getsizewishlist", String.valueOf(arrayListwishlist.size()));
                     if (arrayListwishlist.size() >= 0) {
+
+
                         wishlistAdapter = new WishlistAdapter(getActivity(), arrayListwishlist);
                         recycleview_wishlist_stock.setAdapter(wishlistAdapter);
                     }

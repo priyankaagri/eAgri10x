@@ -286,4 +286,15 @@
 
     <string name="remove_product">Remove Product!</string>
     <string name="youwant_toremove">Are you sure you want to Remove?</string>
+
+
+    <string name="transportation">Transportation</string>
+    <string name="company_name">Company Name</string>
+    <string name="pricekg">Price/KG</string>
+    <string name="lastname_str"> Last Name </string>
+
+    <string name="warehouse">Warehouse</string>
+    <string name="features">Select Features</string>
+    <string name="stock_type">Stock Type</string>
+    <string name="select_state">Select State</string>
 </resources>

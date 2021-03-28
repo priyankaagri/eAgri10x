@@ -126,13 +126,13 @@ Dialog dialogfordetailpage;
                     public void onClick(View v) {
 
                         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
-                        builder.setTitle("Remove Product!");
-                        builder.setMessage("Are you sure you want to Remove?");
+                        builder.setTitle("Remove From Wishlist");
+                        builder.setMessage("Are you sure you want to Remove ?");
 
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+dialogfordetailpage.dismiss();
                                 callapideleteproduct(wishlistid,userID);
 
                                 /* Toast.makeText(getActivity(), "You clicked Delete!", Toast.LENGTH_SHORT).show();*/
@@ -181,7 +181,7 @@ Dialog dialogfordetailpage;
                         builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+dialogfordetailpage.dismiss();
                                 dialog.dismiss();
                             }
                         });

@@ -21,6 +21,7 @@ import com.mobile.agri10x.models.GetCreateCheckout;
 import com.mobile.agri10x.models.GetCreateCheckoutDetails;
 import com.mobile.agri10x.models.GetCreateOrder;
 import com.mobile.agri10x.models.GetFeaturesbyCommodity;
+import com.mobile.agri10x.models.GetFilterPrice;
 import com.mobile.agri10x.models.GetGrades;
 import com.mobile.agri10x.models.GetHomeProduct;
 import com.mobile.agri10x.models.GetLiveTrades;
@@ -134,6 +135,8 @@ public interface AgriInvestor {
     Call<NegotiateRate> wsGetNegotiateRate(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("m/filterProducts")
     Call<FilterProducts> wsGetFilterProducts(@Header("x-auth-token") String token , @Body RequestBody params);
+    @POST("m/filterPrice")
+    Call<GetFilterPrice> wsGetFilterPrice(@Header("x-auth-token")String token, @Body RequestBody params);
     @GET("m/getLots")
     Call<GetLot> wsGetLots(@Header("x-auth-token")String token);
     @GET("m/getGrades")

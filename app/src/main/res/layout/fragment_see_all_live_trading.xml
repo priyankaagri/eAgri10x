@@ -27,7 +27,7 @@
             android:layout_alignBaseline="@id/but_back"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/but_back"
-            android:text="Live Trade"
+            android:text="Live Trades"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />

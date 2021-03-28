@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -57,6 +58,7 @@ import com.mobile.agri10x.models.QueryWorkerData;
 import com.mobile.agri10x.models.QueryWorkerForm;
 import com.mobile.agri10x.models.QueryTopicks;
 import com.mobile.agri10x.models.QueryDailyDeals;
+import com.mobile.agri10x.models.QuerytransportForm;
 import com.mobile.agri10x.models.QuerytransportFormData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
@@ -69,8 +71,12 @@ import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -86,36 +92,50 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
-    RelativeLayout worker_rel,fpo_rel,trader_rel,farmer_rel;
-    Dialog dialogforwantwork;
+    RelativeLayout worker_rel, fpo_rel, trader_rel, farmer_rel,transportation_rel,wearhouse_rel,our_hero_farmer,our_hero_trader,our_hero_grain;
+    Dialog dialogforwantwork, dialogForTransportContatct,dialogForWarehouse;
     ImageView cancle_btn;
     Button btn_submit;
-    String firstname,lastname,phonenumber;
-    String str_state="";
-    String  str_City="";
-    EditText edt_txt_fname,edt_txt_lname,edt_txt_phone;
-    SearchableSpinner ss_statebilling, ss_citybilling;
-
+    String firstname, lastname, phonenumber,companyName,emailId;
+    String str_state = "";
+    String str_City = "";
+    EditText edt_txt_company_name,edt_txt_fname, edt_txt_lname, edt_txt_phone,edt_txt_email,edt_txt_pricekg;
+    SearchableSpinner ss_statebilling, ss_citybilling,ss_features,ss_stockType,ss_state;
+    Spinner spinner_tranport_type,spinner_transport_weight,spinner_oprating_state;
+    List<String> allNames = new ArrayList<String>();
     List<GetStatesDatum> getstateArrayList = new ArrayList<>();
     List<GetCitiesDatum> getCityeArrayList = new ArrayList<>();
     ArrayList<String> onlystatename = new ArrayList<>();
     ArrayList<String> onlycityname = new ArrayList<>();
-    CheckBox reaper_check,loader_check,sower_check;
-    String str1="";
-    String checkoboxdata="";
+    CheckBox reaper_check, loader_check, sower_check;
+    String getSelectedValue,getSelectedTransType,getPrice;
+    int positonInt,i;
+    String str1 = "";
+    String checkoboxdata = "";
+    final String weightOfTransport[] = {"850 Kgs"};
+    final String weightOfTransport1[] = {"1 MT"};
+    final String weightOfTransport2[] = {"1.5 MT"};
+    final String weightOfTransport3[] = {"2.5 MT"};
+    final String weightOfTransport4[] = {"5 MT"};
+    final String weightOfTransport5[] = {"7 MT","8 MT","9 MT"};
+    final String weightOfTransport6[] = {"10 MT"};
+    final String weightOfTransport7[] = {"9 MT"};
+    final String weightOfTransport8[] = {"16 MT"};
+    final String weightOfTransport9[] = {"21 MT"};
+    final String weightOfTransport10[] = {"25 MT"};
 
     RecyclerView recycler_dailydeals, recycler_toppics, recycle_category, OfferShopListRecyclerView;
-    ArrayList<GetCategoriesData>categorieslist;
+    ArrayList<GetCategoriesData> categorieslist;
 
     DiscreteScrollView only_feature_rv;
-    TextView txt_ViewAll, txt_Viewsee,txt_signups,txt_i_amworker;
-    AlertDialog dialog,formdialog;
+    TextView txt_ViewAll, txt_Viewsee, txt_signups, txt_i_amworker;
+    AlertDialog dialog, formdialog;
     Context context;
     OnlyFeaturedAdapter onlyFeaturedAdapter;
     private LinearLayoutManager linearLayoutManager;
     private LinearLayoutManager linearLayoutManager1;
     private LinearLayoutManager linearLayoutManager2;
-    private  LinearLayoutManager linearLayoutManager3;
+    private LinearLayoutManager linearLayoutManager3;
     Spinner CommodityUnit;
     ArrayList<String> category = new ArrayList<>();
     List<GetHomeProductData> dealofDay = new ArrayList<>();
@@ -125,6 +145,7 @@ public class HomeFragment extends Fragment {
     List<GetCategoriesData> catArraylist = new ArrayList<>();
     //  List<FeaturedProduct_Model> featuredproductlist = new ArrayList<>();
     private LiveNetworkMonitor mNetworkMonitor;
+
 
 
     @Nullable
@@ -163,6 +184,51 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
                 getActivity().startActivity(myIntent);
+            }
+        });
+        our_hero_grain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(SessionManager.isLoggedIn(getContext()))
+                {
+
+                    HomePageActivity.setFragment(new MenuFragment(),"menu");
+                }else{
+                    Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                    getActivity().startActivity(myIntent);
+
+
+                }
+            }
+        });
+        our_hero_trader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(SessionManager.isLoggedIn(getContext()))
+                {
+
+                    HomePageActivity.setFragment(new MenuFragment(),"menu");
+                }else{
+                    Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                    getActivity().startActivity(myIntent);
+
+
+                }
+            }
+        });
+        our_hero_farmer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(SessionManager.isLoggedIn(getContext()))
+                {
+
+                    HomePageActivity.setFragment(new MenuFragment(),"menu");
+                }else{
+                    Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                    getActivity().startActivity(myIntent);
+
+
+                }
             }
         });
         farmer_rel.setOnClickListener(new View.OnClickListener() {
@@ -248,7 +314,7 @@ public class HomeFragment extends Fragment {
                         if(validatefirstName(firstname)&&validatelastName(lastname)&&validatephonenumber(phonenumber)&&validatestate(str_state)&&validatecity(str_City)
                         &&validatecheckbox(reaper_check,sower_check,loader_check)){
                             formdialog = new Alert().pleaseWait();
-                            CallSubmitApi(firstname,lastname,phonenumber,str_state,str_City);
+                            CallSworkerformapi(firstname,lastname,phonenumber,str_state,str_City);
 
                         }
 
@@ -418,10 +484,428 @@ public class HomeFragment extends Fragment {
             }
 
         });
+
+
+        transportation_rel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogForTransportContatct = new Dialog(context);
+                dialogForTransportContatct.setContentView(R.layout.transportation_connect_us);
+
+                dialogForTransportContatct.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialogForTransportContatct.setCancelable(true);
+                dialogForTransportContatct.setCanceledOnTouchOutside(true);
+                dialogForTransportContatct.getWindow().getAttributes().windowAnimations = R.style.animation;
+                cancle_btn = dialogForTransportContatct.findViewById(R.id.cancle_btn);
+                btn_submit = dialogForTransportContatct.findViewById(R.id.btn_submit);
+
+                edt_txt_company_name = dialogForTransportContatct.findViewById(R.id.edt_txt_cname);
+                edt_txt_fname = dialogForTransportContatct.findViewById(R.id.edt_txt_fname);
+                edt_txt_lname = dialogForTransportContatct.findViewById(R.id.edt_txt_lname);
+                edt_txt_phone = dialogForTransportContatct.findViewById(R.id.edt_txt_phone);
+                edt_txt_email = dialogForTransportContatct.findViewById(R.id.edt_email_id);
+                spinner_tranport_type =  dialogForTransportContatct.findViewById(R.id.spinner_type_transport);
+                spinner_transport_weight = dialogForTransportContatct.findViewById(R.id.spinner_weight_transport);
+                edt_txt_pricekg = dialogForTransportContatct.findViewById(R.id.edt_txt_price);
+                ss_statebilling = dialogForTransportContatct.findViewById(R.id.spinner_state_billing_id);
+                callApiGetState();
+
+                try {
+                    JSONObject object = new JSONObject(readJSON());
+                    JSONArray array = object.getJSONArray("data");
+                    for ( i = 0; i < array.length(); i++) {
+                        JSONObject jsonObject = array.getJSONObject(i);
+                        String id = jsonObject.getString("_id");
+                        Log.v("miId",id);
+                        String type = jsonObject.getString("type");
+                        Log.v("vichleType",type);
+                        String weight = jsonObject.getString("weight");
+                        Log.v("vihcleWeight",weight);
+                        allNames.add(type);
+
+                        ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.spinner_item,allNames);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        //Setting the ArrayAdapter data on the Spinner
+                        spinner_tranport_type.setAdapter(adapter);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                spinner_tranport_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        spinner_transport_weight.setAdapter(null);
+                        if(position==0) {
+                            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, weightOfTransport);
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedTransType);
+
+                        }
+                        else if(position==1) {
+                            ArrayAdapter adapter1 = new ArrayAdapter(getActivity(), R.layout.spinner_item, weightOfTransport1);
+                            adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter1);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedTransType);
+                        }
+                        else if(position==2) {
+                            ArrayAdapter adapter2 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport2);
+                            adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter2);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedTransType);
+                        }
+                        else if(position==3) {
+                            ArrayAdapter adapter3 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport3);
+                            adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter3);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedTransType);
+
+                        }
+                        else if(position==4) {
+                            ArrayAdapter adapter4 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport4);
+                            adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter4);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedTransType);
+
+
+                        } else if(position==5) {
+                            ArrayAdapter adapter5 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport5);
+                            adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter5);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedTransType);
+
+                        } else if(position==6) {
+                            ArrayAdapter adapter6 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport6);
+                            adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter6);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedTransType);
+
+                        } else if(position==7) {
+                            ArrayAdapter adapter7 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport7);
+                            adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter7);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedValue);
+
+                        }
+                        else if(position==8) {
+                            ArrayAdapter adapter8 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport8);
+                            adapter8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter8);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedValue);
+
+                        }
+                        else if(position==9) {
+                            ArrayAdapter adapter9 = new ArrayAdapter(getActivity(), R.layout.spinner_item, weightOfTransport9);
+                            adapter9.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter9);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedValue);
+
+                        }
+                        else if(position==10) {
+                            ArrayAdapter adapter10 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport10);
+                            adapter10.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spinner_transport_weight.setAdapter(adapter10);
+                            getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
+                            Log.v("getSpinnerValue",getSelectedValue);
+                            getSelectedTransType = spinner_tranport_type.getSelectedItem().toString();
+                            Log.v("getSelectedTransType",getSelectedValue);
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+                spinner_transport_weight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+                ss_statebilling.setOnItemSelectedListener(new OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(View view, int position, long id) {
+                        String pos = ss_statebilling.getSelectedItem().toString();
+                        str_state = pos;
+                        Log.d("selectedstatebill", pos);
+                        for (int i = 0; i < getstateArrayList.size(); i++) {
+                            String addstr = getstateArrayList.get(i).getState();
+                            if (pos.equals(addstr)) {
+                                String stateId = getstateArrayList.get(i).getId();
+                                Log.d("stateId", stateId);
+                                //callapibillingcities(stateId);
+
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onNothingSelected() {
+
+                    }
+                });
+
+                btn_submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        companyName = edt_txt_company_name.getText().toString();
+                        firstname = edt_txt_fname.getText().toString();
+                        lastname = edt_txt_lname.getText().toString();
+                        phonenumber = edt_txt_phone.getText().toString();
+                        emailId = edt_txt_email.getText().toString();
+                        getPrice = edt_txt_pricekg.getText().toString();
+
+
+                        if (validateCompanyName(companyName) && validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) &&  validatestate(str_state) && validatePrice(getPrice)) {
+                            formdialog = new Alert().pleaseWait();
+                            CallSubmitTransportationApi(companyName,firstname, lastname, phonenumber, emailId, str_state,getSelectedValue,getSelectedTransType,getPrice);
+
+                        }
+
+                    }
+
+
+                });
+
+
+
+                cancle_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogForTransportContatct.dismiss();
+                    }
+                });
+
+
+                dialogForTransportContatct.show();
+
+
+            }
+
+            private void callApiGetState() {
+
+
+                getstateArrayList.clear();
+
+                AgriInvestor apiService = ApiHandler.getApiService();
+                try {
+                    SSLCertificateManagment.trustAllHosts();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                } catch (KeyManagementException e) {
+                    e.printStackTrace();
+                }
+                Call<GetStates> call = apiService.wsGetStates("123456");
+                call.enqueue(new Callback<GetStates>() {
+                    @Override
+                    public void onResponse(Call<GetStates> call, Response<GetStates> response) {
+
+                        Log.d("GetStatelist", response.toString());
+
+                        if (response.isSuccessful()) {
+// statecategory.add("Select State");
+
+                            getstateArrayList.addAll(response.body().getData());
+                            Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
+                            onlystatename.clear();
+                            for (int i = 0; i < getstateArrayList.size(); i++) {
+                                String state = getstateArrayList.get(i).getState();
+                                onlystatename.add(state);
+
+                            }
+                            ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, onlystatename);
+                            ss_statebilling.setAdapter(adapter1);
+                        } else {
+
+                            Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GetStates> call, Throwable t) {
+
+                    }
+                });
+
+
+            }
+
+            private void callapibillingcities(String stateId) {
+                getCityeArrayList.clear();
+                Map<String, Object> jsonParams = new ArrayMap<>();
+                jsonParams.put("_id", stateId);
+                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+                AgriInvestor apiService = ApiHandler.getApiService();
+
+                try {
+                    SSLCertificateManagment.trustAllHosts();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                } catch (KeyManagementException e) {
+                    e.printStackTrace();
+                }
+                Call<GetCities> call = apiService.wsGetCities("123456", body);
+                call.enqueue(new Callback<GetCities>() {
+                    @Override
+                    public void onResponse(Call<GetCities> call, Response<GetCities> response) {
+
+                        Log.d("GetCitylist", response.toString());
+
+                        if (response.isSuccessful()) {
+                            onlycityname.clear();
+                            getCityeArrayList.addAll(response.body().getData());
+                            Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
+                            for (int i = 0; i < getCityeArrayList.size(); i++) {
+                                String city = getCityeArrayList.get(i).getCities();
+                                onlycityname.add(city);
+
+                            }
+                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, onlycityname);
+                            ss_citybilling.setAdapter(adapter2);
+
+                        } else {
+
+                            Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GetCities> call, Throwable t) {
+
+                    }
+                });
+
+
+            }
+
+        });
+
+
+        wearhouse_rel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogForWarehouse = new Dialog(context);
+                dialogForWarehouse.setContentView(R.layout.warehouse_contact_us);
+
+                dialogForWarehouse.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialogForWarehouse.setCancelable(true);
+                dialogForWarehouse.setCanceledOnTouchOutside(true);
+                dialogForWarehouse.getWindow().getAttributes().windowAnimations = R.style.animation;
+                cancle_btn = dialogForWarehouse.findViewById(R.id.cancle_btn);
+
+                btn_submit = dialogForWarehouse.findViewById(R.id.btn_submit);
+                edt_txt_fname = dialogForWarehouse.findViewById(R.id.edt_txt_fname);
+                edt_txt_lname = dialogForWarehouse.findViewById(R.id.edt_txt_lname);
+                edt_txt_phone = dialogForWarehouse.findViewById(R.id.edt_txt_phone);
+                edt_txt_email = dialogForWarehouse.findViewById(R.id.edt_email_id);
+
+                ss_features = dialogForWarehouse.findViewById(R.id.spinner_features);
+                ss_stockType = dialogForWarehouse.findViewById(R.id.spinner_stock_type);
+                ss_state = dialogForWarehouse.findViewById(R.id.spinner_state);
+
+                btn_submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        firstname = edt_txt_fname.getText().toString();
+                        lastname = edt_txt_lname.getText().toString();
+                        phonenumber = edt_txt_phone.getText().toString();
+                        emailId = edt_txt_email.getText().toString();
+                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) && validatestate(str_state)) {
+                            formdialog = new Alert().pleaseWait();
+                            // CallSubmitApi(firstname, lastname, phonenumber, str_state);
+
+                        }
+
+                    }
+
+
+                });
+                cancle_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogForWarehouse.dismiss();
+                    }
+                });
+
+
+                dialogForWarehouse.show();
+            }
+        });
         return view;
     }
 
-
+    public String readJSON() {
+        String json = null;
+        try {
+            // Opening data.json file
+            InputStream inputStream = context.getAssets().open("transportVehicles.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            // read values in the byte array
+            inputStream.read(buffer);
+            inputStream.close();
+            // convert byte to string
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return json;
+        }
+        Log.e("mydata", json);
+        return json;
+    }
 
     private void getDailyDeals() {
         dealofDay.clear();
@@ -737,6 +1221,11 @@ public class HomeFragment extends Fragment {
     }
 
     private void Initview(View view) {
+        our_hero_grain = view.findViewById(R.id.our_hero_grain);
+        our_hero_trader = view.findViewById(R.id.our_hero_trader);
+        our_hero_farmer = view.findViewById(R.id.our_hero_farmer);
+        transportation_rel = view.findViewById(R.id.transportation_rel);
+        wearhouse_rel = view.findViewById(R.id.wearhouse_rel);
         farmer_rel = view.findViewById(R.id.farmer_rel);
         trader_rel = view.findViewById(R.id.trader_rel);
         fpo_rel = view.findViewById(R.id.fpo_rel);
@@ -790,8 +1279,55 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    public void CallSubmitTransportationApi(String companyName,String firstname, String lastname, String phonenumber,String emailId, String str_state, String str_transType,String str_tWeight,String str_Price) {
 
-    public void CallSubmitApi(String firstname, String lastname, String phonenumber, String str_state, String str_City) {
+        QuerytransportFormData querySubmitData = new QuerytransportFormData();
+        querySubmitData.setTcName(companyName);
+        querySubmitData.setTfName(firstname);
+        querySubmitData.setTlName(lastname);
+        querySubmitData.setTContactNumber(phonenumber);
+        querySubmitData.setTemail(emailId);
+        querySubmitData.setTstate(str_state);
+        querySubmitData.setTtype(str_transType);
+        querySubmitData.setTweight(str_tWeight);
+        querySubmitData.setTprice(str_Price);
+        querySubmitData.setTemplate("transportForm");
+
+        QuerytransportForm queryTSubmitForm = new QuerytransportForm();
+        queryTSubmitForm.setData(querySubmitData);
+        Log.v("queryTSubmitForm",queryTSubmitForm.toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        Call<GetWorkerForm> call = apiService.wsTransportForm("123456", queryTSubmitForm);
+        call.enqueue(new Callback<GetWorkerForm>() {
+            @Override
+            public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
+                formdialog.dismiss();
+                Log.d("sworkerform", response.toString());
+                Toast.makeText(context, "Thank you for submitting the form. We will get back to you soon", Toast.LENGTH_LONG).show();
+                dialogForTransportContatct.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<GetWorkerForm> call, Throwable t) {
+                formdialog.dismiss();
+                dialogForTransportContatct.dismiss();
+                Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
+
+    public void CallSworkerformapi(String firstname, String lastname, String phonenumber, String str_state, String str_City) {
 boolean reper_check_boolean,sower_check_boolean,loader_check_boolean;
 if(reaper_check.isChecked()){
     reper_check_boolean = true;
@@ -856,6 +1392,16 @@ if(loader_check.isChecked()){
 
 
     }
+
+
+
+
+
+
+
+
+
+
     public boolean validatecheckbox(CheckBox reaper_check, CheckBox sower_check, CheckBox loader_check) {
         if (!reaper_check.isChecked() && !sower_check.isChecked() && !loader_check.isChecked() ) {
 
@@ -865,7 +1411,14 @@ if(loader_check.isChecked()){
         }
         return  true;
     }
-
+    public boolean validateCompanyName(String CompanyName) {
+        if (CompanyName.isEmpty() || CompanyName == null) {
+            Toast.makeText(getActivity(),
+                    "Company Name Required!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
     public boolean validatefirstName(String FirstName) {
         if (FirstName.isEmpty() || FirstName == null) {
             Toast.makeText(getActivity(),
@@ -907,5 +1460,28 @@ if(loader_check.isChecked()){
         }
         return true;
     }
-
+    public boolean validateFeatures(String str_features) {
+        if (str_features.isEmpty() || str_features == null) {
+            Toast.makeText(getActivity(),
+                    "Features is Required!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+    public boolean validateStockType(String str_stock) {
+        if (str_stock.isEmpty() || str_stock == null) {
+            Toast.makeText(getActivity(),
+                    "Stock Type is Required!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+    public boolean validatePrice(String str_price) {
+        if (str_price.isEmpty() || str_price == null) {
+            Toast.makeText(getActivity(),
+                    "Price is Required!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
 }

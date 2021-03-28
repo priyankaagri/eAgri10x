@@ -28,20 +28,28 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.Fragments.TradeValueAddCart;
+import com.mobile.agri10x.Fragments.YourWishListFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
+import com.mobile.agri10x.models.GetADDWishlist;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetHomeProductData;
+import com.mobile.agri10x.models.GetProductInWishList;
+import com.mobile.agri10x.models.GetProductInWishListData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -56,6 +64,8 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
     Context context;
     private List<GetHomeProductData> dataList;
     AlertDialog dialog;
+    ArrayList<GetProductInWishListData> arrayListwishlist=new ArrayList<>();
+    boolean present= false;
     public OnlyFeaturedAdapter(List<GetHomeProductData> featuredproductlist, Context context) {
         this.dataList=featuredproductlist;
         this.context=context;
@@ -112,10 +122,13 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
             @Override
             public void onClick(View v) {
 
-                    String str_orderId=dataList.get(position).getOrderID();
-                    Log.d("getcommid",dataList.get(position).getCommodityID());
-                    String str_grade = dataList.get(position).getGrade();
-                    callApiProductDetail(str_orderId,position,str_grade);
+                String str_orderId=dataList.get(position).getOrderID();
+                String str_grade = dataList.get(position).getGrade();
+                Double str_price = dataList.get(position).getPricePerLot();
+                String str_commodityname = dataList.get(position).getCommodityName();
+                String str_variety = dataList.get(position).getVarietyName();
+
+                callApiProductDetail(str_orderId,position,str_grade,str_price,str_commodityname,str_variety);
 
             }
         });
@@ -123,7 +136,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 
     }
 
-    private void callApiProductDetail(String str_orderId, int position, String str_grade) {
+    private void callApiProductDetail(String str_orderId, int position, String str_grade, Double str_price,String str_commodityname,String str_variety_name) {
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("orderID",str_orderId);
@@ -160,8 +173,17 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                     TextView price_txt = dialog.findViewById(R.id.price_txt);
                     TextView variety= dialog.findViewById(R.id.variety);
                     TextView grade= dialog.findViewById(R.id.grade);
-
                     ImageView close_dialog = dialog.findViewById(R.id.close_dialog);
+
+                    ImageView img_add_wishlist = dialog.findViewById(R.id.img_add_wishlist);
+                    img_add_wishlist.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            callapiofprductsinwishlist(str_orderId,str_grade,str_price,str_commodityname,str_variety_name);
+
+                        }
+                    });
 
                     close_dialog.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -257,6 +279,125 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
 
             @Override
             public void onFailure(Call<DisplayQuickView> call,
+                                  Throwable t) {
+
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void callapiofprductsinwishlist(String str_orderId, String str_grade, Double str_price,String str_commodtyname,String str_varietyname) {
+
+        arrayListwishlist.clear();
+        Map<String, Object> jsonParams = new ArrayMap<>();
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+//AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetProductInWishList> loginCall = apiService.wsGetProductInWhishlist("123456",
+                body);
+        loginCall.enqueue(new Callback<GetProductInWishList>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetProductInWishList> call,
+                                   Response<GetProductInWishList> response) {
+
+                Log.d("resWishlist", response.toString());
+
+                if (response.isSuccessful()) {
+                    arrayListwishlist.addAll(response.body().getData());
+
+                    Log.d("getsizewishlist", String.valueOf(arrayListwishlist.size()));
+                    if (arrayListwishlist.size() > 0) {
+
+                        for(int i=0; i  < arrayListwishlist.size();i++) {
+                            String getorderid_from_wishlist = arrayListwishlist.get(i).getOrderID();
+                            String grade_from_wishlist = arrayListwishlist.get(i).getGrade();
+                            String commodityname_fromwishlist = arrayListwishlist.get(i).getName();
+                            String variety_fromwishlist = arrayListwishlist.get(i).getVariety();
+                            double price_fromwishlist = arrayListwishlist.get(i).getPrice();
+                            Log.d("checklist", commodityname_fromwishlist + " " + str_commodtyname + " " + grade_from_wishlist + " " + str_grade+" "+variety_fromwishlist+" "+str_varietyname);
+
+                            if (grade_from_wishlist.equals(str_grade) && commodityname_fromwishlist.equals(str_commodtyname) && variety_fromwishlist.equals(str_varietyname) && price_fromwishlist == str_price) {
+                                present = true;
+
+                            }
+                        }
+                        if(present){
+                            Toast.makeText(context,"Already in your wishlist",Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            callapiAddtoWishlist(str_orderId,str_grade,str_price);
+                        }
+
+
+
+                    }else{
+                        callapiAddtoWishlist(str_orderId,str_grade,str_price);
+                    }
+
+
+                } else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetProductInWishList> call,
+                                  Throwable t) {
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void callapiAddtoWishlist(String str_orderId, String str_grade, double str_price) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+        jsonParams.put("m_OrderID",str_orderId);
+        jsonParams.put("price",str_price );
+        jsonParams.put("grade",str_grade );
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+//AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetADDWishlist> loginCall = apiService.wsAddWishlist("123456",
+                body);
+        loginCall.enqueue(new Callback<GetADDWishlist>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetADDWishlist> call,
+                                   Response<GetADDWishlist> response) {
+
+                Log.d("rewishlist", response.toString());
+
+                if (response.isSuccessful()) {
+
+
+                    HomePageActivity.setFragment(new YourWishListFragment(),"wishlist");
+
+
+                } else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetADDWishlist> call,
                                   Throwable t) {
 
                 Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();

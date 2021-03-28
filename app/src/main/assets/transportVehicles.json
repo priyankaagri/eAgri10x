@@ -1,0 +1,73 @@
+{
+  "data" :[
+  {
+    "_id":"605f076e53ae5633586b90c5",
+    "type": "TATA ACE",
+    "weight": [
+      "850 Kgs"
+    ]
+  },{
+  "_id": "605f076e53ae5633586b90c6",
+  "type": "ASHOK LEYLAND DOST",
+  "weight": [
+    "1 MT"
+  ]
+},{
+  "_id":"605f076e53ae5633586b90c7",
+  "type": "MAHINDRA BOLERO PICK UP",
+  "weight": [
+    "1.5 MT"
+  ]
+},{
+  "_id":"605f076e53ae5633586b90c8",
+  "type": "TATA 407",
+  "weight": [
+    "2.5 MT"
+  ]
+},{
+  "_id": "605f076e53ae5633586b90c9",
+  "type": "EICHER 17 FEET",
+  "weight": [
+    "5 MT"
+  ]
+},{
+  "_id":"605f076e53ae5633586b90ca",
+  "type": "EICHER 19 FEET",
+  "weight": [
+    "7 MT",
+    "8 MT",
+    "9 MT"
+  ]
+},{
+  "_id":"605f076e53ae5633586b90cb",
+  "type": "TATA 22 FEET",
+  "weight": [
+    "10 MT"
+  ]
+},{
+  "_id":"605f076e53ae5633586b90cc",
+  "type": "TATA TRUCK (6 TYRE)",
+  "weight": [
+    "9 MT"
+  ]
+},{
+  "_id":"605f076e53ae5633586b90cd",
+  "type": "TAURUS 16 T (10 TYRE)",
+  "weight": [
+    "16 MT"
+  ]
+},{
+  "_id": "605f076e53ae5633586b90ce",
+
+  "type": "TAURUS 21 T (12 TYRE)",
+  "weight": [
+    "21 MT"
+  ]
+},{
+  "_id":"605f076e53ae5633586b90cf",
+  "type": "TAURUS 25 T (14 TYRE)",
+  "weight": [
+    "25 MT"
+  ]
+}]
+}

@@ -349,6 +349,7 @@ android:visibility="gone"
                     android:orientation="horizontal">
 
                     <RelativeLayout
+                        android:id="@+id/our_hero_farmer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -385,6 +386,7 @@ android:visibility="gone"
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/our_hero_trader"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -423,6 +425,7 @@ android:visibility="gone"
 
 
                     <RelativeLayout
+                        android:id="@+id/our_hero_grain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 

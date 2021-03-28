@@ -30,10 +30,10 @@ public class GetProductInWishListData {
     private String variety;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private double price;
     @SerializedName("weight")
     @Expose
-    private Integer weight;
+    private double weight;
     @SerializedName("quantity")
     @Expose
     private Integer quantity;
@@ -115,19 +115,19 @@ public class GetProductInWishListData {
         this.variety = variety;
     }
 
-    public Integer getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public Integer getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

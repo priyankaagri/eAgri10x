@@ -9,7 +9,7 @@ public class GetProductsInCart {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("products")
+    @SerializedName("products")//products
     @Expose
     private List<GetProductsInCartProductData> products = null;
     @SerializedName("subTotal")

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="7"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/commodity_image"
+                android:layout_width="100dp"
+                android:padding="15dp"
+
+                android:layout_height="100dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/txt_commodity_name"
+                android:layout_width="match_parent"
+
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:id="@+id/txt_variety_name"
+                android:layout_width="match_parent"
+android:layout_marginTop="8dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/proxima_nova_alt_light"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/text_color"
+        android:layout_height="1dp">
+
+    </View>
+
+    <TextView
+        android:id="@+id/txt_product_pack_size"
+        android:layout_width="match_parent"
+
+        android:padding="15dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/text_color"
+        android:layout_height="1dp">
+
+    </View>
+    <TextView
+        android:id="@+id/txt_avilable_quantity"
+        android:layout_width="match_parent"
+
+        android:padding="15dp"
+        android:textSize="16dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/text_color"
+        android:layout_height="1dp">
+
+    </View>
+    <TextView
+        android:id="@+id/txt_delete"
+        android:layout_width="match_parent"
+        android:text="Delete"
+        android:padding="15dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+
+
+
+</LinearLayout>

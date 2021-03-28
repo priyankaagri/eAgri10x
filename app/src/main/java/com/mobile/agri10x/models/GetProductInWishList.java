@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GetProductInWhishList {
+public class GetProductInWishList {
     @SerializedName("message")
     @Expose
     private String message;
     @SerializedName("data")
     @Expose
-    private List<GetProductInWhishListData> data = null;
+    private List<GetProductInWishListData> data = null;
 
     public String getMessage() {
         return message;
@@ -21,11 +21,11 @@ public class GetProductInWhishList {
         this.message = message;
     }
 
-    public List<GetProductInWhishListData> getData() {
+    public List<GetProductInWishListData> getData() {
         return data;
     }
 
-    public void setData(List<GetProductInWhishListData> data) {
+    public void setData(List<GetProductInWishListData> data) {
         this.data = data;
     }
 }

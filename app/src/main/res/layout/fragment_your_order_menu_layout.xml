@@ -1,45 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.core.widget.NestedScrollView
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/toolbar_your_order"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:id="@+id/toolbar_your_order"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/btn_back_your_order_id"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/black" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="20dp">
+                android:layout_alignBaseline="@id/btn_back_your_order_id"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/btn_back_your_order_id"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="@string/menu_your_orders"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/btn_back_your_order_id"
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_arrow_back_24"
-                    app:tint="@color/black" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@id/btn_back_your_order_id"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@+id/btn_back_your_order_id"
-                    android:text="@string/menu_your_orders"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btn_booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/filll_back"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Booking"
+                android:textColor="@color/white"></TextView>
+
+            <TextView
+                android:id="@+id/btn_purchase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/hollow_back"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Purchase"
+                android:textColor="@color/black"></TextView>
+
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/booking_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:orientation="vertical">
+
+
+
+
+            <com.todkars.shimmer.ShimmerRecyclerView
+                android:id="@+id/recycleview_booking_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/purchase_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <com.todkars.shimmer.ShimmerRecyclerView
+                android:id="@+id/recycleview_purchase_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
 </LinearLayout>

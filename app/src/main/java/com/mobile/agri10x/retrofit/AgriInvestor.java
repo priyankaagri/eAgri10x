@@ -28,7 +28,7 @@ import com.mobile.agri10x.models.GetLot;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetOrderCheckOutHandling;
 import com.mobile.agri10x.models.GetOrderList;
-import com.mobile.agri10x.models.GetProductInWhishList;
+import com.mobile.agri10x.models.GetProductInWishList;
 import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetQueryDailyDeals;
 import com.mobile.agri10x.models.GetQueryFeaturedOnly;
@@ -143,7 +143,7 @@ public interface AgriInvestor {
     @POST("/m/addToWishList")
     Call<GetADDWishlist> wsAddWishlist(@Header("x-auth-token") String token , @Body RequestBody params);
     @POST("/m/getProductsInWishlist")
-    Call<GetProductInWhishList> wsGetProductInWhishlist(@Header("x-auth-token") String token, @Body RequestBody params);
+    Call<GetProductInWishList> wsGetProductInWhishlist(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("/m/removeProductFromWishlist")
     Call<GetRemoveFromWishlist> wsGetRemoveFromWiishList(@Header("x-auth-token") String token, @Body RequestBody params);
 @POST("/m/submitContactForm")

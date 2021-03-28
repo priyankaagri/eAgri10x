@@ -283,4 +283,7 @@
     <string name="i_am_reper">I am a  Reaper</string>
     <string name="i_am_sower">I am a  Sower</string>
     <string name="i_am_loader">I am a  Loader</string>
+
+    <string name="remove_product">Remove Product!</string>
+    <string name="youwant_toremove">Are you sure you want to Remove?</string>
 </resources>

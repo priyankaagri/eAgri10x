@@ -27,20 +27,25 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.Fragments.TradeValueAddCart;
+import com.mobile.agri10x.Fragments.YourWishListFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
 import com.mobile.agri10x.models.DisplayQuickView;
+import com.mobile.agri10x.models.GetADDWishlist;
 import com.mobile.agri10x.models.GetAddProductToCart;
 import com.mobile.agri10x.models.GetHomeProductData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 import com.squareup.picasso.Picasso;
 
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
@@ -115,7 +120,8 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
 
                     String str_orderId=dataList.get(position).getOrderID();
                     String str_grade = dataList.get(position).getGrade();
-                    callApiProductDetail(str_orderId,position,str_grade);
+                    Double str_price = dataList.get(position).getPricePerLot();
+                    callApiProductDetail(str_orderId,position,str_grade,str_price);
 
             }
         });
@@ -123,7 +129,7 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
 
     }
 
-    private void callApiProductDetail(String str_orderId, int position, String str_grade) {
+    private void callApiProductDetail(String str_orderId, int position, String str_grade, Double str_price) {
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("orderID",str_orderId);
@@ -161,6 +167,15 @@ public class DailyDealsFeaturedAdapter extends RecyclerView.Adapter<DailyDealsFe
                     TextView variety= dialog.findViewById(R.id.variety);
                     TextView grade= dialog.findViewById(R.id.grade);
                     ImageView close_dialog = dialog.findViewById(R.id.close_dialog);
+                    ImageView img_add_wishlist = dialog.findViewById(R.id.img_add_wishlist);
+
+                    img_add_wishlist.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            callapiAddtoWishlist(str_orderId,str_grade,str_price);
+                        }
+                    });
 
 close_dialog.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -260,6 +275,55 @@ close_dialog.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onFailure(Call<DisplayQuickView> call,
+                                  Throwable t) {
+
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void callapiAddtoWishlist(String str_orderId, String str_grade, Double str_price) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+        jsonParams.put("m_OrderID",str_orderId);
+        jsonParams.put("price",str_price );
+        jsonParams.put("grade",str_grade );
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+//AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetADDWishlist> loginCall = apiService.wsAddWishlist("123456",
+                body);
+        loginCall.enqueue(new Callback<GetADDWishlist>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetADDWishlist> call,
+                                   Response<GetADDWishlist> response) {
+
+                Log.d("rewishlist", response.toString());
+
+                if (response.isSuccessful()) {
+
+
+                    HomePageActivity.setFragment(new YourWishListFragment(),"wishlist");
+
+
+                } else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetADDWishlist> call,
                                   Throwable t) {
 
                 Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();

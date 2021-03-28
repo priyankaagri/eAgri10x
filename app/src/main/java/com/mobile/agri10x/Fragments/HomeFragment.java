@@ -57,6 +57,7 @@ import com.mobile.agri10x.models.QueryWorkerData;
 import com.mobile.agri10x.models.QueryWorkerForm;
 import com.mobile.agri10x.models.QueryTopicks;
 import com.mobile.agri10x.models.QueryDailyDeals;
+import com.mobile.agri10x.models.QuerytransportFormData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.retrofit.SSLCertificateManagment;
@@ -819,6 +820,8 @@ if(loader_check.isChecked()){
         querySubmitData.setSower(sower_check_boolean);
         querySubmitData.setLoader(loader_check_boolean);
         querySubmitData.setTemplate("workerForm");
+
+
 
 
         QueryWorkerForm querySubmitForm = new QueryWorkerForm();

@@ -51,10 +51,10 @@ public class FilterProductsDatum {
     private Boolean discounted;
     @SerializedName("weight")
     @Expose
-    private Integer weight;
+    private double weight;
     @SerializedName("pricePerLot")
     @Expose
-    private Integer pricePerLot;
+    private double pricePerLot;
     @SerializedName("orderID")
     @Expose
     private String orderID;
@@ -66,7 +66,7 @@ public class FilterProductsDatum {
     private String validTo;
     @SerializedName("totalAvailable")
     @Expose
-    private Integer totalAvailable;
+    private double totalAvailable;
     @SerializedName("featureName")
     @Expose
     private List<Object> featureName = null;
@@ -195,19 +195,19 @@ public class FilterProductsDatum {
         this.discounted = discounted;
     }
 
-    public Integer getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public Integer getPricePerLot() {
+    public double getPricePerLot() {
         return pricePerLot;
     }
 
-    public void setPricePerLot(Integer pricePerLot) {
+    public void setPricePerLot(double pricePerLot) {
         this.pricePerLot = pricePerLot;
     }
 
@@ -235,11 +235,11 @@ public class FilterProductsDatum {
         this.validTo = validTo;
     }
 
-    public Integer getTotalAvailable() {
+    public double getTotalAvailable() {
         return totalAvailable;
     }
 
-    public void setTotalAvailable(Integer totalAvailable) {
+    public void setTotalAvailable(double totalAvailable) {
         this.totalAvailable = totalAvailable;
     }
 

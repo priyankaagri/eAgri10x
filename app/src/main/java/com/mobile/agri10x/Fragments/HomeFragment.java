@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
     RelativeLayout worker_rel, fpo_rel, trader_rel, farmer_rel,transportation_rel,wearhouse_rel,our_hero_farmer,our_hero_trader,our_hero_grain;
     Dialog dialogforwantwork, dialogForTransportContatct,dialogForWarehouse;
     ImageView cancle_btn;
-    Button btn_submit;
+    Button btn_submit_worker,btn_submit_transport,btn_submit_wearhouse;
     String firstname, lastname, phonenumber,companyName,emailId;
     String str_state = "";
     String str_City = "";
@@ -289,7 +289,7 @@ public class HomeFragment extends Fragment {
                 cancle_btn = dialogforwantwork.findViewById(R.id.cancle_btn);
                 ss_statebilling = dialogforwantwork.findViewById(R.id.spinner_state_billing_id);
                 ss_citybilling = dialogforwantwork.findViewById(R.id.spinner_city_billing_id);
-                btn_submit = dialogforwantwork.findViewById(R.id.btn_submit);
+                btn_submit_worker = dialogforwantwork.findViewById(R.id.btn_submit);
 
                 edt_txt_fname = dialogforwantwork.findViewById(R.id.edt_txt_fname);
                 edt_txt_lname = dialogforwantwork.findViewById(R.id.edt_txt_lname);
@@ -303,7 +303,7 @@ public class HomeFragment extends Fragment {
 
 
 
-                btn_submit.setOnClickListener(new View.OnClickListener() {
+                btn_submit_worker.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -497,7 +497,7 @@ public class HomeFragment extends Fragment {
                 dialogForTransportContatct.setCanceledOnTouchOutside(true);
                 dialogForTransportContatct.getWindow().getAttributes().windowAnimations = R.style.animation;
                 cancle_btn = dialogForTransportContatct.findViewById(R.id.cancle_btn);
-                btn_submit = dialogForTransportContatct.findViewById(R.id.btn_submit);
+                btn_submit_transport = dialogForTransportContatct.findViewById(R.id.btn_submit);
 
                 edt_txt_company_name = dialogForTransportContatct.findViewById(R.id.edt_txt_cname);
                 edt_txt_fname = dialogForTransportContatct.findViewById(R.id.edt_txt_fname);
@@ -697,7 +697,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-                btn_submit.setOnClickListener(new View.OnClickListener() {
+                btn_submit_transport.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         companyName = edt_txt_company_name.getText().toString();
@@ -708,7 +708,7 @@ public class HomeFragment extends Fragment {
                         getPrice = edt_txt_pricekg.getText().toString();
 
 
-                        if (validateCompanyName(companyName) && validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) &&  validatestate(str_state) && validatePrice(getPrice)) {
+                        if (validateCompanyName(companyName) && validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber)  && validatePrice(getPrice)&& validatestate(str_state)) {
                             formdialog = new Alert().pleaseWait();
                             CallSubmitTransportationApi(companyName,firstname, lastname, phonenumber, emailId, str_state,getSelectedValue,getSelectedTransType,getPrice);
 
@@ -846,7 +846,7 @@ public class HomeFragment extends Fragment {
                 dialogForWarehouse.getWindow().getAttributes().windowAnimations = R.style.animation;
                 cancle_btn = dialogForWarehouse.findViewById(R.id.cancle_btn);
 
-                btn_submit = dialogForWarehouse.findViewById(R.id.btn_submit);
+                btn_submit_wearhouse = dialogForWarehouse.findViewById(R.id.btn_submit);
                 edt_txt_fname = dialogForWarehouse.findViewById(R.id.edt_txt_fname);
                 edt_txt_lname = dialogForWarehouse.findViewById(R.id.edt_txt_lname);
                 edt_txt_phone = dialogForWarehouse.findViewById(R.id.edt_txt_phone);
@@ -856,14 +856,14 @@ public class HomeFragment extends Fragment {
                 ss_stockType = dialogForWarehouse.findViewById(R.id.spinner_stock_type);
                 ss_state = dialogForWarehouse.findViewById(R.id.spinner_state);
 
-                btn_submit.setOnClickListener(new View.OnClickListener() {
+                btn_submit_wearhouse.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         firstname = edt_txt_fname.getText().toString();
                         lastname = edt_txt_lname.getText().toString();
                         phonenumber = edt_txt_phone.getText().toString();
                         emailId = edt_txt_email.getText().toString();
-                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) && validatestate(str_state)) {
+                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) && validateEmail(emailId) && validatestate(str_state)) {
                             formdialog = new Alert().pleaseWait();
                             // CallSubmitApi(firstname, lastname, phonenumber, str_state);
 
@@ -1445,9 +1445,17 @@ if(loader_check.isChecked()){
         return true;
     }
     public boolean validatephonenumber(String PhoneNumber) {
-        if (PhoneNumber.isEmpty() || PhoneNumber == null) {
+        if (PhoneNumber.isEmpty() || PhoneNumber.length() < 10 ) {
             Toast.makeText(getActivity(),
-                    "Mobile Number Required!", Toast.LENGTH_SHORT).show();
+                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return  true;
+    }
+    private boolean validateEmail(String email_fromdialog) {
+        if (email_fromdialog.isEmpty() || email_fromdialog == null  ) {
+            Toast.makeText(context,
+                    "Email Required", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

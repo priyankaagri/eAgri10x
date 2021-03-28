@@ -62,9 +62,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="5dp"
                         android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/company_name"
                         android:textColor="@color/black"
@@ -109,9 +109,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="5dp"
                         android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/fname"
                         android:textColor="@color/black"
@@ -159,9 +159,9 @@
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="5dp"
                         android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/lname"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -175,6 +175,7 @@
 
                 </LinearLayout>
                 <EditText
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:id="@+id/edt_txt_lname"
                     android:layout_width="match_parent"
                     android:padding="15dp"
@@ -205,9 +206,9 @@
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="5dp"
                         android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/phon_numbr"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -254,9 +255,9 @@
                             android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:paddingLeft="15dp"
-                            android:paddingBottom="10dp"
+                            android:paddingBottom="5dp"
                             android:paddingTop="15dp"
-                            android:textSize="18sp"
+                            android:textSize="15sp"
                             android:layout_marginLeft="15dp"
                             android:text="@string/email"
                             android:fontFamily="@font/proxima_nova_alt_bold"
@@ -288,91 +289,142 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:weightSum="2"
-                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp">
 
-                <LinearLayout
-                    android:id="@+id/linear1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
 
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="12dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="Type of transport"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:layout_height="wrap_content"/>
                     <Spinner
                         android:id="@+id/spinner_type_transport"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
                         android:spinnerMode="dropdown"
                         android:background="@drawable/spinner_border" />
-
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="12dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="Weight of transport"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:layout_height="wrap_content"/>
                     <Spinner
+
                         android:id="@+id/spinner_weight_transport"
-                        android:padding="10dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
 
-                        android:layout_height="50dp"
                         android:background="@drawable/spinner_border"/>
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp">
 
                 <LinearLayout
-                    android:id="@+id/linear2"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="13dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
 
-                    android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                    <EditText
-                        android:id="@+id/edt_txt_price"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:padding="15dp"
-                        android:hint="@string/pricekg"
-                        android:textSize="15sp"
-                        android:singleLine="true"
-                        android:inputType="number"
-                        android:layout_marginHorizontal="10dp"
-                        android:fontFamily="@font/proximanova_regular"
+
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="Price/KG"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/text_color"
-                        android:background="@drawable/edt_txt_background"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" * "
+                        android:visibility="visible"
                         android:layout_height="wrap_content"/>
-                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
 
-                        android:id="@+id/spinner_state_billing_id"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        app:SearchHintText="Operating State"
-                        android:layout_height="50dp"
-                        android:background="@drawable/edt_txt_background"
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/edt_txt_price"
+                    android:layout_width="match_parent"
 
-                        />
+                    android:digits="0123456789"
+                    android:padding="13dp"
+                    android:hint="@string/pricekg"
+                    android:textSize="15sp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:fontFamily="@font/proximanova_regular"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/text_color"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="Operating State"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" * "
+                        android:visibility="visible"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edt_txt_background"
+
+                    android:layout_height="wrap_content">
+                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+
+                    android:id="@+id/spinner_state_billing_id"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="45dp"
+                    app:SearchHintText="Operating State"
 
 
+                    />
+                </LinearLayout>
             </LinearLayout>
+
+
+
+
+
 
             <Button
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/btn_round_corner"
                 android:text="@string/submit"

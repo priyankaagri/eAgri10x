@@ -248,7 +248,19 @@ Dialog dialogfordetailpage;
         holder.txt_tradenow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  CallApiaddTOCard(wishLists.get(position).getOrderID(),wishLists.get(position).getGrade(),wishLists.get(position).getName(),wishLists.get(position).getPrice());
+                String wishlistid = wishLists.get(position).getWishListID();
+                String userID = wishLists.get(position).getUserID();
+
+                String orderid_forTrade =wishLists.get(position).getOrderID();
+                String grade_fortrade =wishLists.get(position).getGrade();
+                String commodityname_fortrade =wishLists.get(position).getName();
+                double price_fortrade = wishLists.get(position).getPrice();
+
+                callapideleteproductaftertrade(wishlistid,userID,orderid_forTrade,grade_fortrade,commodityname_fortrade,price_fortrade);
+
+
+
+
             }
         });
         String strimg =  wishLists.get(position).getCommodityID()+".png";
@@ -264,49 +276,84 @@ Dialog dialogfordetailpage;
                 .into(holder.product_image);
 
     }
+private void  callapideleteproductaftertrade(String wishlistid,String userID,String orderid_forTrade,String grade_fortrade,String commodityname_fortrade,double price_fortrade){
+    Map<String, Object> jsonParams = new ArrayMap<>();
+    jsonParams.put("userID", userID);
+    jsonParams.put("wishListID",wishlistid);
+  //  Log.d("getparams",wishLists.get(position).getUserID()+" " +wishLists.get(position).getWishListID());
+    RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+    AgriInvestor apiService = ApiHandler.getApiService();
 
-//    private void CallApiaddTOCard(String orderID, String grade, String name, Integer price) {
-//        dialog=new WishlistAdapter.Alert().pleaseWait();
-//        Map<String, Object> jsonParams = new ArrayMap<>();
-////put something inside the map, could be null
-//        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
-//        jsonParams.put("m_orderID",orderID);
-//
-//        jsonParams.put("quantity",quantity);
-//        jsonParams.put("grade",grade);
-//        jsonParams.put("price",price);
-//        jsonParams.put("status","Just added to cart!");
-//        Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
-//        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
-//        AgriInvestor apiService = ApiHandler.getApiService();
-//// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-//        final Call<GetAddProductToCart> loginCall = apiService.wsGetAddproducttocart("123456",body);
-//        loginCall.enqueue(new Callback<GetAddProductToCart>() {
-//            @SuppressLint("WrongConstant")
-//            @Override
-//            public void onResponse(Call<GetAddProductToCart> call,
-//                                   Response<GetAddProductToCart> response) {
-//                dialog.dismiss();
-//                Log.d("addtocart",response.toString());
-//                if (response.isSuccessful()) {
-//                    HomePageActivity.getProductinCart();
-//                    Toast.makeText(context, quantity+" Kg of "+ name +" has been added to trade", Toast.LENGTH_LONG).show();
-//                    HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
-//                }
-//                else {
-//
-//                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<GetAddProductToCart> call,
-//                                  Throwable t) {
-//                dialog.dismiss();
-//                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+    try {
+        SSLCertificateManagment.trustAllHosts();
+    } catch (NoSuchAlgorithmException e) {
+        e.printStackTrace();
+    } catch (KeyManagementException e) {
+        e.printStackTrace();
+    }
+    Call<GetRemoveFromWishlist> call = apiService.wsGetRemoveFromWiishList("123456", body);
+    call.enqueue(new Callback<GetRemoveFromWishlist>() {
+        @Override
+        public void onResponse(Call<GetRemoveFromWishlist> call, Response<GetRemoveFromWishlist> response) {
+
+            Log.d("getfeatureresponse", response.toString());
+
+            CallApiaddTOCard(orderid_forTrade,grade_fortrade,commodityname_fortrade,price_fortrade);
+
+        }
+
+        @Override
+        public void onFailure(Call<GetRemoveFromWishlist> call, Throwable t) {
+
+        }
+    });
+
+}
+
+    private void CallApiaddTOCard(String orderID, String grade, String name, double price) {
+        int quantity = 10;
+        dialog=new WishlistAdapter.Alert().pleaseWait();
+        Map<String, Object> jsonParams = new ArrayMap<>();
+//put something inside the map, could be null
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
+        jsonParams.put("m_orderID",orderID);
+
+        jsonParams.put("quantity",quantity);
+        jsonParams.put("grade",grade);
+        jsonParams.put("price",price);
+        jsonParams.put("status","Just added to cart!");
+        Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetAddProductToCart> loginCall = apiService.wsGetAddproducttocart("123456",body);
+        loginCall.enqueue(new Callback<GetAddProductToCart>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetAddProductToCart> call,
+                                   Response<GetAddProductToCart> response) {
+                dialog.dismiss();
+                Log.d("addtocart",response.toString());
+                if (response.isSuccessful()) {
+                    HomePageActivity.removeFragment(new YourWishListFragment());
+                    HomePageActivity.getProductinCart();
+                    Toast.makeText(context, quantity+" Kg of "+ name +" has been added to trade", Toast.LENGTH_LONG).show();
+                    HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
+                }
+                else {
+
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetAddProductToCart> call,
+                                  Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     public class Alert {
         public void alert(String title, String body) {
             final AlertDialog.Builder Alert = new AlertDialog.Builder(context);

@@ -108,9 +108,9 @@ public interface AgriInvestor {
     Call<GetCreateCheckoutDetails> wsGetCheckoutDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/createOrder")
     Call<GetCreateOrder> wsCheckOrder(@Header("x-auth-token") String token, @Body RequestBody params);
-    @POST("/m/orderCheckoutHandling")
+    @POST("m/orderCheckoutHandling")
     Call<GetOrderCheckOutHandling> wsCheckOrderCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/bookingCheckoutHandling")
+    @POST("m/bookingCheckoutHandling")
     Call<GetBookingCheckOutHandling> wsCheckBookingCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("m/checkEcollect")
     Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
@@ -118,41 +118,41 @@ public interface AgriInvestor {
     Call<GetStates> wsGetStates(@Header("x-auth-token") String token);
     @POST("m/getCities")
     Call<GetCities> wsGetCities(@Header("x-auth-token") String token, @Body RequestBody params);
-    @GET("/m/getCommodities")
+    @GET("m/getCommodities")
     Call<GetCommodity> wsGetCommodity(@Header("x-auth-token") String token);
     @POST("m/getCommodityById")
     Call<GetCommodityById> wsGetCommodityByID(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/getVarieties")
+    @POST("m/getVarieties")
     Call<GetVarieties> wsGetVarieties(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/getFeatures")
+    @POST("m/getFeatures")
     Call<GetFeaturesbyCommodity> wsGetFeaturesbyCommodity(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/addNewStock")
+    @POST("m/addNewStock")
     Call<GetAddNewStock> wsGetAddNewStock(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/getStockbyUserID")
+    @POST("m/getStockbyUserID")
     Call<GetStockByID> wsGetStockByID(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/negotiateRate")
+    @POST("m/negotiateRate")
     Call<NegotiateRate> wsGetNegotiateRate(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("/m/filterProducts")
+    @POST("m/filterProducts")
     Call<FilterProducts> wsGetFilterProducts(@Header("x-auth-token") String token , @Body RequestBody params);
-    @GET("/m/getLots")
+    @GET("m/getLots")
     Call<GetLot> wsGetLots(@Header("x-auth-token")String token);
-    @GET("/m/getGrades")
+    @GET("m/getGrades")
     Call<GetGrades> wsGetGrades(@Header("x-auth-token") String token);
-    @GET("/m/filterState")
+    @GET("m/filterState")
     Call<FilterState> wsFilterState(@Header("x-auth-token") String token);
-    @POST("/m/addToWishList")
+    @POST("m/addToWishList")
     Call<GetADDWishlist> wsAddWishlist(@Header("x-auth-token") String token , @Body RequestBody params);
-    @POST("/m/getProductsInWishlist")
+    @POST("m/getProductsInWishlist")
     Call<GetProductInWishList> wsGetProductInWhishlist(@Header("x-auth-token") String token, @Body RequestBody params);
-    @POST("/m/removeProductFromWishlist")
+    @POST("m/removeProductFromWishlist")
     Call<GetRemoveFromWishlist> wsGetRemoveFromWiishList(@Header("x-auth-token") String token, @Body RequestBody params);
-@POST("/m/submitContactForm")
+@POST("m/submitContactForm")
     Call<GetWorkerForm> wsGetWorkerForm(@Header("x-auth-token")String token, @Body QueryWorkerForm querySubmitForm);
-    @POST("/m/submitContactForm")
+    @POST("m/submitContactForm")
     Call<GetWorkerForm> wsTransportForm(@Header("x-auth-token")String token, @Body QuerytransportForm querytransportForm);
-    @POST("/m/submitContactForm")
+    @POST("m/submitContactForm")
     Call<GetWorkerForm> wsWearHouseForm(@Header("x-auth-token")String token,@Body QueryWearHouseForm queryWearHouseForm);
-    @POST("/m/getOrderList")
+    @POST("m/getOrderList")
     Call<GetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
 
 

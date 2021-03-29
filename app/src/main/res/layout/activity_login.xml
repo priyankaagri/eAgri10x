@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:text="send otp"
             android:padding="10dp"
-            android:background="@drawable/btn_round_corner"
+            android:background="@drawable/btn_round"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="40dp"/>
@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:text="click here to click one"
             android:padding="10dp"
-            android:background="@drawable/btn_round_corner"
+            android:background="@drawable/btn_round"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
            />

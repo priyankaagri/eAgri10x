@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.ArrayMap;
 import android.util.Base64;
 import android.util.Log;
@@ -44,8 +45,8 @@ import retrofit2.Response;
 public class Otp_Screen_Activity extends AppCompatActivity {
     Button btn_varify_otp;
     OtpTextView otp_view;
-    TextView txt_verification;
-    LinearLayout linresend;
+    TextView txt_verification,timer;
+    CountDownTimer cTimer = null;
     String mobilenumber, strrole, strflag;
     String str_otp = "";
     ImageView img_arrow;
@@ -59,11 +60,13 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_otp__screen_);
         mNetworkMonitor = new LiveNetworkMonitor(this);
 
+
+        timer = findViewById(R.id.timer);
         img_arrow = findViewById(R.id.img_arrow);
         btn_varify_otp = findViewById(R.id.btn_varify_otp);
         otp_view = findViewById(R.id.otp_view);
         txt_verification = findViewById(R.id.txt_verification);
-        linresend = findViewById(R.id.linresend);
+
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -84,13 +87,27 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                 finish();
             }
         });
-        linresend.setOnClickListener(new View.OnClickListener() {
+        startTimer();
+
+        timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                if (imm.isAcceptingText()) {
+                    InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                } else {
+                    // writeToLog("Software Keyboard was not shown");
+                }
+
                 if (mobilenumber != null || !mobilenumber.isEmpty()) {
                     dialogresend = new Otp_Screen_Activity.Alert().resendingotp();
                     callResendOtp(mobilenumber);
                 }
+                //   verifyotp.setVisibility(View.VISIBLE);
+
+
             }
         });
         btn_varify_otp.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +149,23 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             }
         });
     }
+
+    void startTimer() {
+        cTimer = new CountDownTimer(60000, 1000)
+        {
+            public void onTick(long millisUntilFinished) {
+                timer.setText( "00:"+String.valueOf(millisUntilFinished / 1000) +"  seconds remaining..." );
+            }
+            public void onFinish() {
+                timer.setClickable(true);
+                timer.setFocusable(true);
+                timer.setText("Didn`t receive the code ? Resend again");
+                btn_varify_otp.setVisibility(View.GONE);
+            }
+        };
+        cTimer.start();
+    }
+
 
     private void callResendOtp(String mobilenumber) {
         Map<String, Object> jsonParams = new ArrayMap<>();

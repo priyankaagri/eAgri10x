@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.ArrayMap;
@@ -14,21 +15,25 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.mobile.agri10x.R;
+
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
+
+
 
 import org.json.JSONObject;
 
@@ -48,11 +53,13 @@ public class Otp_Screen_Activity extends AppCompatActivity {
     TextView txt_verification,timer;
     CountDownTimer cTimer = null;
     String mobilenumber, strrole, strflag;
-    String str_otp = "";
+    String str_otp = "",strotpfrmmsg;
     ImageView img_arrow;
     AlertDialog dialog, dialogresend;
     private LiveNetworkMonitor mNetworkMonitor;
     String DATEOFBIRTH, FirstName = "", LastName = "";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -369,4 +376,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             return new String(decodedBytes, "UTF-8");
         }
     }
+
+
+
 }

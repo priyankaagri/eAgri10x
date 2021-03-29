@@ -129,6 +129,7 @@ public class HomeFragment extends Fragment {
     final String weightOfTransport9[] = {"21 MT"};
     final String weightOfTransport10[] = {"25 MT"};
 
+    final String onionStock[] = {"onion"};
     RecyclerView recycler_dailydeals, recycler_toppics, recycle_category, OfferShopListRecyclerView;
     ArrayList<GetCategoriesData> categorieslist;
 
@@ -317,7 +318,7 @@ public class HomeFragment extends Fragment {
                         phonenumber = edt_txt_phone.getText().toString();
 
                         if(validatefirstName(firstname)&&validatelastName(lastname)&&validatephonenumber(phonenumber)&&validatestate(str_state)&&validatecity(str_City)
-                        &&validatecheckbox(reaper_check,sower_check,loader_check)){
+                                &&validatecheckbox(reaper_check,sower_check,loader_check)){
                             formdialog = new Alert().pleaseWait();
                             CallSworkerformapi(firstname,lastname,phonenumber,str_state,str_City);
 
@@ -862,6 +863,7 @@ public class HomeFragment extends Fragment {
                 ss_state = dialogForWarehouse.findViewById(R.id.spinner_state);
                 callApiGetState();
 
+
                 try {
                     JSONObject object = new JSONObject(readJSONForStock());
                     JSONArray array = object.getJSONArray("data");
@@ -870,35 +872,34 @@ public class HomeFragment extends Fragment {
                         String feature = jsonObject.getString("feature");
                         Log.v("mfeature", feature);
                         allFeatures.add(feature);
+
                         JSONArray jsonarrayFruits = jsonObject.getJSONArray("Fruits");
                         for(int j=0;j<jsonarrayFruits.length();j++) {
                             String fruits = jsonarrayFruits.getString(j);
                             // JSONObject jsonnewtwo=jsonarrayFruits.getJSONObject(j);
                             Log.v("jsonfruits", fruits);
                             allFruits.add(fruits);
-                            JSONArray jsonarrayVegitable = jsonObject.getJSONArray("Vegetables");
-                            for(int k=0;k<jsonarrayVegitable.length();k++) {
-                                String vegitable = jsonarrayVegitable.getString(k);
-                                // JSONObject jsonnewtwo=jsonarrayFruits.getJSONObject(j);
-                                Log.v("jsonVegitable", vegitable);
-                                allVegitable.add(vegitable);
-                            }
                         }
-                        newList.clear();
-                        newList = new ArrayList<>(allFruits.size() + allVegitable.size());
-                        newList.addAll(allFruits);
-                        newList.addAll(allVegitable);
+                        JSONArray jsonarrayVegitable = jsonObject.getJSONArray("Vegetables");
+                        for(int k=0;k<jsonarrayVegitable.length();k++) {
+                            String vegitable = jsonarrayVegitable.getString(k);
+                            // JSONObject jsonnewtwo=jsonarrayFruits.getJSONObject(j);
+                            Log.v("jsonVegitable", vegitable);
+                            allVegitable.add(vegitable);
+                        }
+
+
                         /*......Setting a Adapter for All Features*/
 
                         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, allFeatures);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         ss_features.setAdapter(adapter);
+
+
                         //allFeatures.clear();
                         /*......Setting a Adapter for All Fruits Type*/
 
-                        ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, newList);
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        ss_stockType.setAdapter(fruitsAdapter);
+
 
                         //allFruits.clear();
                     }
@@ -908,9 +909,26 @@ public class HomeFragment extends Fragment {
                 ss_features.setOnItemSelectedListener(new OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(View view, int position, long id) {
+
                         String pos = ss_features.getSelectedItem().toString();
                         getFeatures = pos;
                         Log.v("getFeatures",getFeatures);
+                        if(getFeatures.equals("Warehouse")){
+                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, onionStock);
+                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ss_stockType.setAdapter(fruitsAdapter);
+
+                        }
+                        else if(getFeatures.equals("Cold Storage")){
+                            Log.v("old Storage","old Storage");
+                            newList = new ArrayList<>(allFruits.size() + allVegitable.size());
+                            newList.addAll(allFruits);
+                            newList.addAll(allVegitable);
+                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, newList);
+                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ss_stockType.setAdapter(fruitsAdapter);
+                        }
+
 
                     }
 
@@ -925,6 +943,20 @@ public class HomeFragment extends Fragment {
                         String pos = ss_stockType.getSelectedItem().toString();
                         getStock = pos;
                         Log.v("getStock",getStock);
+                        if(getFeatures.equals("Warehouse")){
+                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, onionStock);
+                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ss_stockType.setAdapter(fruitsAdapter);
+                        }
+                        else if(getFeatures.equals("Cold Storage")){
+                            Log.v("old Storage","old Storage");
+                            newList = new ArrayList<>(allFruits.size() + allVegitable.size());
+                            newList.addAll(allFruits);
+                            newList.addAll(allVegitable);
+                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, newList);
+                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ss_stockType.setAdapter(fruitsAdapter);
+                        }
 
                     }
 
@@ -1143,16 +1175,16 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetHomeProduct> call,
                                    Response<GetHomeProduct> response) {
 
-        Log.d("resdailydeals",response.toString());
+                Log.d("resdailydeals",response.toString());
                 if (response.isSuccessful()) {
-                dealofDay.addAll(response.body().getData());
-                if(dealofDay.size()>0)
-                {
-                    DailyDealsFeaturedAdapter dailyDealsAdapter = new DailyDealsFeaturedAdapter(dealofDay, context, false);
-                    recycler_dailydeals.setAdapter(dailyDealsAdapter);
-                }
+                    dealofDay.addAll(response.body().getData());
+                    if(dealofDay.size()>0)
+                    {
+                        DailyDealsFeaturedAdapter dailyDealsAdapter = new DailyDealsFeaturedAdapter(dealofDay, context, false);
+                        recycler_dailydeals.setAdapter(dailyDealsAdapter);
+                    }
 
-                gettoppicks();
+                    gettoppicks();
                 } else {
                     gettoppicks();
                     Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
@@ -1169,7 +1201,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void gettoppicks() {
-       toppicks.clear();
+        toppicks.clear();
         QueryTopicks queryTopicData=new QueryTopicks();
         queryTopicData.setTopPicks(false);
         GetQueryTopicPicks query=new GetQueryTopicPicks();
@@ -1317,8 +1349,8 @@ public class HomeFragment extends Fragment {
                     catArraylist.addAll(response.body().getData());
                     categorieslist.addAll(response.body().getData());
                     // catArraylist = response.body().getData();
-               // category.add("Category");
-                for (int i = 0; i < catArraylist.size(); i++) {
+                    // category.add("Category");
+                    for (int i = 0; i < catArraylist.size(); i++) {
 
                         category.add(response.body().getData().get(i).getCategoryName());
                     }
@@ -1445,7 +1477,7 @@ public class HomeFragment extends Fragment {
         CommodityUnit = view.findViewById(R.id.catagaryname_id);
         recycler_dailydeals = view.findViewById(R.id.recycler_dailydeals);
         recycler_toppics = view.findViewById(R.id.recycler_toppics);
-     //   caltogerylist_recycle = view.findViewById(R.id.caltogerylist_recycle);
+        //   caltogerylist_recycle = view.findViewById(R.id.caltogerylist_recycle);
         txt_ViewAll = view.findViewById(R.id.txt_ViewAll);
         txt_Viewsee = view.findViewById(R.id.txt_Viewsee);
         only_feature_rv = view.findViewById(R.id.only_feature_rv);
@@ -1540,24 +1572,24 @@ public class HomeFragment extends Fragment {
     }
 
     public void CallSworkerformapi(String firstname, String lastname, String phonenumber, String str_state, String str_City) {
-boolean reper_check_boolean,sower_check_boolean,loader_check_boolean;
-if(reaper_check.isChecked()){
-    reper_check_boolean = true;
-}else{
-    reper_check_boolean = false;
-}
+        boolean reper_check_boolean,sower_check_boolean,loader_check_boolean;
+        if(reaper_check.isChecked()){
+            reper_check_boolean = true;
+        }else{
+            reper_check_boolean = false;
+        }
 
-if(sower_check.isChecked()){
-    sower_check_boolean = true;
-}else{
-    sower_check_boolean = false;
-}
+        if(sower_check.isChecked()){
+            sower_check_boolean = true;
+        }else{
+            sower_check_boolean = false;
+        }
 
-if(loader_check.isChecked()){
-    loader_check_boolean = true;
-}else{
-    loader_check_boolean = false;
-}
+        if(loader_check.isChecked()){
+            loader_check_boolean = true;
+        }else{
+            loader_check_boolean = false;
+        }
         QueryWorkerData querySubmitData = new QueryWorkerData();
         querySubmitData.setFirstName(firstname);
         querySubmitData.setLastName(lastname);

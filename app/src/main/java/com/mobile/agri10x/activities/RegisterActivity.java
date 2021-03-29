@@ -2,8 +2,10 @@ package com.mobile.agri10x.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,11 +21,18 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.credentials.Credential;
+import com.google.android.gms.auth.api.credentials.HintRequest;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -43,7 +52,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     Button btn_next, login;
     EditText mobilenumber;
     String strmobilenumber, strrole = "",FirstName="",LastName="";
@@ -112,7 +121,25 @@ public class RegisterActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(RegisterActivity.this)
+                .addConnectionCallbacks(RegisterActivity.this)
+                .addOnConnectionFailedListener(RegisterActivity.this)
+                .addApi(Auth.CREDENTIALS_API)
+                .build();
 
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.connect();
+        }
+        HintRequest hintRequest = new HintRequest.Builder()
+                .setPhoneNumberIdentifierSupported(true)
+                .build();
+
+        PendingIntent intent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
+        try {
+            startIntentSenderForResult(intent.getIntentSender(), 1008, null, 0, 0, 0, null);
+        } catch (IntentSender.SendIntentException e) {
+            Log.e("", "Could not start hint picker Intent", e);
+        }
         backarrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -256,6 +283,21 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
 
     public class Alert {
         public void alert(String title, String body) {
@@ -314,6 +356,63 @@ public class RegisterActivity extends AppCompatActivity {
         super.onResume();
         if (mNetworkMonitor.isConnected()) {
             Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case 1008:
+                if (resultCode == RESULT_OK) {
+
+                    Credential cred = data.getParcelableExtra(Credential.EXTRA_KEY);
+                    Credential credd = data.getParcelableExtra(Credential.EXTRA_KEY);
+// cred.getId====: ====+919*******
+                    // Log.e("cred.getId", cred.getId());
+// userMob = cred.getId();
+                    //    Toast.makeText(LoginActivity.this, ""+cred.getId(), Toast.LENGTH_SHORT).show();
+                    String phoneNumber = cred.getId();
+                    phoneNumber = phoneNumber.replaceAll("[()\\s-]+", "");
+                    if(phoneNumber.startsWith("+"))
+                    {
+                        if(phoneNumber.length()==13)
+                        {
+                            String str_getMOBILE=phoneNumber.substring(3);
+                            mobilenumber.setText(str_getMOBILE);
+                        }
+                        else if(phoneNumber.length()==14)
+                        {
+                            String str_getMOBILE=phoneNumber.substring(4);
+                            mobilenumber.setText(str_getMOBILE);
+                        }
+
+
+                    }
+                    else if(phoneNumber.startsWith("0")){
+                        if(phoneNumber.length()==11)
+                        {
+                            String str_getMOBILE=phoneNumber.substring(1);
+                            mobilenumber.setText(str_getMOBILE);
+                        }
+                    }
+                    else
+                    {
+                        mobilenumber.setText(phoneNumber);
+                    }
+
+
+                } else {
+// Sim Card not found!
+                    // Log.e("cred.getId", "1008 else");
+
+                    return;
+                }
+
+
+                break;
         }
     }
 }

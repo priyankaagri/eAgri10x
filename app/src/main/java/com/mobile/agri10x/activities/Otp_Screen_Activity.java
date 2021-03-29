@@ -19,11 +19,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.google.android.gms.auth.api.phone.SmsRetriever;
+import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.mobile.agri10x.R;
 
 import com.mobile.agri10x.models.GetResendOTP;
@@ -32,7 +37,7 @@ import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
-
+import com.mobile.agri10x.utils.SmsBroadcastReceiver;
 
 
 import org.json.JSONObject;
@@ -58,8 +63,8 @@ public class Otp_Screen_Activity extends AppCompatActivity {
     AlertDialog dialog, dialogresend;
     private LiveNetworkMonitor mNetworkMonitor;
     String DATEOFBIRTH, FirstName = "", LastName = "";
-
-
+        SmsBroadcastReceiver smsBroadcastReceiver;
+    private static final int REQ_USER_CONSENT = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +100,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             }
         });
         startTimer();
+        startSmsUserConsent();
 
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,6 +212,22 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                                   Throwable t) {
                 dialogresend.dismiss();
                 Toast.makeText(Otp_Screen_Activity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void startSmsUserConsent() {
+        SmsRetrieverClient client = SmsRetriever.getClient(this);
+//We can add sender phone number or leave it blank
+// I'm adding null here
+        client.startSmsUserConsent(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
             }
         });
     }
@@ -377,6 +399,57 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_USER_CONSENT) {
+            if ((resultCode == RESULT_OK) && (data != null)) {
+//That gives all message to us.
+// We need to get the code from inside with regex
+                String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
+                if(message.contains("Agri10x E-Marketplace is")) {
+                    String numberOnly = message.replaceAll("[^0-9]", "");
+//numberOnly 10886110
 
+                    String a = numberOnly.substring(2);
+
+                    strotpfrmmsg = a.substring(0, a.length() - 2);
+                    if (strotpfrmmsg != null) {
+                        otp_view.setOTP(strotpfrmmsg);
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    private void registerBroadcastReceiver() {
+        smsBroadcastReceiver = new SmsBroadcastReceiver();
+        smsBroadcastReceiver.smsBroadcastReceiverListener =
+                new SmsBroadcastReceiver.SmsBroadcastReceiverListener() {
+                    @Override
+                    public void onSuccess(Intent intent) {
+                        startActivityForResult(intent, REQ_USER_CONSENT);
+                    }
+
+                    @Override
+                    public void onFailure() {
+
+                    }
+                };
+        IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
+        registerReceiver(smsBroadcastReceiver, intentFilter);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        registerBroadcastReceiver();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(smsBroadcastReceiver);
+    }
 
 }

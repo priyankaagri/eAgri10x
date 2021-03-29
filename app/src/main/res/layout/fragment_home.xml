@@ -55,7 +55,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-
+android:textColor="@color/black"
                             android:fontFamily="@font/proxima_nova_bold"
                             android:gravity="center"
                             android:textSize="18sp" />

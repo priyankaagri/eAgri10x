@@ -71,7 +71,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             mobilenumber = bundle.getString("mobilenumber");
-            txt_verification.setText("Please Type Verification code send to " + mobilenumber);
+            txt_verification.setText("Please enter verification code sent to " + mobilenumber);
 
             strflag = bundle.getString("flag");
             strrole = bundle.getString("role");
@@ -182,10 +182,12 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             public void onResponse(Call<GetResendOTP> call,
                                    Response<GetResendOTP> response) {
                 dialogresend.dismiss();
-// Log.d("verifyOTP",response.toString());
+
                 if (response.isSuccessful()) {
-// Log.d("getresponse",response.body().getType());
-                    Toast.makeText(Otp_Screen_Activity.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    startTimer();
+                    btn_varify_otp.setVisibility(View.VISIBLE);
+                    Toast.makeText(Otp_Screen_Activity.this, "Verification code resend successfully.", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(Otp_Screen_Activity.this, "Something went wrong", Toast.LENGTH_SHORT).show();

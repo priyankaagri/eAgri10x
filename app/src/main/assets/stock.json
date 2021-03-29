@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "feature": "Cold Storage",
+            "Fruits": [
+                "Apples",
+                "Grapes",
+                "Lichi",
+                "Mausami(sweet lemon)",
+                "Milk Products",
+                "Oranges",
+                "Pears(nashpati)",
+                "Pomegranates"
+            ],
+            "Vegetables": [
+                "Potato",
+                "Carrot",
+                "Green peas",
+                "Ginger",
+                "Tomato"
+            ]
+        },
+        {
+            "feature": "Warehouse",
+            "Fruits": [],
+            "Vegetables": [
+                "Onion"
+            ]
+        }
+    ]
+}

@@ -62,11 +62,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="16sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/fname"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -108,11 +109,12 @@
                     android:orientation="horizontal"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="16sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/lname"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -155,11 +157,12 @@
                     android:orientation="horizontal"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="16sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/phon_numbr"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -201,11 +204,12 @@
                     android:orientation="vertical"
                     android:layout_height="match_parent">
                     <TextView
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="15dp"
-                        android:textSize="18sp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="16sp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/email"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -246,18 +250,29 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="16dp"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+
                         android:text="@string/features"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" * "
 
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="wrap_content">
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                     android:id="@+id/spinner_features"
                     android:layout_width="match_parent"
@@ -267,18 +282,9 @@
                     android:padding="4dp"
 
                     />
+                </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    android:layout_weight="1"
-                    android:background="@color/black"
-                    android:visibility="gone"
 
-                    />
 
             </LinearLayout>
             <LinearLayout
@@ -293,18 +299,29 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="16dp"
-                        android:text="@string/stock_type"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+
+                        android:text="Stock Type"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" * "
 
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="wrap_content">
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                     android:id="@+id/spinner_stock_type"
                     android:layout_width="match_parent"
@@ -314,18 +331,8 @@
                     android:padding="4dp"
 
                     />
+                </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    android:layout_weight="1"
-                    android:background="@color/black"
-                    android:visibility="gone"
-
-                    />
 
             </LinearLayout>
             <LinearLayout
@@ -340,18 +347,29 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="16dp"
-                        android:text="@string/select_state"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+
+                        android:text="States"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" * "
 
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edt_txt_background"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="wrap_content">
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                     android:id="@+id/spinner_state"
                     android:layout_width="match_parent"
@@ -361,18 +379,8 @@
                     android:padding="4dp"
 
                     />
+                </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    android:layout_weight="1"
-                    android:background="@color/black"
-                    android:visibility="gone"
-
-                    />
 
             </LinearLayout>
             <Button

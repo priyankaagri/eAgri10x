@@ -103,12 +103,17 @@ public class HomeFragment extends Fragment {
     SearchableSpinner ss_statebilling, ss_citybilling,ss_features,ss_stockType,ss_state;
     Spinner spinner_tranport_type,spinner_transport_weight,spinner_oprating_state;
     List<String> allNames = new ArrayList<String>();
+
+    List<String> allFruits = new ArrayList<String>();
+    List<String> allVegitable = new ArrayList<String>();
+    List<String> allFeatures = new ArrayList<String>();
+    List<String> newList = new ArrayList<>();
     List<GetStatesDatum> getstateArrayList = new ArrayList<>();
     List<GetCitiesDatum> getCityeArrayList = new ArrayList<>();
     ArrayList<String> onlystatename = new ArrayList<>();
     ArrayList<String> onlycityname = new ArrayList<>();
     CheckBox reaper_check, loader_check, sower_check;
-    String getSelectedValue,getSelectedTransType,getPrice;
+    String getSelectedValue,getSelectedTransType,getPrice,getFeatures,getStock;
     int positonInt,i;
     String str1 = "";
     String checkoboxdata = "";
@@ -855,7 +860,102 @@ public class HomeFragment extends Fragment {
                 ss_features = dialogForWarehouse.findViewById(R.id.spinner_features);
                 ss_stockType = dialogForWarehouse.findViewById(R.id.spinner_stock_type);
                 ss_state = dialogForWarehouse.findViewById(R.id.spinner_state);
+                callApiGetState();
 
+                try {
+                    JSONObject object = new JSONObject(readJSONForStock());
+                    JSONArray array = object.getJSONArray("data");
+                    for (i = 0; i < array.length(); i++) {
+                        JSONObject jsonObject = array.getJSONObject(i);
+                        String feature = jsonObject.getString("feature");
+                        Log.v("mfeature", feature);
+                        allFeatures.add(feature);
+                        JSONArray jsonarrayFruits = jsonObject.getJSONArray("Fruits");
+                        for(int j=0;j<jsonarrayFruits.length();j++) {
+                            String fruits = jsonarrayFruits.getString(j);
+                            // JSONObject jsonnewtwo=jsonarrayFruits.getJSONObject(j);
+                            Log.v("jsonfruits", fruits);
+                            allFruits.add(fruits);
+                            JSONArray jsonarrayVegitable = jsonObject.getJSONArray("Vegetables");
+                            for(int k=0;k<jsonarrayVegitable.length();k++) {
+                                String vegitable = jsonarrayVegitable.getString(k);
+                                // JSONObject jsonnewtwo=jsonarrayFruits.getJSONObject(j);
+                                Log.v("jsonVegitable", vegitable);
+                                allVegitable.add(vegitable);
+                            }
+                        }
+                        newList.clear();
+                        newList = new ArrayList<>(allFruits.size() + allVegitable.size());
+                        newList.addAll(allFruits);
+                        newList.addAll(allVegitable);
+                        /*......Setting a Adapter for All Features*/
+
+                        ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, allFeatures);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        ss_features.setAdapter(adapter);
+                        //allFeatures.clear();
+                        /*......Setting a Adapter for All Fruits Type*/
+
+                        ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, newList);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        ss_stockType.setAdapter(fruitsAdapter);
+
+                        //allFruits.clear();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                ss_features.setOnItemSelectedListener(new OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(View view, int position, long id) {
+                        String pos = ss_features.getSelectedItem().toString();
+                        getFeatures = pos;
+                        Log.v("getFeatures",getFeatures);
+
+                    }
+
+                    @Override
+                    public void onNothingSelected() {
+                        // will write code here....
+                    }
+                });
+                ss_stockType.setOnItemSelectedListener(new OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(View view, int position, long id) {
+                        String pos = ss_stockType.getSelectedItem().toString();
+                        getStock = pos;
+                        Log.v("getStock",getStock);
+
+                    }
+
+                    @Override
+                    public void onNothingSelected() {
+
+                    }
+                });
+                ss_state.setOnItemSelectedListener(new OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(View view, int position, long id) {
+                        String pos = ss_state.getSelectedItem().toString();
+                        str_state = pos;
+                        Log.d("selectedstatebill", pos);
+                        for (int i = 0; i < getstateArrayList.size(); i++) {
+                            String addstr = getstateArrayList.get(i).getState();
+                            if (pos.equals(addstr)) {
+                                String stateId = getstateArrayList.get(i).getId();
+                                Log.d("stateId", stateId);
+                                //callapibillingcities(stateId);
+
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onNothingSelected() {
+
+                    }
+                });
                 btn_submit_wearhouse.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -863,9 +963,9 @@ public class HomeFragment extends Fragment {
                         lastname = edt_txt_lname.getText().toString();
                         phonenumber = edt_txt_phone.getText().toString();
                         emailId = edt_txt_email.getText().toString();
-                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) && validateEmail(emailId) && validatestate(str_state)) {
+                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber)  && validatestate(str_state)) {
                             formdialog = new Alert().pleaseWait();
-                            // CallSubmitApi(firstname, lastname, phonenumber, str_state);
+                            CallSubmitWarehouseApi(firstname, lastname,emailId, phonenumber, str_state,getFeatures,getStock);
 
                         }
 
@@ -887,6 +987,100 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    private void callApiGetState() {
+
+
+        getstateArrayList.clear();
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        Call<GetStates> call = apiService.wsGetStates("123456");
+        call.enqueue(new Callback<GetStates>() {
+            @Override
+            public void onResponse(Call<GetStates> call, Response<GetStates> response) {
+
+                Log.d("GetStatelist", response.toString());
+
+                if (response.isSuccessful()) {
+// statecategory.add("Select State");
+
+                    getstateArrayList.addAll(response.body().getData());
+                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
+                    onlystatename.clear();
+                    for (int i = 0; i < getstateArrayList.size(); i++) {
+                        String state = getstateArrayList.get(i).getState();
+                        onlystatename.add(state);
+
+                    }
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, onlystatename);
+                    ss_state.setAdapter(adapter1);
+                } else {
+
+                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetStates> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+    public void CallSubmitWarehouseApi(String firstname, String lastname, String phonenumber, String emailId, String str_state, String str_features, String str_stock) {
+
+        QueryWearHouseFormData querySubmitData = new QueryWearHouseFormData();
+        querySubmitData.setWfName(firstname);
+        querySubmitData.setWlName(lastname);
+        querySubmitData.setWContactNumber(phonenumber);
+        querySubmitData.setWemail(emailId);
+        querySubmitData.setWstate(str_state);
+        querySubmitData.setWfeature(str_features);
+        querySubmitData.setWstock(str_stock);
+        querySubmitData.setTemplate("warehouseForm");
+
+        QueryWearHouseForm queryTSubmitForm = new QueryWearHouseForm();
+        queryTSubmitForm.setData(querySubmitData);
+        Log.v("warehouseForm", queryTSubmitForm.toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        Call<GetWorkerForm> call = apiService.wsWearHouseForm("123456", queryTSubmitForm);
+        call.enqueue(new Callback<GetWorkerForm>() {
+            @Override
+            public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
+                formdialog.dismiss();
+                Log.d("sworkerform", response.toString());
+                Toast.makeText(context, "Thank you for submitting the form. We will get back to you soon", Toast.LENGTH_LONG).show();
+                dialogForWarehouse.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<GetWorkerForm> call, Throwable t) {
+                formdialog.dismiss();
+                dialogForWarehouse.dismiss();
+                Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
+
     public String readJSON() {
         String json = null;
         try {
@@ -906,7 +1100,25 @@ public class HomeFragment extends Fragment {
         Log.e("mydata", json);
         return json;
     }
-
+    public String readJSONForStock() {
+        String json = null;
+        try {
+            // Opening data.json file
+            InputStream inputStream = context.getAssets().open("stock.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            // read values in the byte array
+            inputStream.read(buffer);
+            inputStream.close();
+            // convert byte to string
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return json;
+        }
+        Log.e("MyJson", json);
+        return json;
+    }
     private void getDailyDeals() {
         dealofDay.clear();
         QueryDailyDeals querydata=new QueryDailyDeals();

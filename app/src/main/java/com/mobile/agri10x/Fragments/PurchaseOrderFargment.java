@@ -81,7 +81,7 @@ public class PurchaseOrderFargment extends Fragment  {
     AlertDialog dialog;
 
     List<GetStatesDatum> getstateArrayList = new ArrayList<>();
-    List<GetCitiesDatum> getCityeArrayList = new ArrayList<>();
+    List<GetCitiesDatum> getcityeArrayList = new ArrayList<>();
 
     ArrayList<String> onlystatename = new ArrayList<>();
     ArrayList<String> onlycityname = new ArrayList<>();
@@ -460,7 +460,7 @@ public class PurchaseOrderFargment extends Fragment  {
 
     }
     private void callapibillingcities(String stateId) {
-        getCityeArrayList.clear();
+        getcityeArrayList.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
         jsonParams.put("_id", stateId);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
@@ -482,10 +482,10 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
-                    getCityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
-                    for (int i = 0; i < getCityeArrayList.size(); i++) {
-                        String city = getCityeArrayList.get(i).getCities();
+                    getcityeArrayList.addAll(response.body().getData());
+                    Log.d("getaddressbilling", String.valueOf(getcityeArrayList.size()));
+                    for (int i = 0; i < getcityeArrayList.size(); i++) {
+                        String city = getcityeArrayList.get(i).getCities();
                         onlycityname.add(city);
 
                     }
@@ -556,7 +556,7 @@ public class PurchaseOrderFargment extends Fragment  {
 
     }
     private void callapiGetCitiesDelivery(String stateId) {
-        getCityeArrayList.clear();
+        getcityeArrayList.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
         jsonParams.put("_id", stateId);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
@@ -578,10 +578,10 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
-                    getCityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
-                    for (int i = 0; i < getCityeArrayList.size(); i++) {
-                        String city = getCityeArrayList.get(i).getCities();
+                    getcityeArrayList.addAll(response.body().getData());
+                    Log.d("getaddressbilling", String.valueOf(getcityeArrayList.size()));
+                    for (int i = 0; i < getcityeArrayList.size(); i++) {
+                        String city = getcityeArrayList.get(i).getCities();
                         onlycityname.add(city);
 
                     }
@@ -696,10 +696,10 @@ public class PurchaseOrderFargment extends Fragment  {
                 String pos = ss_citybilling.getSelectedItem().toString();
                 billing_str_City = pos;
                 Log.d("selectedaddship", pos);
-                for (int i = 0; i < getCityeArrayList.size(); i++) {
-                    String addstr = getCityeArrayList.get(i).getCities();
+                for (int i = 0; i < getcityeArrayList.size(); i++) {
+                    String addstr = getcityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
-                        stateId = getCityeArrayList.get(i).getId();
+                        stateId = getcityeArrayList.get(i).getId();
                     }
                 }
             }
@@ -785,10 +785,10 @@ public class PurchaseOrderFargment extends Fragment  {
                 String pos = ss_citydel.getSelectedItem().toString();
                 delivery_Str_City = pos;
                 Log.d("selectedaddship", pos);
-                for (int i = 0; i < getCityeArrayList.size(); i++) {
-                    String addstr = getCityeArrayList.get(i).getCities();
+                for (int i = 0; i < getcityeArrayList.size(); i++) {
+                    String addstr = getcityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
-                        stateId = getCityeArrayList.get(i).getId();
+                        stateId = getcityeArrayList.get(i).getId();
                     }
                 }
             }

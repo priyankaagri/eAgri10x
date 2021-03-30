@@ -3,10 +3,10 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetCommodityData {
-@SerializedName("isTrade")
-@Expose
-private Boolean isTrade;
+public class GetCommoditiesDatum {
+    @SerializedName("isTrade")
+    @Expose
+    private Boolean isTrade;
     @SerializedName("isRequest")
     @Expose
     private Boolean isRequest;
@@ -92,5 +92,4 @@ private Boolean isTrade;
     public void setV(Integer v) {
         this.v = v;
     }
-
 }

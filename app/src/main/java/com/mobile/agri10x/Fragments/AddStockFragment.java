@@ -1,9 +1,7 @@
 package com.mobile.agri10x.Fragments;
 
 import android.app.DatePickerDialog;
-import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.text.format.Time;
@@ -17,14 +15,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,8 +30,8 @@ import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetAddNewStock;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCitiesDatum;
-import com.mobile.agri10x.models.GetCommodity;
-import com.mobile.agri10x.models.GetCommodityDatum;
+import com.mobile.agri10x.models.GetCommodities;
+import com.mobile.agri10x.models.GetCommoditiesDatum;
 import com.mobile.agri10x.models.GetFeaturesbyCommodity;
 import com.mobile.agri10x.models.GetFeaturesbyCommodityDatum;
 import com.mobile.agri10x.models.GetStates;
@@ -58,7 +53,6 @@ import java.security.NoSuchAlgorithmException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
@@ -84,7 +78,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     ArrayList<String> onlystatename = new ArrayList<>();
     ArrayList<String> onlycityname = new ArrayList<>();
     ArrayList<String> blacklist = new ArrayList<>();
-    List<GetCommodityDatum> getcommodityArraylist = new ArrayList<>();
+    List<GetCommoditiesDatum> getcommodityArraylist = new ArrayList<>();
     List<String> onlycommodityname = new ArrayList<>();
     List<GetVarietiesDatum> getvarietyArraylist = new ArrayList<>();
     List<String> onlyvarietyname = new ArrayList<>();
@@ -607,10 +601,10 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-        Call<GetCommodity> call = apiService.wsGetCommodity("123456");
-        call.enqueue(new Callback<GetCommodity>() {
+        Call<GetCommodities> call = apiService.wsGetCommodities("123456");
+        call.enqueue(new Callback<GetCommodities>() {
             @Override
-            public void onResponse(Call<GetCommodity> call, Response<GetCommodity> response) {
+            public void onResponse(Call<GetCommodities> call, Response<GetCommodities> response) {
 
                 Log.d("GetStatelist", response.toString());
 
@@ -635,7 +629,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             }
 
             @Override
-            public void onFailure(Call<GetCommodity> call, Throwable t) {
+            public void onFailure(Call<GetCommodities> call, Throwable t) {
 
             }
         });

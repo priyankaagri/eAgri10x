@@ -44,9 +44,9 @@ public class ApiHandler {
 
     public static AgriInvestor getApiService() {
         if (apiService == null) {
-            httpClient.connectTimeout(1, TimeUnit.MINUTES);
-            httpClient.readTimeout(30, TimeUnit.SECONDS);
-            httpClient.writeTimeout(15, TimeUnit.SECONDS);
+            httpClient.connectTimeout(500, TimeUnit.SECONDS);
+            httpClient.writeTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
+            httpClient.readTimeout(500, TimeUnit.SECONDS);
 //            httpClient.connectTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
 //            httpClient.writeTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
 //            httpClient.readTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);

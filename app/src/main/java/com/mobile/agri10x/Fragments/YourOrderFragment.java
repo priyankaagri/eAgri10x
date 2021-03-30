@@ -74,9 +74,14 @@ public class YourOrderFragment extends Fragment {
     }
 
     private void getlistorderapi() {
-        Map<String, String> jsonParams = new ArrayMap<>();
-        jsonParams.put("UserID",SessionManager.getKeyTokenUser(getActivity()));
-         Log.d("getuserid",SessionManager.getKeyTokenUser(getActivity()));
+        Map<String, Object> jsonParams = new ArrayMap<>();
+        String getuserid =SessionManager.getKeyTokenUser(getActivity());
+
+        getuserid = getuserid.replaceAll(" ","");
+        Log.d("getuserid",getuserid);
+
+        jsonParams.put("UserID",getuserid);
+
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -86,16 +91,15 @@ public class YourOrderFragment extends Fragment {
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-        final Call<GetOrderList> Productinlist = apiService.wsOrdeList("123456",body);
-        Productinlist.enqueue(new Callback<GetOrderList>() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onResponse(Call<GetOrderList> call,
-                                   Response<GetOrderList> response) {
+        final Call<GetOrderList> calltoapi = apiService.wsOrdeList("123456",body);
 
-                Log.d("productinorder",response.toString());
+        calltoapi.enqueue(new Callback<GetOrderList>() {
+            @Override
+            public void onResponse(Call<GetOrderList> call, Response<GetOrderList> response) {
+
+                                Log.d("productinorder",response.toString());
                 if (response.isSuccessful()){
-                    Toast.makeText(getActivity(),"Wlcome!", Toast.LENGTH_SHORT).show();
+
                     ProductsInOrderlist.addAll(response.body().getData().getCheckoutList());
                     if(ProductsInOrderlist.size()>0){
                         purchaseorderAdpter = new PurchaseorderAdpter(ProductsInOrderlist, getActivity(),true);
@@ -106,13 +110,10 @@ public class YourOrderFragment extends Fragment {
                 }else{
 
                 }
-
-
             }
 
             @Override
-            public void onFailure(Call<GetOrderList> call,
-                                  Throwable t) {
+            public void onFailure(Call<GetOrderList> call, Throwable t) {
                 Log.d("gfhgyhg","error");
                 Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
             }

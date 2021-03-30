@@ -5,14 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GetCommodity {
-
+public class GetCommodities {
     @SerializedName("message")
     @Expose
     private String message;
     @SerializedName("data")
     @Expose
-    private List<GetCommodityDatum> data = null;
+    private List<GetCommoditiesDatum> data = null;
 
     public String getMessage() {
         return message;
@@ -22,12 +21,11 @@ public class GetCommodity {
         this.message = message;
     }
 
-    public List<GetCommodityDatum> getData() {
+    public List<GetCommoditiesDatum> getData() {
         return data;
     }
 
-    public void setData(List<GetCommodityDatum> data) {
+    public void setData(List<GetCommoditiesDatum> data) {
         this.data = data;
     }
-
 }

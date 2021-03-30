@@ -14,6 +14,7 @@ import com.mobile.agri10x.models.GetBookingDeatils;
 import com.mobile.agri10x.models.GetCategories;
 import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetCities;
+import com.mobile.agri10x.models.GetCommodities;
 import com.mobile.agri10x.models.GetCommodity;
 import com.mobile.agri10x.models.GetCommodityById;
 import com.mobile.agri10x.models.GetCreateBooking;
@@ -119,8 +120,10 @@ public interface AgriInvestor {
     Call<GetStates> wsGetStates(@Header("x-auth-token") String token);
     @POST("m/getCities")
     Call<GetCities> wsGetCities(@Header("x-auth-token") String token, @Body RequestBody params);
-    @GET("m/getCommodities")
+    @GET("m/getCommodity")
     Call<GetCommodity> wsGetCommodity(@Header("x-auth-token") String token);
+    @GET("m/getCommodities")
+    Call<GetCommodities> wsGetCommodities(@Header("x-auth-token") String token);
     @POST("m/getCommodityById")
     Call<GetCommodityById> wsGetCommodityByID(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("m/getVarieties")

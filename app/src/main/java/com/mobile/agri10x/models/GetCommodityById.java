@@ -9,7 +9,7 @@ public class GetCommodityById {
     private String message;
     @SerializedName("data")
     @Expose
-    private GetCommodityData data;
+    private GetCommodityByIdData data;
 
     public String getMessage() {
         return message;
@@ -19,11 +19,11 @@ public class GetCommodityById {
         this.message = message;
     }
 
-    public GetCommodityData getData() {
+    public GetCommodityByIdData getData() {
         return data;
     }
 
-    public void setData(GetCommodityData data) {
+    public void setData(GetCommodityByIdData data) {
         this.data = data;
     }
 }

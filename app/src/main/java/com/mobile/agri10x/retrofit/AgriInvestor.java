@@ -1,5 +1,6 @@
 package com.mobile.agri10x.retrofit;
 
+import com.mobile.agri10x.models.GetOrderList;
 import com.mobile.agri10x.models.QueryWearHouseForm;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.FilterProducts;
@@ -29,7 +30,6 @@ import com.mobile.agri10x.models.GetLiveTrades;
 import com.mobile.agri10x.models.GetLot;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetOrderCheckOutHandling;
-import com.mobile.agri10x.models.GetOrderList;
 import com.mobile.agri10x.models.GetProductInWishList;
 import com.mobile.agri10x.models.GetProductsInCart;
 import com.mobile.agri10x.models.GetQueryDailyDeals;
@@ -161,7 +161,8 @@ public interface AgriInvestor {
     @POST("m/getOrderList")
     Call<GetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
 
-
+//    @POST("m/getOrderList")
+//    Call<DemoGetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
 
 
 }

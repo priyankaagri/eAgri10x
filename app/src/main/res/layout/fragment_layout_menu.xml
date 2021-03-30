@@ -108,7 +108,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-                    android:src="@drawable/verify_menu"
+
                     android:textAlignment="center" />
 
                 <TextView
@@ -151,7 +151,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-                    android:src="@drawable/payment_menu"
+
                     android:textAlignment="center" />
 
                 <TextView

@@ -44,12 +44,10 @@ public class ApiHandler {
 
     public static AgriInvestor getApiService() {
         if (apiService == null) {
-            httpClient.connectTimeout(500, TimeUnit.SECONDS);
+
+            httpClient.connectTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
             httpClient.writeTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
-            httpClient.readTimeout(500, TimeUnit.SECONDS);
-//            httpClient.connectTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
-//            httpClient.writeTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
-//            httpClient.readTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
+            httpClient.readTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS);
             httpClient.retryOnConnectionFailure(true);
 
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();

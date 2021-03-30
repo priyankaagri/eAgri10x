@@ -5,17 +5,16 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GetOrderListData {
-
+public class GetOrderListDatum {
     @SerializedName("_id")
     @Expose
     private String id;
     @SerializedName("bookingList")
     @Expose
-    private List<BookingListFromOderList> bookingList = null;
+    private List<GetOrderListDatumBooking> bookingList = null;
     @SerializedName("checkoutList")
     @Expose
-    private List<CheckoutListFromOrderList> checkoutList = null;
+    private List<GetOrderListDatumCheckout> checkoutList = null;
 
     public String getId() {
         return id;
@@ -25,20 +24,19 @@ public class GetOrderListData {
         this.id = id;
     }
 
-    public List<BookingListFromOderList> getBookingList() {
+    public List<GetOrderListDatumBooking> getBookingList() {
         return bookingList;
     }
 
-    public void setBookingList(List<BookingListFromOderList> bookingList) {
+    public void setBookingList(List<GetOrderListDatumBooking> bookingList) {
         this.bookingList = bookingList;
     }
 
-    public List<CheckoutListFromOrderList> getCheckoutList() {
+    public List<GetOrderListDatumCheckout> getCheckoutList() {
         return checkoutList;
     }
 
-    public void setCheckoutList(List<CheckoutListFromOrderList> checkoutList) {
+    public void setCheckoutList(List<GetOrderListDatumCheckout> checkoutList) {
         this.checkoutList = checkoutList;
     }
-
 }

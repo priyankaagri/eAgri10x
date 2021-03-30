@@ -99,10 +99,11 @@ public class HomeFragment extends Fragment {
     ImageView cancle_btn;
     Button btn_submit_worker,btn_submit_transport,btn_submit_wearhouse;
     String firstname, lastname, phonenumber,companyName,emailId;
-    String str_state = "";
-    String str_City = "";
+    String str_state = "",str_state_trasnport="",str_City = "",str_state_wearhouse="";
+
+
     EditText edt_txt_company_name,edt_txt_fname, edt_txt_lname, edt_txt_phone,edt_txt_email,edt_txt_pricekg;
-    SearchableSpinner ss_statebilling, ss_citybilling,ss_features,ss_stockType,ss_state;
+    SearchableSpinner ss_statebilling, ss_citybilling,ss_features,ss_stockType,ss_state,spinner_state_transaporatation,ss_state_wearhouse;
     Spinner spinner_tranport_type,spinner_transport_weight,spinner_oprating_state;
     List<String> allNames = new ArrayList<String>();
 
@@ -515,8 +516,8 @@ public class HomeFragment extends Fragment {
                 spinner_tranport_type =  dialogForTransportContatct.findViewById(R.id.spinner_type_transport);
                 spinner_transport_weight = dialogForTransportContatct.findViewById(R.id.spinner_weight_transport);
                 edt_txt_pricekg = dialogForTransportContatct.findViewById(R.id.edt_txt_price);
-                ss_statebilling = dialogForTransportContatct.findViewById(R.id.spinner_state_billing_id);
-                callApiGetState();
+                spinner_state_transaporatation = dialogForTransportContatct.findViewById(R.id.spinner_state_transaporatation);
+                callApiGetStatefortransporatation();
 
                 try {
                     JSONObject object = new JSONObject(readJSON());
@@ -681,18 +682,18 @@ public class HomeFragment extends Fragment {
 
                     }
                 });
-                ss_statebilling.setOnItemSelectedListener(new OnItemSelectedListener() {
+                spinner_state_transaporatation.setOnItemSelectedListener(new OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(View view, int position, long id) {
-                        String pos = ss_statebilling.getSelectedItem().toString();
-                        str_state = pos;
+                        String pos = spinner_state_transaporatation.getSelectedItem().toString();
+                        str_state_trasnport = pos;
                         Log.d("selectedstatebill", pos);
                         for (int i = 0; i < getstateArrayList.size(); i++) {
                             String addstr = getstateArrayList.get(i).getState();
                             if (pos.equals(addstr)) {
                                 String stateId = getstateArrayList.get(i).getId();
                                 Log.d("stateId", stateId);
-                                //callapibillingcities(stateId);
+
 
                             }
                         }
@@ -716,7 +717,8 @@ public class HomeFragment extends Fragment {
                         getPrice = edt_txt_pricekg.getText().toString();
 
 
-                        if (validateCompanyName(companyName) && validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber)  && validatePrice(getPrice)&& validatestate(str_state)) {
+
+                        if (validateCompanyName(companyName) && validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber)  && validatePrice(getPrice)&& validatestate(str_state_trasnport)) {
                             formdialog = new Alert().pleaseWait();
                             CallSubmitTransportationApi(companyName,firstname, lastname, phonenumber, emailId, str_state,getSelectedValue,getSelectedTransType,getPrice);
 
@@ -742,7 +744,7 @@ public class HomeFragment extends Fragment {
 
             }
 
-            private void callApiGetState() {
+            private void callApiGetStatefortransporatation() {
 
 
                 getstateArrayList.clear();
@@ -760,13 +762,13 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                        Log.d("GetStatelist", response.toString());
+                        Log.d("GetStatelistfortans", response.toString());
 
                         if (response.isSuccessful()) {
-// statecategory.add("Select State");
+
 
                             getstateArrayList.addAll(response.body().getData());
-                            Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                             onlystatename.clear();
                             for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -775,7 +777,7 @@ public class HomeFragment extends Fragment {
 
                             }
                             ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, onlystatename);
-                            ss_statebilling.setAdapter(adapter1);
+                            spinner_state_transaporatation.setAdapter(adapter1);
                         } else {
 
                             Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
@@ -791,53 +793,7 @@ public class HomeFragment extends Fragment {
 
             }
 
-            private void callapibillingcities(String stateId) {
-                getCityeArrayList.clear();
-                Map<String, Object> jsonParams = new ArrayMap<>();
-                jsonParams.put("_id", stateId);
-                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
-                AgriInvestor apiService = ApiHandler.getApiService();
 
-                try {
-                    SSLCertificateManagment.trustAllHosts();
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
-                } catch (KeyManagementException e) {
-                    e.printStackTrace();
-                }
-                Call<GetCities> call = apiService.wsGetCities("123456", body);
-                call.enqueue(new Callback<GetCities>() {
-                    @Override
-                    public void onResponse(Call<GetCities> call, Response<GetCities> response) {
-
-                        Log.d("GetCitylist", response.toString());
-
-                        if (response.isSuccessful()) {
-                            onlycityname.clear();
-                            getCityeArrayList.addAll(response.body().getData());
-                            Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
-                            for (int i = 0; i < getCityeArrayList.size(); i++) {
-                                String city = getCityeArrayList.get(i).getCities();
-                                onlycityname.add(city);
-
-                            }
-                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, onlycityname);
-                            ss_citybilling.setAdapter(adapter2);
-
-                        } else {
-
-                            Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<GetCities> call, Throwable t) {
-
-                    }
-                });
-
-
-            }
 
         });
 
@@ -862,8 +818,8 @@ public class HomeFragment extends Fragment {
 
                 ss_features = dialogForWarehouse.findViewById(R.id.spinner_features);
                 ss_stockType = dialogForWarehouse.findViewById(R.id.spinner_stock_type);
-                ss_state = dialogForWarehouse.findViewById(R.id.spinner_state);
-                callApiGetState();
+                ss_state_wearhouse = dialogForWarehouse.findViewById(R.id.ss_state_wearhouse);
+                callApiGetStateforwearhous();
 
 
                 try {
@@ -967,11 +923,11 @@ public class HomeFragment extends Fragment {
 
                     }
                 });
-                ss_state.setOnItemSelectedListener(new OnItemSelectedListener() {
+                ss_state_wearhouse.setOnItemSelectedListener(new OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(View view, int position, long id) {
                         String pos = ss_state.getSelectedItem().toString();
-                        str_state = pos;
+                        str_state_wearhouse = pos;
                         Log.d("selectedstatebill", pos);
                         for (int i = 0; i < getstateArrayList.size(); i++) {
                             String addstr = getstateArrayList.get(i).getState();
@@ -997,7 +953,7 @@ public class HomeFragment extends Fragment {
                         lastname = edt_txt_lname.getText().toString();
                         phonenumber = edt_txt_phone.getText().toString();
                         emailId = edt_txt_email.getText().toString();
-                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber)  && validatestate(str_state)) {
+                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber)  && validatestate(str_state_wearhouse)) {
                             formdialog = new Alert().pleaseWait();
                             CallSubmitWarehouseApi(firstname, lastname,emailId, phonenumber, str_state,getFeatures,getStock);
 
@@ -1021,7 +977,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void callApiGetState() {
+    private void callApiGetStateforwearhous() {
 
 
         getstateArrayList.clear();
@@ -1069,6 +1025,9 @@ public class HomeFragment extends Fragment {
 
 
     }
+
+
+
     public void CallSubmitWarehouseApi(String firstname, String lastname, String phonenumber, String emailId, String str_state, String str_features, String str_stock) {
 
         QueryWearHouseFormData querySubmitData = new QueryWearHouseFormData();
@@ -1388,37 +1347,7 @@ public class HomeFragment extends Fragment {
 
     }
 
- /*   private void GetDailyDealProducts() {
-        //  dialog = new Alert().pleaseWait();
 
-        Map<String, Object> jsonParams = new ArrayMap<>();
-        jsonParams.put("topPicks", "false");
-        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
-        AgriInvestor apiService = ApiHandler.getApiService();
-        final Call<List<GetFeatureProduct>> Call = apiService.get_featuredProduct(body);
-        Call.enqueue(new Callback<List<GetFeatureProduct>>() {
-            @Override
-            public void onResponse(retrofit2.Call<List<GetFeatureProduct>> call, Response<List<GetFeatureProduct>> response) {
-                Log.d("GetReqTradeCommodity", response.toString());
-                if (response.isSuccessful()) {
-                    *//*featuredproductlist = response.body();
-
-                    Adapterfeatured adapterfeatured = new Adapterfeatured(featuredproductlist,context);
-                    recycler_dailydeals.setAdapter(adapterfeatured);*//*
-
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(retrofit2.Call<List<GetFeatureProduct>> call, Throwable t) {
-
-            }
-        });
-
-
-    }*/
 
     public class Alert {
         public void alert(String title, String body) {

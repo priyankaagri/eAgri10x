@@ -1,22 +1,16 @@
-
 package com.mobile.agri10x.models;
-
-
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-
-public class GetOrderList {
+public class DemoGetOrderList {
 
     @SerializedName("message")
     @Expose
     private String message;
     @SerializedName("data")
     @Expose
-    private List<GetOrderListDatum> data = null;
+    private DemoGetOrderListData data;
 
     public String getMessage() {
         return message;
@@ -26,12 +20,11 @@ public class GetOrderList {
         this.message = message;
     }
 
-    public List<GetOrderListDatum> getData() {
+    public DemoGetOrderListData getData() {
         return data;
     }
 
-    public void setData(List<GetOrderListDatum> data) {
+    public void setData(DemoGetOrderListData data) {
         this.data = data;
     }
-
 }

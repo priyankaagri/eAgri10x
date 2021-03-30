@@ -3,7 +3,7 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Product_FromOderLIst {
+public class GetOrderListDatumCheckoutCartDataProduct {
 
     @SerializedName("userID")
     @Expose
@@ -126,5 +126,4 @@ public class Product_FromOderLIst {
     public void setTotalAvailable(Integer totalAvailable) {
         this.totalAvailable = totalAvailable;
     }
-
 }

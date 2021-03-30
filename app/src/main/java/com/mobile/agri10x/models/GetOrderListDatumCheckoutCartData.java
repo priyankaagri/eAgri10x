@@ -5,20 +5,20 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class CartData_FromOderLIst {
+public class GetOrderListDatumCheckoutCartData {
 
     @SerializedName("products")
     @Expose
-    private List<Product_FromOderLIst> products = null;
+    private List<GetOrderListDatumCheckoutCartDataProduct> products = null;
     @SerializedName("subTotal")
     @Expose
     private Integer subTotal;
 
-    public List<Product_FromOderLIst> getProducts() {
+    public List<GetOrderListDatumCheckoutCartDataProduct> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product_FromOderLIst> products) {
+    public void setProducts(List<GetOrderListDatumCheckoutCartDataProduct> products) {
         this.products = products;
     }
 

@@ -403,7 +403,7 @@
                     android:layout_height="wrap_content">
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
 
-                    android:id="@+id/spinner_state_billing_id"
+                    android:id="@+id/spinner_state_transaporatation"
                     android:layout_width="match_parent"
                     android:layout_marginHorizontal="10dp"
                     android:layout_height="45dp"

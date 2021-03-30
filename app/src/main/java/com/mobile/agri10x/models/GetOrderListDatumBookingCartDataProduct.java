@@ -3,7 +3,9 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductFromOderList {
+public class GetOrderListDatumBookingCartDataProduct {
+
+
     @SerializedName("commodityID")
     @Expose
     private String commodityID;
@@ -18,7 +20,7 @@ public class ProductFromOderList {
     private String orderID;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private double price;
     @SerializedName("quantity")
     @Expose
     private Integer quantity;
@@ -70,11 +72,11 @@ public class ProductFromOderList {
         this.orderID = orderID;
     }
 
-    public Integer getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -125,4 +127,5 @@ public class ProductFromOderList {
     public void setWeight(Integer weight) {
         this.weight = weight;
     }
+
 }

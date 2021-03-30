@@ -1,6 +1,5 @@
 package com.mobile.agri10x.Fragments;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.ArrayMap;
@@ -19,16 +18,12 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.google.android.material.badge.BadgeDrawable;
 import com.mobile.agri10x.Adapter.PurchaseorderAdpter;
-import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
-import com.mobile.agri10x.models.CheckoutListFromOrderList;
-import com.mobile.agri10x.models.GetAddAddress;
+
 import com.mobile.agri10x.models.GetOrderList;
-import com.mobile.agri10x.models.GetProductsInCart;
-import com.mobile.agri10x.models.GetProductsInCartProductData;
+import com.mobile.agri10x.models.GetOrderListDatumCheckout;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mobile.agri10x.retrofit.SSLCertificateManagment;
@@ -43,7 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,7 +51,7 @@ public class YourOrderFragment extends Fragment {
     Dialog bookingdetaildialog;
     Dialog purchasedetaildialog;
     ImageView cancle_btn;
-    public  static List<CheckoutListFromOrderList> ProductsInOrderlist = new ArrayList<>();
+    public  static List<GetOrderListDatumCheckout> ProductsInOrderlist = new ArrayList<>();
     PurchaseorderAdpter purchaseorderAdpter;
 
 
@@ -97,15 +91,15 @@ public class YourOrderFragment extends Fragment {
             @Override
             public void onResponse(Call<GetOrderList> call, Response<GetOrderList> response) {
 
-                                Log.d("productinorder",response.toString());
+                                Log.d("response",response.toString());
                 if (response.isSuccessful()){
-
-                    ProductsInOrderlist.addAll(response.body().getData().getCheckoutList());
+                    Log.d("checkresponse","success");
+                    ProductsInOrderlist.addAll(response.body().getData().get(0).getCheckoutList());
                     if(ProductsInOrderlist.size()>0){
                         purchaseorderAdpter = new PurchaseorderAdpter(ProductsInOrderlist, getActivity(),true);
                         recycleview_purchase_list.setAdapter(purchaseorderAdpter);
                         purchaseorderAdpter.notifyDataSetChanged();
-                    }
+                   }
 
                 }else{
 
@@ -114,7 +108,7 @@ public class YourOrderFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GetOrderList> call, Throwable t) {
-                Log.d("gfhgyhg","error");
+                Log.d("checkresponse",t.toString());
                 Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });

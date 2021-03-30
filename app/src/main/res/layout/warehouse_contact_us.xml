@@ -371,7 +371,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content">
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:id="@+id/spinner_state"
+                    android:id="@+id/ss_state_wearhouse"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"

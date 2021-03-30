@@ -14,8 +14,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.R;
-import com.mobile.agri10x.models.CheckoutListFromOrderList;
-import com.mobile.agri10x.models.GetProductsInCartProductData;
+import com.mobile.agri10x.models.GetOrderListDatumCheckout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +22,14 @@ import java.util.List;
 public class PurchaseorderAdpter extends  RecyclerView.Adapter<PurchaseorderAdpter.ViewHolers> {
 
     Context context;
-    List<CheckoutListFromOrderList> ProductsInPurchaseorderlist = new ArrayList<>();
+    List<GetOrderListDatumCheckout> ProductsInPurchaseorderlist = new ArrayList<>();
     boolean check;
     Dialog purchasedetaildialog;
     ImageView cancle_btn;
     TextView txt_delivery_notes,txt_shipping_address,txt_billing_address,txt_product_name,
             txt_product_price,txt_grade,txt_price_per_kg,txt_quantity,txt_packaging_size,txt_total_weight,txt_total_amount;
 
-    public PurchaseorderAdpter(List<CheckoutListFromOrderList> productsInOrderlist, Context context, boolean b) {
+    public PurchaseorderAdpter(List<GetOrderListDatumCheckout> productsInOrderlist, Context context, boolean b) {
         this.context=context;
         this.ProductsInPurchaseorderlist=productsInOrderlist;
         this.check=b;

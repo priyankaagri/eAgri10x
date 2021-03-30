@@ -3,11 +3,20 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookingListFromOderList {
+public class GetOrderListDatumCheckout {
 
     @SerializedName("_id")
     @Expose
     private String id;
+    @SerializedName("Order_Amount")
+    @Expose
+    private Integer orderAmount;
+    @SerializedName("Order_Notes")
+    @Expose
+    private String orderNotes;
+    @SerializedName("Payment_Date")
+    @Expose
+    private String paymentDate;
     @SerializedName("PackagingDetails")
     @Expose
     private String packagingDetails;
@@ -23,36 +32,18 @@ public class BookingListFromOderList {
     @SerializedName("Shipping_Address_ID")
     @Expose
     private String shippingAddressID;
-    @SerializedName("Order_Notes")
-    @Expose
-    private String orderNotes;
-    @SerializedName("Percentage")
-    @Expose
-    private Double percentage;
-    @SerializedName("Booking_Amount")
-    @Expose
-    private Double bookingAmount;
-    @SerializedName("Pending_Amount")
-    @Expose
-    private Double pendingAmount;
-    @SerializedName("Partial_Payment")
-    @Expose
-    private Boolean partialPayment;
-    @SerializedName("Complete_Payment")
-    @Expose
-    private Boolean completePayment;
-    @SerializedName("Partial_Payment_Date")
-    @Expose
-    private Object partialPaymentDate;
-    @SerializedName("Complete_Payment_Date")
-    @Expose
-    private Object completePaymentDate;
     @SerializedName("Cart_Data")
     @Expose
-    private CartDataFromOderList cartData;
+    private GetOrderListDatumCheckoutCartData cartData;
+    @SerializedName("Payment_Status")
+    @Expose
+    private Boolean paymentStatus;
     @SerializedName("DeliveryContactPerson")
     @Expose
     private String deliveryContactPerson;
+    @SerializedName("DeliveryMobileNo")
+    @Expose
+    private long deliveryMobileNo;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -69,6 +60,30 @@ public class BookingListFromOderList {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Integer getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(Integer orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public String getOrderNotes() {
+        return orderNotes;
+    }
+
+    public void setOrderNotes(String orderNotes) {
+        this.orderNotes = orderNotes;
+    }
+
+    public String getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(String paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
     public String getPackagingDetails() {
@@ -111,76 +126,20 @@ public class BookingListFromOderList {
         this.shippingAddressID = shippingAddressID;
     }
 
-    public String getOrderNotes() {
-        return orderNotes;
-    }
-
-    public void setOrderNotes(String orderNotes) {
-        this.orderNotes = orderNotes;
-    }
-
-    public Double getPercentage() {
-        return percentage;
-    }
-
-    public void setPercentage(Double percentage) {
-        this.percentage = percentage;
-    }
-
-    public Double getBookingAmount() {
-        return bookingAmount;
-    }
-
-    public void setBookingAmount(Double bookingAmount) {
-        this.bookingAmount = bookingAmount;
-    }
-
-    public Double getPendingAmount() {
-        return pendingAmount;
-    }
-
-    public void setPendingAmount(Double pendingAmount) {
-        this.pendingAmount = pendingAmount;
-    }
-
-    public Boolean getPartialPayment() {
-        return partialPayment;
-    }
-
-    public void setPartialPayment(Boolean partialPayment) {
-        this.partialPayment = partialPayment;
-    }
-
-    public Boolean getCompletePayment() {
-        return completePayment;
-    }
-
-    public void setCompletePayment(Boolean completePayment) {
-        this.completePayment = completePayment;
-    }
-
-    public Object getPartialPaymentDate() {
-        return partialPaymentDate;
-    }
-
-    public void setPartialPaymentDate(Object partialPaymentDate) {
-        this.partialPaymentDate = partialPaymentDate;
-    }
-
-    public Object getCompletePaymentDate() {
-        return completePaymentDate;
-    }
-
-    public void setCompletePaymentDate(Object completePaymentDate) {
-        this.completePaymentDate = completePaymentDate;
-    }
-
-    public CartDataFromOderList getCartData() {
+    public GetOrderListDatumCheckoutCartData getCartData() {
         return cartData;
     }
 
-    public void setCartData(CartDataFromOderList cartData) {
+    public void setCartData(GetOrderListDatumCheckoutCartData cartData) {
         this.cartData = cartData;
+    }
+
+    public Boolean getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(Boolean paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
     public String getDeliveryContactPerson() {
@@ -189,6 +148,14 @@ public class BookingListFromOderList {
 
     public void setDeliveryContactPerson(String deliveryContactPerson) {
         this.deliveryContactPerson = deliveryContactPerson;
+    }
+
+    public long getDeliveryMobileNo() {
+        return deliveryMobileNo;
+    }
+
+    public void setDeliveryMobileNo(Integer deliveryMobileNo) {
+        this.deliveryMobileNo = deliveryMobileNo;
     }
 
     public String getCreatedAt() {

@@ -1,6 +1,6 @@
 package com.mobile.agri10x.retrofit;
 
-import com.mobile.agri10x.Fragments.QueryWearHouseForm;
+import com.mobile.agri10x.models.QueryWearHouseForm;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.FilterProducts;
 import com.mobile.agri10x.models.FilterState;

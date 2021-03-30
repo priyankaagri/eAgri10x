@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_bg"
+
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/cancle_btn"
+                    android:layout_width="20dp"
+                    android:visibility="gone"
+                    android:layout_height="20dp"
+                    android:src="@drawable/close">
+
+                </ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:textColor="@color/black"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="16dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="Add Address"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/tv_street_address1"
+                        />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/addressline1"
+                    android:paddingStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/tv_street_address1"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/text_color"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/tv_street_address2"
+                        />
+
+                </LinearLayout>
+
+                <EditText
+                    android:paddingStart="4dp"
+                    android:id="@+id/addressline2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/tv_street_address2"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/tv_state"
+                        />
+
+                </LinearLayout>
+
+                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+
+                    android:id="@+id/spinner_state_billing_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:paddingStart="0dp"
+
+
+                    />
+                <View
+                    android:visibility="gone"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="20dp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/tv_city"
+                        />
+
+                </LinearLayout>
+
+                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+
+
+                    android:id="@+id/spinner_city_billing_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:paddingStart="0dp"
+
+                    />
+                <View
+                    android:visibility="gone"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:layout_weight="1"
+                    android:padding="15dp"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/tv_pincode"
+                        />
+
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/pincode_txt"
+                    android:paddingStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/tv_pincode"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/text_color"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/tv_address_type"
+                        />
+
+                </LinearLayout>
+
+                <Spinner
+                    android:paddingStart="0dp"
+                    android:id="@+id/spinner_address_type_billing_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    />
+                <View
+                    android:visibility="gone"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:layout_weight="1"
+                    android:padding="15dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <Button
+
+                    android:id="@+id/btn_save_billing_add_id"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/radius_button"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"></Button>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

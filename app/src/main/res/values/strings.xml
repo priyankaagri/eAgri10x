@@ -104,8 +104,8 @@
     <string name="menu_payment">Payments</string>
     <string name="menu_addstock">Add Stock</string>
     <string name="menu_managestock">Manage Stock</string>
-    <string name="menu_your_orders">Your Orders</string>
-    <string name="menu_wish_list">Your Wish List</string>
+    <string name="menu_your_orders">My Orders</string>
+    <string name="menu_wish_list">My Wishlist</string>
     <string name="menu_refer_earn"><![CDATA[Refer & Earn]]></string>
     <string name="menu_about_us">About Us</string>
     <string name="menu_contst_us">Contact Us</string>
@@ -159,7 +159,6 @@
 
     <string name="add_stock">Add Stock</string>
     <string name="manage_stock">Manage Stock</string>
-
 
 
     <string name="about_us_faq">FAQ</string>

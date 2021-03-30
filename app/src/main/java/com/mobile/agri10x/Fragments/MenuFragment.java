@@ -30,7 +30,7 @@ public class MenuFragment extends Fragment {
     private Button mLogoutButton;
     private ImageView mBackImage;
     private RelativeLayout mProfileRl,mVerifyAccountRl,mPaymentRl,mAddStockRl,mManageStockRl,
-            mYourOrdersRl,mYourWishListRl,mAboutUsRl,mConstactUsRl,mShareAppRl;
+            mYourOrdersRl,mYourWishListRl,mAboutUsRl,mConstactUsRl,mShareAppRl,mAddressRl;
     private final String PROFILE_TAG="profile",VERIFY_ACCOUNT_TAG="verify",PAYMENT_TAG="payment",ADD_STOCK_TAG="addstock",
             MANAGE_STOCK_TAG="managestock",YOUR_ORDER_TAG="yourorder",WISH_LIST_TAG="yourwishlist",ABOUT_US_TAG="about_us",
             CONTACT_US_TAG="contact_us";
@@ -54,6 +54,7 @@ public class MenuFragment extends Fragment {
 
         mYourOrdersRl=view.findViewById(R.id.rl_menu_your_orders);
         mYourWishListRl=view.findViewById(R.id.rl_menu_your_wish_list);
+        mAddressRl = view.findViewById(R.id.rl_menu_your_address);
         mAboutUsRl=view.findViewById(R.id.rl_menu_about_us);
         mConstactUsRl=view.findViewById(R.id.rl_menu_contact_us);
         mShareAppRl=view.findViewById(R.id.rl_menu_share_app);
@@ -96,6 +97,13 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openContactUs();
+            }
+        });
+
+        mAddressRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddressFragment();
             }
         });
 
@@ -149,6 +157,13 @@ public class MenuFragment extends Fragment {
 
     }
 
+    private void openAddressFragment() {
+        AddressFragment addressFragment=new AddressFragment();
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment, addressFragment,VERIFY_ACCOUNT_TAG);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
 
     private void openVerifyFragment() {

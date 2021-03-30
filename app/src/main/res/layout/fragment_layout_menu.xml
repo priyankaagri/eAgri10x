@@ -351,6 +351,47 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_menu_your_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ripple_effect"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/iv_menu_your_address"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/address_menu"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/tv_yourwish__address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/iv_menu_your_address"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="4dp"
+                    android:layout_toRightOf="@+id/iv_menu_your_address"
+                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:text="My Addresses"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/iv_your_tv_yourwish__address"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignEnd="@+id/tv_yourwish__address"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_forward" />
+
+            </RelativeLayout>
+            <RelativeLayout
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

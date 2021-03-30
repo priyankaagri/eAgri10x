@@ -54,6 +54,8 @@ import com.mobile.agri10x.models.GetStates;
 import com.mobile.agri10x.models.GetStatesDatum;
 import com.mobile.agri10x.models.GetWorkerForm;
 import com.mobile.agri10x.models.QueryFeatureOnly;
+import com.mobile.agri10x.models.QueryWearHouseForm;
+import com.mobile.agri10x.models.QueryWearHouseFormData;
 import com.mobile.agri10x.models.QueryWorkerData;
 import com.mobile.agri10x.models.QueryWorkerForm;
 import com.mobile.agri10x.models.QueryTopicks;

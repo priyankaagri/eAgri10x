@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/hollow_back_trn"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_type_adrres"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:padding="10dp"
+
+            android:fontFamily="@font/proxima_nova_bold"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txt_add1"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_add2"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_add3"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_add4"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

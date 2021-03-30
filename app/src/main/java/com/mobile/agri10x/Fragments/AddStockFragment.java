@@ -83,6 +83,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     List<GetCitiesDatum> getCityeArrayList = new ArrayList<>();
     ArrayList<String> onlystatename = new ArrayList<>();
     ArrayList<String> onlycityname = new ArrayList<>();
+    ArrayList<String> blacklist = new ArrayList<>();
     List<GetCommodityDatum> getcommodityArraylist = new ArrayList<>();
     List<String> onlycommodityname = new ArrayList<>();
     List<GetVarietiesDatum> getvarietyArraylist = new ArrayList<>();
@@ -185,6 +186,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                     if (pos.equals(addstr)) {
                         stateId = getstateArrayList.get(i).getId();
                         Log.d("stateId", stateId);
+
                         callapigetcities(stateId);
 
                     }
@@ -227,6 +229,11 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                         commodity_id = getcommodityArraylist.get(i).getId();
                         Log.d("commodity_id", commodity_id);
                         str_commodityid = commodity_id;
+
+
+                     spinner_variety.clearChildFocus(view);
+
+
                         callapigetVariety(commodity_id);
                         callapigetFeatures(commodity_id);
                     }
@@ -568,8 +575,11 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                         onlyvarietyname.add(city);
 
                     }
-                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.simple_expandable_list_item_1, onlyvarietyname);
+
+
+                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.simple_spinner_dropdown_item, onlyvarietyname);
                     spinner_variety.setAdapter(adapter2);
+
 
                 } else {
 

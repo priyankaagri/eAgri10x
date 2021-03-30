@@ -79,13 +79,13 @@ public class YourOrderFragment extends Fragment {
          Log.d("getuserid",SessionManager.getKeyTokenUser(getActivity()));
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
-//        try {
-//            SSLCertificateManagment.trustAllHosts();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        } catch (KeyManagementException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetOrderList> Productinlist = apiService.wsOrdeList("123456",body);
         Productinlist.enqueue(new Callback<GetOrderList>() {
             @SuppressLint("WrongConstant")

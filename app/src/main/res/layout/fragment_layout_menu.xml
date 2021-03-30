@@ -65,7 +65,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-                    android:src="@drawable/profile_menu"
+                    android:src="@drawable/profile_menu_icon"
                     android:textAlignment="center" />
 
                 <TextView
@@ -196,7 +196,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-                    android:src="@drawable/addstock_menu"
+                    android:src="@drawable/add_stock_menu_icon"
                     android:textAlignment="center" />
 
                 <TextView
@@ -238,7 +238,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-                    android:src="@drawable/managestock_menu"
+                    android:src="@drawable/manage_stock_menu_icon"
                     android:textAlignment="center" />
 
                 <TextView
@@ -280,7 +280,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-                    android:src="@drawable/your_order_menu"
+                    android:src="@drawable/my_order_menu_icon"
                     android:textAlignment="center" />
 
                 <TextView
@@ -323,7 +323,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-                    android:src="@drawable/wishlist_menu"
+                    android:src="@drawable/my_wishlist_menu_icon"
                     android:textAlignment="center" />
 
                 <TextView

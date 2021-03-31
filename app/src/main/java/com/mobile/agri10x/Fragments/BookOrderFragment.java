@@ -316,18 +316,40 @@ public class BookOrderFragment extends Fragment {
         paywithecollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                struserid = SessionManager.getKeyTokenUser(getActivity());
+                strdelcontactperosn = edt_contactpersonname.getText().toString();
+                strmobileno = edt_contactNumber.getText().toString();
+                strdelnote = edt_deliverynote.getText().toString();
+
                 strbookingamtasparam = bookingamt.getText().toString();
                 strbookingamtasparam = strbookingamtasparam.replaceAll("₹", "");
                 strbookingamtasparam = strbookingamtasparam.replaceAll(",","");
                 strbookingamtasparam = strbookingamtasparam.replaceAll("\\s","");
-              if(validateBookingamt(strbookingamtasparam))  {
+
+
+                strpendingamtasparam = pendingamt.getText().toString();
+                strpendingamtasparam = strpendingamtasparam.replaceAll("₹", "");
+                strpendingamtasparam = strpendingamtasparam.replaceAll(",","");
+                strpendingamtasparam = strpendingamtasparam.replaceAll("\\s","");
+
+                strpackagingdetails = edt_packagingdatail.getText().toString();
+
+                Log.d("valuestosend",struserid+" "+billingaddressID+" "+shippingaddressId+" "+strdelcontactperosn+" "+strmobileno+
+                        " "+strpercentinpoint+" "+strbookingamtasparam+" "+strpendingamtasparam+" "+strdelnote+" "+strpackagingdetails);
+
+              if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
+                      && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno)
+                      && validateperval(strpercentinpoint)  && validateBookingamt(strbookingamtasparam) &&  validatePendingAmt(strpendingamtasparam))  {
+
+
+
                   Payment_E_Collection_Fragment fragment = new Payment_E_Collection_Fragment(); // replace your custom fragment class
                   Bundle bundle = new Bundle();
                   FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
                   bundle.putString("amount",strbookingamtasparam); // use as per your need
                   fragment.setArguments(bundle);
+                  fragmentTransaction.add(R.id.nav_host_fragment,fragment);
                   fragmentTransaction.addToBackStack(null);
-                  fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                   fragmentTransaction.commit();
                 }
 

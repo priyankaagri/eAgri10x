@@ -36,6 +36,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 
 public class Payment_E_Collection_Fragment extends Fragment {
 
@@ -82,21 +84,6 @@ if(getuserid != null && !getuserid.isEmpty()){
     benificary.setText("AGRI10"+getuserid);
 }
 
-benificary.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-
-            if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(benificary.getText().toString());
-            } else {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", benificary.getText().toString());
-                clipboard.setPrimaryClip(clip);
-
-        }
-    }
-});
 
         return  view;
     }

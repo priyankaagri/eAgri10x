@@ -310,11 +310,21 @@ public class PurchaseOrderFargment extends Fragment  {
         paywithecollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                struserid = SessionManager.getKeyTokenUser(getActivity());
+                strdelcontactperosn = edt_contactpersonname.getText().toString();
+                strmobileno = edt_contactNumber.getText().toString();
+                strdelnote = edt_deliverynote.getText().toString();
+
                 strpurchaseamount = totalamt.getText().toString();
                 strpurchaseamount = strpurchaseamount.replaceAll("₹", "");
                 strpurchaseamount = strpurchaseamount.replaceAll(",","");
                 strpurchaseamount = strpurchaseamount.replaceAll("\\s","");
-                if(validatePurchaseAmount(strpurchaseamount))  {
+
+                strpackagingdetails = edt_packagingdatail.getText().toString();
+
+                if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
+                        && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno) && validatePurchaseAmount(strpurchaseamount))  {
 
 
                     Payment_E_Collection_Fragment fragment = new Payment_E_Collection_Fragment(); // replace your custom fragment class
@@ -322,8 +332,8 @@ public class PurchaseOrderFargment extends Fragment  {
                     FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
                     bundle.putString("amount",strpurchaseamount); // use as per your need
                     fragment.setArguments(bundle);
+                    fragmentTransaction.add(R.id.nav_host_fragment,fragment);
                     fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                     fragmentTransaction.commit();
                 }
 

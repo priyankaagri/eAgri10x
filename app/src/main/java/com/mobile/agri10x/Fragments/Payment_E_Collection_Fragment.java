@@ -1,6 +1,9 @@
 package com.mobile.agri10x.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.agri10x.R;
@@ -37,7 +41,8 @@ public class Payment_E_Collection_Fragment extends Fragment {
 
     ImageView mBackImage;
     Button ihavemadepayment;
-    String amountstr;
+    String amountstr,getuserid;
+    TextView benificary;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,10 +52,11 @@ public class Payment_E_Collection_Fragment extends Fragment {
         if (bundle != null) {
             amountstr = bundle.getString("amount");
         }
-
+        getuserid = SessionManager.getKeyTokenUser(getActivity());
         Log.d("getamount",amountstr);
         ihavemadepayment = view.findViewById(R.id.ihavemadepayment);
         mBackImage=view.findViewById(R.id.but_back);
+        benificary = view.findViewById(R.id.benificary);
         mBackImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +78,26 @@ public class Payment_E_Collection_Fragment extends Fragment {
                 
             }
         });
+if(getuserid != null && !getuserid.isEmpty()){
+    benificary.setText("AGRI10"+getuserid);
+}
+
+benificary.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+            if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setText(benificary.getText().toString());
+            } else {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", benificary.getText().toString());
+                clipboard.setPrimaryClip(clip);
+
+        }
+    }
+});
+
         return  view;
     }
 

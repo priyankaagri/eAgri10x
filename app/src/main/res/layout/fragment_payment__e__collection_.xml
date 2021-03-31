@@ -100,7 +100,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:text="Beneficiary Acoount Number"
+                    android:text="Beneficiary Account Number"
                     android:textColor="@color/black"
                     android:textSize="18sp">
 
@@ -116,7 +116,7 @@
                     android:fontFamily="@font/proximanova_regular"
                     android:focusable="false"
                     android:textColor="@color/black"
-                    android:text="AGRI10604afa739724d326802a1165"
+
                     android:textSize="16sp"
 
                     />

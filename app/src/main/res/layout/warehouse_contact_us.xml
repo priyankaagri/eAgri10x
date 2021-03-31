@@ -321,20 +321,33 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/edt_txt_background"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_height="wrap_content">
-                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:id="@+id/spinner_stock_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    android:padding="4dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:id="@+id/spinner_stock_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="18dp"
+                        android:padding="4dp"
+                        android:visibility="visible"
+                        />
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:id="@+id/spinner_stock_typeonion"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="18dp"
+                        android:padding="4dp"
+                        android:visibility="gone"
 
-                    />
+                        />
                 </LinearLayout>
 
-
             </LinearLayout>
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

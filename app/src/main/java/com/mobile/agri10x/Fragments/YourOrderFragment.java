@@ -98,10 +98,7 @@ public class YourOrderFragment extends Fragment {
 
                     checkoutorderlist.addAll(response.body().getData().get(0).getCheckoutList());
                     if(checkoutorderlist.size()>0){
-                        String billingid =  checkoutorderlist.get(0).getBillingAddressID();
-                        String shippingid = checkoutorderlist.get(0).getShippingAddressID();
-                        String ordernotes =  checkoutorderlist.get(0).getOrderNotes();
-                        purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist, getActivity(),billingid,shippingid,ordernotes);
+                        purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist,getActivity());
                         recycleview_purchase_list.setAdapter(purchaseorderAdpter);
                         purchaseorderAdpter.notifyDataSetChanged();
                    }

@@ -50,7 +50,7 @@ Date purchasedate;
     Context context;
     String billingid="",shippingid="",ordernotes="",billingaddressstr="",shippingaddressstr="",purchasedatestr="";
     List<GetOrderListDatumCheckout> ProductsInPurchaseorderlist = new ArrayList<>();
-    List<GetCreateCheckoutCartProductCheckout> ProductsInOrderlistData = new ArrayList<>();
+
 
     ArrayList<getAddressData> getAddressDataArrayList = new ArrayList<>();
     Dialog purchasedetaildialog;
@@ -58,7 +58,7 @@ Date purchasedate;
     TextView txt_delivery_notes, txt_shipping_address, txt_billing_address, txt_product_name,
             txt_product_price, txt_grade, txt_price_per_kg, txt_quantity, txt_packaging_size, txt_total_weight, txt_total_amount;
 
-    public PurchaseorderAdpter(List<GetOrderListDatumCheckout> productsInOrderlist, Context context,String billingid,String shippingid,String ordernotes) {
+    public PurchaseorderAdpter(List<GetOrderListDatumCheckout> productsInOrderlist, Context context) {
         this.context = context;
         this.ProductsInPurchaseorderlist = productsInOrderlist;
         this.billingid = billingid;
@@ -77,6 +77,11 @@ Date purchasedate;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolers holder, int position) {
+        String billingid =  ProductsInPurchaseorderlist.get(0).getBillingAddressID();
+        String shippingid = ProductsInPurchaseorderlist.get(0).getShippingAddressID();
+    ordernotes =  ProductsInPurchaseorderlist.get(0).getOrderNotes();
+        callapigetAddress(billingid,shippingid);
+
         if(ProductsInPurchaseorderlist.get(position).getPaymentDate() != null){
             String orderdate = ProductsInPurchaseorderlist.get(position).getPaymentDate();
             String[] separated = orderdate.split("T");
@@ -106,7 +111,7 @@ Date purchasedate;
 
 
         holder.txt_price.setText(currency);
-callapigetAddress();
+
         holder.layout_for_purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,7 +193,7 @@ callapigetAddress();
 
     }
 
-    private void callapigetAddress() {
+    private void callapigetAddress(String billingid, String shippingid) {
         Map<String, Object> jsonParams = new ArrayMap<>();
         jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());

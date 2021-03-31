@@ -116,9 +116,7 @@ Date purchasedate;
             @Override
             public void onClick(View v) {
 
-                String orderid= ProductsInPurchaseorderlist.get(position).getId();
 
-                //   callcreatecheckoutdeatils(orderid);
 
                 purchasedetaildialog = new Dialog(context);
                 purchasedetaildialog.setContentView(R.layout.layout_detailof_purchaseorder);

@@ -165,6 +165,7 @@
             </LinearLayout>
 
             <EditText
+                android:textColor="@color/black"
                 android:id="@+id/edt_discription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -203,6 +204,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/edt_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -243,6 +245,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/edt_priceperkg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -353,6 +356,7 @@
                     </LinearLayout>
 
                     <EditText
+                        android:textColor="@color/black"
                         android:id="@+id/edt_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -392,6 +396,7 @@
                     </LinearLayout>
 
                     <EditText
+                        android:textColor="@color/black"
                         android:id="@+id/edt_taluka"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -607,7 +612,7 @@
                         </LinearLayout>
 
                         <EditText
-
+                            android:textColor="@color/black"
                             android:id="@+id/edt_country"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

@@ -22,6 +22,7 @@ import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobile.agri10x.Fragments.BookOrderFragment;
 import com.mobile.agri10x.Fragments.Payment_E_Collection_Fragment;
+import com.mobile.agri10x.Fragments.PurchaseOrderFargment;
 import com.mobile.agri10x.Fragments.TradeValueAddCart;
 import com.mobile.agri10x.Fragments.HomeFragment;
 import com.mobile.agri10x.Fragments.MenuFragment;
@@ -443,7 +444,7 @@ if(getbookorpurchase){
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Payment Successful")){
-                        HomePageActivity.removeFragment(new Payment_E_Collection_Fragment());
+                        HomePageActivity.removeFragment(new PurchaseOrderFargment());
                         HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
                         getProductinCart();
                         Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
@@ -490,7 +491,7 @@ if(getbookorpurchase){
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Payment Successful")){
-                        HomePageActivity.removeFragment(new Payment_E_Collection_Fragment());
+                        HomePageActivity.removeFragment(new BookOrderFragment());
                         HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
 
                         getProductinCart();

@@ -226,15 +226,18 @@
                 <EditText
                     android:id="@+id/edt_email_id"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="@string/email"
+                    android:editable="false"
+                    android:textSize="15sp"
+                    android:singleLine="true"
+                    android:inputType="textPersonName"
                     android:layout_marginHorizontal="20dp"
                     android:fontFamily="@font/proximanova_regular"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:padding="15dp"
                     android:textColor="@color/black"
+                    android:textColorHint="@color/text_color"
                     android:background="@drawable/edt_txt_background"
-                    android:textSize="15sp" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -273,15 +276,14 @@
                     android:background="@drawable/edt_txt_background"
                     android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content">
-                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:id="@+id/spinner_features"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    android:padding="4dp"
+                    <Spinner
+                        android:id="@+id/spinner_feature_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:spinnerMode="dropdown"
+                        android:popupBackground="@color/white"
+                        android:background="@drawable/spinner_border" />
 
-                    />
                 </LinearLayout>
 
 
@@ -306,7 +308,6 @@
                         android:paddingLeft="15dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-
                         android:text="Stock Type"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -323,30 +324,17 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                    <Spinner
                         android:id="@+id/spinner_stock_type"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="18dp"
-                        android:layout_marginEnd="18dp"
-                        android:padding="4dp"
-                        android:visibility="visible"
-                        />
-                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                        android:id="@+id/spinner_stock_typeonion"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="18dp"
-                        android:layout_marginEnd="18dp"
-                        android:padding="4dp"
-                        android:visibility="gone"
+                        android:layout_height="45dp"
+                        android:spinnerMode="dropdown"
+                        android:popupBackground="@color/white"
+                        android:background="@drawable/spinner_border" />
 
-                        />
                 </LinearLayout>
 
             </LinearLayout>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -383,15 +371,15 @@
                     android:background="@drawable/edt_txt_background"
                     android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content">
-                <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
-                    android:id="@+id/ss_state_wearhouse"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    android:padding="4dp"
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:id="@+id/ss_state_wearhouse"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="18dp"
+                        android:padding="4dp"
 
-                    />
+                        />
                 </LinearLayout>
 
 

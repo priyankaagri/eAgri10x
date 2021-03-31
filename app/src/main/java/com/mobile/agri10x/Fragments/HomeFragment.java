@@ -101,10 +101,9 @@ public class HomeFragment extends Fragment {
     String firstname, lastname, phonenumber,companyName,emailId;
     String str_state = "",str_state_trasnport="",str_City = "",str_state_wearhouse="",str_stock = "",str_features = "";
 
-
     EditText edt_txt_company_name,edt_txt_fname, edt_txt_lname, edt_txt_phone,edt_txt_email,edt_txt_pricekg;
-    SearchableSpinner ss_statebilling, ss_citybilling,ss_features,ss_stockType,ss_state,spinner_state_transaporatation,ss_state_wearhouse,ss_stockTypeOfOnion;
-    Spinner spinner_tranport_type,spinner_transport_weight,spinner_oprating_state;
+    SearchableSpinner ss_statebilling, ss_citybilling,ss_state,spinner_state_transaporatation,ss_state_wearhouse;
+    Spinner spinner_tranport_type,spinner_transport_weight,spinner_features,spinner_stock,spinner_stock_type;
     List<String> allNames = new ArrayList<String>();
 
     List<String> allFruits = new ArrayList<String>();
@@ -155,8 +154,6 @@ public class HomeFragment extends Fragment {
     List<GetCategoriesData> catArraylist = new ArrayList<>();
     //  List<FeaturedProduct_Model> featuredproductlist = new ArrayList<>();
     private LiveNetworkMonitor mNetworkMonitor;
-
-
 
     @Nullable
     @Override
@@ -817,11 +814,14 @@ public class HomeFragment extends Fragment {
                 edt_txt_phone = dialogForWarehouse.findViewById(R.id.edt_txt_phone);
                 edt_txt_email = dialogForWarehouse.findViewById(R.id.edt_email_id);
 
-                ss_features = dialogForWarehouse.findViewById(R.id.spinner_features);
-                ss_stockType = dialogForWarehouse.findViewById(R.id.spinner_stock_type);
-                ss_stockTypeOfOnion = dialogForWarehouse.findViewById(R.id.spinner_stock_typeonion);
+                spinner_features = dialogForWarehouse.findViewById(R.id.spinner_feature_type);
+                spinner_stock = dialogForWarehouse.findViewById(R.id.spinner_stock_type);
+                /* ss_stockTypeOfOnion = dialogForWarehouse.findViewById(R.id.spinner_stock_typeonion);*/
                 ss_state_wearhouse = dialogForWarehouse.findViewById(R.id.ss_state_wearhouse);
                 callApiGetStateforwearhous();
+                allFeatures.clear();
+                allFruits.clear();
+                allVegitable.clear();
                 try {
                     JSONObject object = new JSONObject(readJSONForStock());
                     JSONArray array = object.getJSONArray("data");
@@ -834,92 +834,67 @@ public class HomeFragment extends Fragment {
                         JSONArray jsonarrayFruits = jsonObject.getJSONArray("Fruits");
                         for(int j=0;j<jsonarrayFruits.length();j++) {
                             fruits = jsonarrayFruits.getString(j);
-// JSONObject jsonnewtwo=jsonarrayFruits.getJSONObject(j);
                             Log.v("jsonfruits", fruits);
                             allFruits.add(fruits);
                         }
                         JSONArray jsonarrayVegitable = jsonObject.getJSONArray("Vegetables");
                         for(int k=0;k<jsonarrayVegitable.length();k++) {
                             String vegitable = jsonarrayVegitable.getString(k);
-// JSONObject jsonnewtwo=jsonarrayFruits.getJSONObject(j);
                             Log.v("jsonVegitable", vegitable);
                             allVegitable.add(vegitable);
                         }
                         /*......Setting a Adapter for All Features*/
 
-                        ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, allFeatures);
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        ss_features.setAdapter(adapter);
-
-//allFeatures.clear();
-                        /*......Setting a Adapter for All Fruits Type*/
-//allFruits.clear();
+                        ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.custom_spinner,allFeatures);
+                        adapter.setDropDownViewResource(R.layout.custom_spinner);
+                        //Setting the ArrayAdapter data on the Spinner
+                        spinner_features.setAdapter(adapter);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ss_features.setOnItemSelectedListener(new OnItemSelectedListener() {
+                newList.clear();
+                spinner_features.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onItemSelected(View view, int position, long id) {
-                        String pos = ss_features.getSelectedItem().toString();
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String pos = spinner_features.getSelectedItem().toString();
                         str_features = pos;
-                        Log.v("getFeatures",str_features);
-                        newList.clear();
-                        allFeatures.clear();
-                        if(position==0) {
-                            ss_stockType.setVisibility(View.VISIBLE);
-                            ss_stockTypeOfOnion.setVisibility(View.GONE);
+
+                        Log.v("getFeatures", str_features);
+                        if (position == 0) {
+                            newList.clear();
                             newList = new ArrayList<>(allFruits.size() + allVegitable.size());
                             newList.addAll(allFruits);
                             newList.addAll(allVegitable);
-                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, newList);
-                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            ss_stockType.setAdapter(fruitsAdapter);
+                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.custom_spinner, newList);
+                            fruitsAdapter.setDropDownViewResource(R.layout.custom_spinner);
+                            spinner_stock.setAdapter(fruitsAdapter);
                         }
-                        if(position==1) {
-                            ss_stockType.setVisibility(View.GONE);
-                            ss_stockTypeOfOnion.setVisibility(View.VISIBLE);
-                            newList.clear();
+                        if (position == 1) {
                             Log.v("old Storage", "old Storage");
-                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, onionStock);
-                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            ss_stockTypeOfOnion.setAdapter(fruitsAdapter);
+                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.custom_spinner, onionStock);
+                            fruitsAdapter.setDropDownViewResource(R.layout.custom_spinner);
+                            spinner_stock.setAdapter(fruitsAdapter);
 
                         }
-
                     }
 
                     @Override
-                    public void onNothingSelected() {
-// will write code here....
+                    public void onNothingSelected(AdapterView<?> parent) {
+
                     }
                 });
 
-                ss_stockType.setOnItemSelectedListener(new OnItemSelectedListener() {
+                spinner_stock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onItemSelected(View view, int position, long id) {
-                        String pos = ss_stockType.getSelectedItem().toString();
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String pos = spinner_stock.getSelectedItem().toString();
                         str_stock = pos;
                         Log.v( "getStock",str_stock);
-                       /* if(getFeatures.equals("Warehouse")){
-                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, onionStock);
-                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            ss_stockType.setAdapter(fruitsAdapter);
-                        }
-                        else if(getFeatures.equals("Cold Storage")){
-                            Log.v("old Storage","old Storage");
-                            newList = new ArrayList<>(allFruits.size() + allVegitable.size());
-                            newList.addAll(allFruits);
-                            newList.addAll(allVegitable);
-                            ArrayAdapter fruitsAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, newList);
-                            fruitsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            ss_stockType.setAdapter(fruitsAdapter);
-                        }*/
-
                     }
 
                     @Override
-                    public void onNothingSelected() {
+                    public void onNothingSelected(AdapterView<?> parent) {
 
                     }
                 });
@@ -934,7 +909,6 @@ public class HomeFragment extends Fragment {
                             if (pos.equals(addstr)) {
                                 String stateId = getstateArrayList.get(i).getId();
                                 Log.d("stateId", stateId);
-//callapibillingcities(stateId);
 
                             }
                         }
@@ -953,6 +927,8 @@ public class HomeFragment extends Fragment {
                         emailId = edt_txt_email.getText().toString();
                         if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) && validateEmail(emailId) && validatestate(str_state_wearhouse) && validateFeatures(str_features) && validateStockType(str_stock)) {
                             formdialog = new Alert().pleaseWait();
+
+                            Log.d("getparams",firstname+" "+lastname+" "+phonenumber+" "+emailId+" "+str_state_wearhouse+" "+str_features+" "+str_stock);
                             CallSubmitWarehouseApi(firstname, lastname,emailId, phonenumber, str_state,str_features,str_stock);
 
                         }

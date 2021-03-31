@@ -826,18 +826,19 @@ public class HomeFragment extends Fragment {
                         String feature = jsonObject.getString("feature");
                         Log.v("mfeature", feature);
                         allFeatures.add(feature);
-
-                        JSONArray jsonarrayFruits = jsonObject.getJSONArray("Fruits");
-                        for(int j=0;j<jsonarrayFruits.length();j++) {
-                            fruits = jsonarrayFruits.getString(j);
-                            Log.v("jsonfruits", fruits);
-                            allFruits.add(fruits);
-                        }
-                        JSONArray jsonarrayVegitable = jsonObject.getJSONArray("Vegetables");
-                        for(int k=0;k<jsonarrayVegitable.length();k++) {
-                            String vegitable = jsonarrayVegitable.getString(k);
-                            Log.v("jsonVegitable", vegitable);
-                            allVegitable.add(vegitable);
+                        if(allFeatures.get(0).equals("Cold Storage")) {
+                            JSONArray jsonarrayFruits = jsonObject.getJSONArray("Fruits");
+                            for (int j = 0; j < jsonarrayFruits.length(); j++) {
+                                fruits = jsonarrayFruits.getString(j);
+                                Log.v("jsonfruits", fruits);
+                                allFruits.add(fruits);
+                            }
+                            JSONArray jsonarrayVegitable = jsonObject.getJSONArray("Vegetables");
+                            for (int k = 0; k < jsonarrayVegitable.length(); k++) {
+                                String vegitable = jsonarrayVegitable.getString(k);
+                                Log.v("jsonVegitable", vegitable);
+                                allVegitable.add(vegitable);
+                            }
                         }
                         /*......Setting a Adapter for All Features*/
 
@@ -921,7 +922,7 @@ public class HomeFragment extends Fragment {
                         phonenumber = edt_txt_phone.getText().toString();
                         lastname = edt_txt_lname.getText().toString();
                         emailId = edt_txt_email.getText().toString();
-                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) && validateEmail(emailId) && validatestate(str_state_wearhouse) && validateFeatures(str_features) && validateStockType(str_stock)) {
+                        if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) &&  validatestate(str_state_wearhouse) && validateFeatures(str_features) && validateStockType(str_stock)) {
                             formdialog = new Alert().pleaseWait();
                             CallSubmitWarehouseApi(firstname, lastname,emailId, phonenumber, str_state,str_features,str_stock);
 
@@ -1532,16 +1533,6 @@ public class HomeFragment extends Fragment {
 
 
     }
-
-
-
-
-
-
-
-
-
-
     public boolean validatecheckbox(CheckBox reaper_check, CheckBox sower_check, CheckBox loader_check) {
         if (!reaper_check.isChecked() && !sower_check.isChecked() && !loader_check.isChecked() ) {
 

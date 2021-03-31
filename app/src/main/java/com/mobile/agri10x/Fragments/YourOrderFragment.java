@@ -51,7 +51,7 @@ public class YourOrderFragment extends Fragment {
     Dialog bookingdetaildialog;
     Dialog purchasedetaildialog;
     ImageView cancle_btn;
-    public  static List<GetOrderListDatumCheckout> ProductsInOrderlist = new ArrayList<>();
+    public  static List<GetOrderListDatumCheckout> checkoutorderlist = new ArrayList<>();
     PurchaseorderAdpter purchaseorderAdpter;
 
 
@@ -94,15 +94,20 @@ public class YourOrderFragment extends Fragment {
                                 Log.d("response",response.toString());
                 if (response.isSuccessful()){
                     Log.d("checkresponse","success");
-                    ProductsInOrderlist.addAll(response.body().getData().get(0).getCheckoutList());
-                    if(ProductsInOrderlist.size()>0){
-                        purchaseorderAdpter = new PurchaseorderAdpter(ProductsInOrderlist, getActivity(),true);
+
+
+                    checkoutorderlist.addAll(response.body().getData().get(0).getCheckoutList());
+                    if(checkoutorderlist.size()>0){
+                        String billingid =  checkoutorderlist.get(0).getBillingAddressID();
+                        String shippingid = checkoutorderlist.get(0).getShippingAddressID();
+                        String ordernotes =  checkoutorderlist.get(0).getOrderNotes();
+                        purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist, getActivity(),billingid,shippingid,ordernotes);
                         recycleview_purchase_list.setAdapter(purchaseorderAdpter);
                         purchaseorderAdpter.notifyDataSetChanged();
                    }
 
                 }else{
-
+                    Toast.makeText(getActivity(),"No data found", Toast.LENGTH_SHORT).show();
                 }
             }
 

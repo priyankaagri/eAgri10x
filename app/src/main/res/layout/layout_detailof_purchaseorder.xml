@@ -180,6 +180,7 @@
                 android:orientation="vertical"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="25dp"
+                android:paddingBottom="10dp"
                 android:background="@drawable/background_grayplane"
                 android:layout_height="wrap_content">
 
@@ -188,9 +189,8 @@
                     android:textColor="@color/black"
                     android:text="Billing Address"
                     android:textSize="20sp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
+                android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_height="wrap_content"/>
 
@@ -201,9 +201,8 @@
                     android:textColor="@color/black"
 
                     android:textSize="18sp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/proximanova_regular"
                     android:layout_height="wrap_content"/>
 
@@ -216,6 +215,7 @@
                 android:orientation="vertical"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="25dp"
+android:paddingBottom="10dp"
                 android:background="@drawable/background_grayplane"
                 android:layout_height="wrap_content">
 
@@ -224,9 +224,8 @@
                     android:textColor="@color/black"
                     android:text="Shipping Address"
                     android:textSize="20sp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_height="wrap_content"/>
 
@@ -237,9 +236,8 @@
                     android:textColor="@color/black"
 
                     android:textSize="18sp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/proximanova_regular"
                     android:layout_height="wrap_content"/>
 
@@ -253,6 +251,8 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="30dp"
+                android:paddingBottom="10dp"
+
                 android:background="@drawable/background_grayplane"
                 android:layout_height="wrap_content">
 
@@ -261,9 +261,8 @@
                     android:textColor="@color/black"
                     android:text="Delivery Notes"
                     android:textSize="20sp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_height="wrap_content"/>
 
@@ -274,9 +273,8 @@
                     android:textColor="@color/black"
 
                     android:textSize="18sp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/proximanova_regular"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

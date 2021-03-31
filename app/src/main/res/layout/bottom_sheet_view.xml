@@ -81,6 +81,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/addressline1"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"
@@ -125,6 +126,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:textColor="@color/black"
                     android:paddingStart="4dp"
                     android:id="@+id/addressline2"
                     android:layout_width="match_parent"
@@ -267,6 +269,7 @@
 
                 </LinearLayout>
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/pincode_txt"
                     android:paddingStart="4dp"
                     android:layout_width="match_parent"

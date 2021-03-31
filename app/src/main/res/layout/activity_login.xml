@@ -75,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter 10 Digit Mobile Number"
                 android:maxLength="10"
+
                 android:textColor="@color/black"
                 android:inputType="number"
                 android:maxLines="1"/>

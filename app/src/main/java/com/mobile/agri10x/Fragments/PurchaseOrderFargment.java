@@ -873,7 +873,7 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong.Please Try Again Later!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -914,7 +914,7 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong.Please Try Again Later!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
 
             }
         });

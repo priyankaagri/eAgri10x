@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <RelativeLayout
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
@@ -13,6 +12,7 @@
         android:layout_marginTop="20dp">
 
         <ImageView
+            android:layout_marginTop="5dp"
             android:id="@+id/but_back"
             android:layout_width="40dp"
             android:layout_height="30dp"
@@ -21,57 +21,62 @@
 
 
         <TextView
+
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/but_back"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/but_back"
             android:text="My Addresses"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:layout_centerVertical="true"
             android:textStyle="bold" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/add_billingAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginBottom="5dp"
+
+            android:layout_centerVertical="true"
+android:layout_alignParentEnd="true"
+       android:padding="5dp"
+            android:text=" + Add "
             android:background="@drawable/backgroun_fill"
-            android:fontFamily="@font/proxima_nova_bold"
-            android:text="+ Add"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="10dp"
-            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/add_billingAddress"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+
+<!--            android:background="@drawable/backgroun_fill"-->
+<!--            android:fontFamily="@font/proxima_nova_bold"-->
+<!--            android:text="+ Add"-->
+<!--            android:paddingHorizontal="10dp"-->
+<!--            android:paddingVertical="10dp"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="14sp" />-->
+
+    </RelativeLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/add_billingAddress"
-            android:orientation="vertical">
 
             <com.todkars.shimmer.ShimmerRecyclerView
                 android:id="@+id/recyle_addresss_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp" />
-        </LinearLayout>
+                android:layout_marginBottom="10dp" />
 
 
 
-    </RelativeLayout>
+
+
 
 
 

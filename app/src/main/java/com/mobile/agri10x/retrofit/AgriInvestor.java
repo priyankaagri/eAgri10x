@@ -98,12 +98,18 @@ public interface AgriInvestor {
     Call<UpdateUser> wsGetUpdateUser(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addAddress")
     Call<GetAddAddress>wsGetAddAddress(@Header("x-auth-token") String token, @Body RequestBody params);
+
+
     @POST("m/createBooking")
     Call<GetCreateBooking> wsCreateBooking(@Header("x-auth-token") String token, @Body QueryCreatebooking queryCreatebooking);
     @POST("m/getBookingDetails")
     Call<GetBookingDeatils> wsGetBookingDeatils(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/bookOrder")
     Call<GetBookOrder> wsBookOrder(@Header("x-auth-token") String token, @Body RequestBody params);
+    @POST("m/bookingCheckoutHandling")
+    Call<GetBookingCheckOutHandling> wsCheckBookingCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
+
+
     @POST("m/createCheckout")
     Call<GetCreateCheckout> wsGetCreateCheckOut(@Header("x-auth-token") String token, @Body QueryCreateCheckOut queryCreateCheckOut);
     @POST("m/getCheckoutDetails")
@@ -112,10 +118,12 @@ public interface AgriInvestor {
     Call<GetCreateOrder> wsCheckOrder(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/orderCheckoutHandling")
     Call<GetOrderCheckOutHandling> wsCheckOrderCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
-    @POST("m/bookingCheckoutHandling")
-    Call<GetBookingCheckOutHandling> wsCheckBookingCheckOutHandling(@Header("x-auth-token")String token, @Body RequestBody params);
+
+
     @POST("m/checkEcollect")
     Call<GetCheckCollect> wsCheckECollect(@Header("x-auth-token") String token, @Body RequestBody params);
+
+
     @GET("m/getStates")
     Call<GetStates> wsGetStates(@Header("x-auth-token") String token);
     @POST("m/getCities")

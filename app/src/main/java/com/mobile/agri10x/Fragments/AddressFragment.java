@@ -1,57 +1,35 @@
 package com.mobile.agri10x.Fragments;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobile.agri10x.Adapter.AddressListShowAdpter;
-import com.mobile.agri10x.Adapter.TradeValueAddCartProductList;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
-import com.mobile.agri10x.models.GetAddAddress;
-import com.mobile.agri10x.models.GetCities;
-import com.mobile.agri10x.models.GetCitiesDatum;
-import com.mobile.agri10x.models.GetProductsInCartProductData;
-import com.mobile.agri10x.models.GetStates;
-import com.mobile.agri10x.models.GetStatesDatum;
 import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getAddressData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
-import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 import com.todkars.shimmer.ShimmerRecyclerView;
 
 import org.json.JSONObject;
 
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
-import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -67,8 +45,8 @@ public class AddressFragment extends Fragment {
     ShimmerRecyclerView recyle_Addresslist;
     AddressListShowAdpter addressListShowAdpter;
 
-    ArrayList<getAddressData> billingadd = new ArrayList<>();
-    ArrayList<String> onlybillingaddressname = new ArrayList<>();
+    ArrayList<getAddressData> getAddressDataArrayList = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -118,19 +96,26 @@ public class AddressFragment extends Fragment {
 
                 recyle_Addresslist.hideShimmer();
                 if (response.isSuccessful()){
-                    billingadd.addAll(response.body().getData());
-                    addressListShowAdpter = new AddressListShowAdpter(billingadd, getActivity(),true);
-                    recyle_Addresslist.setAdapter(addressListShowAdpter);
-                    addressListShowAdpter.notifyDataSetChanged();
+                    getAddressDataArrayList.addAll(response.body().getData());
+
+                    if(getAddressDataArrayList.size() > 0){
+                        addressListShowAdpter = new AddressListShowAdpter(getAddressDataArrayList, getActivity(),true);
+                        recyle_Addresslist.setAdapter(addressListShowAdpter);
+                        addressListShowAdpter.notifyDataSetChanged();
+                    }else{
+                        Toast.makeText(getActivity(), "Add Address", Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }else{
-                    Toast.makeText(getActivity(), "No Address Avilable!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<getAddress> call, Throwable t) {
                 recyle_Addresslist.hideShimmer();
-                Toast.makeText(getActivity(), "Something went wrong. Please try again later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
 
             }
         });

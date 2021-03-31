@@ -530,8 +530,8 @@ public class HomeFragment extends Fragment {
                         Log.v("vihcleWeight",weight);
                         allNames.add(type);
 
-                        ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.spinner_item,allNames);
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.custom_spinner,allNames);
+                        adapter.setDropDownViewResource(R.layout.custom_spinner);
                         //Setting the ArrayAdapter data on the Spinner
                         spinner_tranport_type.setAdapter(adapter);
 
@@ -545,8 +545,8 @@ public class HomeFragment extends Fragment {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         spinner_transport_weight.setAdapter(null);
                         if(position==0) {
-                            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, weightOfTransport);
-                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.custom_spinner, weightOfTransport);
+                            adapter.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -556,8 +556,8 @@ public class HomeFragment extends Fragment {
 
                         }
                         else if(position==1) {
-                            ArrayAdapter adapter1 = new ArrayAdapter(getActivity(), R.layout.spinner_item, weightOfTransport1);
-                            adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter1 = new ArrayAdapter(getActivity(), R.layout.custom_spinner, weightOfTransport1);
+                            adapter1.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter1);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -566,8 +566,8 @@ public class HomeFragment extends Fragment {
                             Log.v("getSelectedTransType",getSelectedTransType);
                         }
                         else if(position==2) {
-                            ArrayAdapter adapter2 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport2);
-                            adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter2 = new ArrayAdapter(getActivity(),  R.layout.custom_spinner, weightOfTransport2);
+                            adapter2.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter2);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -576,8 +576,8 @@ public class HomeFragment extends Fragment {
                             Log.v("getSelectedTransType",getSelectedTransType);
                         }
                         else if(position==3) {
-                            ArrayAdapter adapter3 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport3);
-                            adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter3 = new ArrayAdapter(getActivity(),  R.layout.custom_spinner, weightOfTransport3);
+                            adapter3.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter3);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -587,8 +587,8 @@ public class HomeFragment extends Fragment {
 
                         }
                         else if(position==4) {
-                            ArrayAdapter adapter4 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport4);
-                            adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter4 = new ArrayAdapter(getActivity(),  R.layout.custom_spinner, weightOfTransport4);
+                            adapter4.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter4);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -598,8 +598,8 @@ public class HomeFragment extends Fragment {
 
 
                         } else if(position==5) {
-                            ArrayAdapter adapter5 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport5);
-                            adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter5 = new ArrayAdapter(getActivity(),  R.layout.custom_spinner, weightOfTransport5);
+                            adapter5.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter5);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -609,7 +609,7 @@ public class HomeFragment extends Fragment {
 
                         } else if(position==6) {
                             ArrayAdapter adapter6 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport6);
-                            adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            adapter6.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter6);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -618,8 +618,8 @@ public class HomeFragment extends Fragment {
                             Log.v("getSelectedTransType",getSelectedTransType);
 
                         } else if(position==7) {
-                            ArrayAdapter adapter7 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport7);
-                            adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter7 = new ArrayAdapter(getActivity(),  R.layout.custom_spinner, weightOfTransport7);
+                            adapter7.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter7);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -640,8 +640,8 @@ public class HomeFragment extends Fragment {
 
                         }
                         else if(position==9) {
-                            ArrayAdapter adapter9 = new ArrayAdapter(getActivity(), R.layout.spinner_item, weightOfTransport9);
-                            adapter9.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter9 = new ArrayAdapter(getActivity(), R.layout.custom_spinner, weightOfTransport9);
+                            adapter9.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter9);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -651,8 +651,8 @@ public class HomeFragment extends Fragment {
 
                         }
                         else if(position==10) {
-                            ArrayAdapter adapter10 = new ArrayAdapter(getActivity(),  R.layout.spinner_item, weightOfTransport10);
-                            adapter10.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            ArrayAdapter adapter10 = new ArrayAdapter(getActivity(),  R.layout.custom_spinner, weightOfTransport10);
+                            adapter10.setDropDownViewResource(R.layout.custom_spinner);
                             //Setting the ArrayAdapter data on the Spinner
                             spinner_transport_weight.setAdapter(adapter10);
                             getSelectedValue = spinner_transport_weight.getSelectedItem().toString();
@@ -788,13 +788,9 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-
             }
 
-
-
         });
-
 
         wearhouse_rel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -927,8 +923,6 @@ public class HomeFragment extends Fragment {
                         emailId = edt_txt_email.getText().toString();
                         if (validatefirstName(firstname) && validatelastName(lastname) && validatephonenumber(phonenumber) && validateEmail(emailId) && validatestate(str_state_wearhouse) && validateFeatures(str_features) && validateStockType(str_stock)) {
                             formdialog = new Alert().pleaseWait();
-
-                            Log.d("getparams",firstname+" "+lastname+" "+phonenumber+" "+emailId+" "+str_state_wearhouse+" "+str_features+" "+str_stock);
                             CallSubmitWarehouseApi(firstname, lastname,emailId, phonenumber, str_state,str_features,str_stock);
 
                         }

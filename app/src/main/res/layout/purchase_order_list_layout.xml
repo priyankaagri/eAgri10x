@@ -83,7 +83,7 @@
 
                         android:layout_weight="0.8"
                         android:fontFamily="@font/proxima_nova_alt_bold"
-                        android:gravity="center"
+                        android:gravity="right"
 
                         android:textColor="@color/appgreen">
 

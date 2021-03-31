@@ -68,6 +68,7 @@ public class YourOrderFragment extends Fragment {
     }
 
     private void getlistorderapi() {
+        checkoutorderlist.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
         String getuserid =SessionManager.getKeyTokenUser(getActivity());
 

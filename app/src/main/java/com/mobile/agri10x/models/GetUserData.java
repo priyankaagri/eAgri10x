@@ -7,10 +7,10 @@ public class GetUserData  {
 
     @SerializedName("KYC")
     @Expose
-    private GetUserKYC kYC;
+    private GetUserByIDDataKYC kyc;
     @SerializedName("address")
     @Expose
-    private GetUserAddress address;
+    private GetUserByIDDataAddress address;
     @SerializedName("Username")
     @Expose
     private String username;
@@ -34,7 +34,7 @@ public class GetUserData  {
     private String imgUrl;
     @SerializedName("DOB")
     @Expose
-    private Object dOB;
+    private Object dob;
     @SerializedName("city")
     @Expose
     private String city;
@@ -93,19 +93,19 @@ public class GetUserData  {
     @Expose
     private Integer v;
 
-    public GetUserKYC getKYC() {
-        return kYC;
+    public GetUserByIDDataKYC getKyc() {
+        return kyc;
     }
 
-    public void setKYC(GetUserKYC kYC) {
-        this.kYC = kYC;
+    public void setKyc(GetUserByIDDataKYC kyc) {
+        this.kyc = kyc;
     }
 
-    public GetUserAddress getAddress() {
+    public GetUserByIDDataAddress getAddress() {
         return address;
     }
 
-    public void setAddress(GetUserAddress address) {
+    public void setAddress(GetUserByIDDataAddress address) {
         this.address = address;
     }
 
@@ -165,12 +165,12 @@ public class GetUserData  {
         this.imgUrl = imgUrl;
     }
 
-    public Object getDOB() {
-        return dOB;
+    public Object getDob() {
+        return dob;
     }
 
-    public void setDOB(Object dOB) {
-        this.dOB = dOB;
+    public void setDob(Object dob) {
+        this.dob = dob;
     }
 
     public String getCity() {
@@ -324,5 +324,6 @@ public class GetUserData  {
     public void setV(Integer v) {
         this.v = v;
     }
+
 
 }

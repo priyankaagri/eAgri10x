@@ -3,7 +3,7 @@ package com.mobile.agri10x.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetUser{
+public class GetUser {
 
     @SerializedName("message")
     @Expose
@@ -26,6 +26,6 @@ public class GetUser{
 
     public void setData(GetUserData data) {
         this.data = data;
-    }
 
+    }
 }

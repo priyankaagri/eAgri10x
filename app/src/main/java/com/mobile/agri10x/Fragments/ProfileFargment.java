@@ -173,6 +173,7 @@ public class ProfileFargment extends Fragment {
                 Log.d("getnameapi", response.toString());
                 dialog.dismiss();
                 if (response.isSuccessful()) {
+
                     et_firstname.setText(response.body().getData().getFirstname());
                     et_lastname.setText(response.body().getData().getLastname());
                     et_email.setText(response.body().getData().getEmail());

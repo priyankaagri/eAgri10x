@@ -492,6 +492,7 @@ if(getbookorpurchase){
 
                     if(response.body().getMessage().equals("Payment Successful")){
                         HomePageActivity.removeFragment(new BookOrderFragment());
+
                         HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
 
                         getProductinCart();

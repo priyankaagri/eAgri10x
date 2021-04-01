@@ -14,12 +14,13 @@
         android:orientation="vertical">
 
         <RelativeLayout
+
             android:id="@+id/relative_stock"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:background="@drawable/featured_bg"
             android:elevation="5dp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +53,7 @@
 
                 <TextView
                     android:layout_width="20dp"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/featured_red_trn" />
 
             </LinearLayout>

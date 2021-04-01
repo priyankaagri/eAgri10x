@@ -11,7 +11,7 @@ public class GetCreateCheckoutData {
     private GetCreateCheckoutDataCart cartData;
     @SerializedName("Order_Amount")
     @Expose
-    private Integer orderAmount;
+    private double orderAmount;
     @SerializedName("Order_Notes")
     @Expose
     private String orderNotes;
@@ -63,11 +63,11 @@ public class GetCreateCheckoutData {
         this.cartData = cartData;
     }
 
-    public Integer getOrderAmount() {
+    public double getOrderAmount() {
         return orderAmount;
     }
 
-    public void setOrderAmount(Integer orderAmount) {
+    public void setOrderAmount(double orderAmount) {
         this.orderAmount = orderAmount;
     }
 

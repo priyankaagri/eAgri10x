@@ -1212,7 +1212,7 @@ Log.d("getbookingid",bookingid);
             public void onFailure(Call<GetCreateBooking> call,
                                   Throwable t) {
 
-
+                Log.d("getbookingid",t.getMessage());
             }
         });
     }
@@ -1257,7 +1257,7 @@ Log.d("getbookingid",bookingid);
             public void onFailure(Call<GetBookingDeatils> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+              Log.d("bookdeatils",t.getMessage());
             }
         });
     }

@@ -13,7 +13,7 @@ public class GetCreateCheckoutDataCart {
     private List<GetCreateCheckoutCartProductCheckout> products = null;
     @SerializedName("subTotal")
     @Expose
-    private Integer subTotal;
+    private double subTotal;
 
     public List<GetCreateCheckoutCartProductCheckout> getProducts() {
         return products;
@@ -23,11 +23,11 @@ public class GetCreateCheckoutDataCart {
         this.products = products;
     }
 
-    public Integer getSubTotal() {
+    public double getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(Integer subTotal) {
+    public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
 }

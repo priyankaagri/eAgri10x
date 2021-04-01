@@ -121,7 +121,7 @@ public class PurchaseOrderFargment extends Fragment  {
 
     double damt;
     double pendingamount;
-    boolean isbooking = true;
+    boolean isbooking = false;
     private static final String[] bookamountlist = new String[]{
             "Select Booking Amount","25%","50%","75%"
     };
@@ -1103,7 +1103,7 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onFailure(Call<GetCreateCheckout> call,
                                   Throwable t) {
-
+                Log.d("createbook", t.getMessage());
             }
         });
     }
@@ -1125,11 +1125,11 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onResponse(Call<GetCreateCheckoutDetails> call,
                                    Response<GetCreateCheckoutDetails> response) {
 
-                Log.d("bookdeatils",response.toString());
+                Log.d("purchasedetails",response.toString());
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Success")){
-                        int  purchaseamount = response.body().getData().getOrderAmount();
+                        double  purchaseamount = response.body().getData().getOrderAmount();
                         String userid = response.body().getData().getUserID();
                         Log.d("param",purchaseamount+ " "+ userid);
                         callCreateOder(purchaseamount,userid,orderid);
@@ -1148,7 +1148,7 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onFailure(Call<GetCreateCheckoutDetails> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+    Log.d("purchasedetails",t.getMessage());
             }
         });
     }

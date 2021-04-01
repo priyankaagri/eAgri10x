@@ -11,7 +11,7 @@ public class GetCreateCheckoutCartData {
     private List<GetCreateCheckoutCartProduct> products = null;
     @SerializedName("subTotal")
     @Expose
-    private Integer subTotal;
+    private double subTotal;
 
     public List<GetCreateCheckoutCartProduct> getProducts() {
         return products;
@@ -21,7 +21,7 @@ public class GetCreateCheckoutCartData {
         this.products = products;
     }
 
-    public Integer getSubTotal() {
+    public double getSubTotal() {
         return subTotal;
     }
 

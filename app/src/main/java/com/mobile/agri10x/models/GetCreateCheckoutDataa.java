@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class GetCreateCheckoutDataa {
     @SerializedName("Order_Amount")
     @Expose
-    private Integer orderAmount;
+    private double orderAmount;
     @SerializedName("Order_Notes")
     @Expose
     private String orderNotes;
@@ -53,11 +53,11 @@ public class GetCreateCheckoutDataa {
     @Expose
     private Integer v;
 
-    public Integer getOrderAmount() {
+    public double getOrderAmount() {
         return orderAmount;
     }
 
-    public void setOrderAmount(Integer orderAmount) {
+    public void setOrderAmount(double orderAmount) {
         this.orderAmount = orderAmount;
     }
 

@@ -84,7 +84,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:orientation="vertical"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="15dp">
 
             <TextView
                 android:id="@+id/txt_call_us_id"

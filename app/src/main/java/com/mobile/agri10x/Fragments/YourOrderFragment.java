@@ -55,11 +55,10 @@ public class YourOrderFragment extends Fragment {
     RecyclerView recycleview_booking_list;
     LinearLayoutManager linearLayoutManager;
     LinearLayout booking_layout,purchase_layout,layout_for_booking,layout_for_purchase;
-    Dialog bookingdetaildialog;
-    Dialog purchasedetaildialog;
-    ImageView cancle_btn;
-    public  static List<GetOrderListDatumCheckout> checkoutorderlist = new ArrayList<>();
-    public  static List<GetOrderListDatumBooking> bookingorderlist = new ArrayList<>();
+
+    boolean getval= true;
+    public static List<GetOrderListDatumCheckout> checkoutorderlist = new ArrayList<>();
+    public static List<GetOrderListDatumBooking> bookingorderlist = new ArrayList<>();
     PurchaseorderAdpter purchaseorderAdpter;
     BookingorderAdpter bookingorderAdpter;
 
@@ -70,6 +69,15 @@ public class YourOrderFragment extends Fragment {
         init(addStockView);
 
         getlistorderapi();
+        if(getArguments()!=null){
+            getval = getArguments().getBoolean("getValue");
+            Log.d("getvalue", String.valueOf(getval));
+
+        }
+        else {
+
+        }
+
 
         return addStockView;
 
@@ -101,7 +109,7 @@ public class YourOrderFragment extends Fragment {
             @Override
             public void onResponse(Call<GetOrderList> call, Response<GetOrderList> response) {
 
-                                Log.d("response",response.toString());
+                Log.d("response",response.toString());
                 if (response.isSuccessful()){
                     Log.d("checkresponse","success");
 
@@ -112,7 +120,7 @@ public class YourOrderFragment extends Fragment {
                         purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist,getActivity());
                         recycleview_purchase_list.setAdapter(purchaseorderAdpter);
                         purchaseorderAdpter.notifyDataSetChanged();
-                   }
+                    }
 
                     if(bookingorderlist.size()>0){
 
@@ -122,6 +130,25 @@ public class YourOrderFragment extends Fragment {
 
                     }
 
+
+
+                    if(getval){
+                        btn_purchase.setBackgroundResource(R.drawable.hollow_back);
+                        btn_booking.setBackgroundResource(R.drawable.filll_back);
+                        btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
+                        btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                        booking_layout.setVisibility(View.VISIBLE);
+                        purchase_layout.setVisibility(View.GONE);
+                    }
+                    if(!getval ){
+
+                        btn_purchase.setBackgroundResource(R.drawable.click_change1);
+                        btn_booking.setBackgroundResource(R.drawable.click_chnage2);
+                        btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                        btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
+                        purchase_layout.setVisibility(View.VISIBLE);
+                        booking_layout.setVisibility(View.GONE);
+                    }
                 }else{
                     Toast.makeText(getActivity(),"No data found", Toast.LENGTH_SHORT).show();
                 }
@@ -153,8 +180,8 @@ public class YourOrderFragment extends Fragment {
         recycleview_booking_list.setLayoutManager(linearLayoutManager);
 
 
- /*recycleview_booking_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
-                    recycleview_booking_list.showShimmer();*/
+/*recycleview_booking_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
+recycleview_booking_list.showShimmer();*/
 
         recycleview_purchase_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
         recycleview_purchase_list.showShimmer();
@@ -169,10 +196,6 @@ public class YourOrderFragment extends Fragment {
                 btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
                 purchase_layout.setVisibility(View.VISIBLE);
                 booking_layout.setVisibility(View.GONE);
-
-
-
-
 
             }
         });
@@ -189,11 +212,7 @@ public class YourOrderFragment extends Fragment {
 
             }
 
-            private void getOrderlistapi() {
 
-
-
-            }
         });
 
 

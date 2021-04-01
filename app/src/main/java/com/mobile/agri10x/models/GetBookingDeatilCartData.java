@@ -12,7 +12,7 @@ public class GetBookingDeatilCartData {
     private List<GetBookingDeatilProduct> products = null;
     @SerializedName("subTotal")
     @Expose
-    private Integer subTotal;
+    private double subTotal;
 
     public List<GetBookingDeatilProduct> getProducts() {
         return products;
@@ -22,11 +22,11 @@ public class GetBookingDeatilCartData {
         this.products = products;
     }
 
-    public Integer getSubTotal() {
+    public double getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(Integer subTotal) {
+    public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
 

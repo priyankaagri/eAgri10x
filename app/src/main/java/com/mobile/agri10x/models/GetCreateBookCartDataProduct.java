@@ -18,7 +18,7 @@ public class GetCreateBookCartDataProduct {
     private String variety;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private double price;
     @SerializedName("weight")
     @Expose
     private Integer weight;
@@ -70,11 +70,11 @@ public class GetCreateBookCartDataProduct {
         this.variety = variety;
     }
 
-    public Integer getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

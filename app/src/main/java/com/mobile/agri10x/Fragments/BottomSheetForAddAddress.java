@@ -56,7 +56,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
     Button btn_billingsaveaddress;
     EditText edt_addressline1billing, edt_addressline2billing, edt_pincodebilling;
     Spinner ss_addtypebilling;
-    String selectedaddresstypefromlist = "", str_state, stateId, str_City;
+    String selectedaddresstypefromlist = "", str_state="", stateId="", str_City="";
     String address1_billing_dialog = "", address2_billing_dialog = "", pincode_billing_dialog = "", userid_billing_dialog = "",
             city_billing_dialog = "", state_billing_dialog = "", addrressType_billing_dialog = "";
 

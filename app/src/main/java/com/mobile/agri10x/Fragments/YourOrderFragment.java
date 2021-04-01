@@ -110,47 +110,49 @@ public class YourOrderFragment extends Fragment {
             public void onResponse(Call<GetOrderList> call, Response<GetOrderList> response) {
 
                 Log.d("response",response.toString());
-                if (response.isSuccessful()){
-                    Log.d("checkresponse","success");
+                if (response.isSuccessful()) {
+                    Log.d("checkresponse", "success");
+
+                    if (!response.body().getData().isEmpty()) {
+                        checkoutorderlist.addAll(response.body().getData().get(0).getCheckoutList());
+                        bookingorderlist.addAll(response.body().getData().get(0).getBookingList());
+                        if (checkoutorderlist.size() > 0) {
+                            purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist, getActivity());
+                            recycleview_purchase_list.setAdapter(purchaseorderAdpter);
+                            purchaseorderAdpter.notifyDataSetChanged();
+                        }
+
+                        if (bookingorderlist.size() > 0) {
+
+                            bookingorderAdpter = new BookingorderAdpter(bookingorderlist, getActivity());
+                            recycleview_booking_list.setAdapter(bookingorderAdpter);
+                            bookingorderAdpter.notifyDataSetChanged();
+
+                        }
 
 
-                    checkoutorderlist.addAll(response.body().getData().get(0).getCheckoutList());
-                    bookingorderlist.addAll(response.body().getData().get(0).getBookingList());
-                    if(checkoutorderlist.size()>0){
-                        purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist,getActivity());
-                        recycleview_purchase_list.setAdapter(purchaseorderAdpter);
-                        purchaseorderAdpter.notifyDataSetChanged();
-                    }
+                        if (getval) {
+                            btn_purchase.setBackgroundResource(R.drawable.hollow_back);
+                            btn_booking.setBackgroundResource(R.drawable.filll_back);
+                            btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
+                            btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                            booking_layout.setVisibility(View.VISIBLE);
+                            purchase_layout.setVisibility(View.GONE);
+                        }
+                        if (!getval) {
 
-                    if(bookingorderlist.size()>0){
-
-                        bookingorderAdpter = new BookingorderAdpter(bookingorderlist,getActivity());
-                        recycleview_booking_list.setAdapter(bookingorderAdpter);
-                        bookingorderAdpter.notifyDataSetChanged();
-
-                    }
-
-
-
-                    if(getval){
-                        btn_purchase.setBackgroundResource(R.drawable.hollow_back);
-                        btn_booking.setBackgroundResource(R.drawable.filll_back);
-                        btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
-                        btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
-                        booking_layout.setVisibility(View.VISIBLE);
-                        purchase_layout.setVisibility(View.GONE);
-                    }
-                    if(!getval ){
-
-                        btn_purchase.setBackgroundResource(R.drawable.click_change1);
-                        btn_booking.setBackgroundResource(R.drawable.click_chnage2);
-                        btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
-                        btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
-                        purchase_layout.setVisibility(View.VISIBLE);
-                        booking_layout.setVisibility(View.GONE);
+                            btn_purchase.setBackgroundResource(R.drawable.click_change1);
+                            btn_booking.setBackgroundResource(R.drawable.click_chnage2);
+                            btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                            btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
+                            purchase_layout.setVisibility(View.VISIBLE);
+                            booking_layout.setVisibility(View.GONE);
+                        }
+                    } else {
+                        Toast.makeText(getActivity(), "No data found", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(getActivity(),"No data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
 

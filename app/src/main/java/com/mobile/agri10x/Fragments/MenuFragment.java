@@ -286,7 +286,7 @@ public class MenuFragment extends Fragment {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "www.agri10x.com";
+        String shareBody = "https://play.google.com/store/apps/details?id=com.mobile.agri10x";
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));

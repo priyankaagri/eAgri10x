@@ -17,12 +17,16 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.agri10x.Adapter.BookingorderAdpter;
 import com.mobile.agri10x.Adapter.PurchaseorderAdpter;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 
 import com.mobile.agri10x.models.GetOrderList;
+import com.mobile.agri10x.models.GetOrderListDatumBooking;
 import com.mobile.agri10x.models.GetOrderListDatumCheckout;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
@@ -44,16 +48,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class YourOrderFragment extends Fragment {
+
     private ImageView mBackButton;
     TextView btn_booking,btn_purchase;
-    ShimmerRecyclerView recycleview_booking_list,recycleview_purchase_list;
+    ShimmerRecyclerView recycleview_purchase_list;
+    RecyclerView recycleview_booking_list;
+    LinearLayoutManager linearLayoutManager;
     LinearLayout booking_layout,purchase_layout,layout_for_booking,layout_for_purchase;
     Dialog bookingdetaildialog;
     Dialog purchasedetaildialog;
     ImageView cancle_btn;
     public  static List<GetOrderListDatumCheckout> checkoutorderlist = new ArrayList<>();
+    public  static List<GetOrderListDatumBooking> bookingorderlist = new ArrayList<>();
     PurchaseorderAdpter purchaseorderAdpter;
-
+    BookingorderAdpter bookingorderAdpter;
 
     @Nullable
     @Override
@@ -69,6 +77,7 @@ public class YourOrderFragment extends Fragment {
 
     private void getlistorderapi() {
         checkoutorderlist.clear();
+        bookingorderlist.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
         String getuserid =SessionManager.getKeyTokenUser(getActivity());
 
@@ -98,11 +107,20 @@ public class YourOrderFragment extends Fragment {
 
 
                     checkoutorderlist.addAll(response.body().getData().get(0).getCheckoutList());
+                    bookingorderlist.addAll(response.body().getData().get(0).getBookingList());
                     if(checkoutorderlist.size()>0){
                         purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist,getActivity());
                         recycleview_purchase_list.setAdapter(purchaseorderAdpter);
                         purchaseorderAdpter.notifyDataSetChanged();
                    }
+
+                    if(bookingorderlist.size()>0){
+
+                        bookingorderAdpter = new BookingorderAdpter(bookingorderlist,getActivity());
+                        recycleview_booking_list.setAdapter(bookingorderAdpter);
+                        bookingorderAdpter.notifyDataSetChanged();
+
+                    }
 
                 }else{
                     Toast.makeText(getActivity(),"No data found", Toast.LENGTH_SHORT).show();
@@ -130,55 +148,17 @@ public class YourOrderFragment extends Fragment {
 
 
 
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recycleview_booking_list.setLayoutManager(linearLayoutManager);
 
-        recycleview_booking_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
-        recycleview_booking_list.showShimmer();
 
+ /*recycleview_booking_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
+                    recycleview_booking_list.showShimmer();*/
 
         recycleview_purchase_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
         recycleview_purchase_list.showShimmer();
-//        layout_for_booking.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                bookingdetaildialog = new Dialog(getActivity());
-//                bookingdetaildialog.setContentView(R.layout.layout_detailof_bookingorder);
-//                bookingdetaildialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                bookingdetaildialog.setCancelable(true);
-//                bookingdetaildialog.setCanceledOnTouchOutside(true);
-//                bookingdetaildialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-//               /* product_image = dialogfordetailpage.findViewById(R.id.product_image);
-//                txt_product_name = dialogfordetailpage.findViewById(R.id.txt_product_name);
-//                txt_product_pack_size = dialogfordetailpage.findViewById(R.id.txt_product_pack_size);
-//                txt_avilable_quantity = dialogfordetailpage.findViewById(R.id.txt_avilable_quantity);
-//                txt_delete = dialogfordetailpage.findViewById(R.id.txt_delete);*/
-//
-//                cancle_btn = bookingdetaildialog.findViewById(R.id.cancle_btn);
-//
-//                cancle_btn.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        bookingdetaildialog.dismiss();
-//                    }
-//                });
-//                bookingdetaildialog.show();
-//
-//            }
-//        });
 
-//        layout_for_purchase.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                purchasedetaildialog = new Dialog(getActivity());
-//                purchasedetaildialog.setContentView(R.layout.layout_detailof_purchaseorder);
-//                purchasedetaildialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                purchasedetaildialog.setCancelable(true);
-//                purchasedetaildialog.setCanceledOnTouchOutside(true);
-//                purchasedetaildialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-//                purchasedetaildialog.show();
-//
-//            }
-//        });
 
         btn_purchase.setOnClickListener(new View.OnClickListener() {
             @Override

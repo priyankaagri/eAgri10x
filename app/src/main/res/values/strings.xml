@@ -10,7 +10,8 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="logout_b">Are you sure you want to logout?</string>
-
+    <string name="update_downloaded">App Downloaded</string>
+    <string name="restart">Restart</string>
 
     <string name="viewall">See All</string>
     <string name="top_picks">Top Picks</string>

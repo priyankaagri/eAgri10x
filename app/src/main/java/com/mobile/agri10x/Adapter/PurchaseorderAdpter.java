@@ -14,12 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.R;
-import com.mobile.agri10x.models.GetCreateCheckoutCartProductCheckout;
 import com.mobile.agri10x.models.GetCreateCheckoutDetails;
 import com.mobile.agri10x.models.GetOrderListDatumCheckout;
 import com.mobile.agri10x.models.GetOrderListDatumCheckoutCartDataProduct;
@@ -50,9 +48,9 @@ import retrofit2.Response;
 public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpter.ViewHolers> {
     Date purchasedate;
     Context context;
-    String billingid = "", shippingid = "", ordernotes = "", billingaddressstr = "", shippingaddressstr = "", purchasedatestr = "";
-    List<GetOrderListDatumCheckout> ProductsInPurchaseorderlist = new ArrayList<>();
-    List<GetOrderListDatumCheckoutCartDataProduct> ProductslistData = new ArrayList<>();
+    String  ordernotes = "", billingaddressstr = "", shippingaddressstr = "", purchasedatestr = "";
+    List<GetOrderListDatumCheckout> productspurchaseorderlist = new ArrayList<>();
+    List<GetOrderListDatumCheckoutCartDataProduct> productslistData = new ArrayList<>();
 
 
     ArrayList<getAddressData> getAddressDataArrayList = new ArrayList<>();
@@ -65,7 +63,7 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
 
     public PurchaseorderAdpter(List<GetOrderListDatumCheckout> productsInOrderlist, Context context) {
         this.context = context;
-        this.ProductsInPurchaseorderlist = productsInOrderlist;
+        this.productspurchaseorderlist = productsInOrderlist;
 
 
     }
@@ -82,8 +80,8 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
     public void onBindViewHolder(@NonNull ViewHolers holder, int position) {
 
 
-        if (ProductsInPurchaseorderlist.get(position).getPaymentDate() != null) {
-            String orderdate = ProductsInPurchaseorderlist.get(position).getPaymentDate();
+        if (productspurchaseorderlist.get(position).getPaymentDate() != null) {
+            String orderdate = productspurchaseorderlist.get(position).getPaymentDate();
             String[] separated = orderdate.split("T");
             String fromdate = separated[0];
             SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -101,11 +99,11 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
         }
 
 
-        holder.txt_booking_id.setText("Booking ID : " + ProductsInPurchaseorderlist.get(position).getId());
+        holder.txt_booking_id.setText("Booking ID : " + productspurchaseorderlist.get(position).getId());
 
 
 
-        double number = Double.parseDouble(String.valueOf(ProductsInPurchaseorderlist.get(position).getOrderAmount()));
+        double number = Double.parseDouble(String.valueOf(productspurchaseorderlist.get(position).getOrderAmount()));
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
         String currency = format.format(number);
         holder.txt_price.setText(currency);
@@ -115,8 +113,8 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
         holder.layout_for_purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProductslistData.clear();
-                String orderid = ProductsInPurchaseorderlist.get(position).getId();
+                productslistData.clear();
+                String orderid = productspurchaseorderlist.get(position).getId();
                 purchasedetaildialog = new Dialog(context);
                 purchasedetaildialog.setContentView(R.layout.layout_detailof_purchaseorder);
                 purchasedetaildialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -125,9 +123,9 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
                 purchasedetaildialog.getWindow().getAttributes().windowAnimations = R.style.animation;
 
                 cancle_btn = purchasedetaildialog.findViewById(R.id.cancle_btn);
-                ProductslistData.addAll(ProductsInPurchaseorderlist.get(position).getCartData().getProducts());
+                productslistData.addAll(productspurchaseorderlist.get(position).getCartData().getProducts());
 
-                DetailofProductOrder adapter = new DetailofProductOrder(ProductslistData, context);
+                DetailofProductOrderPurchase adapter = new DetailofProductOrderPurchase(productslistData, context);
                 linearLayoutManager = new LinearLayoutManager(context);
                 productlistdata = purchasedetaildialog.findViewById(R.id.productlistdata_recycleview);
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -151,16 +149,16 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
 
 
 
-                double number1 = Double.parseDouble(String.valueOf(ProductsInPurchaseorderlist.get(position).getOrderAmount()));
+                double number1 = Double.parseDouble(String.valueOf(productspurchaseorderlist.get(position).getOrderAmount()));
                 NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
                 String currency1 = format1.format(number1);
                 txt_total_amount.setText(currency1);
 
 
 
-                String billingid = ProductsInPurchaseorderlist.get(position).getBillingAddressID();
-                String shippingid = ProductsInPurchaseorderlist.get(position).getShippingAddressID();
-                ordernotes = ProductsInPurchaseorderlist.get(position).getOrderNotes();
+                String billingid = productspurchaseorderlist.get(position).getBillingAddressID();
+                String shippingid = productspurchaseorderlist.get(position).getShippingAddressID();
+                ordernotes = productspurchaseorderlist.get(position).getOrderNotes();
 
                 callapigetAddress(billingid, shippingid);
 
@@ -285,7 +283,7 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
 
     @Override
     public int getItemCount() {
-        return ProductsInPurchaseorderlist.size();
+        return productspurchaseorderlist.size();
     }
 
     public class ViewHolers extends RecyclerView.ViewHolder {

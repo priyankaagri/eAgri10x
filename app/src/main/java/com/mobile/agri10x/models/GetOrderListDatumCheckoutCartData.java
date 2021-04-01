@@ -12,7 +12,7 @@ public class GetOrderListDatumCheckoutCartData {
     private List<GetOrderListDatumCheckoutCartDataProduct> products = null;
     @SerializedName("subTotal")
     @Expose
-    private Integer subTotal;
+    private double subTotal;
 
     public List<GetOrderListDatumCheckoutCartDataProduct> getProducts() {
         return products;
@@ -22,11 +22,11 @@ public class GetOrderListDatumCheckoutCartData {
         this.products = products;
     }
 
-    public Integer getSubTotal() {
+    public double getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(Integer subTotal) {
+    public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
 }

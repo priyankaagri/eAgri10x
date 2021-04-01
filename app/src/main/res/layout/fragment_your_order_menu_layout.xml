@@ -95,14 +95,18 @@
             android:visibility="visible"
             android:orientation="vertical">
 
-
-
-
-            <com.todkars.shimmer.ShimmerRecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleview_booking_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
 
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+           <!-- <com.todkars.shimmer.ShimmerRecyclerView
+                android:id="@+id/recycleview_booking_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />-->
 
         </LinearLayout>
 

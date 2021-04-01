@@ -94,6 +94,7 @@ android:visibility="gone"
                 android:layout_below="@id/product_location"
 
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/btn_round"
                 android:paddingLeft="15dp"
                 android:paddingTop="4dp"

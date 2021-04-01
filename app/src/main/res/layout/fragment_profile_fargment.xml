@@ -73,6 +73,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textColor="@color/black"
                     android:id="@+id/et_firstname"
                     android:layout_width="match_parent"
@@ -117,6 +118,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textColor="@color/black"
                     android:id="@+id/et_lastname"
                     android:layout_width="match_parent"

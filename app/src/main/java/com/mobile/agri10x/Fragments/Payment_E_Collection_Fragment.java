@@ -160,7 +160,7 @@ if(getuserid != null && !getuserid.isEmpty()){
                         Toast.makeText(getActivity(),"Payment Successful",Toast.LENGTH_SHORT).show();
 
                     }else{
-                        Toast.makeText(getActivity(),"Payment Failed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"Payment Not Completed",Toast.LENGTH_SHORT).show();
                     }
 
                 }

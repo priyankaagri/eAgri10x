@@ -61,7 +61,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 try {
 // Thread will sleep for 5 seconds
-                    sleep(2*1000);
+                    sleep(3*1000);
                     if (newVersion != null && !newVersion.isEmpty()) {
 
 

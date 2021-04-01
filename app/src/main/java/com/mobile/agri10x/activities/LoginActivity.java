@@ -188,7 +188,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(LoginActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Log.d("geterror",t.getMessage());
+               String strerr =t.getMessage();
+                if(strerr.contains("java.lang.NumberFormatException: For input string")){
+                    Toast.makeText(LoginActivity.this,"You are not authorised to login into this website. Please create an account with another Mobile No.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(LoginActivity.this,"Something went wrong.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

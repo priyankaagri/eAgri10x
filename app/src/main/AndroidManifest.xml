@@ -27,8 +27,10 @@
         <activity android:name=".activities.Otp_Screen_Activity" />
         <activity android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activities.LocationActivity" />
+        <activity android:name=".activities.LocationActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.SplashActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

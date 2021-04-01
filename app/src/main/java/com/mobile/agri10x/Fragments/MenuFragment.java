@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
+import com.mobile.agri10x.activities.PaymentActivity;
 import com.mobile.agri10x.utils.SessionManager;
 
 public class MenuFragment extends Fragment {
@@ -110,7 +111,9 @@ public class MenuFragment extends Fragment {
         mPaymentRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openpaymentFragment();
+                Intent intent=new Intent(getActivity(), PaymentActivity.class);
+                startActivity(intent);
+//                openpaymentFragment();
             }
         });
         mShareAppRl.setOnClickListener(new View.OnClickListener() {

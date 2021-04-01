@@ -1,6 +1,9 @@
 package com.mobile.agri10x.retrofit;
 
+import com.mobile.agri10x.models.GetAddMoney;
+import com.mobile.agri10x.models.GetCheckOutHandle;
 import com.mobile.agri10x.models.GetOrderList;
+import com.mobile.agri10x.models.GetUserBalance;
 import com.mobile.agri10x.models.QueryWearHouseForm;
 import com.mobile.agri10x.models.DisplayQuickView;
 import com.mobile.agri10x.models.FilterProducts;
@@ -50,6 +53,7 @@ import com.mobile.agri10x.models.QueryWorkerForm;
 import com.mobile.agri10x.models.QuerytransportForm;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.models.UpdateUser;
+import com.mobile.agri10x.models.UserId;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getCommAccToCat;
@@ -169,8 +173,13 @@ public interface AgriInvestor {
     @POST("m/getOrderList")
     Call<GetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
 
-//    @POST("m/getOrderList")
-//    Call<DemoGetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
 
+@POST("m/getUserBalance")
+Call<GetUserBalance> wsgetBalance(@Header("x-auth-token")String token, @Body UserId userId);
+    @POST("m/AddMoney")
+    Call<GetAddMoney> wsGetAddMoney(@Header("x-auth-token") String token, @Body RequestBody params);
+
+    @POST("m/checkoutHandling")
+    Call<GetCheckOutHandle> wsGetCheckoutHandle(@Header("x-auth-token") String token, @Body RequestBody params);
 
 }

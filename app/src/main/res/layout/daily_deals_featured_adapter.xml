@@ -112,7 +112,7 @@
                 android:paddingRight="15dp"
                 android:paddingBottom="8dp"
                 android:text="Trade Now"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
 

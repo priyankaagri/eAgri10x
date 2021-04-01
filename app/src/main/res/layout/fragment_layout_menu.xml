@@ -136,7 +136,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:visibility="gone"
+
                 android:id="@+id/rl_menu_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,7 +151,7 @@
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:layout_margin="8dp"
-
+                android:src="@drawable/payment_menu"
                     android:textAlignment="center" />
 
                 <TextView
@@ -163,7 +163,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_payment_id"
-                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
                     android:text="@string/menu_payment"
                     android:textColor="@color/black"
                     android:textSize="18sp" />

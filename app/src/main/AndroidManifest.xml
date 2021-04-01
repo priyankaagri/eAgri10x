@@ -27,6 +27,8 @@
         <activity android:name=".activities.Otp_Screen_Activity" />
         <activity android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activities.PaymentActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activities.LocationActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.SplashActivity"
@@ -38,6 +40,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_zdqce1DCYfjD8s" />
     </application>
 
 </manifest>

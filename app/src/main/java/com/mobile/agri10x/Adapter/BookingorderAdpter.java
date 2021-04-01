@@ -2,6 +2,7 @@ package com.mobile.agri10x.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,9 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.agri10x.Fragments.PurchaseOrderFargment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetOrderListDatumBooking;
 import com.mobile.agri10x.models.GetOrderListDatumBookingCartDataProduct;
@@ -158,7 +162,7 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
                 NumberFormat format2 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
                 String currency2 = format2.format(number2);
 
-                txt_total_amount.setText(currency1);
+                txt_total_amount.setText(currency2);
                 txt_pending_amount.setText(currency2);
                 txt_paid_amount.setText(currency1);
 
@@ -188,6 +192,14 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
                     @Override
                     public void onClick(View v) {
 
+                        PurchaseOrderFargment fragment = new PurchaseOrderFargment(); // replace your custom fragment class
+                        Bundle bundle = new Bundle();
+                        FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
+                        bundle.putString("value", String.valueOf(productsInbookingorderlist.get(position).getPendingAmount())); // use as per your need
+                        fragment.setArguments(bundle);
+                        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
                         bookingdetaildialog.dismiss();
                     }
                 });

@@ -10,7 +10,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,6 +54,7 @@ import com.mobile.agri10x.models.GetQueryFeaturedOnly;
 import com.mobile.agri10x.models.GetQueryTopicPicks;
 import com.mobile.agri10x.models.GetStates;
 import com.mobile.agri10x.models.GetStatesDatum;
+import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.models.GetWorkerForm;
 import com.mobile.agri10x.models.QueryFeatureOnly;
 import com.mobile.agri10x.models.QueryWearHouseForm;
@@ -170,10 +173,17 @@ public class HomeFragment extends Fragment {
         if(SessionManager.isLoggedIn(getActivity().getApplicationContext()))
         {
             //txt_signups.setText(SessionManager.getmobilePref(getActivity().getApplicationContext()));
-            txt_signups.setText(" ");
+          callapigetuername();
 
         }else{
             txt_signups.setText("Sign In");
+            txt_signups.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                    getActivity().startActivity(myIntent);
+                }
+            });
         }
         // GetDailyDealProducts();
         // FetauredproductApi();
@@ -186,13 +196,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        txt_signups.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
-                getActivity().startActivity(myIntent);
-            }
-        });
+
         our_hero_grain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -941,6 +945,48 @@ public class HomeFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void callapigetuername() {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+        jsonParams.put("userID", SessionManager.getKeyTokenUser(getActivity()));
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+        final Call<GetUser> loginCall = apiService.wsGetUserById("123456", body);
+        loginCall.enqueue(new Callback<GetUser>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetUser> call,
+                                   Response<GetUser> response) {
+
+                Log.d("getnameapi", response.toString());
+                dialog.dismiss();
+                if (response.isSuccessful()) {
+                    txt_signups.setText(response.body().getData().getFirstname()+" "+response.body().getData().getLastname());
+
+                    txt_signups.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            MenuFragment fragment = new MenuFragment(); // replace your custom fragment class
+                            FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                        }
+                    });
+                } else {
+
+                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetUser> call,
+                                  Throwable t) {
+                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void callApiGetStateforwearhous() {

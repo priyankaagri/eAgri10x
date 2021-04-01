@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.Adapter.AddressListShowAdpter;
 import com.mobile.agri10x.R;
@@ -58,7 +60,7 @@ public class AddressFragment extends Fragment {
         add_billingAddress = view.findViewById(R.id.add_billingAddress);
         recyle_Addresslist = view.findViewById(R.id.recyle_addresss_view);
         but_back = view.findViewById(R.id.but_back);
-        recyle_Addresslist.setLayoutManager(new GridLayoutManager(getActivity(),1), R.layout.item_shimmer_card_view);
+        recyle_Addresslist.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,true), R.layout.item_shimmer_card_view);
         recyle_Addresslist.showShimmer();
 
         callapigetAddress();

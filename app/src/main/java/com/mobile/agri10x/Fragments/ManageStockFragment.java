@@ -8,12 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.Adapter.ManageStockAdapter;
 import com.mobile.agri10x.Adapter.OnlyFeaturedAdapter;
@@ -48,6 +51,7 @@ import retrofit2.Response;
 
 public class ManageStockFragment extends Fragment {
     private ImageView mBackButton;
+    TextView btn_addstock;
     ShimmerRecyclerView recycleview_manage_stock;
     ManageStockAdapter manageStockAdapter;
     List<GetStockByIDDatum> listmanagestock = new ArrayList<>();
@@ -58,6 +62,14 @@ public class ManageStockFragment extends Fragment {
         View addStockView = inflater.inflate(R.layout.fragment_manage_stock_menu_layout, container, false);
         init(addStockView);
         callapimanageStock();
+
+
+        btn_addstock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.setFragment(new AddStockFragment(),"addstock");
+            }
+        });
         return addStockView;
     }
 
@@ -110,9 +122,10 @@ public class ManageStockFragment extends Fragment {
 
 
     private void init(View view) {
+        btn_addstock= view.findViewById(R.id.btn_addstock);
         mBackButton = view.findViewById(R.id.btn_back_manage_stock_id);
         recycleview_manage_stock = view.findViewById(R.id.recycleview_manage_stock);
-        recycleview_manage_stock.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
+        recycleview_manage_stock.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,true), R.layout.item_shimmer_card_view);
         recycleview_manage_stock.showShimmer();
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -445,7 +445,7 @@ if(getbookorpurchase){
 
                     if(response.body().getMessage().equals("Payment Successful")){
                         HomePageActivity.removeFragment(new PurchaseOrderFargment());
-                        HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
+                        HomePageActivity.setFragment(new YourOrderFragment(),"frompurchase");
                         getProductinCart();
                         Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
 
@@ -493,7 +493,7 @@ if(getbookorpurchase){
                     if(response.body().getMessage().equals("Payment Successful")){
                         HomePageActivity.removeFragment(new BookOrderFragment());
 
-                        HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
+                        HomePageActivity.setFragment(new YourOrderFragment(),"frombook");
 
                         getProductinCart();
                         Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();

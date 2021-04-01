@@ -180,6 +180,7 @@
 
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/rl_menu_add_stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

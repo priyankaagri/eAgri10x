@@ -8,31 +8,64 @@
 
 
     <RelativeLayout
-        android:id="@+id/toolbar_manage_stock"
+        android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp">
 
         <ImageView
+            android:layout_marginTop="5dp"
             android:id="@+id/btn_back_manage_stock_id"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_baseline_arrow_back_24"
             app:tint="@color/black" />
 
+
         <TextView
+
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/btn_back_manage_stock_id"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/btn_back_manage_stock_id"
-            android:fontFamily="@font/proxima_nova_alt_bold"
-            android:text="@string/menu_managestock"
+            android:text="Manage Stock"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:layout_centerVertical="true"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_addstock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:padding="5dp"
+            android:text=" + Add Stock "
+            android:background="@drawable/backgroun_fill"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- <TextView-->
+        <!-- android:id="@+id/add_billingAddress"-->
+        <!-- android:layout_width="wrap_content"-->
+        <!-- android:layout_height="wrap_content"-->
+        <!-- android:layout_alignParentRight="true"-->
+
+        <!-- android:background="@drawable/backgroun_fill"-->
+        <!-- android:fontFamily="@font/proxima_nova_bold"-->
+        <!-- android:text="+ Add"-->
+        <!-- android:paddingHorizontal="10dp"-->
+        <!-- android:paddingVertical="10dp"-->
+        <!-- android:textAlignment="center"-->
+        <!-- android:textColor="@color/white"-->
+        <!-- android:textSize="14sp" />-->
+
     </RelativeLayout>
 
 

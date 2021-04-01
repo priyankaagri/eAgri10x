@@ -127,7 +127,7 @@ public class PurchaseOrderFargment extends Fragment  {
     };
 
     private static final String[] addresstypelist = new String[]{
-            "Select Address Type", "Warehouse Address", "Collection Center", "Delivery Center", "Gala"
+            "Select Address Type", "Warehouse Address", "Collection Center", "Delivery Center", "Galla"
     };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

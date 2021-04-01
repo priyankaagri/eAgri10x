@@ -254,7 +254,7 @@ close_dialog.setOnClickListener(new View.OnClickListener() {
                     packaging_txt.setText("Packaging Size : "+" "+response.body().getData().get(0).getLotSize()+" kg");
 
 
-                    avilablequantity_txt.setText("Avilable Quantity :"+" "+response.body().getData().get(0).getLotSize()*response.body().getData().get(0).getTotalAvailable()+" kg");
+                    avilablequantity_txt.setText("Available Quantity :"+" "+response.body().getData().get(0).getLotSize()*response.body().getData().get(0).getTotalAvailable()+" kg");
 
 
                     double number = response.body().getData().get(0).getPricePerLot();

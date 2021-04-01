@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetAddAddress;
 import com.mobile.agri10x.models.GetCities;
 import com.mobile.agri10x.models.GetCitiesDatum;
@@ -190,7 +191,8 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             public void onResponse(Call<GetAddAddress> call, Response<GetAddAddress> response) {
                 Log.d("ADDRESSSAVING", response.toString());
                 if (response.isSuccessful()) {
-
+                    HomePageActivity.removeFragment(new AddressFragment());
+                    HomePageActivity.setFragment(new AddressFragment(),"addadress");
                     Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
 
 
@@ -206,7 +208,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                dismiss();
-                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                Log.d("geterror",t.getMessage());
 
             }
         });

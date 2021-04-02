@@ -439,7 +439,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                     }
                 };
         IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
-        registerReceiver(smsBroadcastReceiver, intentFilter);
+        registerReceiver(smsBroadcastReceiver,intentFilter);
     }
     @Override
     protected void onStart() {

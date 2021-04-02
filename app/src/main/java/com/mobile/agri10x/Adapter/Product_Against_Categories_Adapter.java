@@ -213,7 +213,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                                         }
 
                                     }else {
-                                        Toast.makeText(context, "Please enter in terms of multiple of 500", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Quantity should be in multiples of 50kg only", Toast.LENGTH_SHORT).show();
                                     }
                                 }else {
                                     context.startActivity(new Intent(context,LoginActivity.class));

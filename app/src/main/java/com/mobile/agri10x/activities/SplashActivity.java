@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
@@ -24,6 +25,7 @@ import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.Task;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
 import java.io.IOException;
 import org.jsoup.Jsoup;
@@ -34,8 +36,8 @@ import org.jsoup.select.Elements;
 
 public class SplashActivity extends AppCompatActivity {
     String currentVersion="";
-    String newVersion = null;
-
+    String newVersion = "";
+    private LiveNetworkMonitor mNetworkMonitor;
     private int REQUEST_CODE = 11;
     private AppUpdateManager appUpdateManager;
     private static final int REQ_CODE_VERSION_UPDATE = 530;
@@ -44,52 +46,55 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        mNetworkMonitor=new LiveNetworkMonitor(SplashActivity.this);
+        if(mNetworkMonitor.isConnected()){
 
-        new GetVersionCode().execute();
-        try {
+            Toast.makeText(SplashActivity.this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }  else{
+            new GetVersionCode().execute();
+            try {
 
-            currentVersion = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+                currentVersion = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
 
-            Log.d("Current Version","::"+currentVersion);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+                Log.d("Current Version","::"+currentVersion);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
 
+            Thread background = new Thread() {
+                public void run() {
 
-        Thread background = new Thread() {
-            public void run() {
-
-                try {
+                    try {
 // Thread will sleep for 5 seconds
-                    sleep(2*1000);
-                    if (newVersion != null && !newVersion.isEmpty()) {
+                        sleep(2*1000);
+                        if (newVersion != null && !newVersion.isEmpty()) {
 
 
-                        if (newVersion.equals(currentVersion)) {
-                            Intent intent = new Intent(SplashActivity.this, HomePageActivity.class);
-                            startActivity(intent);
-                        }
-                        else {
-                         //   checkForAppUpdate();
-                            AlertDialog alertDialog = new AlertDialog.Builder(SplashActivity.this).create();
-                            alertDialog.setTitle("Time To Upgrade");
-                            alertDialog.setIcon(getDrawable(R.drawable.appstorelogo));
-                            alertDialog.setMessage("Hey there, Download Agri10x latest app version and stay updated !");
-                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Update", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    try {
-                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                                    } catch (android.content.ActivityNotFoundException anfe) {
-                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+                            if (newVersion.equals(currentVersion)) {
+                                Intent intent = new Intent(SplashActivity.this, HomePageActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                //   checkForAppUpdate();
+                                AlertDialog alertDialog = new AlertDialog.Builder(SplashActivity.this).create();
+                                alertDialog.setTitle("Time To Upgrade");
+                                alertDialog.setIcon(getDrawable(R.drawable.appstorelogo));
+                                alertDialog.setMessage("Hey there, Download Agri10x latest app version and stay updated !");
+                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Update", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        try {
+                                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                                        } catch (android.content.ActivityNotFoundException anfe) {
+                                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+                                        }
                                     }
-                                }
-                            });
+                                });
 
 
 
-                            alertDialog.show();
+                                alertDialog.show();
+                            }
                         }
-                    }
 
 
 
@@ -97,16 +102,24 @@ public class SplashActivity extends AppCompatActivity {
 
 
 //Remove activity
-                    finish();
+                        finish();
 
-                } catch (Exception e) {
+                    } catch (Exception e) {
 
+                    }
                 }
-            }
-        };
+            };
 
 // start thread
-        background.start();
+            background.start();
+
+        }
+
+
+
+
+
+
 
 
     }
@@ -189,6 +202,12 @@ public class SplashActivity extends AppCompatActivity {
 
         }
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mNetworkMonitor.isConnected()){
+            Toast.makeText(SplashActivity.this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
+    }
 //
 }

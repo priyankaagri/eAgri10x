@@ -830,7 +830,7 @@ public class HomeFragment extends Fragment {
                         String feature = jsonObject.getString("feature");
                         Log.v("mfeature", feature);
                         allFeatures.add(feature);
-                        if(allFeatures.get(0).equals("Cold Storage")) {
+                        if(allFeatures.get(i).equals("Cold Storage")) {
                             JSONArray jsonarrayFruits = jsonObject.getJSONArray("Fruits");
                             for (int j = 0; j < jsonarrayFruits.length(); j++) {
                                 fruits = jsonarrayFruits.getString(j);

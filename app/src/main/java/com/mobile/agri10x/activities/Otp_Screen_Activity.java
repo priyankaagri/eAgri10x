@@ -434,7 +434,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure() {
+                    public void onFailure(String s) {
 
                     }
                 };

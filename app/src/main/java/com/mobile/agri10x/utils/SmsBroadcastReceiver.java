@@ -23,12 +23,12 @@ public class SmsBroadcastReceiver extends BroadcastReceiver{
           try {
               smsBroadcastReceiverListener.onSuccess(messageIntent);
           }catch (ActivityNotFoundException e){
-             smsBroadcastReceiverListener.onFailure("Something went wrong");
+             smsBroadcastReceiverListener.onFailure("SMS read timeout");
           }
 
           break;
         case CommonStatusCodes.TIMEOUT:
-          smsBroadcastReceiverListener.onFailure("Something went wrong");
+          smsBroadcastReceiverListener.onFailure("SMS read timeout");
           break;
       }
     }

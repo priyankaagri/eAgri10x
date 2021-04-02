@@ -23,12 +23,12 @@ public class SmsBroadcastReceiver extends BroadcastReceiver{
           try {
               smsBroadcastReceiverListener.onSuccess(messageIntent);
           }catch (ActivityNotFoundException e){
-             smsBroadcastReceiverListener.onFailure();
+             smsBroadcastReceiverListener.onFailure("Something went wrong");
           }
 
           break;
         case CommonStatusCodes.TIMEOUT:
-          smsBroadcastReceiverListener.onFailure();
+          smsBroadcastReceiverListener.onFailure("Something went wrong");
           break;
       }
     }
@@ -37,6 +37,6 @@ public class SmsBroadcastReceiver extends BroadcastReceiver{
   public interface SmsBroadcastReceiverListener {
     void onSuccess(Intent intent);
 
-    void onFailure();
+    void onFailure(String string);
   }
 }

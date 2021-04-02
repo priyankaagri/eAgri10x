@@ -105,9 +105,10 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
         System.out.println("Currency in INDIA : " + currency1);
         String pricepeoduct = String.format("%.2f", dataList.get(position).getPricePerLot());
         holder.product_price.setText("Price/KG : "+currency1);
+        holder.product_grade.setText("Grade "+dataList.get(position).getGrade());
 
 
-        holder.product_location.setText(dataList.get(position).getCity()+" "+ dataList.get(position).getState());
+        holder.product_location.setText(dataList.get(position).getCity());//product_grade
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -343,7 +344,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
     }
 
     public class ViewHolders extends RecyclerView.ViewHolder {
-        TextView txt_product_name,product_price,product_location;
+        TextView txt_product_name,product_price,product_location,product_grade;
         ImageView product_img,fav;
         TextView addcart;
         CardView cardview;
@@ -351,6 +352,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
 
         public ViewHolders(@NonNull View itemView) {
             super(itemView);
+            this.product_grade = itemView.findViewById(R.id.product_grade);
             this.product_location = itemView.findViewById(R.id.product_location);
             this.txt_product_name =itemView.findViewById(R.id.txt_product_name);
             this.product_price =itemView.findViewById(R.id.product_price);

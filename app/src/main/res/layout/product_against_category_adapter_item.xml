@@ -43,32 +43,43 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:textColor="@color/black"
-                android:text="Potato"
+
                 android:textSize="15sp" />
 
-
             <TextView
-                android:layout_marginTop="8dp"
-                android:id="@+id/product_price"
+                android:layout_marginTop="6dp"
+                android:id="@+id/product_grade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_product_name"
+                android:layout_centerInParent="true"
+
+                android:textStyle="bold"
+                android:fontFamily="@font/proxima_nova_alt_light"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+            <TextView
+                android:layout_marginTop="6dp"
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_grade"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
             <TextView
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="6dp"
                 android:id="@+id/product_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/product_price"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/proxima_nova_bold"
+                android:fontFamily="@font/proxima_nova_alt_light"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
             <RatingBar
                 android:visibility="gone"
                 android:id="@+id/ratingBar"

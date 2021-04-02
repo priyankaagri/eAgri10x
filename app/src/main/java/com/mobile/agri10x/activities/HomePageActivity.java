@@ -432,6 +432,13 @@ if(getbookorpurchase){
         Log.d("getparamsforpurchase",payment_id+" "+order_id+" "+signature+" "+bookingid_frombookorderfrag);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetOrderCheckOutHandling> loginCall = apiService.wsCheckOrderCheckOutHandling("123456",body);
         loginCall.enqueue(new Callback<GetOrderCheckOutHandling>() {
@@ -487,6 +494,13 @@ if(getbookorpurchase){
 
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetBookingCheckOutHandling> loginCall = apiService.wsCheckBookingCheckOutHandling("123456",body);
         loginCall.enqueue(new Callback<GetBookingCheckOutHandling>() {

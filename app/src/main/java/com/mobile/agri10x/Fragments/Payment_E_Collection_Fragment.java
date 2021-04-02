@@ -24,10 +24,13 @@ import com.mobile.agri10x.models.GetCheckCollect;
 import com.mobile.agri10x.models.GetUserByID;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -142,6 +145,13 @@ if(getuserid != null && !getuserid.isEmpty()){
         jsonParams.put("UserID",userid);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetCheckCollect> loginCall = apiService.wsCheckECollect("123456",body);
         loginCall.enqueue(new Callback<GetCheckCollect>() {

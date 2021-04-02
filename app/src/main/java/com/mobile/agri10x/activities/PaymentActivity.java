@@ -26,6 +26,7 @@ import com.mobile.agri10x.models.GetUserBalance;
 import com.mobile.agri10x.models.UserId;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentData;
@@ -33,6 +34,8 @@ import com.razorpay.PaymentResultWithDataListener;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Map;
@@ -166,6 +169,13 @@ callapigetBalance(userIdo);
     private void callapigetBalance(UserId userIdo) {
         dialog = new Alert().pleaseWait();
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetUserBalance> loginCall = apiService.wsgetBalance(
                 "123456",userIdo);
         loginCall.enqueue(new Callback<GetUserBalance>() {
@@ -213,6 +223,13 @@ callapigetBalance(userIdo);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
 
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetAddMoney> loginCall = apiService.wsGetAddMoney(
                 "123456",body);
         loginCall.enqueue(new Callback<GetAddMoney>() {
@@ -304,6 +321,13 @@ callapigetBalance(userIdo);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
 
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetCheckOutHandle> loginCall = apiService.wsGetCheckoutHandle(
                 "123456",body);
         loginCall.enqueue(new Callback<GetCheckOutHandle>() {

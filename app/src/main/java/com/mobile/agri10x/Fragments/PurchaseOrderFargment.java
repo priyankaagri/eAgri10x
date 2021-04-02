@@ -1103,6 +1103,13 @@ public class PurchaseOrderFargment extends Fragment  {
 // RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
 
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetCreateCheckout> loginCall = apiService.wsGetCreateCheckOut(
                 "123456", queryCreateCheckOut);
         loginCall.enqueue(new Callback<GetCreateCheckout>() {
@@ -1184,6 +1191,13 @@ public class PurchaseOrderFargment extends Fragment  {
         jsonParams.put("Order_ID",orderid);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetCreateOrder> loginCall = apiService.wsCheckOrder("123456",body);
         loginCall.enqueue(new Callback<GetCreateOrder>() {

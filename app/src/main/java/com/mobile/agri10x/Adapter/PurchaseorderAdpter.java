@@ -259,7 +259,13 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
         jsonParams.put("checkoutID", orderid);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
-
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetCreateCheckoutDetails> loginCall = apiService.wsGetCheckoutDeatils("123456", body);
         loginCall.enqueue(new Callback<GetCreateCheckoutDetails>() {
             @SuppressLint("WrongConstant")

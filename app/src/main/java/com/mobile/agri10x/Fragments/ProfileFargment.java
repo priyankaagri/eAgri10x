@@ -29,10 +29,13 @@ import com.mobile.agri10x.models.GetUser;
 import com.mobile.agri10x.models.UpdateUser;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -162,6 +165,13 @@ public class ProfileFargment extends Fragment {
         jsonParams.put("userID", SessionManager.getKeyTokenUser(getActivity()));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetUser> loginCall = apiService.wsGetUserById("123456", body);
         loginCall.enqueue(new Callback<GetUser>() {
@@ -213,6 +223,13 @@ public class ProfileFargment extends Fragment {
 
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<UpdateUser> loginCall = apiService.wsGetUpdateUser("123456", body);
         loginCall.enqueue(new Callback<UpdateUser>() {

@@ -143,6 +143,13 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
         jsonParams.put("grade",str_grade);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<DisplayQuickView> loginCall = apiService.wsgetdisplayQuickView("123456",
                 body);
@@ -419,6 +426,13 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
         Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetAddProductToCart> loginCall = apiService.wsGetAddproducttocart("123456",body);
         loginCall.enqueue(new Callback<GetAddProductToCart>() {

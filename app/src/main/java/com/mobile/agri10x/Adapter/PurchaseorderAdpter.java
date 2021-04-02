@@ -25,10 +25,13 @@ import com.mobile.agri10x.models.getAddress;
 import com.mobile.agri10x.models.getAddressData;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -190,6 +193,13 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
         jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<getAddress> addressCall = apiService.wsGetAddress("123456", body);
         addressCall.enqueue(new Callback<getAddress>() {
             @Override

@@ -36,11 +36,14 @@ import com.mobile.agri10x.models.GetLiveTradesData;
 import com.mobile.agri10x.models.getCommAccToCatDatum;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
@@ -131,6 +134,13 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
         jsonParams.put("grade",str_grade);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<DisplayQuickView> loginCall = apiService.wsgetdisplayQuickView("123456",
                 body);
@@ -280,6 +290,13 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
         Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetAddProductToCart> loginCall = apiService.wsGetAddproducttocart("123456",body);
         loginCall.enqueue(new Callback<GetAddProductToCart>() {

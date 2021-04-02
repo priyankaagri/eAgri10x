@@ -368,6 +368,13 @@ public class BookOrderFragment extends Fragment {
         jsonParams.put("userID",SessionManager.getKeyTokenUser(getActivity()));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetUser> loginCall = apiService.wsGetUserById("123456",body);
         loginCall.enqueue(new Callback<GetUser>() {
@@ -405,6 +412,13 @@ public class BookOrderFragment extends Fragment {
         jsonParams.put("userID",SessionManager.getKeyTokenUser(getActivity()));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<getAddress> loginCall = apiService.wsGetAddress("123456",body);
         loginCall.enqueue(new Callback<getAddress>() {
@@ -940,6 +954,13 @@ public class BookOrderFragment extends Fragment {
         jsonParams.put("userID", userid_billing_dialog);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetAddAddress> saveaddressapi = apiService.wsGetAddAddress("123456", body);
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override
@@ -981,6 +1002,13 @@ public class BookOrderFragment extends Fragment {
         jsonParams.put("userID", userid_billing_dialog);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetAddAddress> saveaddressapi = apiService.wsGetAddAddress("123456", body);
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override
@@ -1188,6 +1216,13 @@ public class BookOrderFragment extends Fragment {
 // RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
 
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetCreateBooking> loginCall = apiService.wsCreateBooking(
                 "123456", queryCreatebooking);
         loginCall.enqueue(new Callback<GetCreateBooking>() {
@@ -1225,6 +1260,13 @@ Log.d("getbookingid",bookingid);
         jsonParams.put("bookingID",bookingid);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetBookingDeatils> loginCall = apiService.wsGetBookingDeatils("123456",body);
         loginCall.enqueue(new Callback<GetBookingDeatils>() {

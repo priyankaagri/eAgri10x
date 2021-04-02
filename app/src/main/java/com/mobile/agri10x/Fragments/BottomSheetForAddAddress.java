@@ -185,6 +185,13 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
         jsonParams.put("userID", userid_billing_dialog);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         final Call<GetAddAddress> saveaddressapi = apiService.wsGetAddAddress("123456", body);
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override

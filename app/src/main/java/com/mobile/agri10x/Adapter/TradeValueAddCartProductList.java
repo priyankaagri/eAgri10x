@@ -33,11 +33,14 @@ import com.mobile.agri10x.models.GetRemoveProduct;
 import com.mobile.agri10x.models.UpdateCart;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -222,6 +225,13 @@ int getWaight=holder.getAdapterPosition();
         Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<UpdateCart> loginCall = apiService.wsGetUpdateCart("123456",body);
         loginCall.enqueue(new Callback<UpdateCart>() {
@@ -261,6 +271,13 @@ int getWaight=holder.getAdapterPosition();
 Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetRemoveProduct> loginCall = apiService.wsGetRemoveProduct("123456",body);
         loginCall.enqueue(new Callback<GetRemoveProduct>() {

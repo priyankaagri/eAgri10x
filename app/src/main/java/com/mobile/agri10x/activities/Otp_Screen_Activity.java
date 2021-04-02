@@ -35,6 +35,7 @@ import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.mobile.agri10x.retrofit.SSLCertificateManagment;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 import com.mobile.agri10x.utils.SessionManager;
 import com.mobile.agri10x.utils.SmsBroadcastReceiver;
@@ -43,6 +44,8 @@ import com.mobile.agri10x.utils.SmsBroadcastReceiver;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import in.aabhasjindal.otptextview.OTPListener;
@@ -186,6 +189,13 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         jsonParams.put("mobileNo", "91" + mobilenumber);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<GetResendOTP> loginCall = apiService.wsgetresendOTP("123456",
                 body);
@@ -248,6 +258,13 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 //Firstname Lastname DOB
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
         final Call<VerifyOTP> loginCall = apiService.wsgetVerifyOTP("123456",
                 body);

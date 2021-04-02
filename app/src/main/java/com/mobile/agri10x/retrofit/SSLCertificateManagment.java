@@ -65,11 +65,12 @@ final static HostnameVerifier DO_NOT_VERIFY = new HostnameVerifier() {
             }
 
             public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                try {
-                    chain[0].checkValidity();
-                } catch (Exception e) {
-                    throw new CertificateException("Certificate not valid or trusted.");
-                }
+//                try {
+//                    chain[0].checkValidity();
+//                } catch (Exception e) {
+//                    throw new CertificateException("Certificate not valid or trusted.");
+//                }
+
             }
         }};
         SSLContext sc = SSLContext.getInstance("TLS");

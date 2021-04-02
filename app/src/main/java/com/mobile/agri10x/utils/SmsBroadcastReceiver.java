@@ -1,5 +1,6 @@
 package com.mobile.agri10x.utils;
 
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,13 +14,18 @@ public class SmsBroadcastReceiver extends BroadcastReceiver{
 
   @Override
   public void onReceive(Context context, Intent intent) {
-    if (intent.getAction() == SmsRetriever.SMS_RETRIEVED_ACTION) {
+    if (intent.getAction().equals(SmsRetriever.SMS_RETRIEVED_ACTION) ) {
       Bundle extras = intent.getExtras();
       Status smsRetrieverStatus = (Status) extras.get(SmsRetriever.EXTRA_STATUS);
       switch (smsRetrieverStatus.getStatusCode()) {
         case CommonStatusCodes.SUCCESS:
           Intent messageIntent = extras.getParcelable(SmsRetriever.EXTRA_CONSENT_INTENT);
-          smsBroadcastReceiverListener.onSuccess(messageIntent);
+          try {
+              smsBroadcastReceiverListener.onSuccess(messageIntent);
+          }catch (ActivityNotFoundException e){
+             smsBroadcastReceiverListener.onFailure();
+          }
+
           break;
         case CommonStatusCodes.TIMEOUT:
           smsBroadcastReceiverListener.onFailure();

@@ -57,6 +57,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proxima_nova_bold"
@@ -73,6 +74,7 @@
                 </LinearLayout>
 
                 <EditText
+
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textColor="@color/black"
                     android:id="@+id/et_firstname"
@@ -103,6 +105,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proxima_nova_bold"
@@ -158,6 +161,7 @@
                     android:visibility="gone" />
 
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -170,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-
+                    android:textColor="@color/black"
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:hint="xxx@gmail.com" />
 
@@ -186,6 +190,7 @@
                     android:visibility="gone" />
 
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -194,7 +199,7 @@
                     android:textSize="14sp" />
 
                 <EditText
-
+                    android:textColor="@color/black"
                     android:id="@+id/et_mobilenumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

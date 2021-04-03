@@ -59,7 +59,7 @@ android:textColor="@color/black"
             app:width="40dp"
 
             app:bar_height="2dp"
-            app:length="4"
+            app:length="6"
             app:otp_box_background_inactive="@drawable/inactivebox"
             android:keyboardNavigationCluster="true"
             app:otp_box_background="@drawable/box_back"

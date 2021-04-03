@@ -23,7 +23,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.fragments.TradeValueAddCart;
-import com.mobile.agri10x.fragments.YourWishListFragment;
+import com.mobile.agri10x.fragments.MyWishListFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.models.GetAddProductToCart;
@@ -161,8 +161,8 @@ dialogfordetailpage.dismiss();
 
                                         Log.d("getfeatureresponse", response.toString());
                                         dialogfordetailpage.dismiss();
-                                        HomePageActivity.removeFragment(new YourWishListFragment());
-                                        HomePageActivity.setFragment(new YourWishListFragment(),"wishlist");
+                                        HomePageActivity.removeFragment(new MyWishListFragment());
+                                        HomePageActivity.setFragment(new MyWishListFragment(),"wishlist");
 
                                     }
 
@@ -342,7 +342,7 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
                 dialog.dismiss();
                 Log.d("addtocart",response.toString());
                 if (response.isSuccessful()) {
-                    HomePageActivity.removeFragment(new YourWishListFragment());
+                    HomePageActivity.removeFragment(new MyWishListFragment());
                     HomePageActivity.getProductinCart();
                     Toast.makeText(context, quantity+" Kg of "+ name +" has been added to trade", Toast.LENGTH_LONG).show();
                     HomePageActivity.setFragment(new TradeValueAddCart(),"cart");

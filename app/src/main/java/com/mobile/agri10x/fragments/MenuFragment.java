@@ -183,13 +183,6 @@ public class MenuFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-    private void openpaymentFragment() {
-        PaymentFragment paymentFragment=new PaymentFragment();
-        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment, paymentFragment,PAYMENT_TAG);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 
 
     private void openAddStockFragment() {
@@ -209,7 +202,7 @@ public class MenuFragment extends Fragment {
     }
 
     private void openYourOrderFragment() {
-        YourOrderFragment yourOrderFragment=new YourOrderFragment();
+        MyOrderFragment yourOrderFragment=new MyOrderFragment();
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment, yourOrderFragment,YOUR_ORDER_TAG);
         fragmentTransaction.addToBackStack(null);
@@ -217,7 +210,7 @@ public class MenuFragment extends Fragment {
     }
 
     private void openWishListFragment() {
-        YourWishListFragment yourOrderFragment=new YourWishListFragment();
+        MyWishListFragment yourOrderFragment=new MyWishListFragment();
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment, yourOrderFragment,WISH_LIST_TAG);
         fragmentTransaction.addToBackStack(null);

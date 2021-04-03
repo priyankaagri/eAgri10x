@@ -46,7 +46,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class YourOrderFragment extends Fragment {
+public class MyOrderFragment extends Fragment {
 
     private ImageView mBackButton;
     TextView btn_booking,btn_purchase;
@@ -226,7 +226,7 @@ recycleview_booking_list.showShimmer();*/
     }
 
     private void removeFragment() {
-        HomePageActivity.removeFragment(new YourOrderFragment());
+        HomePageActivity.removeFragment(new MyOrderFragment());
     }
 
 

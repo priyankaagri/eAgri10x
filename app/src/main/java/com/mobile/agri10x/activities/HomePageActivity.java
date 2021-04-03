@@ -26,7 +26,7 @@ import com.mobile.agri10x.fragments.TradeValueAddCart;
 import com.mobile.agri10x.fragments.HomeFragment;
 import com.mobile.agri10x.fragments.MenuFragment;
 import com.mobile.agri10x.fragments.SeeAllLiveTradingFragment;
-import com.mobile.agri10x.fragments.YourOrderFragment;
+import com.mobile.agri10x.fragments.MyOrderFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetBookingCheckOutHandling;
 import com.mobile.agri10x.models.GetOrderCheckOutHandling;
@@ -451,7 +451,7 @@ if(getbookorpurchase){
                     if(response.body().getMessage().equals("Payment Successful")){
                         HomePageActivity.removeFragment(new PurchaseOrderFargment());
                      //   HomePageActivity.setFragment(new YourOrderFragment(),"frompurchase");
-                        YourOrderFragment fragment = new YourOrderFragment(); // replace your custom fragment class
+                        MyOrderFragment fragment = new MyOrderFragment(); // replace your custom fragment class
                         Bundle bundle = new Bundle();
                         FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
                         bundle.putBoolean("getValue",false); // use as per your need
@@ -514,7 +514,7 @@ if(getbookorpurchase){
                         HomePageActivity.removeFragment(new BookOrderFragment());
 
                      //   HomePageActivity.setFragment(new YourOrderFragment(),"frombook");
-                        YourOrderFragment fragment = new YourOrderFragment(); // replace your custom fragment class
+                        MyOrderFragment fragment = new MyOrderFragment(); // replace your custom fragment class
                         Bundle bundle = new Bundle();
                         FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
                         bundle.putBoolean("getValue",true); // use as per your need

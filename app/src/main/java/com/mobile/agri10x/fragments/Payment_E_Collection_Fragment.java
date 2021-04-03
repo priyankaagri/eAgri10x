@@ -162,7 +162,7 @@ if(getuserid != null && !getuserid.isEmpty()){
 
                     if(response.body().getMessage()){
                         HomePageActivity.removeFragment(new Payment_E_Collection_Fragment());
-                        HomePageActivity.setFragment(new YourOrderFragment(),"youroder");
+                        HomePageActivity.setFragment(new MyOrderFragment(),"youroder");
                         HomePageActivity.getProductinCart();
                         Toast.makeText(getActivity(),"Payment Successful",Toast.LENGTH_SHORT).show();
 

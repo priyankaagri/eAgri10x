@@ -37,7 +37,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class YourWishListFragment extends Fragment  {
+public class MyWishListFragment extends Fragment  {
 
     private ImageView mBackButton;
     ShimmerRecyclerView recycleview_wishlist_stock;

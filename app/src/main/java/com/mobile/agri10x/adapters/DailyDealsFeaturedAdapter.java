@@ -27,7 +27,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.fragments.TradeValueAddCart;
-import com.mobile.agri10x.fragments.YourWishListFragment;
+import com.mobile.agri10x.fragments.MyWishListFragment;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.LoginActivity;
@@ -402,7 +402,7 @@ if(present){
                 if (response.isSuccessful()) {
 
 
-                    HomePageActivity.setFragment(new YourWishListFragment(),"wishlist");
+                    HomePageActivity.setFragment(new MyWishListFragment(),"wishlist");
 
 
                 } else {

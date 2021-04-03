@@ -395,8 +395,8 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         public void decoded(String JWTEncoded) throws Exception {
             try {
                 String[] split = JWTEncoded.split("\\.");
-                Log.d("JWT_DECODED", "Header: " + getJson(split[0]));
-                Log.d("JWT_DECODED", "Body: " + getJson(split[1]));
+//                Log.d("JWT_DECODED", "Header: " + getJson(split[0]));
+//                Log.d("JWT_DECODED", "Body: " + getJson(split[1]));
 
                 JSONObject obj = new JSONObject(getJson(split[1]));
                 String mobile = obj.getString("mobile");

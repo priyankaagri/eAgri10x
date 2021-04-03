@@ -142,7 +142,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
 //                        if(SessionManager.isLoggedIn(HomePageActivity.this)) {
 
                             int id1 = item.getItemId();
-                            Log.d("hvghv", String.valueOf(id1));
+
                             Fragment f2 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                             if (id1 == R.id.tab_livetrade && !(f2 instanceof SeeAllLiveTradingFragment)) {
                                 SeeAllLiveTradingFragment fragment = new SeeAllLiveTradingFragment();
@@ -173,7 +173,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
                         if(SessionManager.isLoggedIn(HomePageActivity.this)){
                             getProductinCart();
                             int id2 = item.getItemId();
-                            Log.d("hvghv", String.valueOf(id2));
+
 
                             Fragment f6 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                             if (id2 == R.id.tab_cart && !(f6 instanceof TradeValueAddCart)) {
@@ -244,7 +244,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
         ProductsInCartlist.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
         jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
-        Log.d("getuserid",SessionManager.getKeyTokenUser(context));
+
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -262,7 +262,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
             public void onResponse(Call<GetProductsInCart> call,
                                    Response<GetProductsInCart> response) {
 
-                Log.d("ProductinCart",response.toString());
+
                 if (response.isSuccessful()) {
                     ProductsInCartlist.addAll(response.body().getProducts());
                     int menuItemId = bottomNavigationView.getMenu().getItem(2).getItemId();
@@ -316,7 +316,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
     public void onBackPressed() {
 //onBackPressed();
         int count = getSupportFragmentManager().getBackStackEntryCount();
-        Log.e("Log count",count+"");
+
         if (count == 1) {
             open();
         } else {
@@ -406,7 +406,7 @@ if(getbookorpurchase){
     callcheckouthandleforpurchase(order_id,payment_id,signature,bookingid_frombookorderfrag);
 }
 
-        Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature+" "+bookingid_frombookorderfrag);
+   //     Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature+" "+bookingid_frombookorderfrag);
 
 
     }
@@ -416,7 +416,7 @@ if(getbookorpurchase){
 
     @Override
     public void onPaymentError(int i, String s, PaymentData paymentData) {
-        Log.d("paymenterroe",s);
+
     }
     private void callcheckouthandleforpurchase(String order_id, String payment_id, String signature, String bookingid_frombookorderfrag) {
         Map<String, Object> jsonParams = new ArrayMap<>();
@@ -427,7 +427,7 @@ if(getbookorpurchase){
         jsonParams.put("bookingID",bookingid_frombookorderfrag);
         jsonParams.put("Userid",SessionManager.getKeyTokenUser(HomePageActivity.this));
 
-        Log.d("getparamsforpurchase",payment_id+" "+order_id+" "+signature+" "+bookingid_frombookorderfrag);
+       // Log.d("getparamsforpurchase",payment_id+" "+order_id+" "+signature+" "+bookingid_frombookorderfrag);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -445,7 +445,7 @@ if(getbookorpurchase){
             public void onResponse(Call<GetOrderCheckOutHandling> call,
                                    Response<GetOrderCheckOutHandling> response) {
 
-                Log.d("getnameapi",response.toString());
+
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Payment Successful")){
@@ -507,7 +507,7 @@ if(getbookorpurchase){
             public void onResponse(Call<GetBookingCheckOutHandling> call,
                                    Response<GetBookingCheckOutHandling> response) {
 
-                Log.d("getnameapi",response.toString());
+
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Payment Successful")){

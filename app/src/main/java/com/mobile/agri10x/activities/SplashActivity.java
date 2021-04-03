@@ -198,7 +198,7 @@ public class SplashActivity extends AppCompatActivity {
 
             }
 
-            Log.d("update", "Current version " + currentVersion + "playstore version " + onlineVersion);
+         //   Log.d("update", "Current version " + currentVersion + "playstore version " + onlineVersion);
 
         }
     }

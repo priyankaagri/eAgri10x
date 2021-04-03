@@ -201,7 +201,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             }
             private void getUserProfileData() {
                 Map<String, Object> jsonParams = new ArrayMap<>();
-                Log.d("fjkjfj", SessionManager.getKeyTokenUser(context));
+
                 jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
                 RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
                 AgriInvestor apiService = ApiHandler.getApiService();
@@ -216,7 +216,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                 userdata.enqueue(new Callback<GetUser>() {
                     @Override
                     public void onResponse(Call<GetUser> call, Response<GetUser> response) {
-                        Log.d("getnameapinameresponse", response.toString());
+
 
                         if (response.isSuccessful()) {
 
@@ -303,7 +303,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onResponse(Call<NegotiateRate> call,
                                    Response<NegotiateRate> response) {
 
-                Log.d("resFeatureonly", response.toString());
+
                 if (response.isSuccessful()) {
 
                     Toast.makeText(context, "Your request has been submitted successfully,\n" +

@@ -70,7 +70,7 @@ public class MyOrderFragment extends Fragment {
         getlistorderapi();
         if(getArguments()!=null){
             getval = getArguments().getBoolean("getValue");
-            Log.d("getvalue", String.valueOf(getval));
+
 
         }
         else {
@@ -89,7 +89,7 @@ public class MyOrderFragment extends Fragment {
         String getuserid =SessionManager.getKeyTokenUser(getActivity());
 
         getuserid = getuserid.replaceAll(" ","");
-        Log.d("getuserid",getuserid);
+
 
         jsonParams.put("UserID",getuserid);
 
@@ -108,9 +108,9 @@ public class MyOrderFragment extends Fragment {
             @Override
             public void onResponse(Call<GetOrderList> call, Response<GetOrderList> response) {
 
-                Log.d("response",response.toString());
+
                 if (response.isSuccessful()) {
-                    Log.d("checkresponse", "success");
+
 
                     if (!response.body().getData().isEmpty()) {
                         checkoutorderlist.addAll(response.body().getData().get(0).getCheckoutList());
@@ -157,7 +157,7 @@ public class MyOrderFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GetOrderList> call, Throwable t) {
-                Log.d("checkresponse",t.toString());
+
                 Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });

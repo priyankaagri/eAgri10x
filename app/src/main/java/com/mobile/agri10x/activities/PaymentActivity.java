@@ -150,7 +150,7 @@ callapigetBalance(userIdo);
             @Override
             public void onClick(View v) {
                 String getamt = add_money_towallet.getText().toString();
-                Log.d("getamt",getamt);
+               // Log.d("getamt",getamt);
                 if(getamt == null || getamt.isEmpty() || getamt.equals("") ){
 
                     Toast.makeText(PaymentActivity.this,"Please Enter Amount",Toast.LENGTH_SHORT).show();
@@ -183,7 +183,7 @@ callapigetBalance(userIdo);
             @Override
             public void onResponse(Call<GetUserBalance> call,
                                    Response<GetUserBalance> response) {
-                Log.d("checkphone",response.toString());
+            //    Log.d("checkphone",response.toString());
 
                 if (response.isSuccessful()) {
 
@@ -241,9 +241,9 @@ callapigetBalance(userIdo);
 
                 if (response.isSuccessful()) {
                     dialog2.dismiss();
-                    Log.d("responsecheck", String.valueOf(response.body()));
+              //      Log.d("responsecheck", String.valueOf(response.body()));
                     String checkresponse =String.valueOf(response.body());
-                    Log.d("checkingexist",checkresponse);
+                //    Log.d("checkingexist",checkresponse);
 
                     orderidfromres = response.body().getOrderid();
                     amountfromres = String.valueOf(response.body().getAmount());
@@ -260,7 +260,7 @@ callapigetBalance(userIdo);
             @Override
             public void onFailure(Call<GetAddMoney> call,
                                   Throwable t) {
-               Log.d("errorpayment",t.getMessage());
+           //    Log.d("errorpayment",t.getMessage());
                 dialog.dismiss();
             }
         });
@@ -339,9 +339,9 @@ callapigetBalance(userIdo);
 
                 if (response.isSuccessful()) {
                     dialog.dismiss();
-                    Log.d("responsecheck", String.valueOf(response.body()));
+                //    Log.d("responsecheck", String.valueOf(response.body()));
                     String checkresponse =String.valueOf(response.body());
-                    Log.d("checkingexist",checkresponse);
+                //    Log.d("checkingexist",checkresponse);
 
                     Toast.makeText(PaymentActivity.this,response.body().getStatus(),Toast.LENGTH_SHORT).show();
 
@@ -371,7 +371,7 @@ callapigetBalance(userIdo);
 
         callcheckouthandle(order_id,payment_id,signature);
 
-        Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature);
+    //    Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature);
     }
 
     public class Alert {

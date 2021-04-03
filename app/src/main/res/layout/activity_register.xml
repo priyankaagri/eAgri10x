@@ -61,7 +61,7 @@
                 android:fontFamily="@font/proxima_nova_alt_bold"
                 android:layout_height="wrap_content"/>
             <EditText
-
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:id="@+id/fname_edt_txt"
                 android:layout_width="match_parent"
                 android:padding="10dp"
@@ -93,7 +93,7 @@
                 android:id="@+id/lname_edt_txt"
                 android:layout_width="match_parent"
                 android:padding="10dp"
-
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/lname_str"
                 android:textSize="14sp"
                 android:singleLine="true"
@@ -123,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:hint="@string/enter_digit"
                 android:textSize="15sp"
+                android:digits="0123456789"
                 android:singleLine="true"
                 android:inputType="phone"
                 android:layout_marginHorizontal="25dp"
@@ -212,9 +213,9 @@
                             android:text="@string/farmer"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:fontFamily="@font/proxima_nova_bold"
-                            android:background="@drawable/filll_back"
+                            android:background="@drawable/hollow_back"
                             android:layout_height="wrap_content"/>
 
                         <TextView

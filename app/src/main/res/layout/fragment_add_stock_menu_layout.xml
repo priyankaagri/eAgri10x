@@ -363,6 +363,7 @@
                     </LinearLayout>
 
                     <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:textColor="@color/black"
                         android:id="@+id/edt_address"
                         android:layout_width="match_parent"

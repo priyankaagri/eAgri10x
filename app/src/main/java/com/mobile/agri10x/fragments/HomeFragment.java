@@ -1322,31 +1322,33 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<GetCategories> call, Response<GetCategories> response) {
 
-                Log.d("GetCatogerylist", response.toString());
-
                 if (response.isSuccessful()) {
                     dialog.dismiss();
                     catArraylist.addAll(response.body().getData());
                     categorieslist.addAll(response.body().getData());
                     // catArraylist = response.body().getData();
                     // category.add("Category");
-                    for (int i = 0; i < catArraylist.size(); i++) {
+                    if(catArraylist.size() > 0){
 
-                        category.add(response.body().getData().get(i).getCategoryName());
+                        for (int i = 0; i < catArraylist.size(); i++) {
+
+                            category.add(response.body().getData().get(i).getCategoryName());
+                        }
+
+                        if (catArraylist.size() > 0) {
+
+
+                            HomeCategoryAdapter adapterShopDetails = new HomeCategoryAdapter(catArraylist, context);
+                            recycle_category.setAdapter(adapterShopDetails);
+                            adapterShopDetails.notifyDataSetChanged();
+                            ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(),
+                                    R.layout.simple_spinner_dropdown_item,
+                                    category);
+
+                            CommodityUnit.setAdapter(spinnerArrayAdapter);
+                        }
                     }
 
-                    if (catArraylist.size() > 0) {
-
-
-                        HomeCategoryAdapter adapterShopDetails = new HomeCategoryAdapter(catArraylist, context);
-                        recycle_category.setAdapter(adapterShopDetails);
-                        adapterShopDetails.notifyDataSetChanged();
-                        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(),
-                                R.layout.simple_spinner_dropdown_item,
-                                category);
-
-                        CommodityUnit.setAdapter(spinnerArrayAdapter);
-                    }
 
                     getDailyDeals();
                 } else {

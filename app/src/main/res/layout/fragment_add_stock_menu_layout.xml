@@ -58,7 +58,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
                         android:paddingLeft="8dp"
                         android:paddingTop="16dp"
                         android:layout_marginBottom="5dp"
@@ -108,7 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
                         android:paddingLeft="8dp"
                         android:paddingTop="16dp"
                         android:text="@string/varity_id"
@@ -159,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:fontFamily="@font/proxima_nova_alt_light"
+                    android:fontFamily="@font/proxima_nova_alt_bold"
                     android:paddingLeft="8dp"
                     android:text="@string/Discription"
                     android:textColor="@color/black"
@@ -198,7 +198,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
                         android:paddingLeft="8dp"
                         android:text="@string/quantity_id"
                         android:textColor="@color/black"
@@ -239,7 +239,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/proxima_nova_alt_light"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
                         android:paddingLeft="8dp"
                         android:text="@string/priceperkg_id"
                         android:textColor="@color/black"
@@ -279,6 +279,8 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="@color/black"
+                       android:fontFamily="@font/proxima_nova_alt_bold"
                         android:id="@+id/txt_valid_from"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -305,6 +307,8 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
                         android:id="@+id/txt_valid_to"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -349,7 +353,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="15dp"
-                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
                             android:paddingLeft="8dp"
 
                             android:text="@string/addresss"
@@ -390,7 +394,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
-                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
                             android:paddingLeft="8dp"
                             android:text="@string/talukaa"
                             android:textColor="@color/black"
@@ -433,7 +437,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
-                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
                             android:paddingLeft="8dp"
                             android:text="State"
                             android:textColor="@color/black"
@@ -466,7 +470,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
-                            android:fontFamily="@font/proxima_nova_alt_light"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
                             android:paddingLeft="8dp"
                             android:text="City"
                             android:textColor="@color/black"
@@ -540,7 +544,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="15dp"
-                                android:fontFamily="@font/proxima_nova_alt_light"
+                                android:fontFamily="@font/proxima_nova_alt_bold"
                                 android:paddingLeft="8dp"
                                 android:text="@string/pincode_txt"
                                 android:textColor="@color/black"
@@ -606,7 +610,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="15dp"
-                                android:fontFamily="@font/proxima_nova_alt_light"
+                                android:fontFamily="@font/proxima_nova_alt_bold"
                                 android:paddingLeft="8dp"
                                 android:text="@string/country_txt"
                                 android:textColor="@color/black"
@@ -657,7 +661,9 @@
                 </LinearLayout>
             </LinearLayout>
 
+
             <Button
+                android:fontFamily="@font/proxima_nova_alt_bold"
                 android:id="@+id/btn_addstock"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

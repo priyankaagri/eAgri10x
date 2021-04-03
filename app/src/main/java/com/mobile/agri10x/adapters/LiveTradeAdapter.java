@@ -267,7 +267,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                     NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
                     String currency1 = format1.format(number1);
                     System.out.println("Currency in INDIA : " + currency1);
-                    price_txt.setText("Price/KG: "+currency1);
+                    price_txt.setText("Price/KG : "+currency1);
 
 
                     variety.setText(response.body().getData().get(0).getVarietyName());

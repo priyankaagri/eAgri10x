@@ -167,7 +167,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
     }
 
     void startTimer() {
-        cTimer = new CountDownTimer(20000, 1000)
+        cTimer = new CountDownTimer(60000, 1000)
         {
             public void onTick(long millisUntilFinished) {
                 timer.setText( "00:"+String.valueOf(millisUntilFinished / 1000) +"  seconds remaining..." );

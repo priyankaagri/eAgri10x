@@ -117,7 +117,7 @@
                     android:id="@+id/variety"
                     android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_marginLeft="30dp"
-
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -125,7 +125,7 @@
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
-
+android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView

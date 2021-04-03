@@ -82,7 +82,7 @@ public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValu
 
 
         holder.product_name.setText(ProductsInCartlist.get(position).getName());
-        holder.product_garde.setText("Grade: "+ProductsInCartlist.get(position).getGrade());
+        holder.product_garde.setText("Grade : "+ProductsInCartlist.get(position).getGrade());
         holder.product_quantity.setText(String.valueOf(ProductsInCartlist.get(position).getQuantity()));
         holder.product_varity.setText(ProductsInCartlist.get(position).getVariety());
 
@@ -111,7 +111,7 @@ if(ProductsInCartlist.get(position).getPrice() != null){
     NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
     String currency = format.format(number);
     String pricepeoduct = String.format("%.2f", ProductsInCartlist.get(position).getPrice() * Double.parseDouble(value));
-    holder.product_price.setText("Total: " + currency);
+    holder.product_price.setText("Total : " + currency);
 }
 
 

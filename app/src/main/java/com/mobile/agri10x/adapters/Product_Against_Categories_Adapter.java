@@ -249,7 +249,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                     String currency = format.format(number);
                     System.out.println("Currency in INDIA : " + currency);
                     String pricepeoduct = String.format("%.2f", response.body().getData().get(0).getPricePerLot());
-                    price_txt.setText("Price/KG: "+currency);
+                    price_txt.setText("Price/KG : "+currency);
 
 
 

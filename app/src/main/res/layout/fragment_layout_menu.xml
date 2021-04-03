@@ -379,7 +379,7 @@
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_your_address"
                     android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:text="My Addresses"
+                    android:text="@string/myaddress"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 

@@ -161,7 +161,7 @@
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/proxima_nova_alt_light"
                     android:paddingLeft="8dp"
-                    android:text="Discription"
+                    android:text="@string/Discription"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 

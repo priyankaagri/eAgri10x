@@ -48,7 +48,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="5dp"
                             android:padding="5dp"
-                            android:text="out of Stock"
                             android:textColor="@color/white"
                             android:textSize="10sp" />
                     </LinearLayout>
@@ -143,7 +142,7 @@
                                 android:paddingHorizontal="20dp"
                                 android:paddingVertical="5dp"
                                 android:layout_marginLeft="20dp"
-                                android:text="Trade now"
+                                android:text="@string/Trade_Now"
                                 android:textColor="@color/white"
                                 android:textSize="16sp" />
 

@@ -26,7 +26,7 @@
             android:layout_alignBaseline="@id/but_back"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/but_back"
-            android:text="Delivery/Payments"
+            android:text="@string/Delivery_Payments"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -148,7 +148,7 @@
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="+ Add new Address"/>
+                    android:text="@string/add_new_address"/>
             </LinearLayout>
 
 
@@ -199,7 +199,7 @@
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="+ Add new Address"/>
+                    android:text="@string/add_new_address"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -377,7 +377,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/proximanova_regular"
-                android:hint="@string/please_deleiver_it_before"
+                android:hint="@string/packaging_deatils"
                 android:inputType="text"
                 android:padding="10dp"
                 android:singleLine="true"
@@ -530,7 +530,7 @@
                 android:gravity="right"
                 android:fontFamily="@font/proxima_nova_alt_bold"
                 android:layout_marginBottom="5dp"
-                android:text="@string/upto_onelak"
+                android:text="@string/morethenone"
                 android:layout_marginHorizontal="30dp"
                 android:layout_height="wrap_content">
 

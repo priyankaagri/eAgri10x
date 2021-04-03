@@ -48,7 +48,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="5dp"
                             android:padding="5dp"
-                            android:text="Non Verified"
+                           android:fontFamily="@font/proxima_nova_alt_condensed_bold"
                             android:textColor="@color/white"
                             android:textSize="10sp" />
                     </LinearLayout>

@@ -100,7 +100,7 @@ android:visibility="gone"
                 android:paddingTop="4dp"
                 android:paddingRight="15dp"
                 android:paddingBottom="8dp"
-                android:text="Trade Now"
+                android:text="@string/Trade_Now"
 
                 android:textAlignment="center"
                 android:textColor="@color/white" />

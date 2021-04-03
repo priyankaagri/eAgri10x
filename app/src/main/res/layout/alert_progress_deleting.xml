@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:gravity="center"
-        android:text="Removing Commodity..."/>
+        android:text="@string/RemovingCommodity"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

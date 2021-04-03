@@ -38,7 +38,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/btn_back_profile_id"
                     android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:text="User Details"
+                    android:text="@string/User_Details"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -60,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proxima_nova_bold"
-                        android:text=" First Name"
+                        android:text="@string/fname"
                         android:textSize="14sp" />
 
                     <TextView
@@ -106,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proxima_nova_bold"
-                        android:text=" Last Name"
+                        android:text="@string/lname"
                         android:textSize="14sp" />
 
                     <TextView
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/proxima_nova_bold"
-                    android:text=" Email Id"
+                    android:text="@string/Email_Id"
                     android:textSize="14sp" />
 
                 <EditText
@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/proxima_nova_bold"
-                    android:text=" Phone Number"
+                    android:text="@string/phon_numbr"
                     android:textSize="14sp" />
 
                 <EditText
@@ -220,7 +220,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/btn_round"
                 android:padding="10dp"
-                android:text="SAVE" />
+                android:text="@string/SAVE" />
         </LinearLayout>
     </ScrollView>
 

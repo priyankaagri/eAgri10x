@@ -134,7 +134,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/appgreen"
                 android:padding="10dp"
-                android:text="Trade Now"
+                android:text="@string/Trade_Now"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
             <TextView
@@ -145,7 +145,7 @@
                 android:layout_centerInParent="true"
                 android:textAllCaps="true"
                 android:padding="10dp"
-                android:text="quote your price"
+                android:text="@string/quote_your_price"
                 android:background="@color/orange"
                 android:textAlignment="center"
                 android:textColor="@color/white"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activities.LocationActivity">
 
     <LinearLayout
@@ -16,7 +17,7 @@
         <TextView
 
             android:layout_width="match_parent"
-            android:text="Welcome to Agri10x"
+            android:text="@string/welcometoagri10x"
             android:layout_marginTop="50dp"
             android:layout_gravity="top"
             android:gravity="center"
@@ -30,9 +31,10 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:gravity="center"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="15dp"
             android:textColor="@color/text_color"
-            android:text="Let's first check  that  we  deliver \n to your address"/>
+            android:text="@string/letscheck"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -49,7 +51,7 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
-            android:text="Choose Location"/>
+            android:text="@string/ChooseLocation"/>
 
 
 
@@ -61,14 +63,15 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:textColor="@color/text_color"
-            android:text="Choose your Location and \n start shopping"/>
+            android:layout_marginHorizontal="30dp"
+            android:text="@string/chooseyourloc"/>
 
         <Button
             android:id="@+id/loction_btn"
             android:layout_marginTop="40dp"
             android:layout_marginHorizontal="50dp"
             android:layout_width="match_parent"
-            android:text="USE CURRENT LOCATION"
+            android:text="@string/USECURRENTLOCATION"
             android:drawableLeft="@drawable/currentlocation"
             android:background="@drawable/btn_round"
             android:layout_height="wrap_content">
@@ -82,7 +85,7 @@
             android:textSize="18sp"
             android:layout_marginTop="30dp"
             android:textColor="@color/appgreen"
-            android:text="Select it Mannually"
+            android:text="@string/SelectitMannually"
             android:layout_height="wrap_content">
 
         </TextView>

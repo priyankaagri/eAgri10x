@@ -252,7 +252,7 @@
 
                 android:background="@drawable/btn_round"
 
-                android:text="Trade Now"
+                android:text="@string/Trade_Now"
                 android:layout_marginBottom="5dp"
                 android:textAlignment="center"
 

@@ -63,7 +63,7 @@
                 android:fontFamily="@font/proxima_nova_bold"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Booking"
+                android:text="@string/Booking"
                 android:textColor="@color/white"></TextView>
 
             <TextView
@@ -76,7 +76,7 @@
                 android:fontFamily="@font/proxima_nova_bold"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Purchase"
+                android:text="@string/purches"
                 android:textColor="@color/black"></TextView>
 
         </LinearLayout>

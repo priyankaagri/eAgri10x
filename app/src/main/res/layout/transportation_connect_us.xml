@@ -301,7 +301,7 @@
                     android:paddingLeft="12dp"
                     android:paddingBottom="5dp"
                     android:textSize="15sp"
-                    android:text="Type of transport"
+                    android:text="@string/Type_of_transport"
                     android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_height="wrap_content"/>
                 <Spinner
@@ -318,7 +318,7 @@
                     android:layout_marginTop="15dp"
                     android:paddingBottom="5dp"
                     android:textSize="15sp"
-                    android:text="Weight of transport"
+                    android:text="@string/Weight_of_transport"
                     android:fontFamily="@font/proxima_nova_alt_bold"
                     android:layout_height="wrap_content"/>
                 <Spinner
@@ -342,7 +342,7 @@
 
                         android:layout_marginLeft="15dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
-                        android:text="Price/KG"
+                        android:text="@string/price_kg"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
                     <TextView
@@ -383,7 +383,7 @@
 
                         android:layout_marginLeft="15dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
-                        android:text="Operating State"
+                        android:text="@string/Operating_State"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
                     <TextView

@@ -104,7 +104,7 @@
                         android:gravity="center"
                         android:id="@+id/addmoney"
                         android:layout_marginBottom="10dp"
-                        android:text="Add Money"
+                        android:text="@string/Add_Money"
                         android:textColor="@color/white"
                         android:background="@drawable/btn_round"
 
@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="Account Title"
+                        android:text="@string/Account_Title"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:textColor="@color/black"
                         android:textSize="18sp">
@@ -170,7 +170,7 @@
                     android:focusable="false"
                     android:fontFamily="@font/proximanova_regular"
                     android:textColor="@color/black"
-                    android:text="ICOGNITIVE GLOBAL PRIVATE LIMITED NODAL AC"
+                    android:text="@string/ICOGNITIVE"
                     android:textSize="16sp" />
 
                 <RelativeLayout
@@ -182,7 +182,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="Beneficiary Account Number"
+                        android:text="@string/Beneficiary_Account_Number"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:textColor="@color/black"
                         android:textSize="18sp">
@@ -226,7 +226,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="IFSC"
+                        android:text="@string/IFSC"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:textColor="@color/black"
                         android:textSize="18sp">
@@ -255,7 +255,7 @@
                     android:focusable="false"
                     android:textColor="@color/black"
                     android:fontFamily="@font/proximanova_regular"
-                    android:text="YESB0CMSNOC (5th alphabet is zero)"
+                    android:text="@string/YESB0CMSNOC"
                     android:textSize="16sp"
 
                     />
@@ -269,7 +269,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="Bank Name"
+                        android:text="@string/Bank_Name"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:textColor="@color/black"
                         android:textSize="18sp">
@@ -297,7 +297,7 @@
                     android:layout_marginTop="15dp"
                     android:clickable="false"
                     android:focusable="false"
-                    android:text="Yes Bank"
+                    android:text="@string/Yes_Bank"
                     android:fontFamily="@font/proximanova_regular"
                     android:textSize="16sp"
                     android:textColor="@color/black"

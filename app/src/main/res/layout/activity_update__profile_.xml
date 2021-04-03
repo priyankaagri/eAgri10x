@@ -31,12 +31,14 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:fontFamily="@font/proxima_nova_bold"
-                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" First Name"/>
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:text="@string/fname"
+                    android:textSize="14sp" />
+
                 <EditText
                     android:id="@+id/et_firstname"
                     android:inputType="textPersonName"
@@ -51,7 +53,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Last Name"/>
+                    android:text="@string/lname"/>
                 <EditText
                     android:id="@+id/et_lastname"
                     android:inputType="textPersonName"
@@ -66,7 +68,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email Id"/>
+                    android:text="@string/Email_Id"/>
                 <EditText
                     android:id="@+id/et_email"
                     android:fontFamily="@font/proxima_nova_alt_condensed_bold"
@@ -80,7 +82,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone Number"/>
+                    android:text="@string/phon_numbr"/>
                 <EditText
                     android:id="@+id/et_number"
                     android:inputType="number"
@@ -96,7 +98,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address"/>
+                    android:text="@string/Address"/>
                 <EditText
                     android:id="@+id/et_address"
                     android:fontFamily="@font/proxima_nova_alt_condensed_bold"
@@ -111,7 +113,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address1"/>
+                    android:text="@string/Address1"/>
                 <EditText
                     android:id="@+id/et_addtess1"
                     android:inputType="textPostalAddress"
@@ -127,7 +129,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address2"/>
+                    android:text="@string/Address2"/>
                 <EditText
                     android:id="@+id/et_address2"
                     android:inputType="textPostalAddress"
@@ -142,7 +144,7 @@
                     android:layout_height="16dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/proxima_nova_bold"
-                    android:text="City"
+                    android:text="string/City"
                     android:textSize="14sp" />
                 <EditText
                     android:id="@+id/et_city"
@@ -157,7 +159,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="State"/>
+                    android:text="@string/State"/>
                 <EditText
                     android:id="@+id/et_state"
                     android:fontFamily="@font/proxima_nova_alt_condensed_bold"
@@ -171,7 +173,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Country"/>
+                    android:text="@string/Country"/>
                 <EditText
                     android:id="@+id/et_country"
                     android:fontFamily="@font/proxima_nova_alt_condensed_bold"
@@ -186,7 +188,7 @@
                 android:id="@+id/save_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SAVE"
+                android:text="@string/SAVE"
                 android:padding="10dp"
                 android:background="@drawable/btn_round"
                 android:layout_marginLeft="20dp"

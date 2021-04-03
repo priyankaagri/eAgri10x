@@ -308,7 +308,7 @@
                         android:paddingLeft="15dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:text="Stock Type"
+                        android:text="@string/Stock_Type"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                     <TextView
@@ -356,7 +356,7 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
 
-                        android:text="States"
+                        android:text="@string/State"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                     <TextView

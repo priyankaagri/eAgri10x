@@ -27,7 +27,7 @@
             android:layout_alignBaseline="@id/but_back"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/but_back"
-            android:text="E-Collect"
+            android:text="@string/E_Collect"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/proximanova_regular"
-                android:text="Please find below the E-Collect Details. You can transfer the payment amount using your netbanking."
+                android:text="@string/E_Collect_detail"
                 android:textColor="@color/black"
                 android:textSize="15sp"></TextView>
 
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="Account Title"
+                        android:text="@string/Account_Title"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:textColor="@color/black"
                         android:textSize="18sp">
@@ -103,7 +103,7 @@
                     android:focusable="false"
                     android:fontFamily="@font/proximanova_regular"
                     android:textColor="@color/black"
-                    android:text="ICOGNITIVE GLOBAL PRIVATE LIMITED NODAL AC"
+                    android:text="@string/ICOGNITIVE"
                     android:textSize="16sp" />
 
                 <RelativeLayout
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="Beneficiary Account Number"
+                        android:text="@string/Beneficiary_Account_Number"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:textColor="@color/black"
                         android:textSize="18sp">
@@ -154,13 +154,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="IFSC"
                         android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:text="@string/IFSC"
                         android:textColor="@color/black"
                         android:textSize="18sp">
 
@@ -188,7 +189,7 @@ android:id="@+id/ifsc_txt"
                     android:focusable="false"
                     android:textColor="@color/black"
                     android:fontFamily="@font/proximanova_regular"
-                    android:text="YESB0CMSNOC (5th alphabet is zero)"
+                    android:text="@string/YESB0CMSNOC"
                     android:textSize="16sp"
 
                     />
@@ -202,7 +203,7 @@ android:id="@+id/ifsc_txt"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="Bank Name"
+                        android:text="@string/Bank_Name"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:textColor="@color/black"
                         android:textSize="18sp">
@@ -230,7 +231,7 @@ android:id="@+id/txt_bank_name"
                     android:layout_marginTop="15dp"
                     android:clickable="false"
                     android:focusable="false"
-                    android:text="Yes Bank"
+                    android:text="@string/Yes_Bank"
                     android:fontFamily="@font/proximanova_regular"
                     android:textSize="16sp"
                     android:textColor="@color/black"
@@ -245,8 +246,7 @@ android:id="@+id/txt_bank_name"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/proximanova_regular"
-                android:text="In case you have already made the payment using E-Collect,please click the button below while we confirm the payment.Please note that the payment can take upto 30 mins to reflect.
-"
+                android:text="@string/paymentnote"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -257,7 +257,7 @@ android:id="@+id/txt_bank_name"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15sp"
                 android:layout_marginTop="20dp"
-                android:text="I HVAE MADE THE PAYMENT">
+                android:text="@string/I_have_made_paymeny">
 
             </Button>
 

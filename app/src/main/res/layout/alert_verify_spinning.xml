@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:gravity="center"
-        android:text="Verifying OTP..."/>
+        android:text="@string/VerifyingOTP"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

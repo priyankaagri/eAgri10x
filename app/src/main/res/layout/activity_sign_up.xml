@@ -115,7 +115,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Register As"
+                    android:text="@string/Register_As"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_weight="6"
@@ -168,7 +168,7 @@
             android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Account"
+            android:text="@string/Create_Account"
             android:padding="10dp"
             android:background="@drawable/btn_round"
             android:layout_marginLeft="20dp"
@@ -183,13 +183,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
-                android:text="@string/facetouble"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:fontFamily="@font/proximanova_regular"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:text="@string/facetouble" />
 
             <TextView
                 android:text="@string/callus"

@@ -34,7 +34,7 @@
             android:layout_alignBaseline="@id/but_back"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/but_back"
-            android:text="Trade Value"
+            android:text="@string/Trade_Value"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -81,7 +81,7 @@
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Trade Amount"/>
+        android:text="@string/Total_Trade_Amount"/>
     <TextView
         android:id="@+id/totaltradeamount"
       android:textStyle="bold"
@@ -111,7 +111,7 @@
     android:layout_marginHorizontal="4dp"
     android:padding="10dp"
     android:textAllCaps="true"
-    android:text="order book"
+    android:text="@string/order_book"
     android:textAlignment="center"
     android:background="@drawable/btn_round_orange"
     android:textColor="@color/white"
@@ -125,7 +125,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_round"
             android:padding="10dp"
-            android:text="PURCHASE"
+            android:text="@string/PURCHASE"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"

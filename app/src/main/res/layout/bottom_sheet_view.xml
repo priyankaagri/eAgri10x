@@ -49,7 +49,7 @@
                     android:paddingLeft="8dp"
                     android:paddingTop="16dp"
                     android:layout_marginLeft="15dp"
-                    android:text="Add Address"
+                    android:text="@string/Add_Address"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 

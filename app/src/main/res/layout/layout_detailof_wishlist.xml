@@ -102,18 +102,17 @@ android:layout_marginTop="8dp"
         android:layout_height="1dp">
 
     </View>
+
     <TextView
         android:id="@+id/txt_delete"
         android:layout_width="match_parent"
-        android:text="Delete"
-        android:padding="15dp"
-        android:textSize="16sp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/proxima_nova_alt_bold"
-        android:layout_height="wrap_content">
+        android:padding="15dp"
+        android:text="@string/Delete"
+        android:textSize="16sp">
 
     </TextView>
-
-
 
 
 </LinearLayout>

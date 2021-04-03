@@ -40,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddressFragment extends Fragment {
+public class MyAddressFragment extends Fragment {
 
     Activity activity;
     Context context;

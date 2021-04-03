@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".Fragments.SeeAllDailyDealsFeaturedFragment">
+   >
 <LinearLayout
     android:id="@+id/lin1"
    android:layout_above="@+id/totallayout"

@@ -198,8 +198,8 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             public void onResponse(Call<GetAddAddress> call, Response<GetAddAddress> response) {
                 Log.d("ADDRESSSAVING", response.toString());
                 if (response.isSuccessful()) {
-                    HomePageActivity.removeFragment(new AddressFragment());
-                    HomePageActivity.setFragment(new AddressFragment(),"addadress");
+                    HomePageActivity.removeFragment(new MyAddressFragment());
+                    HomePageActivity.setFragment(new MyAddressFragment(),"addadress");
                     Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
 
 

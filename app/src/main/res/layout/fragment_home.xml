@@ -537,7 +537,7 @@ android:visibility="gone"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="@dimen/text_size_small"
                 android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="@string/our_services"
+                android:text="@string/register_as"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
 

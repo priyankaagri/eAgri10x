@@ -159,7 +159,7 @@ public class MenuFragment extends Fragment {
     }
 
     private void openAddressFragment() {
-        AddressFragment addressFragment=new AddressFragment();
+        MyAddressFragment addressFragment=new MyAddressFragment();
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment, addressFragment,VERIFY_ACCOUNT_TAG);
         fragmentTransaction.addToBackStack(null);
@@ -242,10 +242,10 @@ public class MenuFragment extends Fragment {
 
     private void showAlertDialogButtonClicked() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Logout");
-        builder.setMessage(" Are you sure you want to Logout?");
+        builder.setTitle(R.string.logout);
+        builder.setMessage(R.string.you_want_logout);
         // add the buttons
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // do something like...
@@ -258,14 +258,14 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // do something like...
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("Cancel", null);
+        builder.setNegativeButton(R.string.cancel, null);
         // create and show the alert dialog
         AlertDialog dialog = builder.create();
         dialog.show();

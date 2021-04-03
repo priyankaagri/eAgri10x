@@ -108,7 +108,7 @@
     <string name="viewall">See All</string>
     <string name="top_picks">Top Picks</string>
     <string name="catogery_list">Catogery List</string>
-    <string name="our_services">Register As</string>
+    <string name="register_as">Register As</string>
     <string name="i_am_famr">I am a Farmer</string>
     <string name="i_am_trader">I am a Trader</string>
     <string name="i_am_fpo">I am a FPO</string>
@@ -378,7 +378,7 @@
     <string name="i_am_loader">I am a Loader</string>
 
     <string name="remove_product">Remove Product!</string>
-    <string name="youwant_toremove">Are you sure you want to Remove?</string>
+    <string name="youwant_toremove">Are you sure you want to Remove ?</string>
 
 
     <string name="transportation">Transportation</string>
@@ -390,4 +390,10 @@
     <string name="features">Select Features</string>
     <string name="stock_type">Stock Type</string>
     <string name="select_state">Select State</string>
+
+
+    <string name="logout">Logout</string>
+    <string name="you_want_logout">Are you sure you want to Logout ?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 </resources>

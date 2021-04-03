@@ -186,10 +186,10 @@ int getWaight=holder.getAdapterPosition();
             public void onClick(View v) {
 
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
-                builder.setTitle("Remove Product!");
-                builder.setMessage("Are you sure you want to remove?");
+                builder.setTitle(R.string.remove_product);
+                builder.setMessage(R.string.youwant_toremove);
 // add the buttons
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 // do something like...
@@ -199,14 +199,14 @@ int getWaight=holder.getAdapterPosition();
 
                 });
 
-                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 // do something like...
                         dialog.dismiss();
                     }
                 });
-                builder.setNegativeButton("Cancel", null);
+                builder.setNegativeButton(R.string.cancel, null);
 // create and show the alert dialog
                 androidx.appcompat.app.AlertDialog dialog = builder.create();
                 dialog.show();

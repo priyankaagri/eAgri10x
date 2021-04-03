@@ -166,7 +166,7 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 String pos = spin_deladdress.getSelectedItem().toString();
 
-                Log.d("selectedadddel",pos);
+
                 for(int i= 0 ;i < billingadd.size() ; i++)
                 {
 
@@ -191,7 +191,7 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String pos = spin_billingaddress.getSelectedItem().toString();
 
-                Log.d("selectedaddbilling",pos);
+
                 for(int i= 0 ;i < billingadd.size() ; i++)
                 {
 
@@ -286,8 +286,8 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 strpackagingdetails = edt_packagingdatail.getText().toString();
 
-                Log.d("valuestosend",struserid+" "+billingaddressID+" "+shippingaddressId+" "+strdelcontactperosn+" "+strmobileno+
-                        " "+strpurchaseamount+" "+strpackagingdetails+" "+strdelnote);
+//                Log.d("valuestosend",struserid+" "+billingaddressID+" "+shippingaddressId+" "+strdelcontactperosn+" "+strmobileno+
+//                        " "+strpurchaseamount+" "+strpackagingdetails+" "+strdelnote);
 
                 if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
                         && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno) && validatePurchaseAmount(strpurchaseamount) )
@@ -359,14 +359,14 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onResponse(Call<getAddress> call,
                                    Response<getAddress> response) {
 
-                Log.d("getapiaddress",response.toString());
+
 
 
                 if (response.isSuccessful()) {
                     onlybillingaddressname.add("Select Address");
                     onlydeladdressname.add("Select Address");
                     billingadd.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(billingadd.size()));
+
 
 
                     for(int i=0; i < billingadd.size();i++){
@@ -382,14 +382,14 @@ public class PurchaseOrderFargment extends Fragment  {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<getAddress> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -436,13 +436,13 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                Log.d("GetStatelist", response.toString());
+
 
                 if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                     getstateArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                     onlystatename.clear();
                     for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -454,7 +454,7 @@ public class PurchaseOrderFargment extends Fragment  {
                     ss_statebilling.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -486,12 +486,12 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onResponse(Call<GetCities> call, Response<GetCities> response) {
 
-                Log.d("GetCitylist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
                     getcityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getcityeArrayList.size()));
+
                     for (int i = 0; i < getcityeArrayList.size(); i++) {
                         String city = getcityeArrayList.get(i).getCities();
                         onlycityname.add(city);
@@ -502,7 +502,7 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -551,7 +551,7 @@ public class PurchaseOrderFargment extends Fragment  {
                     ss_statedel.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -598,7 +598,7 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -861,24 +861,24 @@ public class PurchaseOrderFargment extends Fragment  {
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override
             public void onResponse(Call<GetAddAddress> call, Response<GetAddAddress> response) {
-                Log.d("ADDRESSSAVING", response.toString());
+
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.addressadd, Toast.LENGTH_LONG).show();
                     dialogbilling.dismiss();
                     PurchaseOrderFargment fragment = (PurchaseOrderFargment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                     getActivity().getSupportFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -909,24 +909,24 @@ public class PurchaseOrderFargment extends Fragment  {
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override
             public void onResponse(Call<GetAddAddress> call, Response<GetAddAddress> response) {
-                Log.d("ADDRESSSAVING", response.toString());
+
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.addressadd, Toast.LENGTH_LONG).show();
                     dialogbilling.dismiss();
                     BookOrderFragment fragment = (BookOrderFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                     getActivity().getSupportFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -1160,7 +1160,7 @@ public class PurchaseOrderFargment extends Fragment  {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1197,7 +1197,7 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onResponse(Call<GetCreateOrder> call,
                                    Response<GetCreateOrder> response) {
 
-                Log.d("bookdeatils",response.toString());
+
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Success")){
@@ -1215,14 +1215,14 @@ public class PurchaseOrderFargment extends Fragment  {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetCreateOrder> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
 

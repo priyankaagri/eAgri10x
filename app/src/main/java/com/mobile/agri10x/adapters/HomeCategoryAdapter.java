@@ -47,17 +47,17 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
         holder.txt_title.setText(dataList.get(position).getCategoryName());
 
         if(position==0){
-            holder.img_category.setImageResource(R.drawable.grains_img);
+            holder.img_category.setImageResource(R.drawable.pulses_cat);
         } else if(position==1){
-            holder.img_category.setImageResource(R.drawable.pulses_img);
+            holder.img_category.setImageResource(R.drawable.grains_cat);
         }else if(position==2){
-            holder.img_category.setImageResource(R.drawable.fruits_img);
+            holder.img_category.setImageResource(R.drawable.fruits_cat);
         } else if(position==3){
-            holder.img_category.setImageResource(R.drawable.vegetable_img);
+            holder.img_category.setImageResource(R.drawable.spices_cat);
         } else if(position==4){
-            holder.img_category.setImageResource(R.drawable.spices_img);
+            holder.img_category.setImageResource(R.drawable.vegitable_cat);
         } else if(position==5){
-            holder.img_category.setImageResource(R.drawable.spices_img);
+            holder.img_category.setImageResource(R.drawable.flower_cat);
         }
 holder.lin_category.setOnClickListener(new View.OnClickListener() {
     @Override

@@ -184,7 +184,7 @@ android:visibility="gone"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:padding="15dp"
-                            android:src="@drawable/vegetable_img" />
+                             />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -209,7 +209,7 @@ android:visibility="gone"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:padding="15dp"
-                            android:src="@drawable/fruits_img" />
+                     />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -234,7 +234,7 @@ android:visibility="gone"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:padding="15dp"
-                            android:src="@drawable/grains_img" />
+                            />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -259,7 +259,7 @@ android:visibility="gone"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:padding="15dp"
-                            android:src="@drawable/pulses_img" />
+                          />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -284,7 +284,7 @@ android:visibility="gone"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:padding="15dp"
-                            android:src="@drawable/spices_img" />
+                          />
 
                         <TextView
                             android:layout_width="match_parent"

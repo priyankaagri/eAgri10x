@@ -409,11 +409,11 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                     String numberOnly = message.replaceAll("[^0-9]", "");
 //numberOnly 10886110
 
-                    String a = numberOnly.substring(2);
-
-                    strotpfrmmsg = a.substring(0, a.length() - 2);
-                    if (strotpfrmmsg != null) {
-                        otp_view.setOTP(strotpfrmmsg);
+//                    String a = numberOnly.substring(2);
+//
+//                    strotpfrmmsg = a.substring(0, a.length() - 2);
+                    if (numberOnly != null) {
+                        otp_view.setOTP(numberOnly);
                     }
 
                 }

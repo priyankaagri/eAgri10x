@@ -70,8 +70,8 @@ public interface AgriInvestor {
     Call<GetOTP> wsgetOTP(@Header("x-auth-token") String token,@Body RequestBody params);
     @POST("m/verifyOTPNew")
     Call<VerifyOTP> wsgetVerifyOTP(@Header("x-auth-token") String token,@Body RequestBody params);
-    @POST("m/resendOTP")
-    Call<GetResendOTP> wsgetresendOTP(@Header("x-auth-token") String token,@Body RequestBody params);
+//    @POST("m/resendOTP")
+//    Call<GetResendOTP> wsgetresendOTP(@Header("x-auth-token") String token,@Body RequestBody params);
     @POST("m/homepageProducts")
     Call<GetHomeProduct> wsgetHomeProduct(@Header("x-auth-token") String token,@Body GetQueryDailyDeals getQueryDailyDeals);
     @GET("m/getCategories")

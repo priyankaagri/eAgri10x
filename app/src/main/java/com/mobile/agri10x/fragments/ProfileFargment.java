@@ -192,7 +192,7 @@ public class ProfileFargment extends Fragment {
                     et_mobilenumber.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.iconverify, 0);
                     et_mobilenumber.setText(number);
                 } else {
-                    dialog.dismiss();
+
                     Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -200,6 +200,7 @@ public class ProfileFargment extends Fragment {
             @Override
             public void onFailure(Call<GetUser> call,
                                   Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });

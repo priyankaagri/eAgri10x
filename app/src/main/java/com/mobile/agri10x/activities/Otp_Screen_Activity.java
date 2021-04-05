@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.mobile.agri10x.R;
 
+import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetResendOTP;
 import com.mobile.agri10x.models.VerifyOTP;
 import com.mobile.agri10x.retrofit.AgriInvestor;
@@ -198,28 +199,30 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             e.printStackTrace();
         }
         //AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
-        final Call<GetResendOTP> loginCall = apiService.wsgetresendOTP("123456",
+        final Call<GetOTP> loginCall = apiService.wsgetOTP("123456",
                 body);
-        loginCall.enqueue(new Callback<GetResendOTP>() {
+        loginCall.enqueue(new Callback<GetOTP>() {
             @SuppressLint("WrongConstant")
             @Override
-            public void onResponse(Call<GetResendOTP> call,
-                                   Response<GetResendOTP> response) {
+            public void onResponse(Call<GetOTP> call,
+                                   Response<GetOTP> response) {
                 dialogresend.dismiss();
-
-                if (response.isSuccessful()) {
-
+                if(response.body().getOut() == 5)
+                {
                     startTimer();
                     btn_varify_otp.setVisibility(View.VISIBLE);
-                    Toast.makeText(Otp_Screen_Activity.this, "Verification code resend successfully.", Toast.LENGTH_SHORT).show();
-                } else {
+                    otp_view.setOTP("");
 
+                    Toast.makeText(Otp_Screen_Activity.this, "Verification code resend successfully.", Toast.LENGTH_SHORT).show();
+
+                }else {
                     Toast.makeText(Otp_Screen_Activity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<GetResendOTP> call,
+            public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
                 dialogresend.dismiss();
                 Toast.makeText(Otp_Screen_Activity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();

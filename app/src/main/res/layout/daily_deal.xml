@@ -11,8 +11,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_margin_small"
-            android:layout_marginRight="@dimen/activity_margin_small"
+
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
@@ -21,6 +20,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_marginLeft="5dp"
                     android:id="@+id/txt_title"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

@@ -65,9 +65,9 @@ import retrofit2.Response;
 
 
 public class AddStockFragment extends Fragment implements OnItemClickListener {
-    private ImageView mBackButton;
+
     public ArrayList<String> featuresids = new ArrayList<>();
-    public ArrayList<String> emptyfeaturesid = new ArrayList<>();
+
     SearchableSpinner spinner_commodity, spinner_variety, spinner_state, spinner_city;
     EditText edt_quantity, edt_priceperkg, edt_address, edt_taluka, edt_pincode, edt_country, edt_discription;
     TextView txt_valid_from, txt_valid_to;
@@ -77,7 +77,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     List<GetCitiesDatum> getCityeArrayList = new ArrayList<>();
     ArrayList<String> onlystatename = new ArrayList<>();
     ArrayList<String> onlycityname = new ArrayList<>();
-    ArrayList<String> blacklist = new ArrayList<>();
+
     List<GetCommoditiesDatum> getcommodityArraylist = new ArrayList<>();
     List<String> onlycommodityname = new ArrayList<>();
     List<GetVarietiesDatum> getvarietyArraylist = new ArrayList<>();
@@ -174,12 +174,12 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             public void onItemSelected(View view, int position, long id) {
                 String pos = spinner_state.getSelectedItem().toString();
                 str_state = pos;
-                Log.d("selectedstatebill", pos);
+
                 for (int i = 0; i < getstateArrayList.size(); i++) {
                     String addstr = getstateArrayList.get(i).getState();
                     if (pos.equals(addstr)) {
                         stateId = getstateArrayList.get(i).getId();
-                        Log.d("stateId", stateId);
+
 
                         callapigetcities(stateId);
 
@@ -197,7 +197,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             public void onItemSelected(View view, int position, long id) {
                 String pos = spinner_city.getSelectedItem().toString();
                 str_city = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getCityeArrayList.size(); i++) {
                     String addstr = getCityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
@@ -216,12 +216,12 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             public void onItemSelected(View view, int position, long id) {
                 String pos = spinner_commodity.getSelectedItem().toString();
                 str_commodity = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getcommodityArraylist.size(); i++) {
                     String addstr = getcommodityArraylist.get(i).getCommodity();
                     if (pos.equals(addstr)) {
                         commodity_id = getcommodityArraylist.get(i).getId();
-                        Log.d("commodity_id", commodity_id);
+
                         str_commodityid = commodity_id;
 
 
@@ -244,7 +244,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             public void onItemSelected(View view, int position, long id) {
                 String pos = spinner_variety.getSelectedItem().toString();
                 str_variety = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getvarietyArraylist.size(); i++) {
                     String addstr = getvarietyArraylist.get(i).getVariety();
 
@@ -273,7 +273,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                 str_pincode = edt_pincode.getText().toString();
                 str_country = edt_country.getText().toString();
                 str_discription = edt_discription.getText().toString();
-                Log.d("getvalues",str_quantity+" "+str_priceperkg+" "+str_address+" "+str_taluka+" "+str_pincode+" "+str_country+" "+str_discription+" "+str_commodityid+" "+str_varietyid);
+
                 if (validatecommodity(str_commodityid) && validatevariety(str_varietyid)&&validatediscription(str_discription) && validatequantity(str_quantity) && validatepriceperkg(str_priceperkg) &&
                         validatedatefrom(strDatefrom) && validatedateto(strDateto) && validateaddress(str_address) && validatetaluka(str_taluka) &&
                         validatestate(str_state) && validatecity(str_city) && validatepincode(str_pincode) && validatecountry(str_country) && validatefeatures(featuresids))
@@ -281,9 +281,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                     callApiaddStock(str_commodityid, str_varietyid, str_discription, str_quantity, str_priceperkg, strDatefrom, strDateto, str_address, str_taluka, str_state, str_city, str_pincode, str_country);
 
                 }
-                else{
-                    Toast.makeText(getActivity(),"not valid",Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
         return view;
@@ -311,12 +309,12 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             @Override
             public void onResponse(Call<GetFeaturesbyCommodity> call, Response<GetFeaturesbyCommodity> response) {
 
-                Log.d("getfeatureresponse", response.toString());
+
 
                 if (response.isSuccessful()) {
 
                     getfeatureArraylist.addAll(response.body().getData());
-                    Log.d("getfeatureArraylist", String.valueOf(getfeatureArraylist.size()));
+
                     if (getfeatureArraylist.size() > 0) {
                         recyclerview_features.setVisibility(View.VISIBLE);
                         for (int i = 0; i < getfeatureArraylist.size(); i++) {
@@ -384,7 +382,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             @Override
             public void onResponse(Call<GetAddNewStock> call, Response<GetAddNewStock> response) {
 
-                Log.d("addstockresponse", response.toString());
+
 
                 if (response.isSuccessful()) {
                     HomePageActivity.removeFragment(new AddStockFragment());
@@ -448,14 +446,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
         return true;
     }
 
-    private boolean validatediscripition(String str_discription) {
-        if (str_discription.isEmpty() || str_discription == null) {
-            Toast.makeText(getActivity(),
-                    "State is Required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
+
 
     private boolean validatetaluka(String str_taluka) {
         if (str_taluka.isEmpty() || str_taluka == null) {
@@ -558,12 +549,12 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             @Override
             public void onResponse(Call<GetVarieties> call, Response<GetVarieties> response) {
 
-                Log.d("GetCitylist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     onlyvarietyname.clear();
                     getvarietyArraylist.addAll(response.body().getData());
-                    Log.d("getvariety", String.valueOf(getCityeArrayList.size()));
+
                     for (int i = 0; i < getvarietyArraylist.size(); i++) {
                         String city = getvarietyArraylist.get(i).getVariety();
                         onlyvarietyname.add(city);
@@ -606,13 +597,13 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             @Override
             public void onResponse(Call<GetCommodities> call, Response<GetCommodities> response) {
 
-                Log.d("GetStatelist", response.toString());
+
 
                 if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                     getcommodityArraylist.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                     onlycommodityname.clear();
                     for (int i = 0; i < getcommodityArraylist.size(); i++) {
@@ -656,12 +647,12 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             @Override
             public void onResponse(Call<GetCities> call, Response<GetCities> response) {
 
-                Log.d("GetCitylist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
                     getCityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
+
                     for (int i = 0; i < getCityeArrayList.size(); i++) {
                         String city = getCityeArrayList.get(i).getCities();
                         onlycityname.add(city);
@@ -703,13 +694,13 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
             @Override
             public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                Log.d("GetStatelist", response.toString());
+
 
                 if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                     getstateArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                     onlystatename.clear();
                     for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -743,7 +734,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     @Override
     public void OnItemClick(ArrayList<String> featuresid) {
         featuresids = featuresid;
-        Log.d("featuresidsfomfrag", String.valueOf(featuresids));
+
     }
 
     @Override

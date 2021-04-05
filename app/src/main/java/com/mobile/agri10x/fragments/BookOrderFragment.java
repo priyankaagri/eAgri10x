@@ -162,7 +162,7 @@ public class BookOrderFragment extends Fragment {
         System.out.println("Currency in INDIA : " + currency);
         String pricepeoduct = String.format("%.2f", Double.parseDouble(amt));
         totalamt.setText(currency);
-        Log.d("getamt", String.valueOf(damt));
+
 
         callapigetAddress();
 
@@ -173,7 +173,7 @@ public class BookOrderFragment extends Fragment {
 
                 String pos = spin_deladdress.getSelectedItem().toString();
 
-                Log.d("selectedadddel",pos);
+
                 for(int i= 0 ;i < billingadd.size() ; i++)
                 {
 
@@ -184,7 +184,7 @@ public class BookOrderFragment extends Fragment {
                     }
                 }
 
-             //   Log.d("shiip_add_id",shippingaddressId);
+
             }
 
             @Override
@@ -198,7 +198,7 @@ public class BookOrderFragment extends Fragment {
        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                    String pos = spin_billingaddress.getSelectedItem().toString();
 
-        Log.d("selectedaddbilling",pos);
+
         for(int i= 0 ;i < billingadd.size() ; i++)
         {
 
@@ -211,7 +211,7 @@ public class BookOrderFragment extends Fragment {
             }
         }
 
-       // Log.d("billing_add_id",billingaddressID);
+
        }
 
        @Override
@@ -298,8 +298,7 @@ public class BookOrderFragment extends Fragment {
 
                 strpackagingdetails = edt_packagingdatail.getText().toString();
 
-                Log.d("valuestosend",struserid+" "+billingaddressID+" "+shippingaddressId+" "+strdelcontactperosn+" "+strmobileno+
-                        " "+strpercentinpoint+" "+strbookingamtasparam+" "+strpendingamtasparam+" "+strdelnote+" "+strpackagingdetails);
+
 
                 if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
                         && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno)
@@ -332,8 +331,7 @@ public class BookOrderFragment extends Fragment {
 
                 strpackagingdetails = edt_packagingdatail.getText().toString();
 
-                Log.d("valuestosend",struserid+" "+billingaddressID+" "+shippingaddressId+" "+strdelcontactperosn+" "+strmobileno+
-                        " "+strpercentinpoint+" "+strbookingamtasparam+" "+strpendingamtasparam+" "+strdelnote+" "+strpackagingdetails);
+
 
               if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
                       && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno)
@@ -381,7 +379,7 @@ public class BookOrderFragment extends Fragment {
             public void onResponse(Call<GetUser> call,
                                    Response<GetUser> response) {
 
-                Log.d("getnameapi",response.toString());
+
                 if (response.isSuccessful()) {
 
                     fname_edt_txt.setText(response.body().getData().getFirstname());
@@ -425,14 +423,13 @@ public class BookOrderFragment extends Fragment {
             public void onResponse(Call<getAddress> call,
                                    Response<getAddress> response) {
 
-                Log.d("getapiaddress",response.toString());
 
 
                 if (response.isSuccessful()) {
                     onlybillingaddressname.add("Select Address");
                     onlydeladdressname.add("Select Address");
                     billingadd.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(billingadd.size()));
+
 
 
                     for(int i=0; i < billingadd.size();i++){
@@ -538,13 +535,13 @@ public class BookOrderFragment extends Fragment {
             @Override
             public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                Log.d("GetStatelist", response.toString());
+
 
                 if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                     getstateArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                     onlystatename.clear();
                     for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -556,7 +553,7 @@ public class BookOrderFragment extends Fragment {
                     ss_statebilling.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
@@ -588,12 +585,12 @@ public class BookOrderFragment extends Fragment {
             @Override
             public void onResponse(Call<GetCities> call, Response<GetCities> response) {
 
-                Log.d("GetCitylist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
                     getCityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
+
                     for (int i = 0; i < getCityeArrayList.size(); i++) {
                         String city = getCityeArrayList.get(i).getCities();
                         onlycityname.add(city);
@@ -635,13 +632,12 @@ public class BookOrderFragment extends Fragment {
             @Override
             public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                Log.d("GetStatelist", response.toString());
 
                 if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                     getstateArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
                     onlystatename.clear();
 
                     for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -684,12 +680,12 @@ public class BookOrderFragment extends Fragment {
             @Override
             public void onResponse(Call<GetCities> call, Response<GetCities> response) {
 
-                Log.d("GetCitylist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
                     getCityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
+
                     for (int i = 0; i < getCityeArrayList.size(); i++) {
                         String city = getCityeArrayList.get(i).getCities();
                         onlycityname.add(city);
@@ -751,7 +747,7 @@ public class BookOrderFragment extends Fragment {
                 city_billing_dialog = billing_str_City;
                 state_billing_dialog = billing_str_state;
                 addrressType_billing_dialog = selectedaddresstypefromlist;
-                Log.d("paramsforbilladd",address1_billing_dialog+" "+address2_billing_dialog+" "+pincode_billing_dialog+" "+userid_billing_dialog+" "+city_billing_dialog+" "+state_billing_dialog+" "+addrressType_billing_dialog);
+
                 if (valiadadeAddress1(address1_billing_dialog) && validateAddress2(address2_billing_dialog) && validatestate(state_billing_dialog) && validatecity(city_billing_dialog) && ValidatePincode(pincode_billing_dialog) && validateaddresstype(addrressType_billing_dialog))
                 {
                     savebillingaddress(address1_billing_dialog,address2_billing_dialog,pincode_billing_dialog,userid_billing_dialog,city_billing_dialog,state_billing_dialog,addrressType_billing_dialog);
@@ -783,12 +779,12 @@ public class BookOrderFragment extends Fragment {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_statebilling.getSelectedItem().toString();
                 billing_str_state = pos;
-                Log.d("selectedstatebill", pos);
+
                 for (int i = 0; i < getstateArrayList.size(); i++) {
                     String addstr = getstateArrayList.get(i).getState();
                     if (pos.equals(addstr)) {
                         stateId = getstateArrayList.get(i).getId();
-                        Log.d("stateId", stateId);
+
                         callapibillingcities(stateId);
 
                     }
@@ -805,7 +801,7 @@ public class BookOrderFragment extends Fragment {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_citybilling.getSelectedItem().toString();
                 billing_str_City = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getCityeArrayList.size(); i++) {
                     String addstr = getCityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
@@ -864,7 +860,7 @@ public class BookOrderFragment extends Fragment {
                 city_billing_dialog = delivery_Str_City;
                 state_billing_dialog = delivery_str_state;
                 addrressType_billing_dialog = selectedaddresstypefromlist;
-                Log.d("paramsfordeladd",address1_billing_dialog+" "+address2_billing_dialog+" "+pincode_billing_dialog+" "+userid_billing_dialog+" "+city_billing_dialog+" "+state_billing_dialog+" "+addrressType_billing_dialog);
+
                 if (valiadadeAddress1(address1_billing_dialog) && validateAddress2(address2_billing_dialog) && ValidatePincode(pincode_billing_dialog)  && validatestate(state_billing_dialog)&& validatecity(city_billing_dialog) && validateaddresstype(addrressType_billing_dialog))
                 {
                     savedeladdress(address1_billing_dialog,address2_billing_dialog,pincode_billing_dialog,userid_billing_dialog,city_billing_dialog,state_billing_dialog,addrressType_billing_dialog);
@@ -894,7 +890,7 @@ public class BookOrderFragment extends Fragment {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_citydel.getSelectedItem().toString();
                 delivery_Str_City = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getCityeArrayList.size(); i++) {
                     String addstr = getCityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
@@ -913,12 +909,12 @@ public class BookOrderFragment extends Fragment {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_statedel.getSelectedItem().toString();
                 delivery_str_state =pos;
-                Log.d("selectedstatedel", pos);
+
                 for (int i = 0; i < getstateArrayList.size(); i++) {
                     String addstr = getstateArrayList.get(i).getState();
                     if (pos.equals(addstr)) {
                         stateId = getstateArrayList.get(i).getId();
-                        Log.d("stateId", stateId);
+
                         callapiGetCitiesDelivery(stateId);
 
                     }
@@ -963,7 +959,7 @@ public class BookOrderFragment extends Fragment {
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override
             public void onResponse(Call<GetAddAddress> call, Response<GetAddAddress> response) {
-                Log.d("ADDRESSSAVING", response.toString());
+
                 if (response.isSuccessful()) {
 
                     Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
@@ -1011,7 +1007,7 @@ public class BookOrderFragment extends Fragment {
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override
             public void onResponse(Call<GetAddAddress> call, Response<GetAddAddress> response) {
-                Log.d("ADDRESSSAVING", response.toString());
+
                 if (response.isSuccessful()) {
 
                     Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
@@ -1229,11 +1225,11 @@ public class BookOrderFragment extends Fragment {
             public void onResponse(Call<GetCreateBooking> call,
                                    Response<GetCreateBooking> response) {
 
-                Log.d("createbooking", response.toString());
+
                 if (response.isSuccessful()) {
 
  bookingid= response.body().getData().getId();
-Log.d("getbookingid",bookingid);
+
 
                callcreatebookingdeatils(bookingid);
                 } else {
@@ -1245,7 +1241,7 @@ Log.d("getbookingid",bookingid);
             public void onFailure(Call<GetCreateBooking> call,
                                   Throwable t) {
 
-                Log.d("getbookingid",t.getMessage());
+
             }
         });
     }
@@ -1273,14 +1269,14 @@ Log.d("getbookingid",bookingid);
             public void onResponse(Call<GetBookingDeatils> call,
                                    Response<GetBookingDeatils> response) {
                 dialog.dismiss();
-                Log.d("bookdeatils",response.toString());
+
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Success")){
 
                         double  bookingamout = response.body().getData().get(0).getBookingAmount();
                         String userid = response.body().getData().get(0).getUserID();
-                        Log.d("param",bookingamout+ " "+ userid);
+
                         callCreateOder(bookingamout,userid,bookingid);
                     }else{
 
@@ -1297,7 +1293,7 @@ Log.d("getbookingid",bookingid);
             public void onFailure(Call<GetBookingDeatils> call,
                                   Throwable t) {
                 dialog.dismiss();
-              Log.d("bookdeatils",t.getMessage());
+
             }
         });
     }
@@ -1327,7 +1323,7 @@ Log.d("getbookingid",bookingid);
             public void onResponse(Call<GetBookOrder> call,
                                    Response<GetBookOrder> response) {
 
-                Log.d("bookdeatils",response.toString());
+
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Success")){

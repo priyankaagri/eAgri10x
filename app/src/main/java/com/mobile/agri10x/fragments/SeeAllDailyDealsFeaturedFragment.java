@@ -94,7 +94,7 @@ public class SeeAllDailyDealsFeaturedFragment extends Fragment {
             public void onResponse(Call<GetHomeProduct> call,
                                    Response<GetHomeProduct> response) {
                 recyle_allDailydeals.hideShimmer();
-                Log.d("resdailydeals",response.toString());
+
                 if (response.isSuccessful()) {
                     dealofDay.addAll(response.body().getData());
                     if(dealofDay.size()>0)

@@ -120,7 +120,7 @@ Button checkout_btn;
         ProductsInCartlist.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
         jsonParams.put("userID",SessionManager.getKeyTokenUser(getContext()));
-        Log.d("getuserid",SessionManager.getKeyTokenUser(getContext()));
+
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -138,7 +138,7 @@ Button checkout_btn;
             public void onResponse(Call<GetProductsInCart> call,
                                    Response<GetProductsInCart> response) {
                 recyle_livetrade.hideShimmer();
-                Log.d("ProductinCart",response.toString());
+
                 if (response.isSuccessful()) {
                     ProductsInCartlist.addAll(response.body().getProducts());
                     subTotal=response.body().getSubTotal();
@@ -147,9 +147,7 @@ Button checkout_btn;
                     double withconveniencecharge = (subTotal / 100.0f) *2;
                     double withhandlefees = (subTotal / 100.0f) *2;
                     double withcommision = (subTotal / 100.0f) *1;
-                    Log.d("withconveniencecharge", String.valueOf(withconveniencecharge));
-                    Log.d("withhandlefees", String.valueOf(withhandlefees));
-                    Log.d("withcommision", String.valueOf(withcommision));
+
 
                   amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
 

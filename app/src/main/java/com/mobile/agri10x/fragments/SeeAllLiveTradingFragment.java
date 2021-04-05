@@ -84,7 +84,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
             public void onResponse(Call<GetLiveTrades> call,
                                    Response<GetLiveTrades> response) {
                 recyle_livetrade.hideShimmer();
-                Log.d("livetrade",response.toString());
+
                 if (response.isSuccessful()) {
                     livetradelist.addAll(response.body().getData());
                     if(livetradelist.size()>0)

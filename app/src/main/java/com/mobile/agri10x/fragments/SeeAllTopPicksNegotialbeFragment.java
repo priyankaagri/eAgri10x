@@ -103,7 +103,7 @@ public class SeeAllTopPicksNegotialbeFragment extends Fragment  {
             public void onResponse(Call<GetHomeProduct> call,
                                    Response<GetHomeProduct> response) {
                 recyle_alltoppicks.hideShimmer();
-                Log.d("Toppicks",response.toString());
+;
                 if (response.isSuccessful()) {
                     alltoppicks.addAll(response.body().getData());
                     if(alltoppicks.size()>0)

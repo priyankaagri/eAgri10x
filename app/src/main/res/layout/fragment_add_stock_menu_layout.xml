@@ -55,7 +55,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -65,14 +65,20 @@
                         android:text="@string/tv_commodity"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" *"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
+
 
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                     android:id="@+id/spinner_commodity"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                     android:background="@drawable/hollow_back_trn"
+                    android:background="@drawable/hollow_back_trn"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
                     android:padding="4dp"
@@ -105,7 +111,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -115,6 +121,11 @@
                         android:layout_marginBottom="5dp"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" *"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -156,7 +167,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/proxima_nova_alt_bold"
@@ -164,6 +175,11 @@
                     android:text="@string/Discription"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/red"
+                    android:text=" *"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -174,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:fontFamily="@font/proxima_nova_alt_light"
-                android:hint="Discription"
+                android:hint="@string/Discription"
                 android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:inputType="textPersonName"
                 android:padding="15dp"
@@ -195,7 +211,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -203,6 +219,11 @@
                         android:text="@string/quantity_id"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" *"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -236,7 +257,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -244,6 +265,12 @@
                         android:text="@string/priceperkg_id"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/red"
+                        android:text=" *"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -280,7 +307,7 @@
 
                     <TextView
                         android:textColor="@color/black"
-                       android:fontFamily="@font/proxima_nova_alt_bold"
+                        android:fontFamily="@font/proxima_nova_alt_bold"
                         android:id="@+id/txt_valid_from"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -350,7 +377,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="15dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
@@ -359,6 +386,11 @@
                             android:text="@string/addresss"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/red"
+                            android:text=" *"
+                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
@@ -392,7 +424,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
@@ -400,6 +432,11 @@
                             android:text="@string/talukaa"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/red"
+                            android:text=" *"
+                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
@@ -435,7 +472,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
@@ -443,6 +480,11 @@
                             android:text="State"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/red"
+                            android:text=" *"
+                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
@@ -468,7 +510,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
@@ -476,6 +518,11 @@
                             android:text="City"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/red"
+                            android:text=" *"
+                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
@@ -542,7 +589,7 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="15dp"
                                 android:fontFamily="@font/proxima_nova_alt_bold"
@@ -550,6 +597,11 @@
                                 android:text="@string/pincode_txt"
                                 android:textColor="@color/black"
                                 android:textSize="18sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/red"
+                                android:text=" *"
+                                android:layout_height="wrap_content"/>
 
                         </LinearLayout>
 
@@ -608,7 +660,7 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="15dp"
                                 android:fontFamily="@font/proxima_nova_alt_bold"
@@ -616,6 +668,11 @@
                                 android:text="@string/country_txt"
                                 android:textColor="@color/black"
                                 android:textSize="18sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/red"
+                                android:text=" *"
+                                android:layout_height="wrap_content"/>
 
                         </LinearLayout>
 

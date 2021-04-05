@@ -54,14 +54,14 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
             holder.verified.setText("Non Verified");
         }
         String strimg = stocklist.get(position).getCommodityID()+".png";
-        Log.d("stockimage", strimg);
+
         String imageurl = "https://data.agri10x.com/images/products/"+strimg;
-        Log.d("managestockimageurl", imageurl);
+
         Picasso picasso = new Picasso.Builder(context)
                 .listener(new Picasso.Listener() {
                     @Override
                     public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                        Log.d("exception", String.valueOf(exception));
+
                     }
                 })
                 .build();

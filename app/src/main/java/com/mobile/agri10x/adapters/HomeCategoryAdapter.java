@@ -2,7 +2,7 @@ package com.mobile.agri10x.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +45,7 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txt_title.setText(dataList.get(position).getCategoryName());
-        Log.d("kjjjhdfh",dataList.get(position).getCategoryName());
+
         if(position==0){
             holder.img_category.setImageResource(R.drawable.grains_img);
         } else if(position==1){

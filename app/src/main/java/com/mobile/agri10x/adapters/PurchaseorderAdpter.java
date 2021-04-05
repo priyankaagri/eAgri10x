@@ -204,7 +204,7 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
         addressCall.enqueue(new Callback<getAddress>() {
             @Override
             public void onResponse(Call<getAddress> call, Response<getAddress> response) {
-                Log.d("getapiaddress", response.toString());
+
 
 
                 if (response.isSuccessful()) {
@@ -273,7 +273,7 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
             public void onResponse(Call<GetCreateCheckoutDetails> call,
                                    Response<GetCreateCheckoutDetails> response) {
 
-                Log.d("bookdeatils", response.toString());
+
                 if (response.isSuccessful()) {
 
                     if (response.body().getMessage().equals("Success")) {

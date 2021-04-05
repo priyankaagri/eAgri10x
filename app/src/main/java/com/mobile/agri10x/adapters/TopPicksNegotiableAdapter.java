@@ -109,7 +109,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                 .listener(new Picasso.Listener() {
                     @Override
                     public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                        Log.d("exception", String.valueOf(exception));
+
                     }
                 })
                 .build();
@@ -403,7 +403,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onResponse(Call<DisplayQuickView> call,
                                    Response<DisplayQuickView> response) {
 
-// Log.d("verifyOTP",response.toString());
+
                 if (response.isSuccessful()) {
                     Dialog dialog;
                     dialog = new Dialog(context);
@@ -446,7 +446,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                             .listener(new Picasso.Listener() {
                                 @Override
                                 public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                                    Log.d("exception", String.valueOf(exception));
+
                                 }
                             })
                             .build();
@@ -561,12 +561,12 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onResponse(Call<GetProductInWishList> call,
                                    Response<GetProductInWishList> response) {
 
-                Log.d("resWishlist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     arrayListwishlist.addAll(response.body().getData());
 
-                    Log.d("getsizewishlist", String.valueOf(arrayListwishlist.size()));
+
                     if (arrayListwishlist.size() > 0) {
 
                         for(int i=0; i  < arrayListwishlist.size();i++) {
@@ -575,7 +575,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                             String commodityname_fromwishlist = arrayListwishlist.get(i).getName();
                             String variety_fromwishlist = arrayListwishlist.get(i).getVariety();
                             double price_fromwishlist = arrayListwishlist.get(i).getPrice();
-                            Log.d("checklist", commodityname_fromwishlist + " " + str_commodtyname + " " + grade_from_wishlist + " " + str_grade+" "+variety_fromwishlist+" "+str_varietyname);
+
 
                             if (grade_from_wishlist.equals(str_grade) && commodityname_fromwishlist.equals(str_commodtyname) && variety_fromwishlist.equals(str_varietyname) && price_fromwishlist == str_price) {
                                 present = true;

@@ -93,7 +93,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                 .listener(new Picasso.Listener() {
                     @Override
                     public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                        Log.d("exception", String.valueOf(exception));
+
                     }
                 })
                 .build();
@@ -149,7 +149,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
             public void onResponse(Call<DisplayQuickView> call,
                                    Response<DisplayQuickView> response) {
 
-// Log.d("verifyOTP",response.toString());
+
                 if (response.isSuccessful()) {
                     Dialog dialog;
                     dialog = new Dialog(context);
@@ -184,7 +184,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                             .listener(new Picasso.Listener() {
                                 @Override
                                 public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                                    Log.d("exception", String.valueOf(exception));
+
                                 }
                             })
                             .build();
@@ -286,7 +286,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
         jsonParams.put("grade",grade);
         jsonParams.put("price",price);
         jsonParams.put("status","Just added to cart!");
-        Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
+
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -304,7 +304,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
             public void onResponse(Call<GetAddProductToCart> call,
                                    Response<GetAddProductToCart> response) {
                 dialog.dismiss();
-                Log.d("addtocart",response.toString());
+
                 if (response.isSuccessful()) {
                     HomePageActivity.getProductinCart();
                     Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();

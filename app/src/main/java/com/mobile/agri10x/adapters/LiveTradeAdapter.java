@@ -99,7 +99,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                 .listener(new Picasso.Listener() {
                     @Override
                     public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                        Log.d("exception", String.valueOf(exception));
+
                     }
                 })
                 .build();
@@ -158,7 +158,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
             public void onResponse(Call<DisplayQuickView> call,
                                    Response<DisplayQuickView> response) {
 
-// Log.d("verifyOTP",response.toString());
+
                 if (response.isSuccessful()) {
                     Dialog dialog;
                     dialog = new Dialog(context);
@@ -202,7 +202,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                             .listener(new Picasso.Listener() {
                                 @Override
                                 public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                                    Log.d("exception", String.valueOf(exception));
+
                                 }
                             })
                             .build();
@@ -316,12 +316,12 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
             public void onResponse(Call<GetProductInWishList> call,
                                    Response<GetProductInWishList> response) {
 
-                Log.d("resWishlist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     arrayListwishlist.addAll(response.body().getData());
 
-                    Log.d("getsizewishlist", String.valueOf(arrayListwishlist.size()));
+
                     if (arrayListwishlist.size() > 0) {
 
                         for(int i=0; i  < arrayListwishlist.size();i++) {
@@ -330,7 +330,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
                             String commodityname_fromwishlist = arrayListwishlist.get(i).getName();
                             String variety_fromwishlist = arrayListwishlist.get(i).getVariety();
                             double price_fromwishlist = arrayListwishlist.get(i).getPrice();
-                            Log.d("checklist", commodityname_fromwishlist + " " + str_commodtyname + " " + grade_from_wishlist + " " + str_grade+" "+variety_fromwishlist+" "+str_varietyname);
+
 
                             if (grade_from_wishlist.equals(str_grade) && commodityname_fromwishlist.equals(str_commodtyname) && variety_fromwishlist.equals(str_varietyname) && price_fromwishlist == str_price) {
                                 present = true;
@@ -391,7 +391,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
             public void onResponse(Call<GetADDWishlist> call,
                                    Response<GetADDWishlist> response) {
 
-                Log.d("rewishlist", response.toString());
+
 
                 if (response.isSuccessful()) {
 
@@ -425,7 +425,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
         jsonParams.put("grade",grade);
         jsonParams.put("price",price);
         jsonParams.put("status","Just added to cart!");
-        Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
+
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -443,7 +443,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
             public void onResponse(Call<GetAddProductToCart> call,
                                    Response<GetAddProductToCart> response) {
                 dialog.dismiss();
-                Log.d("addtocart",response.toString());
+
                 if (response.isSuccessful()) {
                     HomePageActivity.getProductinCart();
                     Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();

@@ -187,18 +187,13 @@ public class SplashActivity extends AppCompatActivity {
                         }
                     });
 
-//                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                        }
-//                    });
 
                     alertDialog.show();
                 }
 
             }
 
-         //   Log.d("update", "Current version " + currentVersion + "playstore version " + onlineVersion);
+
 
         }
     }

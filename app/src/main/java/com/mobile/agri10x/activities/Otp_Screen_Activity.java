@@ -187,6 +187,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("mobileNo", "91" + mobilenumber);
+        jsonParams.put("flag",strflag);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -336,26 +337,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             Alert.create().show();
         }
 
-        public void SignUp(String title, String body) {
-            final AlertDialog.Builder Alert = new AlertDialog.Builder(Otp_Screen_Activity.this);
-            Alert.setCancelable(true)
-                    .setTitle(title)
-                    .setMessage(body);
-            Alert.setNegativeButton("Sign Up", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    startActivity(new Intent(Otp_Screen_Activity.this, SignUpActivity.class));
-                    dialogInterface.cancel();
-                }
-            });
-            Alert.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-            Alert.create().show();
-        }
+
 
         public AlertDialog verifyingotp() {
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(Otp_Screen_Activity.this);
@@ -423,7 +405,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 //That gives all message to us.
 // We need to get the code from inside with regex
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                if(message.contains("Agri10x E-Marketplace is")) {
+                if(message.contains("is your OTP for phone verification")) {
                     String numberOnly = message.replaceAll("[^0-9]", "");
 //numberOnly 10886110
 

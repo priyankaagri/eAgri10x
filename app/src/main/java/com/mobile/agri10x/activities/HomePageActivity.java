@@ -427,7 +427,7 @@ if(getbookorpurchase){
         jsonParams.put("bookingID",bookingid_frombookorderfrag);
         jsonParams.put("Userid",SessionManager.getKeyTokenUser(HomePageActivity.this));
 
-       // Log.d("getparamsforpurchase",payment_id+" "+order_id+" "+signature+" "+bookingid_frombookorderfrag);
+
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -437,7 +437,7 @@ if(getbookorpurchase){
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+
         final Call<GetOrderCheckOutHandling> loginCall = apiService.wsCheckOrderCheckOutHandling("123456",body);
         loginCall.enqueue(new Callback<GetOrderCheckOutHandling>() {
             @SuppressLint("WrongConstant")

@@ -20,8 +20,6 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activities.RegisterActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activities.SignUpActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".activities.Update_Profile_Activity" />
         <activity android:name=".activities.OrderFail_Activity" />
         <activity android:name=".activities.Otp_Screen_Activity" />

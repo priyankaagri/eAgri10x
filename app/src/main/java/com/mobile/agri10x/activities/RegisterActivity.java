@@ -192,7 +192,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
                 trader_btn.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
                 farmer_btn.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
                 strrole = "PTrader";
-           //     Log.d("takerole", strrole);
+
             }
         });
 
@@ -205,7 +205,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
                 trader_btn.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
                 farmer_btn.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
                 strrole = "PFarmer";
-             //   Log.d("takerole", strrole);
+
             }
         });
     }
@@ -253,15 +253,14 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-        // AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+
         final Call<GetOTP> loginCall = apiService.wsgetOTP("123456",body);
         loginCall.enqueue(new Callback<GetOTP>() {
             @SuppressLint("WrongConstant")
             @Override
             public void onResponse(Call<GetOTP> call,
                                    Response<GetOTP> response) {
-                //dialog.dismiss();
-          //      Log.d("getotp", response.toString());
+
                 if (response.isSuccessful()) {
 
                     dialog.dismiss();

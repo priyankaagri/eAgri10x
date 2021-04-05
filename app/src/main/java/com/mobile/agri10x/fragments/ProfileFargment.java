@@ -102,7 +102,7 @@ public class ProfileFargment extends Fragment {
         String lastname = et_lastname.getText().toString();
         String email = et_email.getText().toString();
         String mobilenumber = et_mobilenumber.getText().toString();
-        if (validatefirstname(firstname) && validatelastname(lastname) && validateemail(email) &&validateemailformate(email) ) {
+        if (validatefirstname(firstname) && validatelastname(lastname)  && validateemailformate(email) ) {
             callapiUpadteUser(firstname, lastname, email, mobilenumber);
         }
     }
@@ -127,14 +127,14 @@ public class ProfileFargment extends Fragment {
         return true;
     }
 
-    private boolean validateemail(String email) {
-        if (email.isEmpty() || email == null) {
-            Toast.makeText(getActivity(),
-                    "Email is Required", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
+//    private boolean validateemail(String email) {
+//        if (email.isEmpty() || email == null) {
+//            Toast.makeText(getActivity(),
+//                    "Email is Required", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        return true;
+//    }
 
     private boolean validatelastname(String lastname) {
         if (lastname.isEmpty() || lastname == null) {

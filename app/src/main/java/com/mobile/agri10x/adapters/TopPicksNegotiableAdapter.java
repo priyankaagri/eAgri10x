@@ -635,7 +635,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onResponse(Call<GetADDWishlist> call,
                                    Response<GetADDWishlist> response) {
 
-                Log.d("rewishlist", response.toString());
+
 
                 if (response.isSuccessful()) {
 
@@ -669,7 +669,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
         jsonParams.put("grade",grade);
         jsonParams.put("price",price);
         jsonParams.put("status","Just added to cart!");
-        Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
+
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -687,7 +687,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onResponse(Call<GetAddProductToCart> call,
                                    Response<GetAddProductToCart> response) {
                 dialog.dismiss();
-                Log.d("addtocart",response.toString());
+
                 if (response.isSuccessful()) {
                     HomePageActivity.getProductinCart();
                     Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();

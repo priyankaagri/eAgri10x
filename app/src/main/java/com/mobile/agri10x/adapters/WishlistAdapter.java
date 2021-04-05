@@ -85,7 +85,7 @@ Dialog dialogfordetailpage;
                 String wishlistid = wishLists.get(position).getWishListID();
                 String userID = wishLists.get(position).getUserID();
 
-                Log.d("getvalues",wishlistid+" "+userID);
+
 
                 dialogfordetailpage = new Dialog(context);
                 dialogfordetailpage.setContentView(R.layout.layout_detailof_wishlist);
@@ -106,7 +106,7 @@ Dialog dialogfordetailpage;
                         .listener(new Picasso.Listener() {
                             @Override
                             public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                                Log.d("exception", String.valueOf(exception));
+
                             }
                         })
                         .build();
@@ -119,7 +119,7 @@ Dialog dialogfordetailpage;
                 txt_product_pack_size.setText("Packaging Size: "+String.valueOf(wishLists.get(position).getWeight())+" KG");
 
 
-                Log.d("deatils",wishLists.get(position).getName()+" "+String.valueOf(wishLists.get(position).getQuantity())+" "+String.valueOf(wishLists.get(position).getWeight())+" KG");
+
 
                 txt_delete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -143,7 +143,7 @@ dialogfordetailpage.dismiss();
                                 Map<String, Object> jsonParams = new ArrayMap<>();
                                 jsonParams.put("userID", userID);
                                 jsonParams.put("wishListID",wishlistid);
-                                Log.d("getparams",wishLists.get(position).getUserID()+" " +wishLists.get(position).getWishListID());
+
                                 RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
                                 AgriInvestor apiService = ApiHandler.getApiService();
 
@@ -159,7 +159,7 @@ dialogfordetailpage.dismiss();
                                     @Override
                                     public void onResponse(Call<GetRemoveFromWishlist> call, Response<GetRemoveFromWishlist> response) {
 
-                                        Log.d("getfeatureresponse", response.toString());
+
                                         dialogfordetailpage.dismiss();
                                         HomePageActivity.removeFragment(new MyWishListFragment());
                                         HomePageActivity.setFragment(new MyWishListFragment(),"wishlist");
@@ -199,7 +199,7 @@ dialogfordetailpage.dismiss();
             }
         });
         String crrentdate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        Log.d("cccccdate",crrentdate);
+
         SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");
         try {
             currnetDate = format0.parse(crrentdate);
@@ -268,7 +268,7 @@ dialogfordetailpage.dismiss();
                 .listener(new Picasso.Listener() {
                     @Override
                     public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                        Log.d("exception", String.valueOf(exception));
+
                     }
                 })
                 .build();
@@ -280,7 +280,7 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
     Map<String, Object> jsonParams = new ArrayMap<>();
     jsonParams.put("userID", userID);
     jsonParams.put("wishListID",wishlistid);
-  //  Log.d("getparams",wishLists.get(position).getUserID()+" " +wishLists.get(position).getWishListID());
+
     RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
     AgriInvestor apiService = ApiHandler.getApiService();
 
@@ -296,7 +296,7 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
         @Override
         public void onResponse(Call<GetRemoveFromWishlist> call, Response<GetRemoveFromWishlist> response) {
 
-            Log.d("getfeatureresponse", response.toString());
+
 
             CallApiaddTOCard(orderid_forTrade,grade_fortrade,commodityname_fortrade,price_fortrade);
 
@@ -322,7 +322,7 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
         jsonParams.put("grade",grade);
         jsonParams.put("price",price);
         jsonParams.put("status","Just added to cart!");
-        Log.d("userID", SessionManager.getKeyTokenUser(context)+" "+orderID+" "+quantity+" "+grade);
+
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -340,7 +340,7 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
             public void onResponse(Call<GetAddProductToCart> call,
                                    Response<GetAddProductToCart> response) {
                 dialog.dismiss();
-                Log.d("addtocart",response.toString());
+
                 if (response.isSuccessful()) {
                     HomePageActivity.removeFragment(new MyWishListFragment());
                     HomePageActivity.getProductinCart();

@@ -240,7 +240,7 @@ int getWaight=holder.getAdapterPosition();
             public void onResponse(Call<UpdateCart> call,
                                    Response<UpdateCart> response) {
                 dialog2.dismiss();
-                Log.d("updatecart",response.toString());
+
                 if (response.isSuccessful()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 //
@@ -268,7 +268,7 @@ int getWaight=holder.getAdapterPosition();
 //put something inside the map, could be null
         jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
         jsonParams.put("userProductID",userProductID);
-Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
+
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
@@ -278,7 +278,7 @@ Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-// AgriInvestor apiService = ApiHandler.getClient(getApplicationContext()).create(AgriInvestor.class);
+
         final Call<GetRemoveProduct> loginCall = apiService.wsGetRemoveProduct("123456",body);
         loginCall.enqueue(new Callback<GetRemoveProduct>() {
             @SuppressLint("WrongConstant")
@@ -286,10 +286,9 @@ Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
             public void onResponse(Call<GetRemoveProduct> call,
                                    Response<GetRemoveProduct> response) {
                 dialog.dismiss();
-                Log.d("removecart",response.toString());
+
                 if (response.isSuccessful()) {
-//                    ProductsInCartlist.remove(position);
-//                    tradeValueAddCartProductList.notifyDataSetChanged();
+
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     HomePageActivity.getProductinCart();
                     HomePageActivity.removeFragment(new TradeValueAddCart());

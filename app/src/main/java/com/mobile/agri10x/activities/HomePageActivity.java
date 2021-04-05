@@ -94,6 +94,11 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
         });
         if(SessionManager.isLoggedIn(HomePageActivity.this)){
             getProductinCart();
+        }else{
+            int menuItemId = HomePageActivity.bottomNavigationView.getMenu().getItem(2).getItemId();
+            BadgeDrawable badge = HomePageActivity.bottomNavigationView.getOrCreateBadge(menuItemId);
+            badge.setBackgroundColor(HomePageActivity.this.getResources().getColor(R.color.appgreen));
+            badge.setNumber(0);
         }
 
 

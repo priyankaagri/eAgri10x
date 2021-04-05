@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 import com.mobile.agri10x.activities.PaymentActivity;
@@ -269,6 +270,10 @@ public class MenuFragment extends Fragment {
             private void logout() {
                 SessionManager.clearPrefrence(getActivity());
                 HomePageActivity.removeFragment(new MenuFragment());
+                int menuItemId = HomePageActivity.bottomNavigationView.getMenu().getItem(2).getItemId();
+                BadgeDrawable badge = HomePageActivity.bottomNavigationView.getOrCreateBadge(menuItemId);
+                badge.setBackgroundColor(getActivity().getResources().getColor(R.color.appgreen));
+                badge.setNumber(0);
             }
         });
 

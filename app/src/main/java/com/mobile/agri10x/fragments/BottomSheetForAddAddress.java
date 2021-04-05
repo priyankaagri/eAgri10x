@@ -259,7 +259,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -308,7 +308,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
                     ss_statebilling.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 

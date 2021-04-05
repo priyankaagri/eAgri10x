@@ -435,7 +435,7 @@ public class HomeFragment extends Fragment {
                             ss_statebilling.setAdapter(adapter1);
                         } else {
 
-                            Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -483,7 +483,7 @@ public class HomeFragment extends Fragment {
 
                         } else {
 
-                            Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -801,7 +801,7 @@ public class HomeFragment extends Fragment {
                             spinner_state_transaporatation.setAdapter(adapter1);
                         } else {
 
-                            Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -1003,14 +1003,14 @@ public class HomeFragment extends Fragment {
                     });
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetUser> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -1051,7 +1051,7 @@ public class HomeFragment extends Fragment {
                     ss_state_wearhouse.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1104,7 +1104,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetWorkerForm> call, Throwable t) {
                 formdialog.dismiss();
                 dialogForWarehouse.dismiss();
-                Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -1185,7 +1185,7 @@ public class HomeFragment extends Fragment {
                     gettoppicks();
                 } else {
                     gettoppicks();
-                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1193,7 +1193,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 gettoppicks();
-//                Toast.makeText(Otp_Screen_Activity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -1233,7 +1233,7 @@ public class HomeFragment extends Fragment {
                     getonlyFeature();
                 } else {
                     getonlyFeature();
-                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1241,7 +1241,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 getonlyFeature();
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -1283,7 +1283,7 @@ public class HomeFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1291,7 +1291,6 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
 
-//                Toast.makeText(Otp_Screen_Activity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -1372,7 +1371,7 @@ public class HomeFragment extends Fragment {
                 } else {
                     dialog.dismiss();
                     getDailyDeals();
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1533,7 +1532,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetWorkerForm> call, Throwable t) {
                 formdialog.dismiss();
                 dialogForTransportContatct.dismiss();
-                Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -1599,7 +1598,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetWorkerForm> call, Throwable t) {
                 formdialog.dismiss();
                 dialogforwantwork.dismiss();
-                Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
 
             }
         });

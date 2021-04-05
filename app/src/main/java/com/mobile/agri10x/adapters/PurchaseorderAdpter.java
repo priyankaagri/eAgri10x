@@ -240,14 +240,14 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
 
 
                 } else {
-                    //   Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void onFailure(Call<getAddress> call, Throwable t) {
 
-                //Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -285,14 +285,14 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
 
                 } else {
 
-                    Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetCreateCheckoutDetails> call,
                                   Throwable t) {
-                Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -173,14 +173,14 @@ if(getuserid != null && !getuserid.isEmpty()){
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetCheckCollect> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -151,14 +151,14 @@ public class MyOrderFragment extends Fragment {
                         Toast.makeText(getActivity(), "No data found", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetOrderList> call, Throwable t) {
 
-                Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
 

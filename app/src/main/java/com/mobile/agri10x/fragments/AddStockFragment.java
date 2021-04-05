@@ -328,7 +328,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -568,7 +568,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -615,7 +615,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                     spinner_commodity.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -663,7 +663,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -712,7 +712,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                     spinner_state.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 

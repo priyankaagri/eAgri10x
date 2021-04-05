@@ -103,6 +103,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
             public void onFailure(Call<GetLiveTrades> call,
                                   Throwable t) {
                 recyle_livetrade.hideShimmer();
+
                 Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });

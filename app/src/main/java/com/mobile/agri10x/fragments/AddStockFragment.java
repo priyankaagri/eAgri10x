@@ -513,7 +513,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     private boolean validatediscription(String str_discription) {
         if (str_discription.isEmpty() || str_discription == null) {
             Toast.makeText(getActivity(),
-                    "Discription is Required", Toast.LENGTH_SHORT).show();
+                    "Description is Required", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

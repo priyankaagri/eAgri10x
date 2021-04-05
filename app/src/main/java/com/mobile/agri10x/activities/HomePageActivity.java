@@ -280,7 +280,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
 
                 }
                 else {
-                    Toast.makeText(context,"Something went wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -288,7 +288,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
             @Override
             public void onFailure(Call<GetProductsInCart> call,
                                   Throwable t) {
-                Toast.makeText(context,"Something went wrong!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -469,14 +469,14 @@ if(getbookorpurchase){
                 }
                 else {
 
-                    Toast.makeText(HomePageActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomePageActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetOrderCheckOutHandling> call,
                                   Throwable t) {
-                Toast.makeText(HomePageActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomePageActivity.this,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -532,14 +532,14 @@ if(getbookorpurchase){
                 }
                 else {
 
-                    Toast.makeText(HomePageActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomePageActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetBookingCheckOutHandling> call,
                                   Throwable t) {
-                Toast.makeText(HomePageActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomePageActivity.this,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -107,7 +107,7 @@ public class SeeAllDailyDealsFeaturedFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -115,7 +115,7 @@ public class SeeAllDailyDealsFeaturedFragment extends Fragment {
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 recyle_allDailydeals.hideShimmer();
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

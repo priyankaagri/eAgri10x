@@ -214,7 +214,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                     Toast.makeText(Otp_Screen_Activity.this, "Verification code resend successfully.", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Toast.makeText(Otp_Screen_Activity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Otp_Screen_Activity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -222,7 +222,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             public void onFailure(Call<GetResendOTP> call,
                                   Throwable t) {
                 dialogresend.dismiss();
-                Toast.makeText(Otp_Screen_Activity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Otp_Screen_Activity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

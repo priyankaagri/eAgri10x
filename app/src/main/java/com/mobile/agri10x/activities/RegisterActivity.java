@@ -279,7 +279,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
                     }
                 } else {
                     dialog.dismiss();
-                    Toast.makeText(RegisterActivity.this, "Something get Wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -287,7 +287,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
             public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(RegisterActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

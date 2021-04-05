@@ -104,7 +104,7 @@ public class MyWishListFragment extends Fragment  {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -112,7 +112,7 @@ public class MyWishListFragment extends Fragment  {
             public void onFailure(Call<GetProductInWishList> call,
                                   Throwable t) {
                 recycleview_wishlist_stock.hideShimmer();
-// Toast.makeText(Otp_Screen_Activity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

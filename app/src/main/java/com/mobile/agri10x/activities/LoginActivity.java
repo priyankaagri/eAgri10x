@@ -190,7 +190,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 }
                 else {
                     dialog.dismiss();
-                    Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -203,7 +203,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 if(strerr.contains("java.lang.NumberFormatException: For input string")){
                     Toast.makeText(LoginActivity.this,"You are not authorised to login into this website. Please create an account with another Mobile No.", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(LoginActivity.this,"Something went wrong.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -88,10 +88,10 @@ public class ManageStockFragment extends Fragment {
             public void onResponse(Call<GetStockByID> call,
                                    Response<GetStockByID> response) {
                 recycleview_manage_stock.hideShimmer();
-                Log.d("resFeatureonly", response.toString());
+
                 if (response.isSuccessful()) {
                     listmanagestock.addAll(response.body().getData());
-                    Log.d("getsizefeat", String.valueOf(listmanagestock.size()));
+
                     if (listmanagestock.size() > 0) {
                         manageStockAdapter = new ManageStockAdapter(getActivity(), listmanagestock);
                         recycleview_manage_stock.setAdapter(manageStockAdapter);

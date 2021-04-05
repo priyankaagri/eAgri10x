@@ -342,12 +342,12 @@ public class HomeFragment extends Fragment {
                     public void onItemSelected(View view, int position, long id) {
                         String pos = ss_statebilling.getSelectedItem().toString();
                         str_state = pos;
-                        Log.d("selectedstatebill", pos);
+
                         for (int i = 0; i < getstateArrayList.size(); i++) {
                             String addstr = getstateArrayList.get(i).getState();
                             if (pos.equals(addstr)) {
                                 String   stateId = getstateArrayList.get(i).getId();
-                                Log.d("stateId", stateId);
+
                                 callapibillingcities(stateId);
 
                             }
@@ -368,7 +368,7 @@ public class HomeFragment extends Fragment {
                     public void onItemSelected(View view, int position, long id) {
                         String pos = ss_citybilling.getSelectedItem().toString();
                         str_City = pos;
-                        Log.d("selectedaddship", pos);
+
                         for (int i = 0; i < getCityeArrayList.size(); i++) {
                             String addstr = getCityeArrayList.get(i).getCities();
                             if (pos.equals(addstr)) {
@@ -415,13 +415,13 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                        Log.d("GetStatelist", response.toString());
+
 
                         if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                             getstateArrayList.addAll(response.body().getData());
-                            Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                             onlystatename.clear();
                             for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -465,12 +465,12 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(Call<GetCities> call, Response<GetCities> response) {
 
-                        Log.d("GetCitylist", response.toString());
+
 
                         if (response.isSuccessful()) {
                             onlycityname.clear();
                             getCityeArrayList.addAll(response.body().getData());
-                            Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
+
                             for (int i = 0; i < getCityeArrayList.size(); i++) {
                                 String city = getCityeArrayList.get(i).getCities();
                                 onlycityname.add(city);
@@ -689,12 +689,12 @@ public class HomeFragment extends Fragment {
                     public void onItemSelected(View view, int position, long id) {
                         String pos = spinner_state_transaporatation.getSelectedItem().toString();
                         str_state_trasnport = pos;
-                        Log.d("selectedstatebill", pos);
+
                         for (int i = 0; i < getstateArrayList.size(); i++) {
                             String addstr = getstateArrayList.get(i).getState();
                             if (pos.equals(addstr)) {
                                 String stateId = getstateArrayList.get(i).getId();
-                                Log.d("stateId", stateId);
+
 
 
                             }
@@ -764,7 +764,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                        Log.d("GetStatelistfortans", response.toString());
+
 
                         if (response.isSuccessful()) {
 
@@ -904,12 +904,12 @@ public class HomeFragment extends Fragment {
                     public void onItemSelected(View view, int position, long id) {
                         String pos = ss_state_wearhouse.getSelectedItem().toString();
                         str_state_wearhouse = pos;
-                        Log.d("selectedstatebill", pos);
+
                         for (int i = 0; i < getstateArrayList.size(); i++) {
                             String addstr = getstateArrayList.get(i).getState();
                             if (pos.equals(addstr)) {
                                 String stateId = getstateArrayList.get(i).getId();
-                                Log.d("stateId", stateId);
+
 
                             }
                         }
@@ -967,7 +967,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetUser> call,
                                    Response<GetUser> response) {
 
-                Log.d("getnameapi", response.toString());
+
                 dialog.dismiss();
                 if (response.isSuccessful()) {
                     txt_signups.setText(response.body().getData().getFirstname()+" "+response.body().getData().getLastname());
@@ -1014,13 +1014,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                Log.d("GetStatelist", response.toString());
+
 
                 if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                     getstateArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                     onlystatename.clear();
                     for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -1076,7 +1076,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
                 formdialog.dismiss();
-                Log.d("sworkerform", response.toString());
+
                 Toast.makeText(context, "Thank you for submitting the form. We will get back to you soon", Toast.LENGTH_LONG).show();
                 dialogForWarehouse.dismiss();
             }
@@ -1155,7 +1155,6 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetHomeProduct> call,
                                    Response<GetHomeProduct> response) {
 
-                Log.d("resdailydeals",response.toString());
                 if (response.isSuccessful()) {
                     dealofDay.addAll(response.body().getData());
                     if(dealofDay.size()>0)
@@ -1203,7 +1202,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetHomeProduct> call,
                                    Response<GetHomeProduct> response) {
 
-                Log.d("gettoppicks",response.toString());
+
                 if (response.isSuccessful()) {
                     toppicks.addAll(response.body().getData());
 
@@ -1251,10 +1250,10 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetHomeProduct> call,
                                    Response<GetHomeProduct> response) {
 
-                Log.d("resFeatureonly",response.toString());
+
                 if (response.isSuccessful()) {
                     featuredonly.addAll(response.body().getData());
-                    Log.d("getsizefeat", String.valueOf(featuredonly.size()));
+      ;
                     if(featuredonly.size()> 0)
                     {
                         onlyFeaturedAdapter = new OnlyFeaturedAdapter(featuredonly, context);
@@ -1285,7 +1284,7 @@ public class HomeFragment extends Fragment {
 //        call.enqueue(new Callback<List<FeaturedProduct_Model>>() {
 //            @Override
 //            public void onResponse(Call<List<FeaturedProduct_Model>> call, Response<List<FeaturedProduct_Model>> response) {
-//                Log.d("GetCatogerylist", response.toString());
+
 //                if (response.isSuccessful()) {
 //                    // dialog.dismiss();
 //                    featuredproductlist = response.body();
@@ -1506,7 +1505,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
                 formdialog.dismiss();
-                Log.d("sworkerform", response.toString());
+
                 Toast.makeText(context, "Thank you for submitting the form. We will get back to you soon", Toast.LENGTH_LONG).show();
                 dialogForTransportContatct.dismiss();
             }
@@ -1572,7 +1571,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
                 formdialog.dismiss();
-                Log.d("sworkerform", response.toString());
+
                 Toast.makeText(context,"Thank you for submitting the form. We will get back to you soon",Toast.LENGTH_LONG).show();
                 dialogforwantwork.dismiss();
             }

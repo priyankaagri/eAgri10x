@@ -103,7 +103,7 @@ public class MyAddressFragment extends Fragment {
         addressCall.enqueue(new Callback<getAddress>() {
             @Override
             public void onResponse(Call<getAddress> call, Response<getAddress> response) {
-                Log.d("getapiaddress", response.toString());
+
 
                 recyle_Addresslist.hideShimmer();
                 if (response.isSuccessful()){

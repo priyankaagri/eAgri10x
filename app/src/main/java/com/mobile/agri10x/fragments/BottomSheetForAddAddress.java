@@ -105,7 +105,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
                 city_billing_dialog = str_City;
                 state_billing_dialog = str_state;
                 addrressType_billing_dialog = selectedaddresstypefromlist;
-                Log.d("paramsforbilladd", address1_billing_dialog + " " + address2_billing_dialog + " " + pincode_billing_dialog + " " + userid_billing_dialog + " " + city_billing_dialog + " " + state_billing_dialog + " " + addrressType_billing_dialog);
+
                 if (valiadadeAddress1(address1_billing_dialog) && validateAddress2(address2_billing_dialog) && validatestate(state_billing_dialog) && validatecity(city_billing_dialog) && ValidatePincode(pincode_billing_dialog) && validateaddresstype(addrressType_billing_dialog)) {
                     savebillingaddress(address1_billing_dialog, address2_billing_dialog, pincode_billing_dialog, userid_billing_dialog, city_billing_dialog, state_billing_dialog, addrressType_billing_dialog);
                 }
@@ -133,12 +133,12 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_statebilling.getSelectedItem().toString();
                 str_state = pos;
-                Log.d("selectedstatebill", pos);
+
                 for (int i = 0; i < getstateArrayList.size(); i++) {
                     String addstr = getstateArrayList.get(i).getState();
                     if (pos.equals(addstr)) {
                         stateId = getstateArrayList.get(i).getId();
-                        Log.d("stateId", stateId);
+
                         callapibillingcities(stateId);
 
                     }
@@ -155,7 +155,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_citybilling.getSelectedItem().toString();
                 str_City = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getCityeArrayList.size(); i++) {
                     String addstr = getCityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
@@ -196,7 +196,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
         saveaddressapi.enqueue(new Callback<GetAddAddress>() {
             @Override
             public void onResponse(Call<GetAddAddress> call, Response<GetAddAddress> response) {
-                Log.d("ADDRESSSAVING", response.toString());
+
                 if (response.isSuccessful()) {
                     HomePageActivity.removeFragment(new MyAddressFragment());
                     HomePageActivity.setFragment(new MyAddressFragment(),"addadress");
@@ -215,7 +215,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                dismiss();
-                Log.d("geterror",t.getMessage());
+
 
             }
         });
@@ -243,12 +243,12 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             @Override
             public void onResponse(Call<GetCities> call, Response<GetCities> response) {
 
-                Log.d("GetCitylist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
                     getCityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getCityeArrayList.size()));
+
                     for (int i = 0; i < getCityeArrayList.size(); i++) {
                         String city = getCityeArrayList.get(i).getCities();
                         onlycityname.add(city);
@@ -290,13 +290,13 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
             @Override
             public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                Log.d("GetStatelist", response.toString());
+
 
                 if (response.isSuccessful()) {
 // statecategory.add("Select State");
 
                     getstateArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
 
                     onlystatename.clear();
                     for (int i = 0; i < getstateArrayList.size(); i++) {

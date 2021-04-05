@@ -177,7 +177,7 @@ public class PurchaseOrderFargment extends Fragment  {
                     }
                 }
 
-                //   Log.d("shiip_add_id",shippingaddressId);
+
             }
 
             @Override
@@ -204,7 +204,6 @@ public class PurchaseOrderFargment extends Fragment  {
                     }
                 }
 
-                // Log.d("billing_add_id",billingaddressID);
             }
 
             @Override
@@ -286,8 +285,6 @@ public class PurchaseOrderFargment extends Fragment  {
 
                 strpackagingdetails = edt_packagingdatail.getText().toString();
 
-//                Log.d("valuestosend",struserid+" "+billingaddressID+" "+shippingaddressId+" "+strdelcontactperosn+" "+strmobileno+
-//                        " "+strpurchaseamount+" "+strpackagingdetails+" "+strdelnote);
 
                 if(validateUserId(struserid) && validatebillingAdressID(billingaddressID) && validateshippingadd(shippingaddressId)
                         && validateContactPerson(strdelcontactperosn) && validateMobileNo(strmobileno) && validatePurchaseAmount(strpurchaseamount) )
@@ -533,13 +530,13 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onResponse(Call<GetStates> call, Response<GetStates> response) {
 
-                Log.d("GetStatelist", response.toString());
+
 
                 if (response.isSuccessful()) {
-// statecategory.add("Select State");
+
 
                     getstateArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getstateArrayList.size()));
+
                     onlystatename.clear();
 
                     for (int i = 0; i < getstateArrayList.size(); i++) {
@@ -582,12 +579,12 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onResponse(Call<GetCities> call, Response<GetCities> response) {
 
-                Log.d("GetCitylist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     onlycityname.clear();
                     getcityeArrayList.addAll(response.body().getData());
-                    Log.d("getaddressbilling", String.valueOf(getcityeArrayList.size()));
+
                     for (int i = 0; i < getcityeArrayList.size(); i++) {
                         String city = getcityeArrayList.get(i).getCities();
                         onlycityname.add(city);
@@ -649,7 +646,7 @@ public class PurchaseOrderFargment extends Fragment  {
                 city_billing_dialog = billing_str_City;
                 state_billing_dialog = billing_str_state;
                 addrressType_billing_dialog = selectedaddresstypefromlist;
-                Log.d("paramsforbilladd",address1_billing_dialog+" "+address2_billing_dialog+" "+pincode_billing_dialog+" "+userid_billing_dialog+" "+city_billing_dialog+" "+state_billing_dialog+" "+addrressType_billing_dialog);
+
                 if (valiadadeAddress1(address1_billing_dialog) && validateAddress2(address2_billing_dialog) && validatestate(state_billing_dialog) && validatecity(city_billing_dialog) && ValidatePincode(pincode_billing_dialog) && validateaddresstype(addrressType_billing_dialog))
                 {
                     savebillingaddress(address1_billing_dialog,address2_billing_dialog,pincode_billing_dialog,userid_billing_dialog,city_billing_dialog,state_billing_dialog,addrressType_billing_dialog);
@@ -681,12 +678,12 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_statebilling.getSelectedItem().toString();
                 billing_str_state = pos;
-                Log.d("selectedstatebill", pos);
+
                 for (int i = 0; i < getstateArrayList.size(); i++) {
                     String addstr = getstateArrayList.get(i).getState();
                     if (pos.equals(addstr)) {
                         stateId = getstateArrayList.get(i).getId();
-                        Log.d("stateId", stateId);
+
                         callapibillingcities(stateId);
 
                     }
@@ -703,7 +700,7 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_citybilling.getSelectedItem().toString();
                 billing_str_City = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getcityeArrayList.size(); i++) {
                     String addstr = getcityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
@@ -762,7 +759,9 @@ public class PurchaseOrderFargment extends Fragment  {
                 city_billing_dialog = delivery_Str_City;
                 state_billing_dialog = delivery_str_state;
                 addrressType_billing_dialog = selectedaddresstypefromlist;
-                Log.d("paramsfordeladd",address1_billing_dialog+" "+address2_billing_dialog+" "+pincode_billing_dialog+" "+userid_billing_dialog+" "+city_billing_dialog+" "+state_billing_dialog+" "+addrressType_billing_dialog);
+
+
+
                 if (valiadadeAddress1(address1_billing_dialog) && validateAddress2(address2_billing_dialog) && ValidatePincode(pincode_billing_dialog)  && validatestate(state_billing_dialog)&& validatecity(city_billing_dialog) && validateaddresstype(addrressType_billing_dialog))
                 {
                     savedeladdress(address1_billing_dialog,address2_billing_dialog,pincode_billing_dialog,userid_billing_dialog,city_billing_dialog,state_billing_dialog,addrressType_billing_dialog);
@@ -792,7 +791,7 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_citydel.getSelectedItem().toString();
                 delivery_Str_City = pos;
-                Log.d("selectedaddship", pos);
+
                 for (int i = 0; i < getcityeArrayList.size(); i++) {
                     String addstr = getcityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
@@ -811,12 +810,12 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onItemSelected(View view, int position, long id) {
                 String pos = ss_statedel.getSelectedItem().toString();
                 delivery_str_state =pos;
-                Log.d("selectedstatedel", pos);
+
                 for (int i = 0; i < getstateArrayList.size(); i++) {
                     String addstr = getstateArrayList.get(i).getState();
                     if (pos.equals(addstr)) {
                         stateId = getstateArrayList.get(i).getId();
-                        Log.d("stateId", stateId);
+
                         callapiGetCitiesDelivery(stateId);
 
                     }
@@ -1109,10 +1108,10 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onResponse(Call<GetCreateCheckout> call,
                                    Response<GetCreateCheckout> response) {
 
-                Log.d("resendotpres", response.toString());
+
                 if (response.isSuccessful()) {
                     String orderid= response.body().getData().getId();
-                    Log.d("getcheckoutid",orderid);
+
                     callcreatecheckoutdeatils(orderid);
                 } else {
 
@@ -1122,7 +1121,7 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onFailure(Call<GetCreateCheckout> call,
                                   Throwable t) {
-                Log.d("createbook", t.getMessage());
+
             }
         });
     }
@@ -1144,13 +1143,13 @@ public class PurchaseOrderFargment extends Fragment  {
             public void onResponse(Call<GetCreateCheckoutDetails> call,
                                    Response<GetCreateCheckoutDetails> response) {
 
-                Log.d("purchasedetails",response.toString());
+
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage().equals("Success")){
                         double  purchaseamount = response.body().getData().getOrderAmount();
                         String userid = response.body().getData().getUserID();
-                        Log.d("param",purchaseamount+ " "+ userid);
+
                         callCreateOder(purchaseamount,userid,orderid);
 
                     }else{
@@ -1167,7 +1166,7 @@ public class PurchaseOrderFargment extends Fragment  {
             @Override
             public void onFailure(Call<GetCreateCheckoutDetails> call,
                                   Throwable t) {
-    Log.d("purchasedetails",t.getMessage());
+
             }
         });
     }

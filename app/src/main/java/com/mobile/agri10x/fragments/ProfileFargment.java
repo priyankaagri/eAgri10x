@@ -175,7 +175,7 @@ public class ProfileFargment extends Fragment {
             public void onResponse(Call<GetUser> call,
                                    Response<GetUser> response) {
 
-                Log.d("getnameapi", response.toString());
+
                 dialog.dismiss();
                 if (response.isSuccessful()) {
 
@@ -233,7 +233,7 @@ public class ProfileFargment extends Fragment {
             public void onResponse(Call<UpdateUser> call,
                                    Response<UpdateUser> response) {
 
-                Log.d("getnameapi", response.toString());
+
                 dialog2.dismiss();
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();

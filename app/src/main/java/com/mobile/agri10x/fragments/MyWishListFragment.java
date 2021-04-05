@@ -86,12 +86,12 @@ public class MyWishListFragment extends Fragment  {
             public void onResponse(Call<GetProductInWishList> call,
                                    Response<GetProductInWishList> response) {
                 recycleview_wishlist_stock.hideShimmer();
-                Log.d("resWishlist", response.toString());
+
 
                 if (response.isSuccessful()) {
                     arrayListwishlist.addAll(response.body().getData());
 
-                    Log.d("getsizewishlist", String.valueOf(arrayListwishlist.size()));
+
                     if (arrayListwishlist.size() > 0) {
 
 

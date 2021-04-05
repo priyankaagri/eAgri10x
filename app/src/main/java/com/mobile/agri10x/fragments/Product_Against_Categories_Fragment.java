@@ -60,7 +60,7 @@ public class Product_Against_Categories_Fragment extends Fragment {
         recyle_productCategories.showShimmer();
         recyle_productCategories.setLayoutManager(new GridLayoutManager(getActivity(),2),R.layout.item_shimmer_daily_deals);
         catid = getArguments().getString("value");
-        Log.d("getCatid",catid);
+
         getProductIncategories(catid);
         return  view;
 
@@ -89,7 +89,7 @@ public class Product_Against_Categories_Fragment extends Fragment {
             public void onResponse(Call<getCommAccToCat> call,
                                    Response<getCommAccToCat> response) {
                 recyle_productCategories.hideShimmer();
-                Log.d("livetrade",response.toString());
+
                 if (response.isSuccessful()) {
                     productincategorylist.addAll(response.body().getData());
                     if(productincategorylist.size()>0)

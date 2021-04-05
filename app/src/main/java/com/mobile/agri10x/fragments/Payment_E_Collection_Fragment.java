@@ -55,7 +55,7 @@ public class Payment_E_Collection_Fragment extends Fragment {
             amountstr = bundle.getString("amount");
         }
         getuserid = SessionManager.getKeyTokenUser(getActivity());
-        Log.d("getamount",amountstr);
+
 
 
         txt_bank_name= view.findViewById(R.id.txt_bank_name);
@@ -157,7 +157,7 @@ if(getuserid != null && !getuserid.isEmpty()){
             public void onResponse(Call<GetCheckCollect> call,
                                    Response<GetCheckCollect> response) {
 
-                Log.d("getnameapi",response.toString());
+
                 if (response.isSuccessful()) {
 
                     if(response.body().getMessage()){

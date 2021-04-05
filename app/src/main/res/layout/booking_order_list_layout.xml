@@ -14,13 +14,13 @@
         android:orientation="vertical">
 
         <RelativeLayout
-
+            android:visibility="gone"
             android:id="@+id/relative_stock"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:background="@drawable/featured_bg"
             android:elevation="5dp"
-            android:visibility="gone">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,12 +28,12 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/stock"
+                    android:id="@+id/txt_numberofdays"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:padding="5dp"
-                    android:text="01 days"
+
                     android:textColor="@color/white"
                     android:textSize="10sp" />
             </LinearLayout>

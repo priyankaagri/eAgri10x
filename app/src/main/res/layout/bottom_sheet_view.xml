@@ -81,7 +81,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                     android:textColor="@color/black"
                     android:id="@+id/addressline1"
                     android:paddingStart="4dp"
@@ -127,7 +127,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                     android:textColor="@color/black"
                     android:paddingStart="4dp"
                     android:id="@+id/addressline2"

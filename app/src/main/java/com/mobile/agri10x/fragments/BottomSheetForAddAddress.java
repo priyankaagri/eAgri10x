@@ -91,6 +91,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
         ArrayAdapter<String> addresstypelistAdpter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, addresstypelist);
         ss_addtypebilling.setAdapter(addresstypelistAdpter);
 
+
         callApiGetState();
 
 

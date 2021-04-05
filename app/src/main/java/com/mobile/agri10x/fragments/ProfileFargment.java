@@ -98,11 +98,12 @@ public class ProfileFargment extends Fragment {
     }
 
     private void updateUserProfile() {
+        String email ="";
         String firstname = et_firstname.getText().toString();
         String lastname = et_lastname.getText().toString();
-        String email = et_email.getText().toString();
+        email = et_email.getText().toString();
         String mobilenumber = et_mobilenumber.getText().toString();
-        if (validatefirstname(firstname) && validatelastname(lastname)  && validateemailformate(email) ) {
+        if (validatefirstname(firstname) && validatelastname(lastname)   ) {
             callapiUpadteUser(firstname, lastname, email, mobilenumber);
         }
     }

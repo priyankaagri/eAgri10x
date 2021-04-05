@@ -193,7 +193,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:fontFamily="@font/proxima_nova_alt_light"
                 android:hint="@string/Discription"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                 android:inputType="textPersonName"
                 android:padding="15dp"
                 android:paddingStart="4dp"
@@ -397,7 +397,7 @@
                     </LinearLayout>
 
                     <EditText
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                         android:textColor="@color/black"
                         android:id="@+id/edt_address"
                         android:layout_width="match_parent"

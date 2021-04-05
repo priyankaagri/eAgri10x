@@ -3,6 +3,8 @@ package com.mobile.agri10x.fragments;
 import android.app.DatePickerDialog;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.ArrayMap;
@@ -111,6 +113,8 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
         edt_country = view.findViewById(R.id.edt_country);
         btn_addstock = view.findViewById(R.id.btn_addstock);
         btn_back_add_stock_id = view.findViewById(R.id.btn_back_add_stock_id);
+
+
 
 
         callApiGetState();

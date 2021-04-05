@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "860958489127",
+    "project_id": "agri10x-4d50e",
+    "storage_bucket": "agri10x-4d50e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860958489127:android:ace4db7d68488b09362c02",
+        "android_client_info": {
+          "package_name": "com.mobile.agri10x"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860958489127-kad3jj5glj6f9ai74ejsvnqaus90nn7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBudRbAoqZlxHk-ZlSu776FTYzh8Frb9pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860958489127-kad3jj5glj6f9ai74ejsvnqaus90nn7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

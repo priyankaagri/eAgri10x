@@ -47,14 +47,14 @@ public class DetailofProductOrder_booking extends RecyclerView.Adapter<DetailofP
         double number = Double.parseDouble(String.valueOf(ProductsInOrderlistData.get(position).getPrice()));
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
         String currency = format.format(number);
-        holder.txt_price_per_kg.setText("Price/KG : " + currency);
+        holder.txt_price_per_kg.setText(R.string.priceskg + currency);
 
 
-        holder.txt_quantity.setText("Qunatity : " + (ProductsInOrderlistData.get(position).getQuantity()));
-        holder.txt_grade.setText("Grade : " + ProductsInOrderlistData.get(position).getGrade());
-        holder.txt_packaging_size.setText("Packaging Size : 50 KG");
+        holder.txt_quantity.setText(R.string.quantity + (ProductsInOrderlistData.get(position).getQuantity()));
+        holder.txt_grade.setText(R.string.grade + ProductsInOrderlistData.get(position).getGrade());
+        holder.txt_packaging_size.setText(R.string.packagingsize);
         String test = String.valueOf(ProductsInOrderlistData.get(position).getQuantity());
-        holder.txt_total_weight.setText("Total Weight : " + Double.parseDouble(test) * ProductsInOrderlistData.get(position).getWeight());
+        holder.txt_total_weight.setText(R.string.totalweight+""+ Double.parseDouble(test) * ProductsInOrderlistData.get(position).getWeight());
 
         valueoftotalweight = String.valueOf(Double.parseDouble(test) * ProductsInOrderlistData.get(position).getWeight());
 
@@ -62,7 +62,7 @@ public class DetailofProductOrder_booking extends RecyclerView.Adapter<DetailofP
         NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
         String currency1 = format1.format(number1);
         String pricepeoduct = String.format("%.2f", ProductsInOrderlistData.get(position).getPrice() * Double.parseDouble(valueoftotalweight));
-        holder.txt_product_price.setText("Total: " + currency1);
+        holder.txt_product_price.setText(R.string.total + currency1);
        /* if (ProductsInOrderlistData.get(position).getPrice() != null) {
 
 

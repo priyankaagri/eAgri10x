@@ -230,7 +230,7 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
         addressCall.enqueue(new Callback<getAddress>() {
             @Override
             public void onResponse(Call<getAddress> call, Response<getAddress> response) {
-                Log.d("getapiaddress", response.toString());
+
 
 
                 if (response.isSuccessful()) {

@@ -317,14 +317,14 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
 
 
                 } else {
-                    //   Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void onFailure(Call<getAddress> call, Throwable t) {
 
-                //Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+
 
             }
         });

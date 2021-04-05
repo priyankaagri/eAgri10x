@@ -80,7 +80,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                     android:id="@+id/edt_txt_cname"
                     android:layout_width="match_parent"
                     android:padding="15dp"

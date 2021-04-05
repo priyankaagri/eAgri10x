@@ -168,7 +168,7 @@ Button checkout_btn;
                     }
                 }
                 else {
-                    Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -177,7 +177,7 @@ Button checkout_btn;
             public void onFailure(Call<GetProductsInCart> call,
                                   Throwable t) {
                 recyle_livetrade.hideShimmer();
-                Toast.makeText(getActivity(),"Something went wrong!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

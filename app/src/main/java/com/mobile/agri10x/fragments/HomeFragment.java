@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -519,6 +521,23 @@ public class HomeFragment extends Fragment {
                 spinner_transport_weight = dialogForTransportContatct.findViewById(R.id.spinner_weight_transport);
                 edt_txt_pricekg = dialogForTransportContatct.findViewById(R.id.edt_txt_price);
                 spinner_state_transaporatation = dialogForTransportContatct.findViewById(R.id.spinner_state_transaporatation);
+
+                edt_txt_company_name.setFilters(new InputFilter[] {
+                        new InputFilter() {
+                            @Override
+                            public CharSequence filter(CharSequence cs, int start,
+                                                       int end, Spanned spanned, int dStart, int dEnd) {
+// TODO Auto-generated method stub
+                                if(cs.equals("")){ // for backspace
+                                    return cs;
+                                }
+                                if(cs.toString().matches("[a-zA-Z ]+")){
+                                    return cs;
+                                }
+                                return "";
+                            }
+                        }
+                });
                 callApiGetStatefortransporatation();
 
                 try {

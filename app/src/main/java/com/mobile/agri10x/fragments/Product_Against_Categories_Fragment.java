@@ -102,7 +102,7 @@ public class Product_Against_Categories_Fragment extends Fragment {
                     }
                 }
                 else {
-                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -110,7 +110,7 @@ public class Product_Against_Categories_Fragment extends Fragment {
             public void onFailure(Call<getCommAccToCat> call,
                                   Throwable t) {
                 recyle_productCategories.hideShimmer();
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

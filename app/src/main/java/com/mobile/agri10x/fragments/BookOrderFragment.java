@@ -496,14 +496,14 @@ public class BookOrderFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<getAddress> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -652,7 +652,7 @@ public class BookOrderFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -700,7 +700,7 @@ public class BookOrderFragment extends Fragment {
                     ss_statedel.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -747,7 +747,7 @@ public class BookOrderFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1020,14 +1020,14 @@ public class BookOrderFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -1068,14 +1068,14 @@ public class BookOrderFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -1336,7 +1336,7 @@ public class BookOrderFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1392,14 +1392,14 @@ Toast.makeText(getActivity(),"Data not found",Toast.LENGTH_SHORT).show();
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetBookOrder> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

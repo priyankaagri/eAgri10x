@@ -390,7 +390,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went Wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 

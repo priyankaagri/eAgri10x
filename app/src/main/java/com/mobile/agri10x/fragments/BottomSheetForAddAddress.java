@@ -208,7 +208,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
                 }
             }
 

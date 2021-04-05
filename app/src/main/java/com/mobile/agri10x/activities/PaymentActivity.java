@@ -207,7 +207,7 @@ callapigetBalance(userIdo);
             @Override
             public void onFailure(Call<GetUserBalance> call,
                                   Throwable t) {
-                Toast.makeText(PaymentActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivity.this,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });

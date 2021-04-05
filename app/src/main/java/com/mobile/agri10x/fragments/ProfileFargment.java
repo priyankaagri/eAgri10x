@@ -193,14 +193,14 @@ public class ProfileFargment extends Fragment {
                     et_mobilenumber.setText(number);
                 } else {
                     dialog.dismiss();
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetUser> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -241,7 +241,7 @@ public class ProfileFargment extends Fragment {
                     getActivity().getSupportFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -249,7 +249,7 @@ public class ProfileFargment extends Fragment {
             public void onFailure(Call<UpdateUser> call,
                                   Throwable t) {
                 dialog2.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -100,7 +100,7 @@ public class ManageStockFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -108,7 +108,7 @@ public class ManageStockFragment extends Fragment {
             public void onFailure(Call<GetStockByID> call,
                                   Throwable t) {
                 recycleview_manage_stock.hideShimmer();
-// Toast.makeText(Otp_Screen_Activity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

@@ -262,7 +262,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                 }
                 else {
 
-                    Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -270,7 +270,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
             public void onFailure(Call<DisplayQuickView> call,
                                   Throwable t) {
 
-                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -312,7 +312,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                 }
                 else {
 
-                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -320,7 +320,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
             public void onFailure(Call<GetAddProductToCart> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

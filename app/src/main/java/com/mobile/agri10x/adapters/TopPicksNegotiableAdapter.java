@@ -229,14 +229,14 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                             edt_txt_comodity.setText(dataList.get(position).getCommodityName());
 
                         } else {
-                            Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<GetUser> call,
                                           Throwable t) {
-                        Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -695,7 +695,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                 }
                 else {
 
-                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -703,7 +703,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onFailure(Call<GetAddProductToCart> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

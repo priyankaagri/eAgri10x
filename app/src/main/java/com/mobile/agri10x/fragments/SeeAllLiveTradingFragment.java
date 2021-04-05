@@ -95,7 +95,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
                     }
                 }
                 else {
-                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -103,7 +103,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
             public void onFailure(Call<GetLiveTrades> call,
                                   Throwable t) {
                 recyle_livetrade.hideShimmer();
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

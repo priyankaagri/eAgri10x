@@ -77,8 +77,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_profile_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/tv_profile"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -163,8 +164,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_payment_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_payment"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -251,8 +253,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_managestock_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_managestock"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -293,8 +296,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_yourorders_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_your_orders"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -336,8 +340,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_yourwishlist_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_wish_list"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -378,8 +383,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_your_address"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/myaddress"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -422,8 +428,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_your_language"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/mylanguage"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -495,8 +502,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_aboutus_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_about_us"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -538,8 +546,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_contact_us_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_contst_us"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -581,8 +590,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_toRightOf="@+id/iv_menu_shareapp_id"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
+                    android:fontFamily="@font/proxima_nova_alt_light"
                     android:text="@string/menu_share_app"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 

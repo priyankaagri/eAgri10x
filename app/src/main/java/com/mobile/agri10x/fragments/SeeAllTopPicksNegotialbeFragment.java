@@ -115,7 +115,7 @@ public class SeeAllTopPicksNegotialbeFragment extends Fragment  {
 
                 } else {
 
-                    Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -123,7 +123,7 @@ public class SeeAllTopPicksNegotialbeFragment extends Fragment  {
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 recyle_alltoppicks.hideShimmer();
-                Toast.makeText(getActivity(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

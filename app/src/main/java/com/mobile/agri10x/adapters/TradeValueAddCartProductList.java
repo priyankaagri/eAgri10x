@@ -249,7 +249,7 @@ int getWaight=holder.getAdapterPosition();
                 }
                 else {
 
-                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -257,7 +257,7 @@ int getWaight=holder.getAdapterPosition();
             public void onFailure(Call<UpdateCart> call,
                                   Throwable t) {
                 dialog2.dismiss();
-                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -296,7 +296,7 @@ int getWaight=holder.getAdapterPosition();
                 }
                 else {
 
-                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -304,7 +304,7 @@ int getWaight=holder.getAdapterPosition();
             public void onFailure(Call<GetRemoveProduct> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

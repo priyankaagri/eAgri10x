@@ -213,7 +213,7 @@
                     android:text="@string/tv_contact_name_id"
                     />
                 <EditText
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                     android:id="@+id/edt_contactpersonname"
                     android:layout_marginTop="10dp"
                     android:paddingStart="4dp"
@@ -343,7 +343,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                 android:id="@+id/deliverynote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -351,8 +351,8 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/proximanova_regular"
                 android:hint="@string/please_deleiver_it_before"
-                android:inputType="text"
                 android:padding="10dp"
+                android:inputType="textPersonName"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/text_color"
@@ -370,7 +370,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
                 android:id="@+id/packagingdatail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -378,7 +378,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/proximanova_regular"
                 android:hint="@string/packaging_deatils"
-                android:inputType="text"
+                android:inputType="textPersonName"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textColor="@color/black"

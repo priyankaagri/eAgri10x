@@ -284,7 +284,7 @@ close_dialog.setOnClickListener(new View.OnClickListener() {
                 }
                 else {
 
-                    Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -292,7 +292,7 @@ close_dialog.setOnClickListener(new View.OnClickListener() {
             public void onFailure(Call<DisplayQuickView> call,
                                   Throwable t) {
 
-                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -148,7 +148,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                     }
 
 
-//Log.d("params","91"+strmobilenumber+" "+strotp);
+
                 }
             }
         });
@@ -274,9 +274,9 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             public void onResponse(Call<VerifyOTP> call,
                                    Response<VerifyOTP> response) {
                 dialog.dismiss();
-// Log.d("verifyOTP",response.toString());
+
                 if (response.isSuccessful()) {
-// Log.d("getresponse",response.body().getType());
+
                     if (response.body().getOut() == 5) {
                         Log.e("token", "" + response.body().getToken());
                       //  new SessionManager(Otp_Screen_Activity.this).createLoginSession(response.body().getToken());
@@ -395,8 +395,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
         public void decoded(String JWTEncoded) throws Exception {
             try {
                 String[] split = JWTEncoded.split("\\.");
-//                Log.d("JWT_DECODED", "Header: " + getJson(split[0]));
-//                Log.d("JWT_DECODED", "Body: " + getJson(split[1]));
+
 
                 JSONObject obj = new JSONObject(getJson(split[1]));
                 String mobile = obj.getString("mobile");

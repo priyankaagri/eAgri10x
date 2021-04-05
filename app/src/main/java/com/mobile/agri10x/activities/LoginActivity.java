@@ -171,11 +171,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onResponse(Call<GetOTP> call,
                                    Response<GetOTP> response) {
                 //dialog.dismiss();
-                Log.d("getotp",response.toString());
+
                 if (response.isSuccessful()) {
 
                     dialog.dismiss();
-                    Log.d("getout", String.valueOf(response.body().getOut()));
+
                     if(response.body().getOut() == 5)
                     {
                         Intent i = new Intent(LoginActivity.this,Otp_Screen_Activity.class);
@@ -198,7 +198,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Log.d("geterror",t.getMessage());
+
                String strerr =t.getMessage();
                 if(strerr.contains("java.lang.NumberFormatException: For input string")){
                     Toast.makeText(LoginActivity.this,"You are not authorised to login into this website. Please create an account with another Mobile No.", Toast.LENGTH_SHORT).show();

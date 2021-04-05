@@ -406,7 +406,7 @@ if(getbookorpurchase){
     callcheckouthandleforpurchase(order_id,payment_id,signature,bookingid_frombookorderfrag);
 }
 
-   //     Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature+" "+bookingid_frombookorderfrag);
+
 
 
     }

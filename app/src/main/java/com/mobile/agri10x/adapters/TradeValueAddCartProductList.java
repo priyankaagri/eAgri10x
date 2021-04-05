@@ -123,7 +123,7 @@ if(ProductsInCartlist.get(position).getPrice() != null){
                 .listener(new Picasso.Listener() {
                     @Override
                     public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                        Log.d("exception", String.valueOf(exception));
+
                     }
                 })
                 .build();
@@ -222,7 +222,7 @@ int getWaight=holder.getAdapterPosition();
 //put something inside the map, could be null
         jsonParams.put("quantity", quantity);
         jsonParams.put("updateThis",userProductID);
-        Log.d("id",userProductID+" "+SessionManager.getKeyTokenUser(context));
+
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {

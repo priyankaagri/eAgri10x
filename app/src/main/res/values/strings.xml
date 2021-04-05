@@ -62,6 +62,7 @@
     <string name="Trade_Now">Trade Now</string>
     <string name="kg">KG</string>
     <string name="myaddress">My Addresses</string>
+    <string name="mylanguage">My Language</string>
     <string name="add_money_to_wallet">Add money to wallet</string>
     <string name="Discription">Description</string>
     <string name="My_Addresses">My Addresses</string>
@@ -100,9 +101,6 @@
     <string name="Operating_State">Operating State</string>
     <string name="No_Selection">No Selection</string>
     <string name="Stock_Type">Stock Type</string>
-
-
-
 
 
     <string name="viewall">See All</string>

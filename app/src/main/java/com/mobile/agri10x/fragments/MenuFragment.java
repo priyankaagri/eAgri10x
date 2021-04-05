@@ -27,10 +27,10 @@ public class MenuFragment extends Fragment {
     private Button mLogoutButton;
     private ImageView mBackImage;
     private RelativeLayout mProfileRl,mVerifyAccountRl,mPaymentRl,mAddStockRl,mManageStockRl,
-            mYourOrdersRl,mYourWishListRl,mAboutUsRl,mConstactUsRl,mShareAppRl,mAddressRl;
+            mYourOrdersRl,mYourWishListRl,mAboutUsRl,mConstactUsRl,mShareAppRl,mAddressRl,mMylanguage;
     private final String PROFILE_TAG="profile",VERIFY_ACCOUNT_TAG="verify",PAYMENT_TAG="payment",ADD_STOCK_TAG="addstock",
             MANAGE_STOCK_TAG="managestock",YOUR_ORDER_TAG="yourorder",WISH_LIST_TAG="yourwishlist",ABOUT_US_TAG="about_us",
-            CONTACT_US_TAG="contact_us";
+            CONTACT_US_TAG="contact_us",MY_LANGUAGE="mylanguage";
     private final Context mContext=getActivity();
 
     @Nullable
@@ -48,7 +48,7 @@ public class MenuFragment extends Fragment {
         mPaymentRl=view.findViewById(R.id.rl_menu_payment);
         mAddStockRl=view.findViewById(R.id.rl_menu_add_stock);
         mManageStockRl=view.findViewById(R.id.rl_menu_manage_stock);
-
+       mMylanguage = view.findViewById(R.id.rl_menu_your_language);
         mYourOrdersRl=view.findViewById(R.id.rl_menu_your_orders);
         mYourWishListRl=view.findViewById(R.id.rl_menu_your_wish_list);
         mAddressRl = view.findViewById(R.id.rl_menu_your_address);
@@ -74,6 +74,12 @@ public class MenuFragment extends Fragment {
             }
         });
         checkLoginStatus();
+        mMylanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMyLanguageFragment();
+            }
+        });
 
         mProfileRl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +162,14 @@ public class MenuFragment extends Fragment {
             }
         });
 
+    }
+
+    private void openMyLanguageFragment() {
+        MyLanguageFragment addressFragment=new MyLanguageFragment();
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment, addressFragment,MY_LANGUAGE);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private void openAddressFragment() {

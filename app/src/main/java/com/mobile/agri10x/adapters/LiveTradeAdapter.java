@@ -113,7 +113,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
         System.out.println("Currency herereee: " + currency);
         String pricepeoduct = String.format("%.2f", dataList.get(position).getPricePerLot());
         holder.product_price.setText("Price/KG : "+currency);
-
+holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
         holder.product_location.setText(dataList.get(position).getCity());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -499,7 +499,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
     }
 
     public class ViewHolders extends RecyclerView.ViewHolder {
-        TextView txt_product_name,product_price,product_location;
+        TextView txt_product_name,product_price,product_location,txt_variety_name;
         ImageView product_img,fav;
         TextView addcart;
         CardView cardview;
@@ -507,6 +507,7 @@ public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.View
 
         public ViewHolders(@NonNull View itemView) {
             super(itemView);
+            this.txt_variety_name = itemView.findViewById(R.id.txt_variety_name);
             this.product_location = itemView.findViewById(R.id.product_location);
             this.txt_product_name =itemView.findViewById(R.id.txt_product_name);
             this.product_price =itemView.findViewById(R.id.product_price);

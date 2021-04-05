@@ -45,14 +45,25 @@
                 android:textColor="@color/black"
 
                 android:textSize="15sp" />
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/txt_variety_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_product_name"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/proxima_nova_alt_light"
+                android:textColor="@color/black"
 
+                android:textSize="12sp" />
 
             <TextView
 android:layout_marginTop="8dp"
                 android:id="@+id/product_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-               android:layout_below="@id/txt_product_name"
+               android:layout_below="@id/txt_variety_name"
 android:layout_centerInParent="true"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:textStyle="bold"

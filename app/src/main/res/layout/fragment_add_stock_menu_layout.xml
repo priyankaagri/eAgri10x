@@ -76,6 +76,7 @@
 
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                     android:id="@+id/spinner_commodity"
+                    app:RevealEmptyText="@string/selectcommodity"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/hollow_back_trn"
@@ -131,6 +132,7 @@
 
                 <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                     android:id="@+id/spinner_variety"
+                    app:RevealEmptyText="@string/selectvariety"
                     android:background="@drawable/hollow_back_trn"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -490,6 +492,7 @@
 
                     <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                         android:id="@+id/spinner_state"
+                        app:RevealEmptyText="@string/selectstate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/darkgrey"/>
@@ -528,6 +531,7 @@
 
                     <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                         android:id="@+id/spinner_city"
+                        app:RevealEmptyText="@string/selectcity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/darkgrey"/>

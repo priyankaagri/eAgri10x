@@ -469,7 +469,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     private boolean validatedateto(String strDateto) {
         if (strDateto.isEmpty() || strDateto == null) {
             Toast.makeText(getActivity(),
-                    "Date To is Required", Toast.LENGTH_SHORT).show();
+                    "To date is Required", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -478,7 +478,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     private boolean validatedatefrom(String strDatefrom) {
         if (strDatefrom.isEmpty() || strDatefrom == null) {
             Toast.makeText(getActivity(),
-                    "Date From is Required", Toast.LENGTH_SHORT).show();
+                    "From date is Required", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

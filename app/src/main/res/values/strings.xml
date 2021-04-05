@@ -406,4 +406,8 @@
     <string name="priceskg">Price/KG : </string>
     <string name="totalweight">Total Weight : </string>
     <string name="total">Total: </string>
+    <string name="selectcommodity">Select Commodity</string>
+    <string name="selectvariety">Select Variety</string>
+    <string name="selectstate"> Select State</string>
+    <string name="selectcity"> Select City</string>
 </resources>

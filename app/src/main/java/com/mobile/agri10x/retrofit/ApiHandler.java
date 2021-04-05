@@ -34,7 +34,7 @@ public class ApiHandler {
 
 //"https://data.agri10x.com/"
 //Production_BASE_URL
-    private static final long HTTP_TIMEOUT = TimeUnit.SECONDS.toMillis(60);
+    private static final long HTTP_TIMEOUT = TimeUnit.SECONDS.toMillis(90);
     private static AgriInvestor apiService;
     static OkHttpClient okHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
 

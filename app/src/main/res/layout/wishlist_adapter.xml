@@ -99,7 +99,7 @@
                                 android:fontFamily="@font/proxima_nova_alt_bold"
 
                                 android:textColor="@color/black"
-                                android:textSize="20sp" />
+                                android:textSize="16sp" />
 
                             <TextView
 
@@ -113,7 +113,7 @@
 
 
                                 android:textColor="@color/appgreen"
-                                android:textSize="20sp"
+                                android:textSize="16sp"
                                 tools:ignore="RtlCompat" />
 
                         </LinearLayout>

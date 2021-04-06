@@ -492,6 +492,7 @@
 
                     <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                         android:id="@+id/spinner_state"
+                        android:paddingLeft="10dp"
                         app:RevealEmptyText="@string/selectstate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -530,6 +531,7 @@
                     </LinearLayout>
 
                     <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:paddingLeft="10dp"
                         android:id="@+id/spinner_city"
                         app:RevealEmptyText="@string/selectcity"
                         android:layout_width="match_parent"

@@ -78,9 +78,8 @@
     <string name="Add_Stock"> + Add Stock </string>
     <string name="E_Collect">E-Collect</string>
     <string name="E_Collect_detail">Please find below the E-Collect Details. You can transfer the payment amount using your netbanking.</string>
-    <string name="paymentnote">In case you have already made the payment using E-Collect,please click the button below while we confirm the payment.Please note that the payment can take upto 30 mins to reflect.
-.</string>
-    <string name="I_have_made_paymeny">I HVAE MADE THE PAYMENT</string>
+    <string name="paymentnote">In case you have already made the payment using E-Collect,please click the button below while we confirm the payment.Please note that the payment can take upto 30 mins to reflect.</string>
+    <string name="I_have_made_paymeny">I HAVE MADE THE PAYMENT</string>
     <string name="Categories">Categories</string>
     <string name="User_Details">User Details</string>
     <string name="Delivery_Payments">Delivery/Payments</string>
@@ -401,6 +400,6 @@
 
     <string name="selectcommodity">Select Commodity</string>
     <string name="selectvariety">Select Variety</string>
-    <string name="selectstate"> Select State</string>
-    <string name="selectcity"> Select City</string>
+    <string name="selectstate">  Select State</string>
+    <string name="selectcity">  Select City</string>
 </resources>

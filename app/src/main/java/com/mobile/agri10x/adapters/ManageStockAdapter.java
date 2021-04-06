@@ -45,7 +45,7 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
         String currency1 = format1.format(number1);
         holder.txt_product_price.setText(currency1);
         holder.txt_product_location.setText(stocklist.get(position).getCity() + " , " + stocklist.get(position).getState());
-        holder.txt_total_quantity.setText("Total Qty(KG): " + stocklist.get(position).getStockQuantity());
+        holder.txt_total_quantity.setText("Total Qty(KG) : " + stocklist.get(position).getStockQuantity());
         if (stocklist.get(position).getIsVerified() == true) {
             holder.varified_value.setBackgroundResource(R.drawable.featured_bg);
             holder.verified.setText("Verified");

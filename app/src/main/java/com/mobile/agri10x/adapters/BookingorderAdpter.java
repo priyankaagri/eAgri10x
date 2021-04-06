@@ -56,7 +56,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.ViewHolers> {
-    Date purchasedate;
+    Date purchasedate,currnetDate,NewDate;
+    public  int dayDifference=0;
+    String fromdate;
     Context context;
     String  ordernotes = "", billingaddressstr = "", shippingaddressstr = "", purchasedatestr = "";
     List<GetOrderListDatumBooking> productsInbookingorderlist = new ArrayList<>();
@@ -88,32 +90,82 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
         return viewHolder;
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewHolers holder, int position) {
 
         if (productsInbookingorderlist.get(position).getPartialPaymentDate() != null) {
-            String orderdate = (String) productsInbookingorderlist.get(position).getPartialPaymentDate();
-            String[] separated = orderdate.split("T");
-            String fromdate = separated[0];
-            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+
+            fromdate = String.valueOf(productsInbookingorderlist.get(position).getPartialPaymentDate());
+            // fromdate = "2021-04-03T17:26:42.266Z";
+
+            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             try {
                 purchasedate = format1.parse(fromdate);
 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             purchasedatestr = dateFormat.format(purchasedate);
-            holder.txt_order_date.setText("Order Date : " + purchasedatestr);
+            holder.txt_order_date.setText("Order Date : " + purchasedatestr.substring(0,10));
 
 
-        }else{
+            String crrentdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
+            Log.d("cccccdate",crrentdate);
+            SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            try {
+                currnetDate = format0.parse(crrentdate);
+                System.out.println(currnetDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(purchasedate);
+            calendar.add(Calendar.DAY_OF_YEAR, 3);
+            DateFormat dateFormat3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String newDate=dateFormat3.format(calendar.getTime());
+            Log.d("newDate",newDate);
+            SimpleDateFormat formatt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            try {
+                NewDate = formatt.parse(newDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            long difference = (NewDate.getTime() - currnetDate.getTime());
+            long differenceDates = difference / (24 * 60 * 60 * 1000);
+            long seconds = difference / 1000;
+            long minutes = seconds / 60;
+            long hours = minutes / 60;
+            long days = hours / 24;
+            dayDifference = (int) differenceDates;
+            Log.d("dayDifference", String.valueOf(dayDifference));
+            if (dayDifference < 0) {
+                holder.relative_stock.setVisibility(View.GONE);
+                holder.red_background.setBackgroundResource(R.drawable.featured_red_trn_change);
+
+            } else if (dayDifference == 0) {
+                if (hours > 0) {
+                    holder.relative_stock.setVisibility(View.VISIBLE);
+                    holder.red_background.setBackgroundResource(R.drawable.featured_red_trn);
+                    holder.txt_numberofdays.setText("" +hours+" hrs");
+                } else {
+                    holder.relative_stock.setVisibility(View.GONE);
+                    holder.red_background.setBackgroundResource(R.drawable.featured_red_trn_change);
+                }
+
+            } else {
+                holder.relative_stock.setVisibility(View.VISIBLE);
+                holder.red_background.setBackgroundResource(R.drawable.featured_red_trn);
+                holder.txt_numberofdays.setText("" +dayDifference+" days");
+            }
+        } else {
 
             holder.txt_order_date.setText("Order Date : ");
         }
-
         holder.txt_booking_id.setText("Booking ID: " + productsInbookingorderlist.get(position).getId());
 
         double number = Double.parseDouble(String.valueOf(productsInbookingorderlist.get(position).getBookingAmount()));
@@ -121,13 +173,9 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
         String currency = format.format(number);
         holder.txt_price.setText(currency);
 
-
         holder.layout_for_booking.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-
-
+            public void onClick(View v){
                 productslistData.clear();
                 bookingdetaildialog = new Dialog(context);
                 bookingdetaildialog.setContentView(R.layout.layout_detailof_bookingorder);
@@ -135,8 +183,6 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
                 bookingdetaildialog.setCancelable(true);
                 bookingdetaildialog.setCanceledOnTouchOutside(true);
                 bookingdetaildialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-
-
                 cancle_btn = bookingdetaildialog.findViewById(R.id.cancle_btn);
                 btn_purchase = bookingdetaildialog.findViewById(R.id.btn_purchase);
 
@@ -217,7 +263,9 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
                 bookingdetaildialog.show();
 
 
+
             }
+
         });
 
     }
@@ -297,13 +345,14 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
         LinearLayout layout_for_booking;
         TextView txt_order_date, txt_booking_id,txt_numberofdays;
         RelativeLayout relative_stock;
-        TextView txt_price;
+        TextView txt_price,red_background;
 
         public ViewHolers(@NonNull View itemView) {
             super(itemView);
 
             layout_for_booking = itemView.findViewById(R.id.layout_for_booking);
             txt_price = itemView.findViewById(R.id.txt_price);
+            red_background = itemView.findViewById(R.id.red_background);
             txt_order_date = itemView.findViewById(R.id.txt_order_date);
             txt_booking_id = itemView.findViewById(R.id.txt_booking_id);
             txt_numberofdays = itemView.findViewById(R.id.txt_numberofdays);

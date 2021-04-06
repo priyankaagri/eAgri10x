@@ -87,7 +87,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
     List<GetFeaturesbyCommodityDatum> getfeatureArraylist = new ArrayList<>();
     RecyclerView recyclerview_features;
     AddStockFeatuesAdapter addStockFeatuesAdapter;
-    String str_state="" , str_city="", stateId="" , str_commodity="" , commodity_id="", strDatefrom="", strDateto="" , str_variety="" , str_quantity="" , str_priceperkg="" , str_address="" , str_taluka="", str_pincode="", str_country ="", str_discription="" , str_commodityid="", str_varietyid="" ;
+    String str_state="" , str_city="", stateId="" , str_commodity="" , commodity_id="", strDatefrom="", strDateto="" , str_variety="" , str_quantity="" , str_priceperkg="" , str_address="" , str_taluka="", str_pincode="", str_country ="", str_discription="" , str_commodityid="", str_varietyid="", strcityid ="";
     Calendar calendar = Calendar.getInstance();
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH) ;
@@ -205,7 +205,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                 for (int i = 0; i < getCityeArrayList.size(); i++) {
                     String addstr = getCityeArrayList.get(i).getCities();
                     if (pos.equals(addstr)) {
-                        stateId = getCityeArrayList.get(i).getId();
+                        strcityid = getCityeArrayList.get(i).getId();
                     }
                 }
             }

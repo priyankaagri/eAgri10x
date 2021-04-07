@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:paddingHorizontal="10dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+   >
+<TextView
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:fontFamily="@font/proxima_nova_bold"
+    android:text="@string/charges_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/cancle_btn"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:src="@drawable/close">
+
+        </ImageView>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:text="@string/TradeAmount"/>
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/txt_trade_amont"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_nova_bold"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        android:layout_height="1dp"/> <RelativeLayout
+    android:layout_marginTop="10dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_light"
+        android:text="@string/CONVENIENCE"/>
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/txt_convenience_amount"
+        android:layout_alignParentRight="true"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_light"
+        />
+</RelativeLayout>
+
+    <RelativeLayout
+    android:layout_marginTop="15dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_light"
+        android:text="@string/COMMISION"
+        android:textSize="14sp" />
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/txt_commition_amount"
+        android:layout_alignParentRight="true"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_light"
+        />
+</RelativeLayout>
+     <RelativeLayout
+    android:layout_marginTop="15dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_light"
+        android:text="@string/HANDLING"/>
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/txt_handling_amount"
+        android:layout_alignParentRight="true"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_light"
+        />
+</RelativeLayout>
+    <View
+
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        android:layout_height="1dp"/>
+   <RelativeLayout
+       android:layout_marginBottom="40dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:text="@string/Total_Trade_Amount"/>
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/txt_total_trade_amount"
+        android:layout_alignParentRight="true"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_bold"
+        />
+</RelativeLayout>
+
+</LinearLayout>

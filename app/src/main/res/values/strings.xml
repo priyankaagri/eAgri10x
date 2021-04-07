@@ -71,7 +71,19 @@
     <string name="Add_new_Address">+ Add new Address </string>
     <string name="Trade_Value">Trade Value</string>
     <string name="Total_Trade_Amount">Total Trade Amount</string>
+    <string name="info">(?)</string>
+    <string name="TradeAmount">Trade Amount</string>
+    <string name="CONVENIENCE">CONVENIENCE CHARGES @ 2%</string>
+    <string name="charges_title">Charges Details</string>
+    <string name="COMMISION">COMMISION @ 1%</string>
+    <string name="HANDLING">HANDLING FEES @ 2% </string>
     <string name="order_book">order book</string>
+
+    <string name="your_payment_suusesful">Your Payment is successful.</string>
+    <string name="mesage_of_success">Would you like to opt for Warehouse/Transport facility ?</string>
+    <!-- <string name="youwant_toremove">Are you sure you want to Remove ?</string>-->
+
+    <string name="noo">No</string>
     <string name="PURCHASE">PURCHASE</string>
     <string name="Menu">Menu</string>
     <string name="Manage_Stock">Manage Stock</string>

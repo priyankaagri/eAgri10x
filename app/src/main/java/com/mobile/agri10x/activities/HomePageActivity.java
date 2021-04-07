@@ -460,12 +460,13 @@ if(getbookorpurchase){
                         Bundle bundle = new Bundle();
                         FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
                         bundle.putBoolean("getValue",false); // use as per your need
+                        bundle.putInt("getIds",1);
                         fragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                         getProductinCart();
-                        Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
 
                     }else{
                         Toast.makeText(HomePageActivity.this,"Payment Failed",Toast.LENGTH_SHORT).show();
@@ -514,7 +515,6 @@ if(getbookorpurchase){
 
 
                 if (response.isSuccessful()) {
-
                     if(response.body().getMessage().equals("Payment Successful")){
                         HomePageActivity.removeFragment(new BookOrderFragment());
 
@@ -522,13 +522,15 @@ if(getbookorpurchase){
                         MyOrderFragment fragment = new MyOrderFragment(); // replace your custom fragment class
                         Bundle bundle = new Bundle();
                         FragmentTransaction fragmentTransaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
-                        bundle.putBoolean("getValue",true); // use as per your need
+                        bundle.putBoolean("getValue",true);
+                        bundle.putInt("getIds",1);
+                    // use as per your need
                         fragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                         getProductinCart();
-                        Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
 
                     }else{
                         Toast.makeText(HomePageActivity.this,"Payment Failed",Toast.LENGTH_SHORT).show();

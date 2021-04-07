@@ -98,9 +98,8 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
             purchasedatestr = dateFormat.format(purchasedate);
             holder.txt_order_date.setText("Order Date : " + purchasedatestr);
         }else{
-            holder.txt_order_date.setText("Order Date : ");
+            holder.txt_order_date.setText("Payment Not Completed");
         }
-
 
         holder.txt_booking_id.setText("Booking ID : " + productspurchaseorderlist.get(position).getId());
 

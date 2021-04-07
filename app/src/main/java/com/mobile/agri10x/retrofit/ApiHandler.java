@@ -27,8 +27,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiHandler {
 
-//private static final String development_BASE_URL = "https://data-uat.agri10x.com/";
-private static final String development_BASE_URL = "https://data.agri10x.com/";
+private static final String development_BASE_URL = "https://data-uat.agri10x.com/";
+//private static final String development_BASE_URL = "https://data.agri10x.com/";
 
 
 

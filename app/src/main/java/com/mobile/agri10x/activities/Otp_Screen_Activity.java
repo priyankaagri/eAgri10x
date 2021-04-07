@@ -408,15 +408,16 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 //That gives all message to us.
 // We need to get the code from inside with regex
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                if(message.contains("is your OTP for phone verification")) {
+                if(message.contains("Agri10x E-Marketplace login")) {
                     String numberOnly = message.replaceAll("[^0-9]", "");
+                 Log.d("numberOnly",numberOnly);
 //numberOnly 10886110
+//String otp=numberOnly.substring(2,7);
+                    String a = numberOnly.substring(2);
 
-//                    String a = numberOnly.substring(2);
-//
-//                    strotpfrmmsg = a.substring(0, a.length() - 2);
-                    if (numberOnly != null) {
-                        otp_view.setOTP(numberOnly);
+                   strotpfrmmsg = a.substring(0, a.length() - 2);
+                    if (strotpfrmmsg != null) {
+                        otp_view.setOTP(strotpfrmmsg);
                     }
 
                 }

@@ -1,14 +1,19 @@
 package com.mobile.agri10x.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +54,8 @@ import retrofit2.Response;
 public class TradeValueAddCart extends Fragment {
    ImageView but_back;
     double amt;
+    RelativeLayout totallayout;
+    Dialog dialoginfo;
    ShimmerRecyclerView recyle_livetrade;
     TradeValueAddCartProductList tradeValueAdpter;
     public static double subTotal;
@@ -61,6 +68,7 @@ Button checkout_btn;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_cart_view, container, false);
         but_back=view.findViewById(R.id.but_back);
+        totallayout=view.findViewById(R.id.totallayout);
         totaltradeamount=view.findViewById(R.id.totaltradeamount);
         btn_orderbook = view.findViewById(R.id.btn_orderbook);
         btn_purchaes = view.findViewById(R.id.btn_purchaes);
@@ -149,14 +157,56 @@ Button checkout_btn;
                     double withcommision = (subTotal / 100.0f) *1;
 
 
-                  amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
+                    amt=subTotal+withconveniencecharge+withhandlefees+withcommision;
 
                     double number = subTotal + withconveniencecharge + withhandlefees + withcommision;
                     NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
                     String currency = format.format(number);
+                    String subtotalString=format.format(subTotal);
+                    String withconveniencechargeString=format.format(withconveniencecharge);
+                    String withhandlefeesString=format.format(withhandlefees);
+                    String withcommisionString=format.format(withcommision);
                     System.out.println("Currency in INDIA : " + currency);
                     String pricepeoduct = String.format("%.2f", subTotal + withconveniencecharge + withhandlefees + withcommision);
                     totaltradeamount.setText(currency);
+
+                    totallayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialoginfo = new Dialog(getActivity());
+
+                            dialoginfo.setContentView(R.layout.layout_charges_dialog);
+                            // int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+                            //  int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
+                            dialoginfo.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            dialoginfo.getWindow().setGravity(Gravity.CENTER);
+                            dialoginfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            dialoginfo.setCancelable(true);
+                            dialoginfo.setCanceledOnTouchOutside(false);
+                            dialoginfo.getWindow().getAttributes().windowAnimations = R.style.animation;
+                            ImageView cancle_btn=dialoginfo.findViewById(R.id.cancle_btn);
+                            TextView txt_trade_amont=dialoginfo.findViewById(R.id.txt_trade_amont);
+                            TextView txt_convenience_amount=dialoginfo.findViewById(R.id.txt_convenience_amount);
+                            TextView txt_commition_amount=dialoginfo.findViewById(R.id.txt_commition_amount);
+                            TextView txt_handling_amount=dialoginfo.findViewById(R.id.txt_handling_amount);
+                            TextView txt_total_trade_amount=dialoginfo.findViewById(R.id.txt_total_trade_amount);
+                            txt_trade_amont.setText(subtotalString);
+                            txt_convenience_amount.setText(withconveniencechargeString);
+                            txt_commition_amount.setText(withcommisionString);
+                            txt_handling_amount.setText(withhandlefeesString);
+                            txt_total_trade_amount.setText(currency);
+                            cancle_btn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialoginfo.dismiss();
+                                }
+                            });
+                            dialoginfo.show();
+
+                        }
+                    });
+
+
                     if(ProductsInCartlist.size()>0)
                     {
 

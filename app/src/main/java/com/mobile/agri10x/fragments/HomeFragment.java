@@ -106,6 +106,7 @@ public class HomeFragment extends Fragment {
     String firstname, lastname, phonenumber,companyName,emailId;
     String str_state = "",str_state_trasnport="",str_City = "",str_state_wearhouse="",str_stock = "",str_features = "";
 
+
     EditText edt_txt_company_name,edt_txt_fname, edt_txt_lname, edt_txt_phone,edt_txt_email,edt_txt_pricekg;
     SearchableSpinner ss_statebilling, ss_citybilling,ss_state,spinner_state_transaporatation,ss_state_wearhouse;
     Spinner spinner_tranport_type,spinner_transport_weight,spinner_features,spinner_stock,spinner_stock_type;

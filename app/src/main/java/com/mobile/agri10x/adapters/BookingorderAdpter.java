@@ -164,7 +164,7 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
             }
         } else {
 
-            holder.txt_order_date.setText("Order Date : ");
+            holder.txt_order_date.setText("Payment Not Completed");
         }
         holder.txt_booking_id.setText("Booking ID: " + productsInbookingorderlist.get(position).getId());
 

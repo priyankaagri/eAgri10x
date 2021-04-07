@@ -79,7 +79,7 @@
     <string name="HANDLING">HANDLING FEES @ 2% </string>
     <string name="order_book">order book</string>
 
-    <string name="your_payment_suusesful">Your Payment is successful.</string>
+    <string name="your_payment_suusesful">Your Payment is successful</string>
     <string name="mesage_of_success">Would you like to opt for Warehouse/Transport facility ?</string>
     <!-- <string name="youwant_toremove">Are you sure you want to Remove ?</string>-->
 
@@ -414,4 +414,5 @@
     <string name="selectvariety">Select Variety</string>
     <string name="selectstate">  Select State</string>
     <string name="selectcity">  Select City</string>
+    <string name="facility">Choose Facility</string>
 </resources>

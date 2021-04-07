@@ -273,12 +273,12 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
                     int menuItemId = bottomNavigationView.getMenu().getItem(2).getItemId();
                     FragmentManager fragmentManager = (FragmentManager)context.getSupportFragmentManager();
                     Fragment currentFragment = fragmentManager.findFragmentByTag("cart");
-                    if (currentFragment != null && (currentFragment instanceof TradeValueAddCart)) {
-                        bottomNavigationView.getMenu().getItem(2).setChecked(true);
-
-                    } else {
-
-                    }
+//                    if (currentFragment != null && (currentFragment instanceof TradeValueAddCart)) {
+//                        bottomNavigationView.getMenu().getItem(2).setChecked(true);
+//
+//                    } else {
+//
+//                    }
                     BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(menuItemId);
                     badge.setBackgroundColor(context.getResources().getColor(R.color.appgreen));
                     badge.setNumber(ProductsInCartlist.size());
@@ -465,7 +465,7 @@ if(getbookorpurchase){
                         fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
-                        getProductinCart();
+
                        // Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
 
                     }else{
@@ -529,7 +529,15 @@ if(getbookorpurchase){
                         fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
-                        getProductinCart();
+                        FragmentManager fragmentManager = (FragmentManager) context.getSupportFragmentManager();
+                        Fragment currentFragment = fragmentManager.findFragmentByTag("menu");
+                        int menuItemId = bottomNavigationView.getMenu().getItem(3).getItemId();
+                        if (currentFragment != null && (currentFragment instanceof MenuFragment)) {
+                            bottomNavigationView.getMenu().findItem(menuItemId).setChecked(true);
+
+                        } else {
+
+                        }
                        // Toast.makeText(HomePageActivity.this,"Payment Successful",Toast.LENGTH_SHORT).show();
 
                     }else{

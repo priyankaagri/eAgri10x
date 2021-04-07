@@ -7,20 +7,34 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:weightSum="2"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:orientation="vertical"
-        android:layout_marginRight="15dp"
         android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/proxima_nova_alt_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/your_payment_suusesful"
+            android:layout_weight="1.8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
         <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_weight="0.2"
             android:id="@+id/cancle_btn"
-            android:layout_width="20dp"
+            android:layout_width="0dp"
             android:src="@drawable/close"
             android:layout_marginTop="20dp"
             android:layout_height="20dp">
 
         </ImageView>
+
 
 
     </LinearLayout>
@@ -31,16 +45,6 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:paddingHorizontal="15dp"
-            android:fontFamily="@font/proxima_nova_alt_bold"
-            android:text="@string/your_payment_suusesful"
-            android:layout_height="wrap_content">
-
-        </TextView>
 
         <TextView
             android:layout_width="match_parent"

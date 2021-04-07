@@ -204,6 +204,7 @@
 
                     </LinearLayout>
                     <EditText
+
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:id="@+id/edt_txt_comodity"
                         android:layout_width="match_parent"
@@ -213,6 +214,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:inputType="textPersonName"
                         android:editable="false"
+                        android:focusable="false"
                         android:fontFamily="@font/proximanova_regular"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_color"
@@ -265,6 +267,7 @@
                         android:fontFamily="@font/proximanova_regular"
                         android:textColor="@color/black"
                         android:editable="false"
+                        android:focusable="false"
                         android:inputType="textPersonName"
                         android:textColorHint="@color/text_color"
                         android:background="@drawable/edt_txt_background"

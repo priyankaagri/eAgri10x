@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.adapters.WishlistAdapter;
 import com.mobile.agri10x.R;
@@ -51,7 +53,7 @@ public class MyWishListFragment extends Fragment  {
         View view= inflater.inflate(R.layout.fragment_your_wish_menu_layout, container, false);
         mBackButton = view.findViewById(R.id.btn_back_manage_stock_id);
         recycleview_wishlist_stock = view.findViewById(R.id.recycleview_wishlist_stock);
-        recycleview_wishlist_stock.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
+        recycleview_wishlist_stock.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,true), R.layout.item_shimmer_card_view);
         recycleview_wishlist_stock.showShimmer();
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

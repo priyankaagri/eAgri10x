@@ -145,6 +145,7 @@ Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportCont
 if(getIds==1){
     dialog = new Dialog(getActivity());
     dialog.setContentView(R.layout.layout_choose_facility);
+
     // int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
     //  int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
     dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -186,13 +187,15 @@ if(getIds==1){
     private void openChooseFacility() {
         dialogchoice_of_facility = new Dialog(getActivity());
         dialogchoice_of_facility.setContentView(R.layout.layout_choice_of_facility);
-         int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
-          int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
-          dialogchoice_of_facility.getWindow().setLayout(width,height);
-      dialogchoice_of_facility.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogchoice_of_facility.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogchoice_of_facility.getWindow().setGravity(Gravity.CENTER);
+
+        dialogchoice_of_facility.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogchoice_of_facility.setCancelable(true);
         dialogchoice_of_facility.setCanceledOnTouchOutside(false);
         dialogchoice_of_facility.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+
         ImageView cancle_btn=dialogchoice_of_facility.findViewById(R.id.cancle_btn);
         EditText edt_txt_phone=dialogchoice_of_facility.findViewById(R.id.edt_txt_phone);
         EditText edt_txt_name=dialogchoice_of_facility.findViewById(R.id.edt_txt_name);
@@ -226,22 +229,13 @@ if(getIds==1){
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str_name=edt_txt_name.getText().toString();
-                String str_phone=edt_txt_phone.getText().toString();
-                if(TextUtils.isEmpty(str_name)){
-                    Toast.makeText(getActivity(), "Please Enter Name", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(str_phone)){
-                    Toast.makeText(getActivity(), "Please Enter Contact Number", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+
 if(checkbox_warehouse.isChecked()){
    // Toast.makeText(getActivity(), "checkbox_warehousecheckbox_warehouse", Toast.LENGTH_SHORT).show();
-    openDialogForWarehouse(str_name,str_phone);
+    openDialogForWarehouse();
 
 }else if(checkbox_transportation.isChecked()) {
-   openDialogForTranportation(str_name,str_phone);
+   openDialogForTranportation();
 
 }else {
     Toast.makeText(getActivity(), "Please Select Warehouse Or Transportation Facility", Toast.LENGTH_SHORT).show();
@@ -255,7 +249,7 @@ dialogchoice_of_facility.dismiss();
 
     }
 
-    private void openDialogForTranportation(String str_name, String str_phone) {
+    private void openDialogForTranportation() {
         dialogForTransportContatct = new Dialog(getActivity());
         dialogForTransportContatct.setContentView(R.layout.transportation_connect_us);
 
@@ -275,8 +269,7 @@ dialogchoice_of_facility.dismiss();
         spinner_transport_weight = dialogForTransportContatct.findViewById(R.id.spinner_weight_transport);
         edt_txt_pricekg = dialogForTransportContatct.findViewById(R.id.edt_txt_price);
         spinner_state_transaporatation = dialogForTransportContatct.findViewById(R.id.spinner_state_transaporatation);
-        edt_txt_fname.setText(str_name);
-        edt_txt_phone.setText(str_phone);
+
         edt_txt_company_name.setFilters(new InputFilter[] {
                 new InputFilter() {
                     @Override
@@ -638,7 +631,7 @@ dialogchoice_of_facility.dismiss();
         return json;
     }
 
-    private void openDialogForWarehouse(String str_name, String str_phone) {
+    private void openDialogForWarehouse() {
         dialogForWarehouse = new Dialog(getActivity());
         dialogForWarehouse.setContentView(R.layout.warehouse_contact_us);
 
@@ -658,8 +651,7 @@ dialogchoice_of_facility.dismiss();
         spinner_stock = dialogForWarehouse.findViewById(R.id.spinner_stock_type);
         /* ss_stockTypeOfOnion = dialogForWarehouse.findViewById(R.id.spinner_stock_typeonion);*/
         ss_state_wearhouse = dialogForWarehouse.findViewById(R.id.ss_state_wearhouse);
-        edt_txt_fname.setText(str_name);
-        edt_txt_phone.setText(str_phone);
+
 
         callApiGetStateforwearhous();
         allFeatures.clear();

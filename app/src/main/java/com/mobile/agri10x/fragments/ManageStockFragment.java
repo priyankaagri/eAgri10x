@@ -119,7 +119,10 @@ public class ManageStockFragment extends Fragment {
         btn_addstock= view.findViewById(R.id.btn_addstock);
         mBackButton = view.findViewById(R.id.btn_back_manage_stock_id);
         recycleview_manage_stock = view.findViewById(R.id.recycleview_manage_stock);
-        recycleview_manage_stock.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,true), R.layout.item_shimmer_card_view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recycleview_manage_stock.setLayoutManager(linearLayoutManager);
         recycleview_manage_stock.showShimmer();
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

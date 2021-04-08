@@ -55,7 +55,10 @@ public class MyWishListFragment extends Fragment  {
         View view= inflater.inflate(R.layout.fragment_your_wish_menu_layout, container, false);
         mBackButton = view.findViewById(R.id.btn_back_manage_stock_id);
         recycleview_wishlist_stock = view.findViewById(R.id.recycleview_wishlist_stock);
-        recycleview_wishlist_stock.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,true), R.layout.item_shimmer_card_view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recycleview_wishlist_stock.setLayoutManager(linearLayoutManager);
         recycleview_wishlist_stock.showShimmer();
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

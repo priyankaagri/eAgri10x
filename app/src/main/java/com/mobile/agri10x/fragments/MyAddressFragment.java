@@ -64,7 +64,10 @@ public class MyAddressFragment extends Fragment {
         add_billingAddress = view.findViewById(R.id.add_billingAddress);
         recyle_Addresslist = view.findViewById(R.id.recyle_addresss_view);
         but_back = view.findViewById(R.id.but_back);
-        recyle_Addresslist.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,true), R.layout.item_shimmer_card_view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recyle_Addresslist.setLayoutManager(linearLayoutManager);
         recyle_Addresslist.showShimmer();
 
         callapigetAddress();
@@ -114,6 +117,8 @@ public class MyAddressFragment extends Fragment {
                     if(getAddressDataArrayList.size() > 0){
                         addressListShowAdpter = new AddressListShowAdpter(getAddressDataArrayList, getActivity(),true);
                         recyle_Addresslist.setAdapter(addressListShowAdpter);
+
+
                         addressListShowAdpter.notifyDataSetChanged();
                     }else{
                         makeToast(getActivity(),getResources().getString(R.string.add_address));                    }

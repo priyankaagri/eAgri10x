@@ -1,6 +1,7 @@
 package com.mobile.agri10x.retrofit;
 
 import com.mobile.agri10x.models.GetAddMoney;
+import com.mobile.agri10x.models.GetBookingList;
 import com.mobile.agri10x.models.GetCheckOutHandle;
 import com.mobile.agri10x.models.GetOrderList;
 import com.mobile.agri10x.models.GetUserBalance;
@@ -172,7 +173,8 @@ public interface AgriInvestor {
     Call<GetWorkerForm> wsWearHouseForm(@Header("x-auth-token")String token,@Body QueryWearHouseForm queryWearHouseForm);
     @POST("m/getOrderList")
     Call<GetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
-
+    @POST("m/getBookingList")
+    Call<GetBookingList> wsBookingList(@Header("x-auth-token")String token, @Body RequestBody params);
 
 @POST("m/getUserBalance")
 Call<GetUserBalance> wsgetBalance(@Header("x-auth-token")String token, @Body UserId userId);

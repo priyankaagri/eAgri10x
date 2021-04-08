@@ -80,7 +80,7 @@
     <string name="add"> + जोडा </string>
     <string name="Booking">बुकिंग</string>
     <string name="Add_new_Address">+ नवीन पत्ता जोडा </string>
-    <string name="Trade_Value">व्यापार भाव</string>
+    <string name="Trade_Value">व्यापार मूल्य</string>
     <string name="Total_Trade_Amount">एकूण व्यापार रक्कम</string>
     <string name="order_book">ऑर्डर बुक</string>
     <string name="PURCHASE">खरेदी करा</string>
@@ -166,7 +166,7 @@
     <string name="lname_str"> आडनाव *</string>
     <string name="dateofbirth">जन्म तारीख</string>
     <string name="ddmmyy">dd-mm-yyyy</string>
-    <string name="cart_txt">* किमान ऑर्डरची मात्रा 500 कि.ग्रा. आणि फक्त 50 कि.ग्रा. च्या एकाधिक आहे</string>
+    <string name="cart_txt">* किमान ऑर्डरची मात्रा 2500 कि.ग्रा. आणि फक्त 50 कि.ग्रा. च्या एकाधिक आहे</string>
 
     <string name="enter_digit">10 अंकी मोबाइल क्रमांक प्रविष्ट करा *</string>
     <string name="chcekout">CHECKOUT</string>
@@ -436,7 +436,7 @@
     <string name="quantity_required">प्रमाण आवश्यक आहे</string>
     <string name="varity_required">विविधता आवश्यक आहे</string>
     <string name="desc_required">तपशील आवश्यक आहे</string>
-    <string name="commodity_required">कमोडिटी आवश्यक आहे</string>
+    <string name="commodity_required">वस्तू आवश्यक आहे</string>
     <string name="address_added_successfully">पत्ता यशस्वी जतन केले !</string>
     <string name="invalid_mobile">अवैध मोबाईल क्रमांक</string>
     <string name="contact_person_required">संपर्क व्यक्तीचे नाव आवश्यक आहे</string>
@@ -497,12 +497,12 @@
     <string name="clicked_share_button">क्लिक केलेले शेअर बटण!</string>
     <string name="qoute_price">किंमत द्या</string>
     <string name="stock_not_avaliable">या उत्पादनासाठी साठा उपलब्ध नाही.</string>
-    <string name="min_trade_quantity">किमान व्यापार प्रमाण आवश्यक आहे 500 केजी</string>
+    <string name="min_trade_quantity">किमान व्यापार प्रमाण आवश्यक आहे 2500 केजी</string>
     <string name="quantity_multiple">प्रमाण फक्त 50 किलोच्या गुणाकारात असावे</string>
     <string name="already_wishlist">आधीपासून आपल्या इच्छा सूचीमध्ये</string>
     <string name="share_button">क्लिक केलेले शेअर बटण!</string>
     <string name="sign_in_first">कृपया प्रथम साइन इन करा!</string>
-    <string name="submit_info">आपली विनंती यशस्वीरित्या सबमिट केली गेली आहे, sales n \ "+." आमची विक्री कार्यसंघ लवकरच आपल्याकडे परत येईल</string>
+    <string name="submit_info">आपली विनंती यशस्वीरित्या सबमिट केली गेली आहे,आमची विक्री कार्यसंघ लवकरच आपल्याकडे परत येईल</string>
     <string name="commodity_reqired">कमोडिटी आवश्यक आहे </string>
     <string name="email_reqired">ईमेल आवश्यक आहे</string>
     <string name="name_reqired">नाव आवश्यक आहे</string>

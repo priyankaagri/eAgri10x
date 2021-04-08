@@ -309,7 +309,6 @@
                         android:padding="15dp"
                         android:hint="@string/price_per_kg"
                         android:textSize="15sp"
-                        android:digits="0123456789"
                         android:layout_marginHorizontal="20dp"
                         android:inputType="number"
                         android:fontFamily="@font/proximanova_regular"

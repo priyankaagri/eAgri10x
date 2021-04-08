@@ -570,7 +570,7 @@
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_famr"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -581,7 +581,7 @@
                         android:padding="10dp"
                         android:text="@string/iwanttosell"
                         android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:textSize="10sp" />
 
 
                 </RelativeLayout>
@@ -608,7 +608,7 @@
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_trader"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -619,7 +619,7 @@
                         android:padding="10dp"
                         android:text="@string/iwanttobut"
                         android:textColor="@color/white"
-                        android:textSize="13sp" />
+                        android:textSize="10sp" />
 
 
                 </RelativeLayout>
@@ -645,7 +645,7 @@
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_fpo"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
 
@@ -657,7 +657,7 @@
                         android:padding="10dp"
                         android:text="@string/iwanttowork"
                         android:textColor="@color/white"
-                        android:textSize="13sp" />
+                        android:textSize="10sp" />
 
 
                 </RelativeLayout>
@@ -684,7 +684,7 @@
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/i_am_worker"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/txt_i_amworker"
@@ -696,7 +696,7 @@
                         android:padding="10dp"
                         android:text="@string/iwanttowork"
                         android:textColor="@color/white"
-                        android:textSize="13sp" />
+                        android:textSize="10sp" />
 
 
                 </RelativeLayout>
@@ -723,7 +723,7 @@
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/transportation"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
 
@@ -736,7 +736,7 @@
                         android:textAllCaps="true"
                         android:text="@string/connect_us"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
 
                 </RelativeLayout>
@@ -764,7 +764,7 @@
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:text="@string/warehouse"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
 
@@ -777,7 +777,7 @@
                         android:textAllCaps="true"
                         android:text="@string/connect_us"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
 
                 </RelativeLayout>

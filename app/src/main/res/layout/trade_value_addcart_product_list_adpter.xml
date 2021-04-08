@@ -61,7 +61,7 @@
                             android:id="@+id/product_name"
                             android:layout_width="match_parent"
                             android:layout_weight="5"
-                            android:textSize="16sp"
+                            android:textSize="13sp"
                             android:textColor="@color/black"
 
                             android:fontFamily="@font/proxima_nova_alt_bold"
@@ -72,7 +72,7 @@
                             android:id="@+id/product_price"
                             android:layout_width="match_parent"
                             android:layout_weight="5"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/appgreen"
                             android:layout_gravity="right"
                             android:gravity="right"

@@ -230,7 +230,7 @@ public class OnlyFeaturedAdapter extends RecyclerView.Adapter<OnlyFeaturedAdapte
                                     int int_enterValue= Integer.parseInt(entervalue.getText().toString());
                                     if(int_enterValue%50==0){
 
-                                        if(int_enterValue>=500){
+                                        if(int_enterValue>=2500){
                                             if (response.body().getData().get(0).getWeight()>=int_enterValue){
                                                 dialog.dismiss();
                                                 String quantity= String.valueOf(int_enterValue/50);

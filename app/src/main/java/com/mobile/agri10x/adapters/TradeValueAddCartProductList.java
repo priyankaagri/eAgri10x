@@ -159,7 +159,7 @@ int getWaight=holder.getAdapterPosition();
                 double int_enterValue= Double.parseDouble(holder.product_total_weight.getText().toString());
                 if(int_enterValue%50==0){
 
-                    if(int_enterValue>=500){
+                    if(int_enterValue>=2500){
                         if (totalweight>=int_enterValue){
                             String quantity= String.valueOf(int_enterValue/50);
                             CallApiUpdateCard(ProductsInCartlist.get(getWaight).getUserProductID(),quantity);
@@ -219,7 +219,7 @@ int getWaight=holder.getAdapterPosition();
     }
 
     private void CallApiUpdateCard(String userProductID, String quantity) {
-        dialog2=new Alert().pleaseWait();
+        dialog2=new Alert().updating();
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("quantity", quantity);
@@ -329,6 +329,16 @@ int getWaight=holder.getAdapterPosition();
         public AlertDialog pleaseWait() {
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
             View mView = ((Activity) context).getLayoutInflater().inflate(R.layout.alert_progress_deleting, null);
+            ProgressBar pb = mView.findViewById(R.id.progressBar);
+            mBuilder.setView(mView);
+            mBuilder.setCancelable(false);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+            return dialog;
+        }
+        public AlertDialog updating() {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
+            View mView = ((Activity) context).getLayoutInflater().inflate(R.layout.alert_progress_spinning, null);
             ProgressBar pb = mView.findViewById(R.id.progressBar);
             mBuilder.setView(mView);
             mBuilder.setCancelable(false);

@@ -166,7 +166,7 @@
     <string name="lname_str"> Last Name *</string>
     <string name="dateofbirth">Date Of Birth</string>
     <string name="ddmmyy">dd-mm-yyyy</string>
-    <string name="cart_txt">*Minimum Order Quantity is 500 KG and multiple of 50 KG only</string>
+    <string name="cart_txt">*Minimum Order Quantity is 2500 KG and multiple of 50 KG only</string>
 
     <string name="enter_digit">Enter 10 Digit Mobile Number *</string>
     <string name="chcekout">CHECKOUT</string>
@@ -498,7 +498,7 @@
     <string name="clicked_share_button">Clicked Share Button!</string>
     <string name="qoute_price">Please quote price</string>
     <string name="stock_not_avaliable">Stock is not available for this product.</string>
-    <string name="min_trade_quantity">Minimum Trade Quantity Required is 500 KG</string>
+    <string name="min_trade_quantity">Minimum Trade Quantity Required is 2500 KG</string>
     <string name="quantity_multiple">Quantity should be in multiples of 50kg only</string>
     <string name="already_wishlist">Already in your wishlist</string>
     <string name="share_button">Clicked Share Button!</string>

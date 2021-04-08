@@ -3,6 +3,7 @@ package com.mobile.agri10x.retrofit;
 import com.mobile.agri10x.models.GetAddMoney;
 import com.mobile.agri10x.models.GetBookingList;
 import com.mobile.agri10x.models.GetCheckOutHandle;
+import com.mobile.agri10x.models.GetOnlyLiveTrades;
 import com.mobile.agri10x.models.GetOrderList;
 import com.mobile.agri10x.models.GetUserBalance;
 import com.mobile.agri10x.models.QueryWearHouseForm;
@@ -85,6 +86,8 @@ public interface AgriInvestor {
     Call<GetHomeProduct> wsgetFeatureOnlyProduct(@Header("x-auth-token") String token, @Body GetQueryFeaturedOnly getQueryFeaturedOnly);
     @POST("m/displayProducts")
     Call<GetLiveTrades>wsgetlivetrades(@Header("x-auth-token") String token, @Body RequestBody params);
+    @GET("m/getLiveTrades")
+    Call<GetOnlyLiveTrades>wsGetOnlyLiveTrade(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/getProductsInCart")
     Call<GetProductsInCart>wsgetProductinCart(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addToCart")
@@ -103,6 +106,7 @@ public interface AgriInvestor {
     Call<UpdateUser> wsGetUpdateUser(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/addAddress")
     Call<GetAddAddress>wsGetAddAddress(@Header("x-auth-token") String token, @Body RequestBody params);
+
 
 
     @POST("m/createBooking")
@@ -165,7 +169,7 @@ public interface AgriInvestor {
     Call<GetProductInWishList> wsGetProductInWhishlist(@Header("x-auth-token") String token, @Body RequestBody params);
     @POST("m/removeProductFromWishlist")
     Call<GetRemoveFromWishlist> wsGetRemoveFromWiishList(@Header("x-auth-token") String token, @Body RequestBody params);
-@POST("m/submitContactForm")
+    @POST("m/submitContactForm")
     Call<GetWorkerForm> wsGetWorkerForm(@Header("x-auth-token")String token, @Body QueryWorkerForm querySubmitForm);
     @POST("m/submitContactForm")
     Call<GetWorkerForm> wsTransportForm(@Header("x-auth-token")String token, @Body QuerytransportForm querytransportForm);
@@ -175,12 +179,10 @@ public interface AgriInvestor {
     Call<GetOrderList> wsOrdeList(@Header("x-auth-token")String token, @Body RequestBody params);
     @POST("m/getBookingList")
     Call<GetBookingList> wsBookingList(@Header("x-auth-token")String token, @Body RequestBody params);
-
-@POST("m/getUserBalance")
-Call<GetUserBalance> wsgetBalance(@Header("x-auth-token")String token, @Body UserId userId);
+    @POST("m/getUserBalance")
+    Call<GetUserBalance> wsgetBalance(@Header("x-auth-token")String token, @Body UserId userId);
     @POST("m/AddMoney")
     Call<GetAddMoney> wsGetAddMoney(@Header("x-auth-token") String token, @Body RequestBody params);
-
     @POST("m/checkoutHandling")
     Call<GetCheckOutHandle> wsGetCheckoutHandle(@Header("x-auth-token") String token, @Body RequestBody params);
 

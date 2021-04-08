@@ -410,7 +410,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
                 if(message.contains("Agri10x E-Marketplace login")) {
                     String numberOnly = message.replaceAll("[^0-9]", "");
-                 Log.d("numberOnly",numberOnly);
+
 //numberOnly 10886110
 //String otp=numberOnly.substring(2,7);
                     String a = numberOnly.substring(2);

@@ -113,7 +113,7 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
 
 
             String crrentdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-            Log.d("cccccdate",crrentdate);
+
             SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
                 currnetDate = format0.parse(crrentdate);
@@ -128,7 +128,7 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
             calendar.add(Calendar.DAY_OF_YEAR, 3);
             DateFormat dateFormat3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String newDate=dateFormat3.format(calendar.getTime());
-            Log.d("newDate",newDate);
+
             SimpleDateFormat formatt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
                 NewDate = formatt.parse(newDate);
@@ -142,7 +142,7 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
             long hours = minutes / 60;
             long days = hours / 24;
             dayDifference = (int) differenceDates;
-            Log.d("dayDifference", String.valueOf(dayDifference));
+
             if (dayDifference < 0) {
                 holder.relative_stock.setVisibility(View.GONE);
                 holder.red_background.setBackgroundResource(R.drawable.featured_red_trn_change);
@@ -287,7 +287,7 @@ public class BookingorderAdpter extends RecyclerView.Adapter<BookingorderAdpter.
         addressCall.enqueue(new Callback<getAddress>() {
             @Override
             public void onResponse(Call<getAddress> call, Response<getAddress> response) {
-                Log.d("getapiaddress", response.toString());
+
 
 
                 if (response.isSuccessful()) {

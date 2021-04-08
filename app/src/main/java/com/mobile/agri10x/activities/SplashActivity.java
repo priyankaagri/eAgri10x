@@ -61,7 +61,7 @@ public class SplashActivity extends AppCompatActivity {
 
             currentVersion = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
 
-            Log.d("Current Version", "::" + currentVersion);
+
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

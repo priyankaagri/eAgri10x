@@ -438,7 +438,7 @@
     <string name="desc_required">तपशील आवश्यक आहे</string>
     <string name="commodity_required">वस्तू आवश्यक आहे</string>
     <string name="address_added_successfully">पत्ता यशस्वी जतन केले !</string>
-    <string name="invalid_mobile">अवैध मोबाईल क्रमांक</string>
+    <string name="invalid_mobile">मोबाईल क्रमांक आवश्यक आहे</string>
     <string name="contact_person_required">संपर्क व्यक्तीचे नाव आवश्यक आहे</string>
     <string name="pending_amount_required">प्रलंबित रक्कम आवश्यक आहे</string>
     <string name="booking_required">बुकिंगची रक्कम आवश्यक आहे</string>

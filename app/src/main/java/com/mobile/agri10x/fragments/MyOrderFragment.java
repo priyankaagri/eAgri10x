@@ -77,8 +77,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class MyOrderFragment extends Fragment {
-Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportContatct;
+    Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportContatct;
     private ImageView mBackButton;
     TextView btn_booking,btn_purchase;
     AlertDialog  formdialog;
@@ -108,7 +110,7 @@ Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportCont
     final String onionStock[] = {"onion"};
     String firstname, lastname, phonenumber,companyName,emailId;
     Button btn_submit_worker,btn_submit_transport,btn_submit_wearhouse;
-  SearchableSpinner ss_statebilling, ss_citybilling,ss_state,spinner_state_transaporatation,ss_state_wearhouse;
+    SearchableSpinner ss_statebilling, ss_citybilling,ss_state,spinner_state_transaporatation,ss_state_wearhouse;
     Spinner spinner_tranport_type,spinner_transport_weight,spinner_features,spinner_stock,spinner_stock_type;
     List<String> allNames = new ArrayList<String>();
 
@@ -143,43 +145,43 @@ Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportCont
         else {
 
         }
-if(getIds==1){
-    dialog = new Dialog(getActivity());
-    dialog.setContentView(R.layout.layout_choose_facility);
+        if(getIds==1){
+            dialog = new Dialog(getActivity());
+            dialog.setContentView(R.layout.layout_choose_facility);
 
-    // int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
-    //  int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
-    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-    dialog.getWindow().setGravity(Gravity.CENTER);
-    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-    dialog.setCancelable(true);
-    dialog.setCanceledOnTouchOutside(false);
-    dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-    ImageView cancle_btn=dialog.findViewById(R.id.cancle_btn);
-    Button btn_yes=dialog.findViewById(R.id.btn_yes);
-    Button btn_no=dialog.findViewById(R.id.btn_no);
-    cancle_btn.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        dialog.dismiss();
-    }
-});
-    btn_no.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        dialog.dismiss();
-    }
-});
-    btn_yes.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        dialog.dismiss();
-       openChooseFacility();
-    }
-});
-    dialog.show();
+            // int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+            //  int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.getWindow().setGravity(Gravity.CENTER);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.setCancelable(true);
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+            ImageView cancle_btn=dialog.findViewById(R.id.cancle_btn);
+            Button btn_yes=dialog.findViewById(R.id.btn_yes);
+            Button btn_no=dialog.findViewById(R.id.btn_no);
+            cancle_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            btn_no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            btn_yes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    openChooseFacility();
+                }
+            });
+            dialog.show();
 
-}
+        }
 
         return addStockView;
 
@@ -187,7 +189,7 @@ if(getIds==1){
 
     private void getlistbookingapi() {
         //call api here
-       // getBookingList 176 fromAgriInvestor
+        // getBookingList 176 fromAgriInvestor
 
     }
 
@@ -237,17 +239,17 @@ if(getIds==1){
             @Override
             public void onClick(View v) {
 
-if(checkbox_warehouse.isChecked()){
-   // Toast.makeText(getActivity(), "checkbox_warehousecheckbox_warehouse", Toast.LENGTH_SHORT).show();
-    openDialogForWarehouse();
+                if(checkbox_warehouse.isChecked()){
+                    // Toast.makeText(getActivity(), "checkbox_warehousecheckbox_warehouse", Toast.LENGTH_SHORT).show();
+                    openDialogForWarehouse();
 
-}else if(checkbox_transportation.isChecked()) {
-   openDialogForTranportation();
+                }else if(checkbox_transportation.isChecked()) {
+                    openDialogForTranportation();
 
-}else {
-    Toast.makeText(getActivity(), "Please Select Warehouse Or Transportation Facility", Toast.LENGTH_SHORT).show();
-}
-dialogchoice_of_facility.dismiss();
+                }else {
+                    Toast.makeText(getActivity(), "Please Select Warehouse Or Transportation Facility", Toast.LENGTH_SHORT).show();
+                }
+                dialogchoice_of_facility.dismiss();
             }
         });
 
@@ -967,17 +969,19 @@ dialogchoice_of_facility.dismiss();
                             booking_layout.setVisibility(View.GONE);
                         }
                     } else {
-                        Toast.makeText(getActivity(), "No data found", Toast.LENGTH_SHORT).show();
+                        makeToast(getContext(),getResources().getString(R.string.something_went_wrong));
                     }
                 }else{
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(getContext(),getResources().getString(R.string.something_went_wrong));
                 }
             }
 
             @Override
             public void onFailure(Call<GetOrderList> call, Throwable t) {
 
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(getContext(),getResources().getString(R.string.network_connected));
+
             }
         });
 
@@ -1050,80 +1054,70 @@ recycleview_booking_list.showShimmer();*/
 
     public boolean validatelastName(String LastName) {
         if (LastName.isEmpty() || LastName == null) {
-            Toast.makeText(getActivity(),
-                    "Last Name Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.name_reqired));
             return false;
         }
         return true;
     }
     public boolean validatecity(String City) {
         if (City.isEmpty() || City == null) {
-            Toast.makeText(getActivity(),
-                    "City is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.city_is_required));
             return false;
         }
         return true;
     }
     public boolean validatephonenumber(String PhoneNumber) {
         if (PhoneNumber.isEmpty() || PhoneNumber.length() < 10 ) {
-            Toast.makeText(getActivity(),
-                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.invalid_mobile));
             return false;
         }
         return  true;
     }
     private boolean validateEmail(String email_fromdialog) {
         if (email_fromdialog.isEmpty() || email_fromdialog == null  ) {
-            Toast.makeText(getActivity(),
-                    "Email Required", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.email_reqired));
             return false;
         }
         return true;
     }
     public boolean validatestate(String str_state) {
         if (str_state.isEmpty() || str_state == null) {
-            Toast.makeText(getActivity(),
-                    "State is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.state_is_required));
             return false;
         }
         return true;
     }
     public boolean validateFeatures(String str_features) {
         if (str_features.isEmpty() || str_features == null) {
-            Toast.makeText(getActivity(),
-                    "Features is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.feature_is_required));
             return false;
         }
         return true;
     }
     public boolean validateStockType(String str_stock) {
         if (str_stock.isEmpty() || str_stock == null) {
-            Toast.makeText(getActivity(),
-                    "Stock Type is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.stock_type_required));
             return false;
         }
         return true;
     }
     public boolean validatePrice(String str_price) {
         if (str_price.isEmpty() || str_price == null) {
-            Toast.makeText(getActivity(),
-                    "Price is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.price_is_required));
             return false;
         }
         return true;
     }
     public boolean validatefirstName(String FirstName) {
         if (FirstName.isEmpty() || FirstName == null) {
-            Toast.makeText(getActivity(),
-                    "First Name Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.first_name_required));
             return false;
         }
         return true;
     }
     public boolean validateCompanyName(String CompanyName) {
         if (CompanyName.isEmpty() || CompanyName == null) {
-            Toast.makeText(getActivity(),
-                    "Company Name Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getContext(),getResources().getString(R.string.company_name_required));
             return false;
         }
         return true;

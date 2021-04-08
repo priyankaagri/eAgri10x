@@ -51,7 +51,7 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
             holder.verified.setText("Verified");
         } else {
             holder.varified_value.setBackgroundResource(R.drawable.featured_red);
-            holder.verified.setText("Non Verified");
+            holder.verified.setText("Not Verified");
         }
         String strimg = stocklist.get(position).getCommodityID()+".png";
 

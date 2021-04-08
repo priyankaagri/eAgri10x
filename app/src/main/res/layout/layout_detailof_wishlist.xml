@@ -48,6 +48,7 @@
 
             </TextView>
             <TextView
+
                 android:id="@+id/txt_variety_name"
                 android:layout_width="match_parent"
 android:layout_marginTop="8dp"
@@ -73,7 +74,7 @@ android:layout_marginTop="8dp"
     <TextView
         android:id="@+id/txt_product_pack_size"
         android:layout_width="match_parent"
-
+android:textColor="@color/black"
         android:padding="15dp"
         android:textSize="16sp"
         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -89,7 +90,7 @@ android:layout_marginTop="8dp"
     <TextView
         android:id="@+id/txt_avilable_quantity"
         android:layout_width="match_parent"
-
+        android:textColor="@color/black"
         android:padding="15dp"
         android:textSize="16dp"
         android:fontFamily="@font/proxima_nova_alt_bold"
@@ -104,6 +105,7 @@ android:layout_marginTop="8dp"
     </View>
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/txt_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

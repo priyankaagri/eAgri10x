@@ -18,13 +18,17 @@ import com.mobile.agri10x.R;
 import com.mobile.agri10x.models.GetStockByIDDatum;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.MyViewHolder> {
-
-
+    Date purchasedate;
+    String fromdate,purchasedatestr = "";
     private List<GetStockByIDDatum> stocklist;
     Context context;
 
@@ -38,14 +42,29 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        fromdate = String.valueOf(stocklist.get(position).getCreatedAt());
+        // fromdate = "2021-04-03T17:26:42.266Z";
+
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        try {
+            purchasedate = format2.parse(fromdate);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        purchasedatestr = dateFormat.format(purchasedate);
+        holder.txt_date.setText("Stock added date : " + purchasedatestr.substring(0,10));
+
         holder.txt_product_name.setText(stocklist.get(position).getCommodityName());
         holder.txt_varity_name.setText(stocklist.get(position).getVarietyName());
+
         double number1 = stocklist.get(position).getPricePerKg();
         NumberFormat format1 = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
         String currency1 = format1.format(number1);
         holder.txt_product_price.setText(currency1);
         holder.txt_product_location.setText(stocklist.get(position).getCity() + " , " + stocklist.get(position).getState());
-        holder.txt_total_quantity.setText("Total Qty(KG) : " + stocklist.get(position).getStockQuantity());
+        holder.txt_total_quantity.setText("Total Qty "+"(KG) : " + stocklist.get(position).getStockQuantity());
         if (stocklist.get(position).getIsVerified() == true) {
             holder.varified_value.setBackgroundResource(R.drawable.featured_bg);
             holder.verified.setText("Verified");
@@ -80,7 +99,7 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView product_image;
-        TextView txt_product_name, txt_product_price, txt_varity_name, txt_product_location, verified, txt_total_quantity;
+        TextView txt_product_name, txt_product_price, txt_varity_name, txt_product_location, verified, txt_total_quantity,txt_date;
         RelativeLayout varified_value;
 
         public MyViewHolder(View itemView) {
@@ -93,6 +112,7 @@ public class ManageStockAdapter extends RecyclerView.Adapter<ManageStockAdapter.
             varified_value = itemView.findViewById(R.id.varified_value);
             verified = itemView.findViewById(R.id.verified);
             txt_total_quantity = itemView.findViewById(R.id.txt_total_quantity);
+            txt_date= itemView.findViewById(R.id.txt_date);
 
 
         }

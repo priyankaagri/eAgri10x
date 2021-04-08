@@ -21,6 +21,16 @@
     <string name="Login">Login</string>
     <string name="sendotp">send otp</string>
     <string name="OR">OR </string>
+    <string name="TradeAmount">Trade Amount</string>
+    <string name="CONVENIENCE">CONVENIENCE CHARGES @ 2%</string>
+    <string name="charges_title">Charges Details</string>
+    <string name="COMMISION">COMMISION @ 1%</string>
+    <string name="HANDLING">HANDLING FEES @ 2% </string>
+    <string name="facility">Choose Facility</string>
+
+    <string name="noo">No</string>
+    <string name="your_payment_suusesful">Your Payment is successful</string>
+    <string name="mesage_of_success">Would you like to opt for Warehouse/Transport facility ?</string>
     <string name="DonthaveanAccountYet">Dont have an Account Yet? </string>
     <string name="clickheretoclickone"> Create One </string>
     <string name="Opps">Opps! </string>
@@ -71,19 +81,7 @@
     <string name="Add_new_Address">+ Add new Address </string>
     <string name="Trade_Value">Trade Value</string>
     <string name="Total_Trade_Amount">Total Trade Amount</string>
-    <string name="info">(?)</string>
-    <string name="TradeAmount">Trade Amount</string>
-    <string name="CONVENIENCE">CONVENIENCE CHARGES @ 2%</string>
-    <string name="charges_title">Charges Details</string>
-    <string name="COMMISION">COMMISION @ 1%</string>
-    <string name="HANDLING">HANDLING FEES @ 2% </string>
     <string name="order_book">order book</string>
-
-    <string name="your_payment_suusesful">Your Payment is successful</string>
-    <string name="mesage_of_success">Would you like to opt for Warehouse/Transport facility ?</string>
-    <!-- <string name="youwant_toremove">Are you sure you want to Remove ?</string>-->
-
-    <string name="noo">No</string>
     <string name="PURCHASE">PURCHASE</string>
     <string name="Menu">Menu</string>
     <string name="Manage_Stock">Manage Stock</string>
@@ -228,7 +226,6 @@
     <string name="handing_fee">HANDING FEE @ 2%</string>
     <string name="pending_amount">Pending Amount</string>
 
-
     <string name="delivery_title">Delivery Address</string>
     <string name="tv_contact_name_id">Contact Person Name *</string>
     <string name="save">Save</string>
@@ -240,7 +237,6 @@
     <string name="tv_pincode">Pincode *</string>
     <string name="tv_address_type">Address Type *</string>
     <string name="billing_title">Billing Address</string>
-
 
     <string name="varity_id">Variety</string>
     <string name="priceperkg_id">Price/KG</string>
@@ -259,10 +255,8 @@
     <string name="last_name_field_required">Please enter valid Last Name.</string>
     <string name="enter_valide_email_id">Please enter valid Email Id.</string>
 
-
     <string name="add_stock">Add Stock</string>
     <string name="manage_stock">Manage Stock</string>
-
 
     <string name="about_us_faq">FAQ</string>
     <string name="tv_privacy_policy">Privacy Policy</string>
@@ -379,7 +373,6 @@
     <string name="str_call_us">Call us - 1800-121-2243</string>
     <string name="str_mail_us">Mail us - info@agri10x.com</string>
 
-
     <string name="worker_form">Worker Form</string>
     <string name="select_atleast">Select Atleast one from them</string>
     <string name="i_am_reper">I am a Reaper</string>
@@ -388,7 +381,6 @@
 
     <string name="remove_product">Remove Product!</string>
     <string name="youwant_toremove">Are you sure you want to Remove ?</string>
-
 
     <string name="transportation">Transportation</string>
     <string name="company_name">Company Name</string>
@@ -399,7 +391,6 @@
     <string name="features">Select Features</string>
     <string name="stock_type">Stock Type</string>
     <string name="select_state">Select State</string>
-
 
     <string name="logout">Logout</string>
     <string name="you_want_logout">Are you sure you want to Logout ?</string>
@@ -414,5 +405,117 @@
     <string name="selectvariety">Select Variety</string>
     <string name="selectstate">  Select State</string>
     <string name="selectcity">  Select City</string>
-    <string name="facility">Choose Facility</string>
+
+    <string name="packagingsize">Packaging Size : 50 KG</string>
+    <string name="grade">Grade : </string>
+    <string name="quantity">Qunatity : </string>
+    <string name="priceskg">Price/KG : </string>
+    <string name="totalweight">Total Weight : </string>
+    <string name="total">Total: </string>
+    <string name="sure_want">Are you sure, You wanted to exit from the application?</string>
+
+    <string name="marathi">मराठी</string>
+    <string name="english">English</string>
+    <string name="set_lang">Continue in English</string>
+    <string name="set_lang_1">भाषा सेट करा</string>
+    <string name="connect_us">Connect With Us</string>
+    <string name="chooseYourLang">Choose your preferred language</string>
+    <string name="chooseYourLang1">आपली पसंतीची भाषा निवडा</string>
+
+    <string name="something_went_wrong">Something went Wrong!</string>
+    <string name="country_required">Country is Required</string>
+    <string name="select_features">Select Features</string>
+    <string name="empty_wishlist">Wishlist is empty</string>
+    <string name="pincode_required">Pincode is Required</string>
+    <string name="city_required">City is Required</string>
+    <string name="state_required">State is Required</string>
+    <string name="taluka_required">Taluka is Required</string>
+    <string name="address_required">Address is Required</string>
+    <string name="to_date_required">To date is Required</string>
+    <string name="from_date_required">From date is Required</string>
+    <string name="price_required">Price is Required</string>
+    <string name="quantity_required">Quantity is Required</string>
+    <string name="varity_required">Variety is Required</string>
+    <string name="desc_required">Discription is Required</string>
+    <string name="commodity_required">Commodity is Required</string>
+    <string name="address_added_successfully">Address Added Succesfully!</string>
+    <string name="invalid_mobile">Invalid Mobile Number</string>
+    <string name="contact_person_required">Contact Person Name Required</string>
+    <string name="pending_amount_required">Pending Amount Required</string>
+    <string name="booking_required">Booking Amount Required</string>
+    <string name="select_booking_amt">Select Booking Amount</string>
+    <string name="deliv_add_required">Delivery  Address Required</string>
+    <string name="bill_add_required">Billing Address Required</string>
+    <string name="userid_required">Userid required</string>
+    <string name="add_type_required">Address Type is required</string>
+    <string name="data_not_found">Data not found</string>
+    <string name="address_type_required">Address Type is required</string>
+    <string name="thank_form_submitting">Thank you for submitting the form. We will get back to you soon.</string>
+    <string name="please_check_internet">Please check your internet connection</string>
+    <string name="select_atleast_checkbox">Select atleast one checkbox</string>
+    <string name="company_name_required">Company Name Required!</string>
+    <string name="first_name_required">First Name Required!</string>
+    <string name="last_name_required">Last Name Required!</string>
+    <string name="city_is_required">City is Required!</string>
+    <string name="invalid_mob_no">Invalid Mobile Number</string>
+    <string name="email_required">Email Required</string>
+    <string name="state_is_required">State is Required!</string>
+    <string name="feature_is_required">Features is Required!</string>
+    <string name="stock_type_required">Stock Type is Required!</string>
+    <string name="price_is_required">Price is Required!</string>
+    <string name="add_address">Add Address</string>
+    <string name="account_title_copied">Account Title Copied</string>
+    <string name="beneficiary_acc_number_copied">Beneficiary Account Number Copied</string>
+    <string name="ifsc_copied">IFSC Code Copied</string>
+    <string name="bank_name_copied">Bank Name Copied</string>
+    <string name="payment_successfull">Payment Successful</string>
+    <string name="payment_not_completed">Payment Not Completed</string>
+    <string name="showing_0_products">Showing 0 products</string>
+    <string name="invalid_email_add">Invalid email address</string>
+    <string name="amount_requied">Amount Required</string>
+    <string name="pincode_is_required">Pincode is required</string>
+    <string name="no_data_available">No data available</string>
+
+    <string name="network_connected">Network Not Connected</string>
+    <string name="payment_successful">Payment Successful</string>
+    <string name="payment_failed">Payment Failed</string>
+    <string name="network_not_connected">Network Not Connected</string>
+    <string name="mobile_not_registerd">Mobile Number is not registerd</string>
+    <string name="not_authorized_mobile">You are not authorised to login into this website. Please create an account with another Mobile No.</string>
+    <string name="clicked_yes">Clicked Yes</string>
+    <string name="clicked_no">Clicked No</string>
+    <string name="wrong">Wrong</string>
+    <string name="code_resend">Verification code resend successfully.</string>
+    <string name="wrong_otp">You Entered Wrong OTP</string>
+    <string name="invalid_otp">Invalid OTP</string>
+    <string name="account_copied">Account Title Copied</string>
+    <string name="beneficery_account_copied">Beneficiary Account Number Copied</string>
+    <string name="ifsc_code_copied">IFSC Code Copied</string>
+    <string name="enter_amount">Please Enter Amount</string>
+    <string name="error_in_payment">Error in payment</string>
+    <string name="select_role">Please Select Role</string>
+    <string name="select_dob">Please Select Your DOB!</string>
+    <string name="clicked_share_button">Clicked Share Button!</string>
+    <string name="qoute_price">Please quote price</string>
+    <string name="stock_not_avaliable">Stock is not available for this product.</string>
+    <string name="min_trade_quantity">Minimum Trade Quantity Required is 500 KG</string>
+    <string name="quantity_multiple">Quantity should be in multiples of 50kg only</string>
+    <string name="already_wishlist">Already in your wishlist</string>
+    <string name="share_button">Clicked Share Button!</string>
+    <string name="sign_in_first">Please SignIn First!</string>
+    <string name="submit_info">Your request has been submitted successfully,\n\" +                             \"our sales team will get back to you shortly</string>
+    <string name="commodity_reqired">Commodity Required</string>
+    <string name="email_reqired">Email Required</string>
+    <string name="name_reqired">Name Required</string>
+    <string name="kg_of">" Kg of "</string>
+    <string name="has_been_added">has been added to trade</string>
+    <string name="added_in_trade" />
+    <string name="select_address">Select Address</string>
+    <string name="remove_from_wishlist">Remove From Wishlist</string>
+    <string name="sure_wnat_to_remove">Are you sure you want to Remove ?</string>
+    <string name="avail_quantity">"Available Quantity: "</string>
+    <string name="avail_packaging_size">"Packaging Size:  "</string>
+
+
+
 </resources>

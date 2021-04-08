@@ -54,6 +54,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class RegisterActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     Button btn_next, login;
@@ -230,15 +232,14 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
 
     private boolean validaterole() {
         if (strrole.isEmpty() || strrole == null) {
-            Toast.makeText(RegisterActivity.this,
-                    "Please Select Role", Toast.LENGTH_SHORT).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.select_role));
             return false;
         }
         return true;
     }
 
     private void GetOtp(String strmobilenumber) {
-        dialog = new RegisterActivity.Alert().pleaseWait();
+        dialog = new Alert().pleaseWait();
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("mobileNo", "91" + strmobilenumber);
@@ -279,7 +280,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
                     }
                 } else {
                     dialog.dismiss();
-                    Toast.makeText(RegisterActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(getApplicationContext(),getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -287,7 +288,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
             public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(RegisterActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(getApplicationContext(),getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -341,8 +342,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
     private boolean validateMobileNo() {
         String strmob = mobilenumber.getText().toString();
         if (strmob.isEmpty() || strmob.length() < 10) {
-            Toast.makeText(RegisterActivity.this,
-                    "Invalid Mobile Number!", Toast.LENGTH_SHORT).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.invalid_mobile));
             return false;
         }
         return true;
@@ -352,8 +352,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
 
     private boolean validateDOB() {
         if (DATEOFBIRTH.equalsIgnoreCase("0000-00-00")) {
-            Toast.makeText(RegisterActivity.this,
-                    "Please Select Your DOB!", Toast.LENGTH_SHORT).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.select_dob));
             return false;
         }
         return true;
@@ -364,7 +363,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
     public void onResume() {
         super.onResume();
         if (mNetworkMonitor.isConnected()) {
-            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.network_connected));
         }
     }
 

@@ -69,6 +69,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 
 public class BookOrderFragment extends Fragment {
     Activity activity;
@@ -438,15 +440,13 @@ public class BookOrderFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetUser> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));            }
         });
     }
     private void callapigetAddress() {
@@ -496,15 +496,13 @@ public class BookOrderFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<getAddress> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));            }
         });
     }
 
@@ -652,8 +650,7 @@ public class BookOrderFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -700,8 +697,7 @@ public class BookOrderFragment extends Fragment {
                     ss_statedel.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -747,8 +743,7 @@ public class BookOrderFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -1013,22 +1008,20 @@ public class BookOrderFragment extends Fragment {
 
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
+                    makeToast(getActivity(),getResources().getString(R.string.address_added_successfully));
                     dialogbilling.dismiss();
                     BookOrderFragment fragment = (BookOrderFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                     getActivity().getSupportFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
-
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
 
@@ -1061,22 +1054,20 @@ public class BookOrderFragment extends Fragment {
 
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
+                    makeToast(getActivity(),getResources().getString(R.string.address_added_successfully));
                     dialogbilling.dismiss();
                     BookOrderFragment fragment = (BookOrderFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                     getActivity().getSupportFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetAddAddress> call, Throwable t) {
                 dialogbilling.dismiss();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
-
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
 
@@ -1089,8 +1080,7 @@ public class BookOrderFragment extends Fragment {
     //validations
     private boolean validateMobileNo(String strmobileno) {
         if (strmobileno.isEmpty() || strmobileno.length() < 10 ) {
-            Toast.makeText(getActivity(),
-                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.invalid_mobile));
             return false;
         }
         return true;
@@ -1098,8 +1088,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validateContactPerson(String strdelcontactperosn) {
         if (strdelcontactperosn.isEmpty() || strdelcontactperosn == null  ) {
-            Toast.makeText(getActivity(),
-                    "Contact Person Name Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.contact_person_required));
             return false;
         }
         return true;
@@ -1107,8 +1096,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validatePendingAmt(String strpendingamtval) {
         if (strpendingamtval.isEmpty() || strpendingamtval == null  ) {
-            Toast.makeText(getActivity(),
-                    "Pending Amount Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.pending_amount_required));
             return false;
         }
         return true;
@@ -1116,8 +1104,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validateBookingamt(String strbookingamtval) {
         if (strbookingamtval.isEmpty() || strbookingamtval == null  ) {
-            Toast.makeText(getActivity(),
-                    "Booking Amount Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.booking_required));
             return false;
         }
         return true;
@@ -1125,8 +1112,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validateperval(String strpercentval) {
         if (strpercentval.isEmpty() || strpercentval == null  || strpercentval.equals("Select Booking Amount")) {
-            Toast.makeText(getActivity(),
-                    "Select Booking Amount", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.select_booking_amt));
             return false;
         }
         return true;
@@ -1134,8 +1120,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validateshippingadd(String shippingaddressId) {
         if (shippingaddressId.isEmpty() || shippingaddressId == null ) {
-            Toast.makeText(getActivity(),
-                    "Delivery  Address Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.deliv_add_required));
             return false;
         }
         return true;
@@ -1143,8 +1128,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validatebillingAdressID(String billingaddressID) {
         if (billingaddressID.isEmpty() || billingaddressID == null ) {
-            Toast.makeText(getActivity(),
-                    "Billing Address Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.bill_add_required));
             return false;
         }
         return true;
@@ -1152,8 +1136,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validateUserId(String struserid) {
         if (struserid.isEmpty() || struserid == null ) {
-            Toast.makeText(getActivity(),
-                    "Userid required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.userid_required));
             return false;
         }
         return true;
@@ -1161,8 +1144,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validateaddresstype(String addrressType) {
         if (addrressType.isEmpty() || addrressType == null ||addrressType.equals("Select Address Type")) {
-            Toast.makeText(getActivity(),
-                    "Address Type is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.add_type_required));
             return false;
         }
         return true;
@@ -1170,8 +1152,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validatestate(String state) {
         if (state.isEmpty() || state == null) {
-            Toast.makeText(getActivity(),
-                    "State is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.state_required));
             return false;
         }
         return true;
@@ -1179,8 +1160,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validatecity(String city) {
         if (city.isEmpty() || city == null) {
-            Toast.makeText(getActivity(),
-                    "City is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.city_required));
             return false;
         }
         return true;
@@ -1188,8 +1168,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean ValidatePincode(String pincode) {
         if (pincode.isEmpty() || pincode.length() < 6) {
-            Toast.makeText(getActivity(),
-                    "Pincode is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.pincode_required));
             return false;
         }
         return true;
@@ -1197,8 +1176,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean validateAddress2(String address2) {
         if (address2.isEmpty() || address2 == null) {
-            Toast.makeText(getActivity(),
-                    "Address is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.address_required));
             return false;
         }
         return true;
@@ -1206,8 +1184,7 @@ public class BookOrderFragment extends Fragment {
 
     private boolean valiadadeAddress1(String address1) {
         if (address1.isEmpty() || address1 == null) {
-            Toast.makeText(getActivity(),
-                    "Address is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.address_required));
             return false;
         }
         return true;
@@ -1336,8 +1313,7 @@ public class BookOrderFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -1386,21 +1362,19 @@ boolean initialpayment = response.body().getData().getInitiatePayment();
 
                         ((HomePageActivity)getActivity()).startpayment(razorpay_id,amount,key,bookingid,isbooking);
                     }else{
-Toast.makeText(getActivity(),"Data not found",Toast.LENGTH_SHORT).show();
+                        makeToast(getActivity(),getResources().getString(R.string.data_not_found));
                     }
 
                 }
                 else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetBookOrder> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));            }
         });
     }
 

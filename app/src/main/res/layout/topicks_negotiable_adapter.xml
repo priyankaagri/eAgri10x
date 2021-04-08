@@ -82,7 +82,6 @@
                 android:layout_marginRight="5dp"
                 android:layout_width="20dp"
                 android:layout_height="20dp">
-
             </ImageView>
             <RatingBar
                 android:layout_centerInParent="true"

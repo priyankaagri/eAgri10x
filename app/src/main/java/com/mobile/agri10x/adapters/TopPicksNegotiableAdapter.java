@@ -62,6 +62,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNegotiableAdapter.ViewHolders> {
     Context context;
     private List<GetHomeProductData> dataList;
@@ -121,7 +123,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onClick(View v) {
                 String useridstring = SessionManager.getKeyTokenUser(context);
                 if(useridstring.equalsIgnoreCase("NULL")){
-                    Toast.makeText(context, "Please SignIn First!", Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.sign_in_first));
                 }else{
                     Quitpricedialog = new Dialog(context);
                     Quitpricedialog.setContentView(R.layout.quate_for_price);
@@ -229,14 +231,14 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                             edt_txt_comodity.setText(dataList.get(position).getCommodityName());
 
                         } else {
-                            Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                            makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                         }
                     }
 
                     @Override
                     public void onFailure(Call<GetUser> call,
                                           Throwable t) {
-                        Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                        makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                     }
                 });
 
@@ -306,12 +308,11 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(context, "Your request has been submitted successfully,\n" +
-                            "our sales team will get back to you shortly", Toast.LENGTH_LONG).show();
+                    makeToast(context,context.getResources().getString(R.string.submit_info));
 
                 } else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -319,7 +320,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onFailure(Call<NegotiateRate> call,
                                   Throwable t) {
 
- Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
 
@@ -328,8 +329,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
     private boolean validateprice(String priceperkg_fromdialog) {
         if (priceperkg_fromdialog.isEmpty() || priceperkg_fromdialog == null  ) {
-            Toast.makeText(context,
-                    "Price Required", Toast.LENGTH_SHORT).show();
+            makeToast(context,context.getResources().getString(R.string.price_required));
             return false;
         }
         return true;
@@ -337,8 +337,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
     private boolean validateVariety(String varietyName_fromdialog) {
         if (varietyName_fromdialog.isEmpty() || varietyName_fromdialog == null  ) {
-            Toast.makeText(context,
-                    "Variety Required", Toast.LENGTH_SHORT).show();
+            makeToast(context,context.getResources().getString(R.string.varity_required));
             return false;
         }
         return true;
@@ -346,8 +345,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
     private boolean validateCommodity(String commodityName_fromdialog) {
         if (commodityName_fromdialog.isEmpty() || commodityName_fromdialog == null  ) {
-            Toast.makeText(context,
-                    "Commodity Required", Toast.LENGTH_SHORT).show();
+            makeToast(context,context.getResources().getString(R.string.commodity_reqired));
             return false;
         }
         return true;
@@ -355,8 +353,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
     private boolean validateEmail(String email_fromdialog) {
         if (email_fromdialog.isEmpty() || email_fromdialog == null  ) {
-            Toast.makeText(context,
-                    "Email Required", Toast.LENGTH_SHORT).show();
+            makeToast(context,context.getResources().getString(R.string.email_reqired));
             return false;
         }
         return true;
@@ -364,8 +361,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
     private boolean validateTele(String telephone_fromdialog) {
         if (telephone_fromdialog.isEmpty() || telephone_fromdialog.length() < 10 ) {
-            Toast.makeText(context,
-                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            makeToast(context,context.getResources().getString(R.string.invalid_mobile));
             return false;
         }
         return true;
@@ -373,8 +369,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
     private boolean validateName(String name_fromdialog) {
         if (name_fromdialog.isEmpty() || name_fromdialog == null  ) {
-            Toast.makeText(context,
-                    "Name Required", Toast.LENGTH_SHORT).show();
+            makeToast(context,context.getResources().getString(R.string.name_reqired));
             return false;
         }
         return true;
@@ -385,7 +380,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 //put something inside the map, could be null
         jsonParams.put("orderID",str_orderId);
         jsonParams.put("grade",str_grade);
-        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
             SSLCertificateManagment.trustAllHosts();
@@ -456,7 +451,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                     shareiamge.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context, "Clicked Share Button!", Toast.LENGTH_SHORT).show();
+                            makeToast(context,context.getResources().getString(R.string.share_button));
                         }
                     });
                     add_btn.setOnClickListener(new View.OnClickListener() {
@@ -465,7 +460,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                             String str_enterValue= entervalue.getText().toString();
 
                             if(TextUtils.isEmpty(str_enterValue)){
-                                Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
+                                makeToast(context,context.getResources().getString(R.string.quote_your_price));
                             }
                             else {
                                 if(SessionManager.isLoggedIn(context)){
@@ -479,15 +474,15 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                                                 CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName(),response.body().getData().get(0).getPricePerLot());
 
                                             }else {
-                                                Toast.makeText(context, "Stock is not available for this product.", Toast.LENGTH_SHORT).show();
+                                                makeToast(context,context.getResources().getString(R.string.stock_not_avaliable));
                                             }
 
                                         }else {
-                                            Toast.makeText(context, "Minimum Trade Quantity Required is 500 KG", Toast.LENGTH_SHORT).show();
+                                            makeToast(context,context.getResources().getString(R.string.min_trade_quantity));
                                         }
 
                                     }else {
-                                        Toast.makeText(context, "Quantity should be in multiples of 50kg only", Toast.LENGTH_SHORT).show();
+                                        makeToast(context,context.getResources().getString(R.string.quantity_multiple));
                                     }
                                 }else {
                                     context.startActivity(new Intent(context,LoginActivity.class));
@@ -526,7 +521,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                 }
                 else {
 
-                    Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -534,7 +529,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onFailure(Call<DisplayQuickView> call,
                                   Throwable t) {
 
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -583,7 +578,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
                             }
                         }
                         if(present){
-                            Toast.makeText(context,"Already in your wishlist",Toast.LENGTH_SHORT).show();
+                            makeToast(context,context.getResources().getString(R.string.already_wishlist));
                         }
                         else{
                             callapiAddtoWishlist(str_orderId,str_grade,str_price);
@@ -598,14 +593,14 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
                 } else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
             @Override
             public void onFailure(Call<GetProductInWishList> call,
                                   Throwable t) {
-                Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -645,7 +640,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
                 } else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -653,7 +648,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onFailure(Call<GetADDWishlist> call,
                                   Throwable t) {
 
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -690,12 +685,14 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
 
                 if (response.isSuccessful()) {
                     HomePageActivity.getProductinCart();
-                    Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();
+                    String toastMessage=context.getResources().getString(R.string.added_in_trade)+quantity+context.getResources().getString(R.string.kg_of)+commodityname
+                            +context.getResources().getString(R.string.has_been_added);
+                    makeToast(context,toastMessage);
                     HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
                 }
                 else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -703,7 +700,7 @@ public class TopPicksNegotiableAdapter extends RecyclerView.Adapter<TopPicksNego
             public void onFailure(Call<GetAddProductToCart> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }

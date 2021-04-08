@@ -37,6 +37,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class Product_Against_Categories_Fragment extends Fragment {
     List<getCommAccToCatDatum> productincategorylist = new ArrayList<>();
     ShimmerRecyclerView recyle_productCategories;
@@ -98,19 +100,17 @@ public class Product_Against_Categories_Fragment extends Fragment {
                         recyle_productCategories.setAdapter(liveTradeAdapter);
                         liveTradeAdapter.notifyDataSetChanged();
                     }else{
-                        Toast.makeText(getActivity(),"Showing 0 products", Toast.LENGTH_SHORT).show();
-                    }
+                        makeToast(getActivity(),getResources().getString(R.string.showing_0_products));                    }
                 }
                 else {
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<getCommAccToCat> call,
                                   Throwable t) {
                 recyle_productCategories.hideShimmer();
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
     }

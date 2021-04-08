@@ -53,6 +53,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class TradeValueAddCartProductList extends RecyclerView.Adapter<TradeValueAddCartProductList.ViewHolers> {
     Context context;
     AlertDialog dialog,dialog2;
@@ -151,7 +153,7 @@ int getWaight=holder.getAdapterPosition();
         String str_enterValue = holder.product_total_weight.getText().toString();
         double totalweight = ProductsInCartlist.get(position).getTotalAvailable()*ProductsInCartlist.get(position).getWeight();
         if(TextUtils.isEmpty(str_enterValue)){
-            Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
+            makeToast(context,context.getResources().getString(R.string.quote_your_price));
         }else {
             if(SessionManager.isLoggedIn(context)){
                 double int_enterValue= Double.parseDouble(holder.product_total_weight.getText().toString());
@@ -163,15 +165,15 @@ int getWaight=holder.getAdapterPosition();
                             CallApiUpdateCard(ProductsInCartlist.get(getWaight).getUserProductID(),quantity);
 
                         }else {
-                            Toast.makeText(context, "Stock is not available for this product.", Toast.LENGTH_SHORT).show();
+                            makeToast(context,context.getResources().getString(R.string.stock_not_avaliable));
                         }
 
                     }else {
-                        Toast.makeText(context, "Minimum Trade Quantity Required is 500 KG", Toast.LENGTH_SHORT).show();
+                        makeToast(context,context.getResources().getString(R.string.min_trade_quantity));
                     }
 
                 }else {
-                    Toast.makeText(context, "Quantity should be in multiples of 50kg only", Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.quantity_multiple));
                 }
             }else {
                 context.startActivity(new Intent(context, LoginActivity.class));
@@ -249,7 +251,7 @@ int getWaight=holder.getAdapterPosition();
                 }
                 else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -257,7 +259,7 @@ int getWaight=holder.getAdapterPosition();
             public void onFailure(Call<UpdateCart> call,
                                   Throwable t) {
                 dialog2.dismiss();
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -296,7 +298,7 @@ int getWaight=holder.getAdapterPosition();
                 }
                 else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -304,7 +306,7 @@ int getWaight=holder.getAdapterPosition();
             public void onFailure(Call<GetRemoveProduct> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }

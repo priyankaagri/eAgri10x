@@ -36,6 +36,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 
 public class SeeAllDailyDealsFeaturedFragment extends Fragment {
     ImageView but_back;
@@ -107,16 +109,14 @@ public class SeeAllDailyDealsFeaturedFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 recyle_allDailydeals.hideShimmer();
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));            }
         });
     }
 
@@ -126,8 +126,7 @@ public class SeeAllDailyDealsFeaturedFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if(mNetworkMonitor.isConnected()){
-            Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_LONG).show();
-        }
+            makeToast(getActivity(),getResources().getString(R.string.please_check_internet));        }
     }
 
 }

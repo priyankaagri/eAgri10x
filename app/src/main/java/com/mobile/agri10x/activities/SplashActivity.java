@@ -22,10 +22,12 @@ import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.Task;
 import com.mobile.agri10x.R;
-
+import com.mobile.agri10x.utils.SessionManager;
 
 
 import org.jetbrains.annotations.NotNull;
+
+import static com.mobile.agri10x.utils.LocaleHelper.setLocale;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -40,9 +42,21 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setApplicationLanguage();
         setContentView(R.layout.activity_splash);
 
 
+       checkAppversion2();
+
+    }
+
+    private void checkAppversion2() {
+
+        Intent intent = new Intent(SplashActivity.this, HomePageActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    private void checkAppversion() {
         try {
 
             currentVersion = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
@@ -70,7 +84,6 @@ public class SplashActivity extends AppCompatActivity {
 
 // start thread
         background.start();
-
 
     }
 
@@ -212,5 +225,14 @@ public class SplashActivity extends AppCompatActivity {
     protected void onDestroy() {
         unregisterInstallStateUpdListener();
         super.onDestroy();
+    }
+
+
+    private void setApplicationLanguage() {
+        String lang = SessionManager.getAppLanguagePref(SplashActivity.this);
+        if (!lang.isEmpty()) {
+            setLocale(SplashActivity.this, lang);
+            //recreate();
+        }
     }
 }

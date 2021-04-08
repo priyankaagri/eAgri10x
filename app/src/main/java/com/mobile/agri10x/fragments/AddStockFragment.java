@@ -65,6 +65,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 
 public class AddStockFragment extends Fragment implements OnItemClickListener {
 
@@ -332,8 +334,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -394,8 +395,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -409,24 +409,21 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatecountry(String str_country) {
         if (str_country.isEmpty() || str_country == null) {
-            Toast.makeText(getActivity(),
-                    "Country is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.country_required));
             return false;
         }
         return true;
     }
     private boolean validatefeatures(ArrayList<String> featuresids) {
         if(recyclerview_features.getVisibility()==View.VISIBLE && featuresids.size()== 0) {
-            Toast.makeText(getActivity(),
-                    "Select Features", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.select_features));
             return false;
         }
         return true;
     }
     private boolean validatepincode(String str_pincode) {
         if (str_pincode.isEmpty() || str_pincode.length() < 6) {
-            Toast.makeText(getActivity(),
-                    "Pincode is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.pincode_required));
             return false;
         }
         return true;
@@ -434,8 +431,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatecity(String str_city) {
         if (str_city.isEmpty() || str_city == null) {
-            Toast.makeText(getActivity(),
-                    "City is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.city_required));
             return false;
         }
         return true;
@@ -443,8 +439,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatestate(String str_state) {
         if (str_state.isEmpty() || str_state == null) {
-            Toast.makeText(getActivity(),
-                    "State is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.state_required));
             return false;
         }
         return true;
@@ -454,8 +449,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatetaluka(String str_taluka) {
         if (str_taluka.isEmpty() || str_taluka == null) {
-            Toast.makeText(getActivity(),
-                    "Taluka is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.taluka_required));
             return false;
         }
         return true;
@@ -463,17 +457,14 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validateaddress(String str_address) {
         if (str_address.isEmpty() || str_address == null) {
-            Toast.makeText(getActivity(),
-                    "Address is Required", Toast.LENGTH_SHORT).show();
-            return false;
+            makeToast(getActivity(),getResources().getString(R.string.address_required));            return false;
         }
         return true;
     }
 
     private boolean validatedateto(String strDateto) {
         if (strDateto.isEmpty() || strDateto == null) {
-            Toast.makeText(getActivity(),
-                    "To date is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.to_date_required));
             return false;
         }
         return true;
@@ -481,8 +472,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatedatefrom(String strDatefrom) {
         if (strDatefrom.isEmpty() || strDatefrom == null) {
-            Toast.makeText(getActivity(),
-                    "From date is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.from_date_required));
             return false;
         }
         return true;
@@ -490,8 +480,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatepriceperkg(String str_priceperkg) {
         if (str_priceperkg.isEmpty() || str_priceperkg == null) {
-            Toast.makeText(getActivity(),
-                    "Price is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.price_required));
             return false;
         }
         return true;
@@ -499,8 +488,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatequantity(String str_quantity) {
         if (str_quantity.isEmpty() || str_quantity == null) {
-            Toast.makeText(getActivity(),
-                    "Quantity is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.quantity_required));
             return false;
         }
         return true;
@@ -508,16 +496,14 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatevariety(String str_varietyid) {
         if (str_varietyid.isEmpty() || str_varietyid == null) {
-            Toast.makeText(getActivity(),
-                    "Variety is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.varity_required));
             return false;
         }
         return true;
     }
     private boolean validatediscription(String str_discription) {
         if (str_discription.isEmpty() || str_discription == null) {
-            Toast.makeText(getActivity(),
-                    "Description is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.desc_required));
             return false;
         }
         return true;
@@ -527,8 +513,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
     private boolean validatecommodity(String str_commodityid) {
         if (str_commodityid.isEmpty() || str_commodityid == null) {
-            Toast.makeText(getActivity(),
-                    "Commodity is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.commodity_required));
             return false;
         }
         return true;
@@ -572,8 +557,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -619,8 +603,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                     spinner_commodity.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -667,8 +650,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -716,8 +698,7 @@ public class AddStockFragment extends Fragment implements OnItemClickListener {
                     spinner_state.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override

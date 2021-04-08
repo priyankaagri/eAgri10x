@@ -32,6 +32,7 @@ public class SessionManager {
     public static final String KEY_ROLE = "role";
     public static final String KEY_EXP = "exp";
     public static final String KEY_TOKEN_USER = "token_userid";
+    public static final String KEY_LANGUAGE = "app_language";
 
     // Constructor
     public SessionManager(Context context) {
@@ -48,6 +49,15 @@ public class SessionManager {
 // editor.putString(KEY_HOTEL_NAME, hotel_name);
 
 // commit changes
+        editor.commit();
+    }
+
+    public static String getAppLanguagePref(Context context) {
+        return new SessionManager(context).pref.getString(SessionManager.KEY_LANGUAGE, "en");
+    }
+    public static void setLanguage(String language) {
+
+        editor.putString(KEY_LANGUAGE, language);
         editor.commit();
     }
 

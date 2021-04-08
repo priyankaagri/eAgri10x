@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class LocationActivity extends AppCompatActivity {
     Button loction_btn;
     private LiveNetworkMonitor mNetworkMonitor;
@@ -34,7 +36,7 @@ public class LocationActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         if(mNetworkMonitor.isConnected()){
-            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.network_connected));
         }
     }
 }

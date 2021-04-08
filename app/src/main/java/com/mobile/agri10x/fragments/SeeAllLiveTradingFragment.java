@@ -37,6 +37,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class SeeAllLiveTradingFragment extends Fragment {
     List<GetLiveTradesData> livetradelist = new ArrayList<>();
     ShimmerRecyclerView recyle_livetrade;
@@ -95,8 +97,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
                     }
                 }
                 else {
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.please_check_internet));                }
             }
 
             @Override
@@ -104,8 +105,7 @@ public class SeeAllLiveTradingFragment extends Fragment {
                                   Throwable t) {
                 recyle_livetrade.hideShimmer();
 
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.please_check_internet));            }
         });
     }
 }

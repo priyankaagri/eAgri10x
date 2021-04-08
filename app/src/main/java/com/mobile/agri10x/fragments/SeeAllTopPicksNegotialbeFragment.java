@@ -39,6 +39,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 
 public class SeeAllTopPicksNegotialbeFragment extends Fragment  {
 
@@ -115,16 +117,14 @@ public class SeeAllTopPicksNegotialbeFragment extends Fragment  {
 
                 } else {
 
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.please_check_internet));                }
             }
 
             @Override
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 recyle_alltoppicks.hideShimmer();
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.please_check_internet));            }
         });
     }
 
@@ -164,7 +164,6 @@ public class SeeAllTopPicksNegotialbeFragment extends Fragment  {
     public void onResume() {
         super.onResume();
         if(mNetworkMonitor.isConnected()){
-            Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_LONG).show();
-        }
+            makeToast(getActivity(),getResources().getString(R.string.please_check_internet));        }
     }
 }

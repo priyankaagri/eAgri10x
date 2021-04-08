@@ -479,7 +479,7 @@
                             android:layout_marginLeft="15dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
                             android:paddingLeft="8dp"
-                            android:text="State"
+                            android:text="@string/State"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                         <TextView
@@ -519,7 +519,7 @@
                             android:layout_marginLeft="15dp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
                             android:paddingLeft="8dp"
-                            android:text="City"
+                            android:text="@string/City"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                         <TextView

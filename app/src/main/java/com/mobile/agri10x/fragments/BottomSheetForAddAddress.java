@@ -44,6 +44,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
     List<GetStatesDatum> getstateArrayList = new ArrayList<>();
@@ -201,16 +203,14 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
                 if (response.isSuccessful()) {
                     HomePageActivity.removeFragment(new MyAddressFragment());
                     HomePageActivity.setFragment(new MyAddressFragment(),"addadress");
-                    Toast.makeText(getActivity(), "Address Added Succesfully!", Toast.LENGTH_LONG).show();
-
+                    makeToast(getActivity(),getResources().getString(R.string.address_added_successfully));
 
                     dismiss();
 
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -260,8 +260,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -309,8 +308,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
                     ss_statebilling.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -326,8 +324,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
     //validations
     private boolean validateaddresstype(String addrressType) {
         if (addrressType.isEmpty() || addrressType == null || addrressType.equals("Select Address Type")) {
-            Toast.makeText(getActivity(),
-                    "Address Type is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.address_type_required));
             return false;
         }
         return true;
@@ -335,8 +332,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
     private boolean validatestate(String state) {
         if (state.isEmpty() || state == null) {
-            Toast.makeText(getActivity(),
-                    "State is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.state_required));
             return false;
         }
         return true;
@@ -344,8 +340,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
     private boolean validatecity(String city) {
         if (city.isEmpty() || city == null) {
-            Toast.makeText(getActivity(),
-                    "City is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.city_required));
             return false;
         }
         return true;
@@ -353,8 +348,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
     private boolean ValidatePincode(String pincode) {
         if (pincode.isEmpty() || pincode.length() < 6) {
-            Toast.makeText(getActivity(),
-                    "Pincode is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.pincode_required));
             return false;
         }
         return true;
@@ -362,8 +356,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
     private boolean validateAddress2(String address2) {
         if (address2.isEmpty() || address2 == null) {
-            Toast.makeText(getActivity(),
-                    "Address is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.address_required));
             return false;
         }
         return true;
@@ -371,8 +364,7 @@ public class BottomSheetForAddAddress  extends BottomSheetDialogFragment {
 
     private boolean valiadadeAddress1(String address1) {
         if (address1.isEmpty() || address1 == null) {
-            Toast.makeText(getActivity(),
-                    "Address is required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.address_required));
             return false;
         }
         return true;

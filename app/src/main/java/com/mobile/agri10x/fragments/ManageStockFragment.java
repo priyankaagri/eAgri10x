@@ -42,6 +42,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class ManageStockFragment extends Fragment {
     private ImageView mBackButton;
     TextView btn_addstock;
@@ -100,8 +102,7 @@ public class ManageStockFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override

@@ -40,6 +40,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 
 public class ProfileFargment extends Fragment {
     AlertDialog dialog, dialog2;
@@ -112,7 +114,7 @@ public class ProfileFargment extends Fragment {
         if (!email.matches(emailPattern))
         {
 
-            Toast.makeText(getActivity(),"Invalid email address", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.invalid_email_add));
             return false;
         }
         return true;
@@ -121,8 +123,7 @@ public class ProfileFargment extends Fragment {
 
     private boolean validatemobilenumber(String mobilenumber) {
         if (mobilenumber.isEmpty() || mobilenumber.length() < 10) {
-            Toast.makeText(getActivity(),
-                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.invalid_mob_no));
             return false;
         }
         return true;
@@ -139,8 +140,7 @@ public class ProfileFargment extends Fragment {
 
     private boolean validatelastname(String lastname) {
         if (lastname.isEmpty() || lastname == null) {
-            Toast.makeText(getActivity(),
-                    "Last Name is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.last_name_required));
             return false;
         }
         return true;
@@ -148,8 +148,7 @@ public class ProfileFargment extends Fragment {
 
     private boolean validatefirstname(String firstname) {
         if (firstname.isEmpty() || firstname == null) {
-            Toast.makeText(getActivity(),
-                    "First Name is Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.first_name_required));
             return false;
         }
         return true;
@@ -194,15 +193,14 @@ public class ProfileFargment extends Fragment {
                     et_mobilenumber.setText(number);
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetUser> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -243,16 +241,14 @@ public class ProfileFargment extends Fragment {
                     getActivity().getSupportFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<UpdateUser> call,
                                   Throwable t) {
                 dialog2.dismiss();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));            }
         });
     }
 

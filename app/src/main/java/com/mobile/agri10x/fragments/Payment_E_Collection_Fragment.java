@@ -37,6 +37,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
 
 
 public class Payment_E_Collection_Fragment extends Fragment {
@@ -99,8 +100,7 @@ if(getuserid != null && !getuserid.isEmpty()){
         ClipboardManager clipboard = (ClipboardManager)getActivity(). getSystemService(CLIPBOARD_SERVICE);
         clipboard.setText(account_title.getText().toString());
 
-        Toast.makeText(getActivity(),"Account Title Copied",Toast.LENGTH_SHORT).show();
-    }
+        makeToast(getActivity(),getResources().getString(R.string.account_title_copied));    }
 });
         copy_account_beneficiary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,8 +108,7 @@ if(getuserid != null && !getuserid.isEmpty()){
                 ClipboardManager clipboard = (ClipboardManager)getActivity(). getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(benificary.getText().toString());
 
-                Toast.makeText(getActivity(),"Beneficiary Account Number Copied",Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.beneficiary_acc_number_copied));            }
         });
 
         copy_account_ifsc.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +117,7 @@ if(getuserid != null && !getuserid.isEmpty()){
                 ClipboardManager clipboard = (ClipboardManager)getActivity(). getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(ifsc_txt.getText().toString());
 
-                Toast.makeText(getActivity(),"IFSC Code Copied",Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.ifsc_copied));            }
         });
         copy_account_ibankname.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +125,7 @@ if(getuserid != null && !getuserid.isEmpty()){
                 ClipboardManager clipboard = (ClipboardManager)getActivity(). getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(txt_bank_name.getText().toString());
 
-                Toast.makeText(getActivity(),"Bank Name Copied",Toast.LENGTH_SHORT).show();
+                makeToast(getActivity(),getResources().getString(R.string.bank_name_copied));
             }
         });
 
@@ -164,24 +162,20 @@ if(getuserid != null && !getuserid.isEmpty()){
                         HomePageActivity.removeFragment(new Payment_E_Collection_Fragment());
                         HomePageActivity.setFragment(new MyOrderFragment(),"youroder");
                         HomePageActivity.getProductinCart();
-                        Toast.makeText(getActivity(),"Payment Successful",Toast.LENGTH_SHORT).show();
-
+                        makeToast(getActivity(),getResources().getString(R.string.payment_successfull));
                     }else{
-                        Toast.makeText(getActivity(),"Payment Not Completed",Toast.LENGTH_SHORT).show();
-                    }
+                        makeToast(getActivity(),getResources().getString(R.string.payment_not_completed));                    }
 
                 }
                 else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetCheckCollect> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));            }
         });
     }
 

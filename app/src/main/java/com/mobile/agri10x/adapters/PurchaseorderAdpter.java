@@ -48,6 +48,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpter.ViewHolers> {
     Date purchasedate;
     Context context;
@@ -284,14 +286,14 @@ public class PurchaseorderAdpter extends RecyclerView.Adapter<PurchaseorderAdpte
 
                 } else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
             @Override
             public void onFailure(Call<GetCreateCheckoutDetails> call,
                                   Throwable t) {
-                Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }

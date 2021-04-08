@@ -39,6 +39,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class MyWishListFragment extends Fragment  {
 
     private ImageView mBackButton;
@@ -100,14 +102,11 @@ public class MyWishListFragment extends Fragment  {
                         wishlistAdapter = new WishlistAdapter(getActivity(), arrayListwishlist);
                         recycleview_wishlist_stock.setAdapter(wishlistAdapter);
                     }else{
-                        Toast.makeText(getActivity(),"Wishlist is empty",Toast.LENGTH_SHORT).show();
+                        makeToast(getActivity(),getResources().getString(R.string.empty_wishlist));
                     }
-
-
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override

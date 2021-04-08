@@ -53,6 +53,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyViewHolder> {
 Dialog dialogfordetailpage;
     Date fromDate,currnetDate,toDate;
@@ -115,8 +117,8 @@ Dialog dialogfordetailpage;
                         .into(commodity_image);
                 txt_commodity_name.setText(wishLists.get(position).getName());
                 txt_variety_name.setText(wishLists.get(position).getVariety());
-                txt_avilable_quantity.setText("Available Quantity: "+String.valueOf(wishLists.get(position).getQuantity())+" KG");
-                txt_product_pack_size.setText("Packaging Size: "+String.valueOf(wishLists.get(position).getWeight())+" KG");
+                txt_avilable_quantity.setText(context.getResources().getString(R.string.avail_quantity)+String.valueOf(wishLists.get(position).getQuantity())+" KG");
+                txt_product_pack_size.setText(context.getResources().getString(R.string.avail_packaging_size)+String.valueOf(wishLists.get(position).getWeight())+" KG");
 
 
 
@@ -126,10 +128,10 @@ Dialog dialogfordetailpage;
                     public void onClick(View v) {
 
                         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
-                        builder.setTitle("Remove From Wishlist");
-                        builder.setMessage("Are you sure you want to Remove ?");
+                        builder.setTitle(context.getResources().getString(R.string.remove_from_wishlist));
+                        builder.setMessage(context.getResources().getString(R.string.sure_wnat_to_remove));
 
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton(context.getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 dialogfordetailpage.dismiss();
@@ -178,14 +180,14 @@ dialogfordetailpage.dismiss();
 
                         });
 
-                        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        builder.setNegativeButton(context.getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 dialogfordetailpage.dismiss();
                                 dialog.dismiss();
                             }
                         });
-                        builder.setNegativeButton("Cancel", null);
+                        builder.setNegativeButton(context.getResources().getString(R.string.cancel), null);
 
                         androidx.appcompat.app.AlertDialog dialog = builder.create();
                         dialog.show();
@@ -312,7 +314,7 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
 
     private void CallApiaddTOCard(String orderID, String grade, String name, double price) {
         int quantity = 10;
-        dialog=new WishlistAdapter.Alert().pleaseWait();
+        dialog=new Alert().pleaseWait();
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("userID", SessionManager.getKeyTokenUser(context));
@@ -344,12 +346,14 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
                 if (response.isSuccessful()) {
                     HomePageActivity.removeFragment(new MyWishListFragment());
                     HomePageActivity.getProductinCart();
-                    Toast.makeText(context, quantity+" Kg of "+ name +" has been added to trade", Toast.LENGTH_LONG).show();
+                    String toastMessage=context.getResources().getString(R.string.added_in_trade)+quantity+context.getResources().getString(R.string.kg_of)+name
+                            +context.getResources().getString(R.string.has_been_added);
+                    makeToast(context,toastMessage);
                     HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
                 }
                 else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -357,7 +361,7 @@ private void  callapideleteproductaftertrade(String wishlistid,String userID,Str
             public void onFailure(Call<GetAddProductToCart> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }

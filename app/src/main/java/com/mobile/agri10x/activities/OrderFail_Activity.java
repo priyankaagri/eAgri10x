@@ -13,6 +13,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.utils.LiveNetworkMonitor;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 
 public class OrderFail_Activity extends AppCompatActivity {
      Button backhome_btn;
@@ -39,18 +41,14 @@ public class OrderFail_Activity extends AppCompatActivity {
                 bottomSheetView.findViewById(R.id.course_button).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),
-                                "Clicked Yes", Toast.LENGTH_SHORT)
-                                .show();
+                        makeToast(getApplicationContext(),getResources().getString(R.string.clicked_yes));
                         bottomSheetDialog.dismiss();
                     }
                 });
                 bottomSheetView.findViewById(R.id.algo_button).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),
-                                "Clicked No", Toast.LENGTH_SHORT)
-                                .show();
+                        makeToast(getApplicationContext(),getResources().getString(R.string.clicked_no));
                         bottomSheetDialog.dismiss();
                     }
                 });
@@ -71,7 +69,7 @@ public class OrderFail_Activity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         if(mNetworkMonitor.isConnected()){
-            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.network_connected));
         }
     }
 }

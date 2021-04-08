@@ -91,7 +91,7 @@
                             android:digits="0123456789"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Add money to wallet"
+                            android:hint="@string/add_money_to_wallet"
 
                             />
                     </com.google.android.material.textfield.TextInputLayout>

@@ -98,6 +98,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class HomeFragment extends Fragment {
     RelativeLayout worker_rel, fpo_rel, trader_rel, farmer_rel,transportation_rel,wearhouse_rel,our_hero_farmer,our_hero_trader,our_hero_grain;
     Dialog dialogforwantwork, dialogForTransportContatct,dialogForWarehouse;
@@ -436,8 +438,7 @@ public class HomeFragment extends Fragment {
                             ss_statebilling.setAdapter(adapter1);
                         } else {
 
-                            Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                        }
+                            makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                        }
                     }
 
                     @Override
@@ -484,8 +485,7 @@ public class HomeFragment extends Fragment {
 
                         } else {
 
-                            Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                        }
+                            makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                        }
                     }
 
                     @Override
@@ -802,7 +802,7 @@ public class HomeFragment extends Fragment {
                             spinner_state_transaporatation.setAdapter(adapter1);
                         } else {
 
-                            Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                            makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
                         }
                     }
 
@@ -1004,14 +1004,14 @@ public class HomeFragment extends Fragment {
                     });
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
                 }
             }
 
             @Override
             public void onFailure(Call<GetUser> call,
                                   Throwable t) {
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -1052,7 +1052,7 @@ public class HomeFragment extends Fragment {
                     ss_state_wearhouse.setAdapter(adapter1);
                 } else {
 
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -1097,7 +1097,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
                 formdialog.dismiss();
 
-                Toast.makeText(context, "Thank you for submitting the form. We will get back to you soon", Toast.LENGTH_LONG).show();
+                makeToast(getActivity(),getResources().getString(R.string.thank_form_submitting));
                 dialogForWarehouse.dismiss();
             }
 
@@ -1105,8 +1105,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetWorkerForm> call, Throwable t) {
                 formdialog.dismiss();
                 dialogForWarehouse.dismiss();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
 
@@ -1186,8 +1185,7 @@ public class HomeFragment extends Fragment {
                     gettoppicks();
                 } else {
                     gettoppicks();
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -1234,16 +1232,14 @@ public class HomeFragment extends Fragment {
                     getonlyFeature();
                 } else {
                     getonlyFeature();
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 getonlyFeature();
-                Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-            }
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));            }
         });
     }
 
@@ -1284,8 +1280,7 @@ public class HomeFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -1372,8 +1367,7 @@ public class HomeFragment extends Fragment {
                 } else {
                     dialog.dismiss();
                     getDailyDeals();
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
@@ -1489,7 +1483,7 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if(mNetworkMonitor.isConnected()){
-            Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_LONG).show();
+            makeToast(getActivity(),getResources().getString(R.string.please_check_internet));
         }
     }
 
@@ -1525,7 +1519,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
                 formdialog.dismiss();
 
-                Toast.makeText(context, "Thank you for submitting the form. We will get back to you soon", Toast.LENGTH_LONG).show();
+                makeToast(getActivity(),getResources().getString(R.string.thank_form_submitting));
                 dialogForTransportContatct.dismiss();
             }
 
@@ -1533,8 +1527,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetWorkerForm> call, Throwable t) {
                 formdialog.dismiss();
                 dialogForTransportContatct.dismiss();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
 
@@ -1591,7 +1584,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetWorkerForm> call, Response<GetWorkerForm> response) {
                 formdialog.dismiss();
 
-                Toast.makeText(context,"Thank you for submitting the form. We will get back to you soon",Toast.LENGTH_LONG).show();
+                makeToast(getActivity(),getResources().getString(R.string.thank_form_submitting));
                 dialogforwantwork.dismiss();
             }
 
@@ -1599,8 +1592,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<GetWorkerForm> call, Throwable t) {
                 formdialog.dismiss();
                 dialogforwantwork.dismiss();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
 
@@ -1609,24 +1601,21 @@ public class HomeFragment extends Fragment {
     public boolean validatecheckbox(CheckBox reaper_check, CheckBox sower_check, CheckBox loader_check) {
         if (!reaper_check.isChecked() && !sower_check.isChecked() && !loader_check.isChecked() ) {
 
-            Toast.makeText(getActivity(),
-                    "Select atleast one checkbox", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.select_atleast_checkbox));
             return  false;
         }
         return  true;
     }
     public boolean validateCompanyName(String CompanyName) {
         if (CompanyName.isEmpty() || CompanyName == null) {
-            Toast.makeText(getActivity(),
-                    "Company Name Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.company_name_required));
             return false;
         }
         return true;
     }
     public boolean validatefirstName(String FirstName) {
         if (FirstName.isEmpty() || FirstName == null) {
-            Toast.makeText(getActivity(),
-                    "First Name Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.first_name_required));
             return false;
         }
         return true;
@@ -1634,64 +1623,56 @@ public class HomeFragment extends Fragment {
 
     public boolean validatelastName(String LastName) {
         if (LastName.isEmpty() || LastName == null) {
-            Toast.makeText(getActivity(),
-                    "Last Name Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.last_name_required));
             return false;
         }
         return true;
     }
     public boolean validatecity(String City) {
         if (City.isEmpty() || City == null) {
-            Toast.makeText(getActivity(),
-                    "City is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.city_is_required));
             return false;
         }
         return true;
     }
     public boolean validatephonenumber(String PhoneNumber) {
         if (PhoneNumber.isEmpty() || PhoneNumber.length() < 10 ) {
-            Toast.makeText(getActivity(),
-                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.invalid_mob_no));
             return false;
         }
         return  true;
     }
     private boolean validateEmail(String email_fromdialog) {
         if (email_fromdialog.isEmpty() || email_fromdialog == null  ) {
-            Toast.makeText(context,
-                    "Email Required", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.email_required));
             return false;
         }
         return true;
     }
     public boolean validatestate(String str_state) {
         if (str_state.isEmpty() || str_state == null) {
-            Toast.makeText(getActivity(),
-                    "State is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.state_is_required));
             return false;
         }
         return true;
     }
     public boolean validateFeatures(String str_features) {
         if (str_features.isEmpty() || str_features == null) {
-            Toast.makeText(getActivity(),
-                    "Features is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.feature_is_required));
             return false;
         }
         return true;
     }
     public boolean validateStockType(String str_stock) {
         if (str_stock.isEmpty() || str_stock == null) {
-            Toast.makeText(getActivity(),
-                    "Stock Type is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.stock_type_required));
             return false;
         }
         return true;
     }
     public boolean validatePrice(String str_price) {
         if (str_price.isEmpty() || str_price == null) {
-            Toast.makeText(getActivity(),
-                    "Price is Required!", Toast.LENGTH_SHORT).show();
+            makeToast(getActivity(),getResources().getString(R.string.price_is_required));
             return false;
         }
         return true;

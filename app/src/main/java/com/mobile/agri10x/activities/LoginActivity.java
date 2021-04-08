@@ -50,6 +50,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
   Button btn_next,register;
   TextInputEditText mobilenumber;
@@ -185,12 +187,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         startActivity(i);
                         finish();
                     }else {
-                        Toast.makeText(LoginActivity.this, "Mobile Number is not registerd.", Toast.LENGTH_SHORT).show();
+                        makeToast(getApplicationContext(),getResources().getString(R.string.mobile_not_registerd));
                     }
                 }
                 else {
                     dialog.dismiss();
-                    Toast.makeText(LoginActivity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(getApplicationContext(),getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -199,13 +201,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                   Throwable t) {
                 dialog.dismiss();
 
-               String strerr =t.getMessage();
-                if(strerr.contains("java.lang.NumberFormatException: For input string")){
-                    Toast.makeText(LoginActivity.this,"You are not authorised to login into this website. Please create an account with another Mobile No.", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(LoginActivity.this,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                String strerr = t.getMessage();
+                if (strerr.contains("java.lang.NumberFormatException: For input string")) {
+                    makeToast(getApplicationContext(), getResources().getString(R.string.not_authorized_mobile));
+                } else {
+                    makeToast(getApplicationContext(), getResources().getString(R.string.something_went_wrong));
                 }
-
             }
         });
     }
@@ -262,7 +263,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public void onResume() {
         super.onResume();
         if(mNetworkMonitor.isConnected()){
-            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.network_connected));
         }
     }
 

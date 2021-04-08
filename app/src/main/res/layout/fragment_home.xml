@@ -721,7 +721,7 @@
                         android:layout_marginHorizontal="40dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
-                        android:text="Transportation"
+                        android:text="@string/transportation"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -733,8 +733,8 @@
                         android:layout_marginTop="@dimen/second_card_view"
                         android:background="@drawable/radius_button"
                         android:padding="10dp"
-                        android:text="Connect With Us"
                         android:textAllCaps="true"
+                        android:text="@string/connect_us"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -754,6 +754,7 @@
 
                     </ImageView>
 
+
                     <TextView
 
                         android:layout_width="match_parent"
@@ -761,7 +762,7 @@
                         android:layout_marginHorizontal="40dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/proxima_nova_alt_bold"
-                        android:text="Warehouse"
+                        android:text="@string/warehouse"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -773,8 +774,8 @@
                         android:layout_marginTop="@dimen/second_card_view"
                         android:background="@drawable/radius_button"
                         android:padding="10dp"
-                        android:text="Connect With Us"
                         android:textAllCaps="true"
+                        android:text="@string/connect_us"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 

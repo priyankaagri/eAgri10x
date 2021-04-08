@@ -40,6 +40,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class MyAddressFragment extends Fragment {
 
     Activity activity;
@@ -114,20 +116,17 @@ public class MyAddressFragment extends Fragment {
                         recyle_Addresslist.setAdapter(addressListShowAdpter);
                         addressListShowAdpter.notifyDataSetChanged();
                     }else{
-                        Toast.makeText(getActivity(), "Add Address", Toast.LENGTH_SHORT).show();
-                    }
+                        makeToast(getActivity(),getResources().getString(R.string.add_address));                    }
 
 
                 }else{
-                    Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<getAddress> call, Throwable t) {
                 recyle_Addresslist.hideShimmer();
-                Toast.makeText(getActivity(), R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-
+                makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));
             }
         });
     }

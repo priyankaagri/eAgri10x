@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Agri10x</string>
+    <string name="title_activity_login">लॉगइन अक्टिव्ह </string>
+    <string name="prompt_email"> ईमेल </string>
+    <string name="prompt_password">पासवार्ड </string>
+    <string name="action_sign_in">साइन इन करा किंवा नोंदणी करा </string>
+    <string name="action_sign_in_short">साइन इन करा</string>
+    <string name="welcome"> "स्वागत आहे!"</string>
+    <string name="invalid_username">वैध वापरकर्तानाव नाही</string>
+    <string name="invalid_password">पासवार्ड > 5 वर्णांचा असणे आवश्यक आहे </string>
+    <string name="login_failed">"लॉग इन अयशस्वी"</string>
+    <string name="logout_b">आपली खात्री आहे की आपण लॉगआउट करू इच्छिता?</string>
+    <string name="update_downloaded"> अ‍ॅप डाउनलोड केला </string>
+    <string name="restart">पुन्हा सुरू करा </string>
+    <string name="welcometoagri10x">Agri10x मध्ये आपले स्वागत आहे </string>
+    <string name="letscheck">प्रथम आम्ही आपल्या पत्त्यावर वितरित करतो हे तपासू द्या </string>
+    <string name="ChooseLocation">स्थान निवडा </string>
+    <string name="chooseyourloc">आपले स्थान निवडा आणि खरेदी सुरू करा </string>
+    <string name="USECURRENTLOCATION">चालू स्थान वापरा </string>
+    <string name="SelectitMannually">ते व्यक्तिचलितपणे निवडा</string>
+    <string name="Login">लॉगिन</string>
+    <string name="sendotp">ओटीपी पाठवा</string>
+    <string name="OR">किंवा</string>
+
+    <string name="TradeAmount">व्यापार रक्कम</string>
+    <string name="CONVENIENCE">2% कॉन्व्हिन्सी चार्जेस</string>
+    <string name="charges_title">शुल्क तपशील</string>
+    <string name="COMMISION">कमिशन @ 1%</string>
+    <string name="HANDLING">2% हँडलिंग फी</string>
+    <string name="your_payment_suusesful">आपले देय यशस्वी आहे</string>
+    <string name="facility">सुविधा निवडा</string>
+    <string name="noo">नाही</string>
+    <string name="mesage_of_success">आपण कोठार / परिवहन सुविधेची निवड करू इच्छिता?</string>
+    <string name="DonthaveanAccountYet">अद्याप खाते नाही?</string>
+    <string name="clickheretoclickone">एक क्लिक करण्यासाठी येथे क्लिक करा </string>
+    <string name="Opps">ओप्स!</string>
+    <string name="OrderFailed">ऑर्डर अयशस्वी!</string>
+    <string name="Somethingwentterriblywrong">काहीतरी खूपच चूक झाली</string>
+    <string name="Please_try_again">कृपया पुन्हा प्रयत्न करा</string>
+    <string name="back_to_home">परत होम वर जा</string>
+    <string name="verify_OTP">ओटीपी सत्यापित करा</string>
+    <string name="Add_Money">पैसे जमा करा</string>
+    <string name="Account_Title">खाते शीर्षक</string>
+    <string name="ICOGNITIVE">इकोग्निटिव्ह ग्लोबल प्राइवेट लिमिटेड नोडल एसी</string>
+    <string name="Beneficiary_Account_Number">लाभार्थी खाते क्रमांक</string>
+    <string name="IFSC">आयएफएससी</string>
+    <string name="YESB0CMSNOC">YESB0CMSNOC (5 वी वर्णमाला शून्य आहे)</string>
+    <string name="Bank_Name">बँकेचे नाव</string>
+    <string name="Yes_Bank">येस बँक </string>
+    <string name="Register">नोंदणी करा</string>
+    <string name="Register_As">म्हणून नोंदणी करा</string>
+    <string name="send_otp">ओटीपी पाठवा</string>
+    <string name="Already_have_an_account">आधीपासूनच एक खाते आहे?</string>
+    <string name="click_here_to_LOGIN">लॉगिन करण्यासाठी येथे क्लिक करा</string>
+    <string name="Create_Account">खाते तयार करा</string>
+    <string name="Email_Id">ई - मेल आयडी</string>
+    <string name="Address">पत्ता</string>
+    <string name="Address1">पत्ता 1</string>
+    <string name="Address2">पत्ता 2</string>
+    <string name="City">शहर</string>
+    <string name="State">राज्य</string>
+    <string name="Country">देश</string>
+    <string name="SAVE">जतन करा</string>
+    <string name="RemovingCommodity">वस्तू काढून टाकत आहे ..</string>
+    <string name="Pleasewait">कृपया थांबा...</string>
+    <string name="ResendingOTP">ओटीपी पुन्हा पाठवित आहे ...</string>
+    <string name="VerifyingOTP">ओटीपी सत्यापित करीत आहे ...</string>
+    <string name="Logout">बाहेर पडणे</string>
+    <string name="No">नाही</string>
+    <string name="Yes">होय</string>
+    <string name="Add_Address">पत्ता जोडा</string>
+    <string name="Trade_Now">आता व्यापार करा</string>
+    <string name="kg">कि.ग्रा</string>
+    <string name="myaddress">माझा पत्ता</string>
+    <string name="mylanguage">माझी भाषा</string>
+    <string name="add_money_to_wallet">वॉलेटमध्ये पैसे जमा करा</string>
+    <string name="Discription">तपशिल</string>
+    <string name="My_Addresses">माझा पत्ता</string>
+    <string name="add"> + जोडा </string>
+    <string name="Booking">बुकिंग</string>
+    <string name="Add_new_Address">+ नवीन पत्ता जोडा </string>
+    <string name="Trade_Value">व्यापार भाव</string>
+    <string name="Total_Trade_Amount">एकूण व्यापार रक्कम</string>
+    <string name="order_book">ऑर्डर बुक</string>
+    <string name="PURCHASE">खरेदी करा</string>
+    <string name="Menu">मेनू</string>
+    <string name="Manage_Stock">साठा व्यवस्थापित करा</string>
+    <string name="Add_Stock"> + साठा जोडा </string>
+    <string name="E_Collect">ई-संग्रह</string>
+    <string name="E_Collect_detail">कृपया ई-संग्रह माहिती खाली शोधा. आपण आपल्या नेटबँकिंगचा वापर करुन देय रक्कम हस्तांतरित करू शकता.</string>
+    <string name="paymentnote">आपण आधीच ई-कलेक्टद्वारे देय दिले असल्यास, कृपया आम्ही देयतेची पुष्टी करीत असताना खालील बटणावर क्लिक करा. कृपया लक्षात घ्या की देय प्रतिबिंबित होण्यासाठी 30 मिनिटे लागू शकतात. </string>
+
+    <string name="I_have_made_paymeny">मी पैसे भरले आहेत</string>
+    <string name="Categories">वर्गीकरण</string>
+    <string name="User_Details">वापरकर्त्याचा तपशील</string>
+    <string name="Delivery_Payments">वितरण / देयके</string>
+    <string name="Featured_Trades">वैशिष्ट्यीकृत व्यापार</string>
+    <string name="Live_Trades">थेट व्यापार</string>
+    <string name="Negotiable_Trades">वाटाघाटीचा व्यापार</string>
+    <string name="Wishlist">विशलिस्ट</string>
+    <string name="Paid_Amount">देय रक्कम</string>
+    <string name="Total_Amount">एकूण रक्कम</string>
+    <string name="Billing_Address">बिलाचा पत्ता</string>
+    <string name="Shipping_address">शिपिंग पत्ता</string>
+    <string name="Delivery_Notes">वितरण नोट्स</string>
+    <string name="Delete">हटवा</string>
+    <string name="quote_your_price">आपली किंमत कोट करा</string>
+    <string name="Type_of_transport">वाहतुकीचा प्रकार</string>
+    <string name="Weight_of_transport">वाहतुकीचे वजन</string>
+    <string name="price_kg">किंमत / कि.ग्रा</string>
+    <string name="Operating_State">चालू राज्य</string>
+    <string name="No_Selection">निवड नाही</string>
+    <string name="Stock_Type">साठ्यांचा प्रकार</string>
+    <string name="viewall">सर्व पाहा</string>
+    <string name="top_picks">शीर्ष निवडी</string>
+    <string name="catogery_list">वर्गीकरण यादी</string>
+    <string name="register_as">नोंदणी करा</string>
+    <string name="i_am_famr">मी एक शेतकरी आहे</string>
+    <string name="i_am_trader">मी एक व्यापारी आहे</string>
+    <string name="i_am_fpo">मी एफपीओ आहे</string>
+    <string name="i_am_worker">मी कामगार आहे</string>
+    <string name="iwanttosell">मला विक्री करायची आहे</string>
+    <string name="iwanttobut">मला खरेदी करायचे आहे</string>
+    <string name="iwanttowork">मला काम करायचे आहे</string>
+    <string name="comdity_rate">वस्तूंचे दर</string>
+
+    <string name="fname">पहिले नाव</string>
+    <string name="lname">आडनाव</string>
+    <string name="tollfree">1800-121-2243</string>
+    <string name="facetouble">त्रास होत आहे?</string>
+    <string name="callus">आम्हाला कॉल करा</string>
+    <string name="entrnamef">प्रथम नाव प्रविष्ट करा</string>
+    <string name="enternamel">आडनाव प्रविष्ट करा</string>
+    <string name="farmer">शेतकरी</string>
+    <string name="trder">व्यापारी</string>
+    <string name="featured_tader">वैशिष्ट्यीकृत व्यापार</string>
+    <string name="our_hero">आमचे ध्येयवादी नायक</string>
+    <string name="live_trade">थेट व्यापार</string>
+
+    <string name="home">मुख्यपृष्ठ</string>
+    <string name="payment">देय</string>
+    <string name="tradevalue">व्यापार मूल्य</string>
+    <string name="menu">मेनू</string>
+    <string name="offer">ऑफर</string>
+
+    <string name="vegitabl">भाज्या</string>
+    <string name="spixce">मसाले</string>
+    <string name="furits">फळे</string>
+    <string name="vegpulesr">डाळी</string>
+    <string name="gaisins">धान्य</string>
+
+    <string name="contact_us">आमच्याशी संपर्क साधा</string>
+    <string name="wehole_garins">निरोगी &amp;</string>
+    <string name="premimu_garins">प्रिमियम गार्न्स</string>
+
+    <string name="name">नाव</string>
+    <string name="phon_numbr">फोन नंबर</string>
+    <string name="email">ईमेल</string>
+    <string name="commodity">वस्तू</string>
+    <string name="varity">विविधता</string>
+    <string name="price_per_kg">प्रति कि.ग्रा किंमत</string>
+    <string name="submit">जतन करा</string>
+
+    <string name="fname_str"> पहिले नाव *</string>
+    <string name="lname_str"> आडनाव *</string>
+    <string name="dateofbirth">जन्म तारीख</string>
+    <string name="ddmmyy">dd-mm-yyyy</string>
+    <string name="cart_txt">* किमान ऑर्डरची मात्रा 500 कि.ग्रा. आणि फक्त 50 कि.ग्रा. च्या एकाधिक आहे</string>
+
+    <string name="enter_digit">10 अंकी मोबाइल क्रमांक प्रविष्ट करा *</string>
+    <string name="chcekout">CHECKOUT</string>
+    <string name="total_amout">एकूण व्यापार रक्कम</string>
+    <string name="txttt_amount">XXXXXX</string>
+    <string name="qunty">Quantity</string>
+    <string name="priceperkg">Price/KG</string>
+    <string name="total_weight">  Total Weight (KG)</string>
+    <string name="Mobile_number">आपला भ्रमणध्वनी क्रमांक</string>
+    <string name="verify_account">खाते पडताळणी करा</string>
+    <string name="we_will_send">आम्ही या क्रमांकावर पुष्टीकरण कोडसह एसएमएस पाठवू</string>
+    <string name="verification">कृपया + 91XXXXXXXXXX वर व्हेरीफिकेशन कोड पाठवा</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">हॅलो रिक्त तुकडा</string>
+    <string name="book_order">बुक ऑर्डर</string>
+    <string name="purches">खरेदी</string>
+    <string name="booking">बुकिंग</string>
+    <string name="billing_Address">बिलाचा पत्ता *</string>
+    <string name="add_new_address">+ नवीन पत्ता जोडा</string>
+    <string name="deivery_address">वितरण पत्ता *</string>
+    <string name="booking_ammount">बुकिंगची रक्कम *</string>
+    <string name="booking_amt">बुकिंगची रक्कम</string>
+    <string name="paytext">* 75% रक्कम द्या आणि 5% सवलत मिळवा</string>
+    <string name="delivery_notes">वितरण नोट्स</string>
+    <string name="please_deleiver_it_before">डिलिव्हरी नोट्स असल्यास काही</string>
+    <string name="packaging_deatils">पॅकेजिंग तपशील असल्यास काही</string>
+    <string name="please_deliver_goods">माल उल्लेखानुसार पॅक केले जातात</string>
+    <string name="packaging_details">पॅकेजिंग तपशील</string>
+    <string name="trade_total_value">व्यापार मूल्य एकूण</string>
+    <string name="trade_amount">व्यापार रक्कम</string>
+    <string name="convi_charge"> कॉन्व्हिन्सी चार्जेस @2%</string>
+    <string name="heading_fee">हाताळणीचे शुल्क @2%</string>
+    <string name="commision">कमिशन @1%</string>
+    <string name="total_tade_amount">एकूण व्यापार रक्कम</string>
+
+    <string name="menu_payment">देय </string>
+    <string name="menu_addstock">साठा जोडा</string>
+    <string name="menu_managestock">साठा व्यवस्थापित करा</string>
+    <string name="menu_your_orders">माझ्या ऑर्डर </string>
+    <string name="menu_wish_list"> माझी इच्छा सूची </string>
+    <string name="menu_refer_earn"><![CDATA[संदर्भ घ्या आणि कमवा]]></string>
+    <string name="menu_about_us">आमच्याबद्दल</string>
+    <string name="menu_contst_us">आमच्याशी संपर्क साधा</string>
+    <string name="menu_share_app">अॅप शेयर करा</string>
+    <string name="tv_version_1_0_0">आवृत्ती 1.0.0</string>
+    <string name="tv_profile">प्रोफाइल</string>
+    <string name="menu_verified_account">खाते सत्यापित करा</string>
+
+    <string name="total_tarade_amount">एकूण व्यापार रक्कम</string>
+    <string name="next_btn">पुढे</string>
+    <string name="upto_onelak">* 1 लाख पर्यंत</string>
+    <string name="morethenone">* 1 लाखाहून अधिक</string>
+    <string name="paynow_withgateway">आता गेटवेसह पैसे द्या</string>
+    <string name="paynow_withWCOLLECT">ई-निवडीसह आता देय द्या</string>
+    <string name="order_summery">ऑर्डर सारांश</string>
+
+    <string name="handing_fee">दंड शुल्क @ 2%</string>
+    <string name="pending_amount">प्रलंबित रक्कम</string>
+
+    <string name="delivery_title">वितरण पत्ता</string>
+    <string name="tv_contact_name_id">संपर्क व्यक्तीचे नाव *</string>
+    <string name="save">जतन करा</string>
+    <string name="tv_mobile_no_id">मोबाइल नंबर *</string>
+    <string name="tv_street_address1">रस्त्याचा पत्ता 1 *</string>
+    <string name="tv_street_address2">मार्ग पत्ता 2 *</string>
+    <string name="tv_state">राज्य</string>
+    <string name="tv_city">शहर</string>
+    <string name="tv_pincode">पिन कोड *</string>
+    <string name="tv_address_type">पत्त्याचा प्रकार *</string>
+    <string name="billing_title">बिलाचा पत्ता</string>
+
+    <string name="varity_id">विविधता</string>
+    <string name="priceperkg_id">किंमत / कि.ग्रा.</string>
+    <string name="quantity_id">प्रमाण (कि.ग्रा. मध्ये)</string>
+    <string name="valid_from">पासून वैध</string>
+    <string name="valid_to">ते वैध </string>
+    <string name="add_stock_d">साठा जोडा</string>
+    <string name="addresss">पत्ता</string>
+    <string name="talukaa">तालुका</string>
+    <string name="pincode_txt">पिन कोड</string>
+    <string name="country_txt">देश</string>
+    <string name="tv_verity_add_stock">विविधता</string>
+    <string name="tv_commodity">वस्तू</string>
+
+    <string name="first_name_field_required">कृपया वैध नाव प्रविष्ट करा.</string>
+    <string name="last_name_field_required">कृपया वैध आडनाव प्रविष्ट करा.</string>
+    <string name="enter_valide_email_id">Pकृपया वैध ईमेल आयडी प्रविष्ट करा.</string>
+
+    <string name="add_stock">साठा जोडा</string>
+    <string name="manage_stock">साठा व्यवस्थापित करा</string>
+
+    <string name="about_us_faq">सामान्य प्रश्न</string>
+    <string name="tv_privacy_policy">गोपनीयता धोरण</string>
+    <string name="tv_refund_policy">परतावा धोरण</string>
+    <string name="tv_about_agri10x">Agri10x बद्दल</string>
+    <string name="tv_faq">सामान्य प्रश्न</string>
+
+    <string name="faq_title1">Agri10x म्हणजे काय?</string>
+    <string name="faq_desc1">Agri10x हे एकात्मिक गुणवत्तेचे उत्पादन आणि वेअरहाउस मॉड्यूल असलेल्या शेतकऱ्यांसाठी भारतातील सर्वात मोठे बी 2 बी ई-मार्केटप्लेस आहे.</string>
+    <string name="faq_title2">नोंदणीचे शुल्क किती आहे?</string>
+    <string name="faq_desc2">आम्ही कोणतीही नोंदणी फी घेत नाही; हे अगदी विनामूल्य आहे.</string>
+    <string name="faq_title3">अ‍ॅग्री 10 एक्सवर वस्तू विकण्यास कोण पात्र आहे?</string>
+    <string name="faq_desc3">ज्या वापरकर्त्यांचे केवायसी सत्यापित आहे ते सर्व Agri10x वर विक्रीस पात्र आहेत.</string>
+    <string name="faq_title4">Agri10x वर देय पर्याय काय आहेत?</string>
+    <string name="faq_desc4">आम्ही आमच्या पोर्टलवर केवळ कॅशलेस व्यवहारास समर्थन देतो.</string>
+    <string name="faq_title5">तक्रारी आणि गाऱ्हाणे नोंदवण्यासाठी ग्राहक समर्थन क्रमांक काय आहे?</string>
+    <string name="faq_desc5">कृपया आपल्या तक्रारी / गाऱ्हाणे नोंदवण्यासाठी 1800 121 2243 वर कॉल करा.</string>
+    <string name="privacypolicy">
+        <!--<font color="black" face="proxima_nova_alt_bold" size="20"><b>Privacy Policy</b></font>-->
+        \nThis Privacy Policy (“Policy”) establishes uniform, global guidance regarding how iCognitive Global Private Limited (“Agri10x” or “Company”) intends generally to Process (as defined below) and protect Personal Data (as defined below). This Policy explains how Agri10x may collect, use and disclose Personal Information (as defined below) that has been obtained through its web-based application (“Platform”), from the communications with the Company and/or from third parties. It also describes the choices available to the Data Subjects (as defined below) regarding the use of, access to, and how to update and correct their Personal Information.
+\n\nThis Policy should not be construed as a guarantee of action by the Company or as creating contractually binding promises. To the extent that Law (as defined below) or contractual provisions impose stricter requirements than the guidance set forth below, the Company will comply with the more restrictive Law or contractual provisions. Adherence to this Policy may be limited to the extent required to respond to legal, governmental or regulatory requirements, or where expressly permitted by Law.
+\n\nThis Privacy Policy forms part and parcel of the Platform’s terms and conditions (“Terms of Use”) which is included therein by this reference. The capitalized terms which have been used herein but are not specifically defined shall have the same meaning as attributed to such term in the Terms and Conditions. The Terms and Conditions and this Privacy Policy are to be interpreted harmoniously at all events.
+\n\nFurther, this Policy does not replace or supersede any other privacy statement, privacy policy, or other notice or agreement addressing the Processing by the Company of Personal Data issued or otherwise made available to Data Subjects, but rather, shall be read in conjunction with such statements, policies, notices or agreements; provided, however, that in the event of a conflict between such statements, policies, notices or agreements and this Policy, the provisions of the latter shall govern.
+\n\nIn case the Data Subjects do not agree to the terms of this Policy in their entirety, they may not access or otherwise use the Platform or site offerings.
+
+        \n\n\n<font color="black" face="proxima_nova_alt_bold" size="20">SCOPE AND ELIGIBILITY</font>
+\n\nThis Policy applies to the Processing of Personal Data of Company’s current and former employees, buyers, farmer producer organizations (“FPOs”), farmers and traders and/or any person accessing any Platform. POLICY
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">1. DEFINITIONS</font>
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">2. COLLECTION OF PERSONAL DATA</font>
+\n\n2.1. General Statement: The Company insists upon the highest standards for secure transactions and information privacy. The Company collects Personal Data for identified and appropriate business purposes, or as may otherwise be required or permitted by Law and does not Process Personal Data in ways that conflict with those purposes, unless otherwise required or permitted by Law.
+\n\n2.2. Personal Information Collected by the Company: The Personal Data that the Company may collect and Process includes, to the extent applicable to the relevant Data Subject: personal and business contact information (including name, home address, work address or location, phone number, and email address); financial information (including bank account and/or salary details); emergency contact information; beneficiary information; recruitment, pre-employment and employment information, including background checks, employment history, educational history, career profiles, attendance records, performance appraisals, corrective actions, benefits-related information and information concerning retirement, resignation, and other types of termination; job title and description, date of hire, working status, employment hours and any written agreements between the Employee and the Company; information relating to work-related claims, internal investigations and disciplinary proceedings; information held for employment law and health and safety purposes; communications data and other data stored on, or transmitted through, the Company’s Information Resources (including phone call logs, emails, and internet browsing history); image and/or voice, which may be captured through photographs, video recordings, audio recordings and/or similar media; driver’s license information; business travel and expense reporting information; Sensitive Identification Data and Sensitive Personal Data; and other similar information.
+\n\n2.3. Personal Information provided by the Data Subject
+\n\nThe Company collects and stores Personal Information which is provided by the Data Subject from time to time, including pursuant to use of the Platform of the Company. The primary goal in collection of Personal Information is to provide a safe, efficient, smooth and customized experience to the Data Subject. This allows the Company to provide services and features that most likely meet the needs of the Data Subject. The Company collects Personal Information when the Data Subject chooses to provide it to the Company, including but not limited to when the Data Subject:\n
+\na) register to use the Platform;
+\nb) purchase a product on the Platform;
+\nc) use the Platform;
+\nd) review one of the products or post content to public pages on the Platform;
+\ne) communicate with the Company via the Platform or via email; and/or
+\nf) sign up to receive marketing information about the products and services.
+\n\nThe Company may also collect information at other points on the Platform with the Data Subject’s consent and with notice to them. Please note that the Company may use third party service providers to help operate the Platform and to provide analytical data with respect to the Platform of the Company and these third-party service providers may collect Personal Information from the Platform for these purposes.
+\n\nRegistering of an Account: The Platform gives the option of creating a user account (“Account”) as a farmer, trader, FPO and buyer. If the Data Subject decides to create an Account, they will provide the Company with certain Personal Information, such as first and last name, email address and password, phone number, business name, commodity interested in, location, crop name, selling month and quantity and any other information regarding seller and buyer. The Data Subjects are not required to register to use the Platform. However, the Company collects personally identifiable information (email address, name, phone number, credit card / debit card / other payment instrument details, etc.) from the Data Subject when they set up a free account. While the Data Subject can browse some sections of Company’s Platform without being a registered member, certain activities (such as placing an order) do require registration. The Company also uses contact information to send offers based on previous orders and interests of the Data Subjects. The Company will have access to SMS, contacts in directory, location and device information and the Company may request the Data Subject to provide requisite KYC document (such as PAN and Aadhaar) details to check eligibility for certain products/services including but not limited to providing credit) being offered by the Company, its affiliates or its lending partners. The Company may share this data with its affiliates or its lending partners for the same purposes stated in this Policy. In the event that consent to this, such use of data is withdrawn in the future, the Company will stop collection of such data but continue to store the data excluding Aadhaar information and use it for internal purposes to further improve its services.
+\n\nPurchasing an Agri10x Product: The Data Subject purchasing an Agri10x product using the Platform, they are given the option of logging into an Account or, if they do not already have an Account, creating a new Account. In either case, when the Data Subject purchases an Agri10x, the Company collects some additional information, such as billing address, a credit / debit card number and a credit / debit card expiration date and/ or other payment instrument details and tracking information from cheques or money orders.
+\n\nMaking Payment: The Data Subject while making payment through use of the Platform, they will need to provide Personal Information to Company’s third-party payment processors. Such Personal Information may include Sensitive Information, such as credit card number, expiry date and security code. This information is not collected by Agri10x but is provided directly by the Data Subject to Company’s third-party payment processors and its collection, use and disclosure is governed by their privacy policies. The Company encourages the Data Subjects to review the privacy policies of Company’s third-party payment processors.
+\nSubmitting Information to the Website: The Company collects information, including Personal Information that is submitted by the Data Subject to the Platform. This includes any text, images, videos, photographs, messages and comments on message boards, product reviews and customer testimonials. If they choose to post content such as a product review i.e., where content can be viewed by all users with or without user accounts, the Platform will collect the information submitted to the Platform and the information contained in their posting will be visible to others, including any Personal Information they choose to include. The Company cannot control who reads the postings or what other users may do with the information that they voluntarily post, so it is very important that they do not put Personal Information in the posts if they do not want it to be seen or used by others. Please keep this in mind when submitting content to any public area of the Platform. The Company reserves the right to use any product reviews or customer testimonials for its marketing and promotional purposes, so please take this into consideration while choosing to include Personal Information in the product reviews or testimonials.
+\n\nSocial Media Websites: If Data Subject engages in any interaction with Agri10x, other Platform users or any third-party on any Agri10x social media account pages (“Social Media Pages”), they should be aware that: (a) the Personal Information that is submitted by and through such Social Media Pages can be read, collected and/or used by other users of those Platforms/services (depending on their privacy settings associated with their accounts with the applicable social media websites), and could be used to send unsolicited messages or otherwise to contact them without their consent or desire; and (b) where Agri10x responds to any interaction on such Social Media Pages, their account name/handle may be viewable by any and all members/users of Agri10x’s social media accounts. The Company is not responsible for the Personal Information that the Data Subject chooses to submit on any Social Media Pages. Their interactions with the Social Media Pages are governed by the privacy policies of the applicable social media websites. The Company encourages them to review the privacy policies and settings of the Social Media Pages with which they interact to help them understand privacy practices of those social media websites.
+\n\nCommunicating with us: The Company may also collect Personal Information from the Data Subject when they communicate with the Company. For example, they may send Personal Information by an email, subscribing to the Agri10x email list or through the Platform contact form. If they contact via the Platform, the Company will require their full name and email address. They also have the choice to provide with their city, state/province, and any other information they choose to provide. The Company will keep a record of that correspondence in order to respond to the enquiries and to process the requests.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">3. PASSIVE COLLECTION OF TECHNICAL INFORMATION</font>
+\n\nComputer IP Addresses/Browser Type: The Company may collect certain non-personally identifiable information about the Data Subject and their desktop computer when they visit many of the pages of the Platform. This non-personally identifiable information includes, without limitation, the type of browser that they use (e.g., Safari, Chrome, Internet Explorer), their IP address, the type of operating system that they use (e.g., Windows or iOS) and the domain name of their Internet service provider (e.g., Verizon, AT&amp;T). The Company uses the non-personally identifiable information that it collects to improve the design and content of the Platform offerings and to enable it to personalize their Internet experience.
+\n\nBehavioural Tracking: The Company while conducting optional online surveys may ask the Data Subject for contact information and demographic information (like zip code, age, or income level). The Company uses this data to tailor their experience while using the Platform, providing them with content that the Company thinks they might be interested in and to display content according to their preferences. Agri10x and its third-party partners use Cookies (as defined below), pixels and other tracking technology (collectively, “Tracking Technology”) to analyse trends, administer the Platform, track users’ movements around the Platform and to gather demographic information about Agri10x user base as a whole. Agri10x third-party partners may use Tracking Technology to gather information about the Data Subject activities on the Platform and other websites in order to provide them with certain Agri10x advertising based upon their browsing activities and interests. The Company shall not be responsible for the tracking practices of third parties in connection with the Platform. Lastly, users may be able to opt-out of this form of tracking utilizing. Please note that opting out of this tracking activity does not opt them out of being served advertising. Even where they opt out of this tracking activity, they will continue to receive generic advertisements.
+\n\nCross Device Tracking: The Company provides the use of the Platform offerings across various devices, including Data Subject’s personal computer and mobile device, in order to optimize and personalize their Platform offerings experience. The Company may collect certain of their Personal Information across various devices. Please be advised that where they opt-out of having their use of the Platform offerings tracked across devices, they may need to upload certain information multiple times and/or input their log-in information multiple times.
+\n\nCookies: “Cookies” are small files placed on the hard drive that assist in providing the services. The Company offers certain features that are only available through the use of a “cookie”. It also uses cookies to allow the Data Subject to enter their password less frequently during a session. Cookies can also help the Company in providing information that is targeted to the Data Subject’s interests. Most cookies are “session cookies,” meaning that they are automatically deleted from the hard drive at the end of a session. Data Subjects are always free to decline cookies if their browser permits, although in that case they may not be able to use certain features on the said Platform and they may be required to re-enter their password more frequently during a session. Additionally, they may encounter “cookies” or other similar devices on certain pages of the said Platform that are placed by third parties. The Company does not control the use of cookies by third parties. The Company may also collect Personal Data automatically about Data Subject using cookies or other similar tracking technologies located in any Agri10x Platform, application, software or similar electronic system Company-issued or Company-authorized. For more information about the cookies the Company uses, Data Subjects should consult Agri10x’s online Privacy Statement at https://www.home.agri10x.com/privacy-policy/. In order to receive further information about the cookies used in a particular Company electronic system, Data Subjects should contact info@agri10x.com.
+
+         \n\n<font color="black" face="proxima_nova_alt_bold" size="18">4. MINIMUM COLLECTION AND PROCESSING OF PERSONAL DATA</font>
+\n\nAgri10x limits the Personal Data it collects and Processes to the minimum amount necessary for an appropriate business purpose. Personal Data shall be Processed only by those Employees who have an authorized business purpose to Process such Personal Data (“Authorized Employees”), consistent with their roles and responsibilities. Before collecting or Processing Personal Data, Authorized Employees shall analyse whether the business purpose can be satisfied without collecting and Processing Personal Data. In many cases, anonymous (or de-identified) data (which does not identify a Data Subject and cannot be re-identified) will be sufficient. Aggregated numerical information (such as statistical survey data) which includes only anonymous data should be used for many types of reports. If the use of anonymous data is not possible, considering the purpose for which the data is being used, then pseudonymous data which cannot be attributed to a Data Subject without the use of additional information should be used. In this case, the additional information must be kept separately to ensure that the Personal Data cannot be directly linked to an identifiable individual. In those cases where the business purpose can be achieved by eliminating certain data elements, by anonymizing or aggregating data, then Authorized Employees should use all reasonable efforts to use pseudonymous data or to collect or Process the minimum amount of Personal Data necessary in order to achieve the purpose.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">5. ACCURACY AND DATA SUBJECT RIGHTS</font>
+\n\nTo the extent that a Data Subject provides the Company Personal Data, including the Personal Data on a third party platform, they must (i) ensure, on a continuing basis, the accuracy, reliability, and relevancy of such Personal Data, (ii) only collect and provide the Company such Personal Data in accordance with all Laws, including when applicable, in accordance with all data processing notice and consent requirements, and (iii) inform the third parties whose Personal Data they provide to the Company, or who the third party directly provides the Company to facilitate or engage in a personal, non-business, related function, that the Company will collect and retain such Personal Data in accordance with this Policy, which may be amended from time to time. Without limiting the foregoing, Data Subjects must, promptly and without delay, notify the Company (preferably in writing) of any amendments that need to be made to Personal Data to ensure its accuracy, reliability, and relevancy, and the Company shall use reasonable efforts to keep Personal Data accurate, current and reliable for its intended use. To the extent required by Law, the Company shall use reasonable efforts to ensure that any Personal Data that are inaccurate, unreliable, or irrelevant having regard to the purposes for which they are Processed, are corrected, amended, or deleted without undue delay.
+\n\nData Subjects may have certain rights in relation to their Personal Data under the Law. These rights are generally not absolute and may be subject to certain exceptions or qualifications. The Company will comply with Law to ensure that Data Subjects are able to exercise their rights in relation to their Personal Data. The following paragraphs describe common Data Subject rights that apply in some jurisdictions. In order to exercise those Data Subject rights, such Data Subject should contact the Company at info@agri10x.com.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">6. RETENTION AND DESTRUCTION</font>
+\n\nPersonal Data shall be retained only as long as needed to meet the purposes for which it has been collected unless different retention periods apply under Law. After the Personal Data has fulfilled the purposes for which it was collected, the Personal Data should be securely deleted or destroyed, unless retention is otherwise required by Law.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">7. TECHNICAL, PHYSICAL, AND ORGANIZATIONAL SAFEGUARDS</font>
+\n\nIn General: The Company protects Personal Data by applying reasonable technical, physical, and organizational safeguards designed to prevent unauthorized or unlawful access to or acquisition or disclosure of Personal Data or any accidental loss, alteration, destruction or damage to Personal Data. These safeguards take into account applicable industry standards, the practicality of the protection, and the sensitivity of the Personal Data being protected and are appropriate to the risks posed by the relevant Processing activities, including the risk of exposure to loss, theft or unauthorized use or access of Personal Data.
+\n\nPhysical and Electronic Security: The Company endeavours to safeguard and protect the Data Subject’s Personal Information. When the Data Subjects make Personal Information available to the Company, their Personal Information is protected both online and offline (to the extent that we maintain any Personal Information offline). Access to their Personal Information is strictly limited, and the Company takes reasonable security measures to ensure that the Personal Information is not accessible to the public. All of the Personal Information is restricted in offices, as well as the offices of third-party service providers. Only Employees or third-party agents who need Personal Information to perform a specific job are granted access to Personal Information. The Employees are dedicated to ensuring the security and privacy of all the Personal Information. Employees not adhering to this Policy are subject to disciplinary action. The servers that the Company stores user Personal Information on are kept in a secure physical environment. Agri10x also has security measures in place to protect the loss, misuse and alteration of Personal Information under control.
+\n\nReporting of Incidents: Data Subjects should immediately (and in any case no later than 24 hours after discovery) report any actual or suspected compromise of the confidentiality, integrity, or availability of Personal Data or the systems or databases on which the Personal Data is stored, transmitted or Processed; including, but not limited to, any breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorized disclosure or acquisition of, or access to, any Personal Data (each, an “Incident”) to the Chief Privacy Officer regardless of the magnitude of the Incident or the type of Personal Data involved.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">8. LAWFUL PROCESSING</font>
+\n\nConditions for Processing: The Company Processes Personal Data in accordance with Law. To the extent required by Law, the Company will notify Data Subjects of the legal basis on which the Company relies in order to Process their Personal Data.
+\n\nAdherence to Consent Requirements: Whenever the Company’s policies, Law, or contractual obligations require the Company to obtain consent from the Data Subject(s) for the collection, use, Processing, transfer or sharing of Personal Data, the Company shall comply with those requirements. By accessing the Platform or otherwise using the Platform, the relevant Data Subject expressly consents to Company’s collection, storage, use, Processing and disclosure of the Information in accordance with the terms of this Policy.
+\n\nRight of Revocation: Where the Company relies on consent for Processing Personal Data for a particular purpose, Data Subjects shall have the right to revoke their consent at any time, whereupon the Company shall cease Processing of the Personal Data for that purpose. The revocation of consent will not invalidate the lawfulness of Processing carried out before the revocation was made. The Company shall be entitled to continue its Processing of Personal Data if required or permitted by Law and for other purposes in relation to which the Data Subject has not revoked consent.
+\n\nProvision of Personal Data when Required: If a Data Subject refuses to provide the Company with certain Personal Data, this may hamper the Company’s ability to, or prevent the Company from being able to, furnish certain services to the Data Subject. For example, under certain circumstances, the Personal Data may be required in order for an Employee to receive, or the Company perform, necessary, critical, or statutory services (such as payroll, employment benefits, travel and expense reimbursement, tax and other human resource- related obligations), all of which will be done in accordance with the Company’s policies and Law. Where the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract, the Company will inform the Data Subject of this fact and of the possible consequences of not providing the Personal Data.
+\n\nExtraordinary Circumstances: In some cases, where authorized or required by Law, the Company may collect, use or disclose Personal Data without requesting consent, providing notice or offering an opportunity to object to the Processing of the Personal Data, such as in the course of an investigation of possible wrongdoing or in emergency situations. To the extent required by Law, the Company will notify the Data Subject of the Processing as soon as possible thereafter.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">9. PROTECTION OF SENSITIVE PERSONAL DATA AND SENSITIVE IDENTIFICATION DATA</font>
+\n\nHigher Level of Protection: Because of the nature of Sensitive Personal Data and Sensitive Identification Data, the Company’s policies and procedures, as well as Law in certain cases, require that a higher level of protection be applied to it compared to Personal Data that is not sensitive.
+\n\nProtection Protocols: The Company shall apply a higher level of security to Sensitive Personal Data and Sensitive Identification Data reflecting the correspondingly greater risks arising from the unlawful or unauthorized disclosure of such information. In particular:
+\n\nAny hard copies of documents or any tangible materials containing Sensitive Personal Data and Sensitive Identification Data shall be locked in a file cabinet or closet or shall be secured against unauthorized access by other means.
+\n\nSensitive Personal Data and Sensitive Identification Data shall not be stored on removable storage media such as laptops, CDs, DVDs, USB storage devices or mobile devices (e.g., phones, tablets) unless the data is encrypted.
+\n\nSensitive Personal Data and Sensitive Identification Data shall be encrypted at rest and in transit.
+\n\nSensitive Personal Data and Sensitive Identification Data shall not be transferred, even temporarily, to an Employee’s home computer, an Employee’s personal email account, or any Internet website or any other unauthorized electronic equipment without the approval of the Chief Privacy Officer and, in such cases, the Sensitive Personal Data and Sensitive Identification Data shall be encrypted.
+\n\nThe Company does not use Sensitive Identification Data except when absolutely required for legitimate business purposes, including, but not limited to, Employee benefits and tax purposes, when required by Law or upon prior written approval of the Chief Privacy Officer.
+
+              \n\n<font color="black" face="proxima_nova_alt_bold" size="18">10. ELECTRONIC MONITORING</font>
+\n\nTo the extent permitted by Law, Agri10x reserves the right to monitor and audit Employees’ use of all Company Information Resources and the information stored on or transmitted through these Information Resources to the extent required for an appropriate business purpose (including the protection of Company property). Unless Law provides otherwise, Employees should have no expectation of privacy around their use of the Company’s Information Resources or the Personal Data they store on or transmit through these Information Resources. Any electronic monitoring of Personal Data will be conducted in accordance with Law, applicable works council or collective bargaining agreements, and with the approval of the Chief Privacy Officer. To the extent required by Law, Employees will receive notice of the scope and extent of Company’s electronic monitoring. Employees should not implement any electronic monitoring practices, including monitoring of phone calls, emails and instant messaging communications, without the prior written consent of the Chief Privacy Officer.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">11. TRANSFER OF PERSONAL DATA TO A THIRD PARTY</font>
+\n\nThe Company may share Personal Data with third parties in compliance with Law. With respect to Personal Data of Data Subjects, such third parties may include other Company entities, service providers, business customers, regulated entities to which the Company provides products and/or services, entities that may acquire portions of the business, and regulatory authorities.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">12. COMPLIANCE WITH THE POLICY</font>
+\n\nAll the Data Subjects are expected to comply with this Policy.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">13. CONCERNS AND APPEALS</font>
+\n\nThe Company takes reasonable steps to permit Employees to raise concerns about the manner in which it Processes Personal Data. If an Employee has a concern about the Company’s collection or Processing of Personal Data, the Employee should notify one of the following: the Company at info@agri10x.com or the Chief Privacy Officer. A Data Subject such as a customer, FPO, farmer or trader may also raise concerns with the Company about how it Processes the Personal Data, which concerns will be addressed in an appropriate manner in accordance with Law. Agri10x shall provide and notify these subjects of an appropriate contact mechanism who has questions about the Company’s handling of Personal Data as well as, if applicable, with the contact details of the Chief Privacy Officer or any similar person responsible for the protection of their Personal Data.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">14. CHANGES TO OUR PRIVACY POLICY AND PRACTICES</font>
+\n\nThe Company reserves the right to change or update this Policy at any time by posting a notice on the Platform that the Company is changing its Privacy Policy. If the manner in which it uses Personal Information changes, Agri10x will notify Data Subjects by: (a) sending the modified policy via e-mail; and/or (b) by any other reasonable means acceptable under applicable Law. The Data Subjects will have a choice as to whether or not they want to opt-in to such use.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">15. RESPONSIBILITY FOR THE POLICY</font>
+\n\nThis Policy is administered by Company’s Chief Privacy Officer.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">16. ANCILLARY POLICIES</font>
+\n\nThe Company may on best efforts basis adopt some of the ancillary policy that are related to this Policy such as: i) Terms of Use and ii) Information Security Policy.
+
+        \n\n<font color="black" face="proxima_nova_alt_bold" size="18">17. INTERPRETATION</font>
+\n\nThe Company, in its sole discretion, reserves the exclusive right to interpret, administer and apply this Policy, to make any exceptions to it, and to change this Policy at any time and for any reason. The provisions of this Policy do not establish contractual rights, in whole or in part, between the Company and the recipient of the Policy. The Company reserves the right to modify, amend, or terminate this Policy at any time. This Policy is the property of iCognitive Global Private Limited (Agri10x) and is the recipient’s responsibility to review the intranet publication of this Policy to ensure the most current version is being referenced before taking action based on any printed copy, which may be outdated.
+    </string>
+
+    <string name="str_get_support">मदत घ्या</string>
+    <string name="str_any_support">कोणत्याही समर्थन विनंतीसाठी आपल्या ऑर्डर किंवा वितरणासंदर्भात आमच्याशी बोलण्यासाठी कृपया खालील नंबर वर संपर्क साधावा.</string>
+    <string name="str_call_us">आम्हाला कॉल करा - 1800-121-2243</string>
+    <string name="str_mail_us">आम्हाला मेल करा - info@agri10x.com</string>
+
+    <string name="worker_form">कामगार फॉर्म</string>
+    <string name="select_atleast">Select Atleast one from them</string>
+    <string name="i_am_reper">मी एक कापणी करणारा आहे</string>
+    <string name="i_am_sower">मी एक पेरणारा आहे</string>
+    <string name="i_am_loader">मी एक लोडर आहे</string>
+
+    <string name="remove_product">उत्पादन काढा !</string>
+    <string name="youwant_toremove">आपली खात्री आहे की आपण काढू इच्छिता?</string>
+
+    <string name="transportation">वाहतूक</string>
+    <string name="company_name">कंपनीचे नाव</string>
+    <string name="pricekg">किंमत / कि.ग्रा</string>
+    <string name="lastname_str"> आडनाव </string>
+
+    <string name="warehouse">कोठार</string>
+    <string name="features">वैशिष्ट्ये निवडा</string>
+    <string name="stock_type">साठ्यांचा प्रकार</string>
+    <string name="select_state">राज्य निवडा</string>
+
+    <string name="logout">लॉगआउट</string>
+    <string name="you_want_logout">आपली खात्री आहे की आपण लॉगआउट करू इच्छिता?</string>
+    <string name="yes">हो</string>
+    <string name="cancel">नाही</string>
+
+    <string name="addressadd">पत्ता यशस्वीरित्या जोडला !</string>
+    <string name="somethingwentwrong">काहीतरी चूक झाली !</string>
+    <string name="alreadyinwishlist">आधीपासून आपल्या इच्छा सूचीमध्ये</string>
+
+    <string name="selectcommodity">व्यापारी माल निवडा</string>
+    <string name="selectvariety">विविधता निवडा</string>
+    <string name="selectstate"> राज्य निवडा</string>
+    <string name="selectcity"> शहर निवडा</string>
+
+    <string name="packagingsize">Packaging Size : 50 KG</string>
+    <string name="grade">Grade : </string>
+    <string name="quantity">Qunatity : </string>
+    <string name="priceskg">Price/KG : </string>
+    <string name="totalweight">Total Weight : </string>
+    <string name="total">Total: </string>
+    <string name="sure_want">तुम्ही या अँपमधून नक्की लॉगऑऊट करू इच्छिता ?</string>
+
+    <string name="marathi">मराठी</string>
+    <string name="english">English</string>
+    <string name="set_lang">भाषा सेट करा</string>
+    <string name="set_lang_1">Continue in English</string>
+    <string name="connect_us">आमच्याशी संपर्क साधा</string>
+    <string name="chooseYourLang">आपली पसंतीची भाषा निवडा</string>
+    <string name="chooseYourLang1">Choose your preferred language</string>
+
+    <string name="something_went_wrong">काहीतरी चुकीचे आहे !</string>
+    <string name="country_required">देश आवश्यक आहे </string>
+    <string name="select_features">वैशिष्ट्ये निवडा</string>
+    <string name="empty_wishlist">इच्छा सूची रिकामी आहे </string>
+    <string name="pincode_required">पिनकोड आवश्यक आहे</string>
+    <string name="city_required">शहर आवश्यक आहे</string>
+    <string name="state_required">राज्य आवश्यक आहे</string>
+    <string name="taluka_required">तालुका आवश्यक आहे</string>
+    <string name="address_required">पत्ता आवश्यक आहे</string>
+    <string name="to_date_required">ते तारीख आवश्यक आहे</string>
+    <string name="from_date_required">पासून तारीख आवश्यक आहे</string>
+    <string name="price_required">किंमत आवश्यक आहे</string>
+    <string name="quantity_required">प्रमाण आवश्यक आहे</string>
+    <string name="varity_required">विविधता आवश्यक आहे</string>
+    <string name="desc_required">तपशील आवश्यक आहे</string>
+    <string name="commodity_required">कमोडिटी आवश्यक आहे</string>
+    <string name="address_added_successfully">पत्ता यशस्वी जतन केले !</string>
+    <string name="invalid_mobile">अवैध मोबाईल क्रमांक</string>
+    <string name="contact_person_required">संपर्क व्यक्तीचे नाव आवश्यक आहे</string>
+    <string name="pending_amount_required">प्रलंबित रक्कम आवश्यक आहे</string>
+    <string name="booking_required">बुकिंगची रक्कम आवश्यक आहे</string>
+    <string name="select_booking_amt">बुकिंगची रक्कम निवडा</string>
+    <string name="deliv_add_required">वितरण पत्ता आवश्यक आहे</string>
+    <string name="bill_add_required">बिलाचा पत्ता आवश्यक आहे</string>
+    <string name="userid_required">वापरकर्ता आयडी आवश्यक आहे</string>
+    <string name="add_type_required">पत्त्याचा प्रकार आवश्यक आहे</string>
+    <string name="data_not_found">माहिती सापडला नाही</string>
+    <string name="address_type_required">पत्त्याचा प्रकार आवश्यक आहे</string>
+    <string name="thank_form_submitting">फॉर्म जतन केल्याबद्दल धन्यवाद. आम्ही लवकरच आपल्याकडे परत येऊ.</string>
+    <string name="please_check_internet">कृपया आपले इंटरनेट कनेक्शन तपासा</string>
+    <string name="select_atleast_checkbox">किमान एक चेकबॉक्स निवडा</string>
+    <string name="company_name_required">कंपनीचे नाव आवश्यक आहे!</string>
+    <string name="first_name_required">पहिले नाव आवश्यक आहे!</string>
+    <string name="last_name_required">आडनाव आवश्यक आहे!</string>
+    <string name="city_is_required">शहर आवश्यक आहे!</string>
+    <string name="invalid_mob_no">अवैध मोबाइल नंबर</string>
+    <string name="email_required">ईमेल आवश्यक आहे</string>
+    <string name="state_is_required">राज्य आवश्यक आहे!</string>
+    <string name="feature_is_required">वैशिष्ट्ये आवश्यक आहे!</string>
+    <string name="stock_type_required">साठा प्रकार आवश्यक आहे!</string>
+    <string name="price_is_required">किंमत आवश्यक आहे</string>
+    <string name="add_address">पत्ता जोडा</string>
+    <string name="account_title_copied">खाते शीर्षक कॉपी केले</string>
+    <string name="beneficiary_acc_number_copied">लाभार्थी खाते क्रमांक कॉपी केला</string>
+    <string name="ifsc_copied">आयएफएससी कोड कॉपी केला</string>
+    <string name="bank_name_copied">बँकेचे नाव कॉपी केले</string>
+    <string name="payment_successfull">देय यशस्वी</string>
+    <string name="payment_not_completed">देयक पूर्ण झाले नाही</string>
+    <string name="showing_0_products">0 उत्पादने दर्शवित आहे</string>
+    <string name="invalid_email_add">अवैध ई - मेल पत्ता</string>
+    <string name="amount_requied">रक्कम आवश्यक आहे</string>
+    <string name="pincode_is_required">पिन कोड आवश्यक आहे</string>
+    <string name="no_data_available">माहिती उपलब्ध नाही</string>
+
+    <string name="network_connected">नेटवर्क कनेक्ट केलेले नाही</string>
+    <string name="payment_successful">देय यशस्वी</string>
+    <string name="payment_failed">देय देणे अयशस्वी</string>
+    <string name="network_not_connected">नेटवर्क कनेक्ट केलेले नाही</string>
+    <string name="mobile_not_registerd">मोबाइल नंबर नोंदलेला नाही</string>
+    <string name="not_authorized_mobile">आपण या वेबसाइटवर लॉग इन करण्यास अधिकृत नाही. कृपया दुसर्‍या मोबाइल नंबरसह एक खाते तयार करा.</string>
+    <string name="clicked_yes">होय क्लिक केले</string>
+    <string name="clicked_no">क्लिक केले नाही </string>
+    <string name="wrong">चुकीचे</string>
+    <string name="code_resend">सत्यापन कोड पुन्हा यशस्वीरित्या पाठवा.</string>
+    <string name="wrong_otp">आपण चुकीचा ओटीपी प्रविष्ट केला</string>
+    <string name="invalid_otp">अवैध ओटीपी</string>
+    <string name="account_copied">खाते शीर्षक कॉपी केले</string>
+    <string name="beneficery_account_copied">लाभार्थी खाते क्रमांक कॉपी केला</string>
+    <string name="ifsc_code_copied">आयएफएससी कोड कॉपी केला</string>
+    <string name="enter_amount">रक्कम आवश्यक आहे</string>
+    <string name="error_in_payment">देय देताना त्रुटी</string>
+    <string name="select_role">कृपया भूमिका निवडा</string>
+    <string name="select_dob">कृपया आपले डीओबी निवडा!</string>
+    <string name="clicked_share_button">क्लिक केलेले शेअर बटण!</string>
+    <string name="qoute_price">किंमत द्या</string>
+    <string name="stock_not_avaliable">या उत्पादनासाठी साठा उपलब्ध नाही.</string>
+    <string name="min_trade_quantity">किमान व्यापार प्रमाण आवश्यक आहे 500 केजी</string>
+    <string name="quantity_multiple">प्रमाण फक्त 50 किलोच्या गुणाकारात असावे</string>
+    <string name="already_wishlist">आधीपासून आपल्या इच्छा सूचीमध्ये</string>
+    <string name="share_button">क्लिक केलेले शेअर बटण!</string>
+    <string name="sign_in_first">कृपया प्रथम साइन इन करा!</string>
+    <string name="submit_info">आपली विनंती यशस्वीरित्या सबमिट केली गेली आहे, sales n \ "+." आमची विक्री कार्यसंघ लवकरच आपल्याकडे परत येईल</string>
+    <string name="commodity_reqired">कमोडिटी आवश्यक आहे </string>
+    <string name="email_reqired">ईमेल आवश्यक आहे</string>
+    <string name="name_reqired">नाव आवश्यक आहे</string>
+    <string name="kg_of">" किलो  "</string>
+    <string name="has_been_added">" जमा केले गेले आहे."</string>
+    <string name="added_in_trade" >"व्यापार सूची मध्ये "</string>
+    <string name="select_address">Select Address</string>
+    <string name="remove_from_wishlist">इच्छा सूचीमधून काढा</string>
+    <string name="sure_wnat_to_remove">आपणास खात्री आहे की आपण काढू इच्छिता ?</string>
+    <string name="avail_quantity">"उपलब्ध प्रमाण : "</string>
+    <string name="avail_packaging_size">"पॅकेजिंग आकार: "</string>
+</resources>

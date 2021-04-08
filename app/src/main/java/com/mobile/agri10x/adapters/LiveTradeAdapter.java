@@ -59,6 +59,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class LiveTradeAdapter extends RecyclerView.Adapter<LiveTradeAdapter.ViewHolders> {
     Context context;
     private List<GetLiveTradesData> dataList;
@@ -140,7 +142,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
 //put something inside the map, could be null
         jsonParams.put("orderID",str_orderId);
         jsonParams.put("grade",str_grade);
-        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
             SSLCertificateManagment.trustAllHosts();
@@ -212,7 +214,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
                     shareiamge.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context, "Clicked Share Button!", Toast.LENGTH_SHORT).show();
+                            makeToast(context,context.getResources().getString(R.string.clicked_share_button));
                         }
                     });
                     add_btn.setOnClickListener(new View.OnClickListener() {
@@ -221,7 +223,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
                             String str_enterValue= entervalue.getText().toString();
 
                             if(TextUtils.isEmpty(str_enterValue)){
-                                Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
+                                makeToast(context,context.getResources().getString(R.string.qoute_price));
                             }else {
                                 if(SessionManager.isLoggedIn(context)){
                                     int int_enterValue= Integer.parseInt(entervalue.getText().toString());
@@ -233,15 +235,15 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
                                                 String quantity= String.valueOf(int_enterValue/50);
                                                 CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName(),response.body().getData().get(0).getPricePerLot());
                                             }else {
-                                                Toast.makeText(context, "Stock is not available for this product.", Toast.LENGTH_SHORT).show();
+                                                makeToast(context,context.getResources().getString(R.string.stock_not_avaliable));
                                             }
 
                                         }else {
-                                            Toast.makeText(context, "Minimum Trade Quantity Required is 500 KG", Toast.LENGTH_SHORT).show();
+                                            makeToast(context,context.getResources().getString(R.string.min_trade_quantity));
                                         }
 
                                     }else {
-                                        Toast.makeText(context, "Quantity should be in multiples of 50kg only", Toast.LENGTH_SHORT).show();
+                                        makeToast(context,context.getResources().getString(R.string.quantity_multiple));
                                     }
                                 }else {
                                     context.startActivity(new Intent(context,LoginActivity.class));
@@ -279,7 +281,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
                 }
                 else {
 
-                    Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -287,7 +289,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
             public void onFailure(Call<DisplayQuickView> call,
                                   Throwable t) {
 
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -338,7 +340,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
                             }
                         }
                         if(present){
-                            Toast.makeText(context,"Already in your wishlist",Toast.LENGTH_SHORT).show();
+                            makeToast(context,context.getResources().getString(R.string.already_wishlist));
                         }
                         else{
                             callapiAddtoWishlist(str_orderId,str_grade,str_price);
@@ -353,14 +355,14 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
 
                 } else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
             @Override
             public void onFailure(Call<GetProductInWishList> call,
                                   Throwable t) {
-                Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -401,7 +403,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
 
                 } else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -409,7 +411,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
             public void onFailure(Call<GetADDWishlist> call,
                                   Throwable t) {
 
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -451,7 +453,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
                 }
                 else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -459,7 +461,7 @@ holder.txt_variety_name.setText(dataList.get(position).getVarietyName());
             public void onFailure(Call<GetAddProductToCart> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }

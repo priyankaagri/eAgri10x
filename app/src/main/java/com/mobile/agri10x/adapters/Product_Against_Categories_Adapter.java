@@ -59,6 +59,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Product_Against_Categories_Adapter.ViewHolders> {
     Context context;
     private List<getCommAccToCatDatum> dataList;
@@ -138,7 +140,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
 //put something inside the map, could be null
         jsonParams.put("orderID",str_orderId);
         jsonParams.put("grade",str_grade);
-        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
         AgriInvestor apiService = ApiHandler.getApiService();
         try {
             SSLCertificateManagment.trustAllHosts();
@@ -201,7 +203,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                     shareiamge.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context, "Clicked Share Button!", Toast.LENGTH_SHORT).show();
+                            makeToast(context,context.getResources().getString(R.string.share_button));
                         }
                     });
 
@@ -212,7 +214,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                             String str_enterValue= entervalue.getText().toString();
 
                             if(TextUtils.isEmpty(str_enterValue)){
-                                Toast.makeText(context, "Please quote price", Toast.LENGTH_SHORT).show();
+                                makeToast(context,context.getResources().getString(R.string.quote_your_price));
                             }else {
                                 if(SessionManager.isLoggedIn(context)){
                                     int int_enterValue= Integer.parseInt(entervalue.getText().toString());
@@ -224,15 +226,15 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                                                 String quantity= String.valueOf(int_enterValue/50);
                                                 CallApiaddTOCard(response.body().getData().get(0).getOrderID(),response.body().getData().get(0).getGrade(),quantity,response.body().getData().get(0).getCommodityName(),response.body().getData().get(0).getPricePerLot());
                                             }else {
-                                                Toast.makeText(context, "Stock is not available for this product.", Toast.LENGTH_SHORT).show();
+                                                makeToast(context,context.getResources().getString(R.string.stock_not_avaliable));
                                             }
 
                                         }else {
-                                            Toast.makeText(context, "Minimum Trade Quantity Required is 500 KG", Toast.LENGTH_SHORT).show();
+                                            makeToast(context,context.getResources().getString(R.string.min_trade_quantity));
                                         }
 
                                     }else {
-                                        Toast.makeText(context, "Quantity should be in multiples of 50kg only", Toast.LENGTH_SHORT).show();
+                                        makeToast(context,context.getResources().getString(R.string.quantity_multiple));
                                     }
                                 }else {
                                     context.startActivity(new Intent(context,LoginActivity.class));
@@ -279,7 +281,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                 }
                 else {
 
-                    Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -287,7 +289,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
             public void onFailure(Call<DisplayQuickView> call,
                                   Throwable t) {
 
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }
@@ -335,7 +337,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
                             }
                         }
                         if (present) {
-                            Toast.makeText(context, R.string.alreadyinwishlist, Toast.LENGTH_SHORT).show();
+
                         } else {
                             callapiAddtoWishlist(str_orderId, str_grade, str_price);
                         }
@@ -441,12 +443,14 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
 
                 if (response.isSuccessful()) {
                     HomePageActivity.getProductinCart();
-                    Toast.makeText(context, quantity+" Kg of "+ commodityname +" has been added to trade", Toast.LENGTH_LONG).show();
+                    String toastMessage=context.getResources().getString(R.string.added_in_trade)+quantity+context.getResources().getString(R.string.kg_of)+commodityname
+                            +context.getResources().getString(R.string.has_been_added);
+                    makeToast(context,toastMessage);
                     HomePageActivity.setFragment(new TradeValueAddCart(),"cart");
                 }
                 else {
 
-                    Toast.makeText(context, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                    makeToast(context,context.getResources().getString(R.string.something_went_wrong));
                 }
             }
 
@@ -454,7 +458,7 @@ public class Product_Against_Categories_Adapter extends RecyclerView.Adapter<Pro
             public void onFailure(Call<GetAddProductToCart> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
             }
         });
     }

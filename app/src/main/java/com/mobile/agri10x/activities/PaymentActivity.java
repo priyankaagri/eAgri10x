@@ -45,6 +45,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mobile.agri10x.utils.ToastMessages.makeToast;
+
 public class  PaymentActivity extends  AppCompatActivity implements PaymentResultWithDataListener {
 
 
@@ -95,7 +97,7 @@ public class  PaymentActivity extends  AppCompatActivity implements PaymentResul
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(account_title.getText().toString());
 
-                Toast.makeText(PaymentActivity.this,"Account Title Copied",Toast.LENGTH_SHORT).show();
+                makeToast(getApplicationContext(),getResources().getString(R.string.account_copied));
             }
         });
         copy_account_beneficiary.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +106,7 @@ public class  PaymentActivity extends  AppCompatActivity implements PaymentResul
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(benificary.getText().toString());
 
-                Toast.makeText(PaymentActivity.this,"Beneficiary Account Number Copied",Toast.LENGTH_SHORT).show();
+                makeToast(getApplicationContext(),getResources().getString(R.string.beneficery_account_copied));
             }
         });
 
@@ -114,7 +116,7 @@ public class  PaymentActivity extends  AppCompatActivity implements PaymentResul
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(ifsc_txt.getText().toString());
 
-                Toast.makeText(PaymentActivity.this,"IFSC Code Copied",Toast.LENGTH_SHORT).show();
+                makeToast(getApplicationContext(),getResources().getString(R.string.ifsc_code_copied));
             }
         });
         copy_account_ibankname.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +125,7 @@ public class  PaymentActivity extends  AppCompatActivity implements PaymentResul
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(txt_bank_name.getText().toString());
 
-                Toast.makeText(PaymentActivity.this,"Bank Name Copied",Toast.LENGTH_SHORT).show();
+                makeToast(getApplicationContext(),getResources().getString(R.string.bank_name_copied));
             }
         });
 
@@ -153,7 +155,7 @@ callapigetBalance(userIdo);
 
                 if(getamt == null || getamt.isEmpty() || getamt.equals("") ){
 
-                    Toast.makeText(PaymentActivity.this,"Please Enter Amount",Toast.LENGTH_SHORT).show();
+                    makeToast(getApplicationContext(),getResources().getString(R.string.enter_amount));
                 }else{
                     if( userid != null || !userid.isEmpty()) {
                         dialog2 = new Alert().pleaseWait();
@@ -207,7 +209,7 @@ callapigetBalance(userIdo);
             @Override
             public void onFailure(Call<GetUserBalance> call,
                                   Throwable t) {
-                Toast.makeText(PaymentActivity.this,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                makeToast(getApplicationContext(),getResources().getString(R.string.something_went_wrong));
                 dialog.dismiss();
             }
         });
@@ -298,7 +300,7 @@ callapigetBalance(userIdo);
 
             co.open(activity, options);
         } catch (Exception e) {
-            Toast.makeText(activity, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            makeToast(getApplicationContext(),getResources().getString(R.string.error_in_payment));
             e.printStackTrace();
         }
     }
@@ -356,7 +358,7 @@ callapigetBalance(userIdo);
             public void onFailure(Call<GetCheckOutHandle> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(PaymentActivity.this,"Payment Fail",Toast.LENGTH_SHORT).show();
+                makeToast(getApplicationContext(),getResources().getString(R.string.payment_failed));
 
             }
         });

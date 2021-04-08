@@ -132,7 +132,7 @@ Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportCont
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View addStockView=inflater.inflate(R.layout.fragment_your_order_menu_layout,container,false);
         init(addStockView);
-
+        getlistbookingapi();
         getlistorderapi();
         if(getArguments()!=null){
             HomePageActivity.getProductinCart();
@@ -182,6 +182,12 @@ if(getIds==1){
 }
 
         return addStockView;
+
+    }
+
+    private void getlistbookingapi() {
+        //call api here
+       // getBookingList 176 fromAgriInvestor
 
     }
 

@@ -78,6 +78,7 @@ Button checkout_btn;
             public void onClick(View v) {
 //                HomePageActivity.setFragment(new BookOrderFragment(),"book");
                 if(ProductsInCartlist.size() >0){
+                    HomePageActivity.removeFragment(new TradeValueAddCart());
                     BookOrderFragment fragment = new BookOrderFragment(); // replace your custom fragment class
                     Bundle bundle = new Bundle();
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -97,6 +98,7 @@ Button checkout_btn;
             @Override
             public void onClick(View v) {
                 if(ProductsInCartlist.size() >0){
+                    HomePageActivity.removeFragment(new TradeValueAddCart());
                 PurchaseOrderFargment fragment = new PurchaseOrderFargment(); // replace your custom fragment class
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

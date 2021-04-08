@@ -135,6 +135,7 @@ Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportCont
 
         getlistorderapi();
         if(getArguments()!=null){
+            HomePageActivity.getProductinCart();
             getval = getArguments().getBoolean("getValue");
             getIds=getArguments().getInt("getIds");
 

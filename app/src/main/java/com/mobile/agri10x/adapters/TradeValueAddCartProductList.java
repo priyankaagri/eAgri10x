@@ -259,7 +259,7 @@ int getWaight=holder.getAdapterPosition();
             public void onFailure(Call<UpdateCart> call,
                                   Throwable t) {
                 dialog2.dismiss();
-                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
+                makeToast(context,context.getResources().getString(R.string.slownetworkdeted));
             }
         });
     }
@@ -306,7 +306,7 @@ int getWaight=holder.getAdapterPosition();
             public void onFailure(Call<GetRemoveProduct> call,
                                   Throwable t) {
                 dialog.dismiss();
-                makeToast(context,context.getResources().getString(R.string.something_went_wrong));
+                makeToast(context,context.getResources().getString(R.string.slownetworkdeted));
             }
         });
     }

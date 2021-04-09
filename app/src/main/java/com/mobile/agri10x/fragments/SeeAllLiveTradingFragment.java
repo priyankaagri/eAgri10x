@@ -97,15 +97,15 @@ public class SeeAllLiveTradingFragment extends Fragment {
                     }
                 }
                 else {
-                    makeToast(getActivity(),getResources().getString(R.string.please_check_internet));                }
+                    makeToast(getActivity(),getResources().getString(R.string.something_went_wrong));                }
             }
 
             @Override
             public void onFailure(Call<GetLiveTrades> call,
                                   Throwable t) {
                 recyle_livetrade.hideShimmer();
-
-                makeToast(getActivity(),getResources().getString(R.string.please_check_internet));            }
+Log.d("getmessage",t.getMessage());
+                makeToast(getActivity(),getResources().getString(R.string.slownetworkdeted));            }
         });
     }
 }

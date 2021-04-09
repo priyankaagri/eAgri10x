@@ -450,7 +450,8 @@ public class BookOrderFragment extends Fragment {
         });
     }
     private void callapigetAddress() {
-        String address;
+
+
         onlybillingaddressname.clear();
         onlydeladdressname.clear();
         Map<String, Object> jsonParams = new ArrayMap<>();
@@ -477,6 +478,7 @@ public class BookOrderFragment extends Fragment {
 
 
                 if (response.isSuccessful()) {
+                    billingadd.clear();
                     onlybillingaddressname.add("Select Address");
                     onlydeladdressname.add("Select Address");
                     billingadd.addAll(response.body().getData());

@@ -66,7 +66,7 @@ public class GetLiveTradesData {
     private String validTo;
     @SerializedName("totalAvailable")
     @Expose
-    private Integer totalAvailable;
+    private double totalAvailable;
     @SerializedName("description")
     @Expose
     private Object description;
@@ -232,11 +232,11 @@ public class GetLiveTradesData {
         this.validTo = validTo;
     }
 
-    public Integer getTotalAvailable() {
+    public double getTotalAvailable() {
         return totalAvailable;
     }
 
-    public void setTotalAvailable(Integer totalAvailable) {
+    public void setTotalAvailable(double totalAvailable) {
         this.totalAvailable = totalAvailable;
     }
 

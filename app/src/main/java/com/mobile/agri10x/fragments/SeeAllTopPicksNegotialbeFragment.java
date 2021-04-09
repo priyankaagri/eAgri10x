@@ -117,14 +117,14 @@ public class SeeAllTopPicksNegotialbeFragment extends Fragment  {
 
                 } else {
 
-                    makeToast(getActivity(),getResources().getString(R.string.please_check_internet));                }
+                    makeToast(getActivity(),getResources().getString(R.string.somethingwentwrong));                }
             }
 
             @Override
             public void onFailure(Call<GetHomeProduct> call,
                                   Throwable t) {
                 recyle_alltoppicks.hideShimmer();
-                makeToast(getActivity(),getResources().getString(R.string.please_check_internet));            }
+                makeToast(getActivity(),getResources().getString(R.string.slownetworkdeted));            }
         });
     }
 

@@ -232,7 +232,7 @@ dialogfordetailpage.dismiss();
             e.printStackTrace();
         }
         //d.after(min) && d.before(max);
-        if((currnetDate.after(fromDate) && currnetDate.before(toDate) )&& (wishLists.get(position).getQuantity()>=500)){
+        if((currnetDate.after(fromDate) && currnetDate.before(toDate) )&& (wishLists.get(position).getQuantity()>=2500)){
             //   Toast.makeText(context, "out of stock"+currnetDate, Toast.LENGTH_SHORT).show();
             holder.relative_stock.setBackgroundResource(R.drawable.featured_bg);
             holder.stock.setText("In Stock");

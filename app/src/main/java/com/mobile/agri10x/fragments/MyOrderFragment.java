@@ -41,6 +41,8 @@ import com.mobile.agri10x.adapters.PurchaseorderAdpter;
 import com.mobile.agri10x.R;
 import com.mobile.agri10x.activities.HomePageActivity;
 
+import com.mobile.agri10x.models.GetBookingList;
+import com.mobile.agri10x.models.GetBookingListData;
 import com.mobile.agri10x.models.GetCitiesDatum;
 import com.mobile.agri10x.models.GetOrderList;
 import com.mobile.agri10x.models.GetOrderListDatumBooking;
@@ -83,7 +85,7 @@ public class MyOrderFragment extends Fragment {
     Dialog dialog,dialogchoice_of_facility,dialogForWarehouse,dialogForTransportContatct;
     private ImageView mBackButton;
     TextView btn_booking,btn_purchase;
-    AlertDialog  formdialog;
+    AlertDialog  formdialog ,dialogbooking;
     ShimmerRecyclerView recycleview_purchase_list;
     RecyclerView recycleview_booking_list;
     LinearLayoutManager linearLayoutManager;
@@ -125,7 +127,7 @@ public class MyOrderFragment extends Fragment {
     boolean getval= true;
     int getIds=0;
     public static List<GetOrderListDatumCheckout> checkoutorderlist = new ArrayList<>();
-    public static List<GetOrderListDatumBooking> bookingorderlist = new ArrayList<>();
+    public static List<GetBookingListData> bookingorderlist = new ArrayList<>();
     PurchaseorderAdpter purchaseorderAdpter;
     BookingorderAdpter bookingorderAdpter;
 
@@ -188,8 +190,78 @@ public class MyOrderFragment extends Fragment {
     }
 
     private void getlistbookingapi() {
-        //call api here
-        // getBookingList 176 fromAgriInvestor
+        dialogbooking=new Alert().pleaseWait();
+        bookingorderlist.clear();
+        Map<String, Object> jsonParams = new ArrayMap<>();
+        String getuserid =SessionManager.getKeyTokenUser(getActivity());
+
+        getuserid = getuserid.replaceAll(" ","");
+
+
+        jsonParams.put("UserID",getuserid);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        AgriInvestor apiService = ApiHandler.getApiService();
+        try {
+            SSLCertificateManagment.trustAllHosts();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        final Call<GetBookingList> calltoapi = apiService.wsBookingList("123456",body);
+
+        calltoapi.enqueue(new Callback<GetBookingList>() {
+            @Override
+            public void onResponse(Call<GetBookingList> call, Response<GetBookingList> response) {
+
+
+                if (response.isSuccessful()){
+
+                    dialogbooking.dismiss();
+                    if (!response.body().getData().isEmpty()) {
+
+                        bookingorderlist.addAll(response.body().getData());
+                        if (bookingorderlist.size() > 0) {
+
+                            bookingorderAdpter = new BookingorderAdpter(bookingorderlist, getActivity());
+                            recycleview_booking_list.setAdapter(bookingorderAdpter);
+                            bookingorderAdpter.notifyDataSetChanged();
+
+                        }
+
+
+                        if (getval) {
+                            btn_purchase.setBackgroundResource(R.drawable.hollow_back);
+                            btn_booking.setBackgroundResource(R.drawable.filll_back);
+                            btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
+                            btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                            booking_layout.setVisibility(View.VISIBLE);
+                            purchase_layout.setVisibility(View.GONE);
+                        }
+                        if (!getval) {
+
+                            btn_purchase.setBackgroundResource(R.drawable.click_change1);
+                            btn_booking.setBackgroundResource(R.drawable.click_chnage2);
+                            btn_purchase.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                            btn_booking.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black));
+                            purchase_layout.setVisibility(View.VISIBLE);
+                            booking_layout.setVisibility(View.GONE);
+                        }
+                    } else {
+                        Toast.makeText(getActivity(), "No data found", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetBookingList> call, Throwable t) {
+                dialogbooking.dismiss();
+                Toast.makeText(getActivity(),R.string.slownetworkdeted, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -905,7 +977,7 @@ public class MyOrderFragment extends Fragment {
 
     private void getlistorderapi() {
         checkoutorderlist.clear();
-        bookingorderlist.clear();
+
         Map<String, Object> jsonParams = new ArrayMap<>();
         String getuserid =SessionManager.getKeyTokenUser(getActivity());
 
@@ -935,20 +1007,14 @@ public class MyOrderFragment extends Fragment {
                     recycleview_purchase_list.hideShimmer();
                     if (!response.body().getData().isEmpty()) {
                         checkoutorderlist.addAll(response.body().getData().get(0).getCheckoutList());
-                        bookingorderlist.addAll(response.body().getData().get(0).getBookingList());
+                        // bookingorderlist.addAll(response.body().getData().get(0).getBookingList());
                         if (checkoutorderlist.size() > 0) {
                             purchaseorderAdpter = new PurchaseorderAdpter(checkoutorderlist, getActivity());
                             recycleview_purchase_list.setAdapter(purchaseorderAdpter);
                             purchaseorderAdpter.notifyDataSetChanged();
                         }
 
-                        if (bookingorderlist.size() > 0) {
 
-                            bookingorderAdpter = new BookingorderAdpter(bookingorderlist, getActivity());
-                            recycleview_booking_list.setAdapter(bookingorderAdpter);
-                            bookingorderAdpter.notifyDataSetChanged();
-
-                        }
 
 
                         if (getval) {
@@ -969,7 +1035,7 @@ public class MyOrderFragment extends Fragment {
                             booking_layout.setVisibility(View.GONE);
                         }
                     } else {
-                        makeToast(getContext(),getResources().getString(R.string.something_went_wrong));
+                        makeToast(getContext(),getResources().getString(R.string.no_data_available));
                     }
                 }else{
                     makeToast(getContext(),getResources().getString(R.string.something_went_wrong));
@@ -980,7 +1046,7 @@ public class MyOrderFragment extends Fragment {
             public void onFailure(Call<GetOrderList> call, Throwable t) {
 
                 // Toast.makeText(getActivity(),R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
-                makeToast(getContext(),getResources().getString(R.string.network_connected));
+                makeToast(getContext(),getResources().getString(R.string.slownetworkdeted));
 
             }
         });
@@ -999,15 +1065,20 @@ public class MyOrderFragment extends Fragment {
 
 
 
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         recycleview_booking_list.setLayoutManager(linearLayoutManager);
 
 
 /*recycleview_booking_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
 recycleview_booking_list.showShimmer();*/
 
-        recycleview_purchase_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
+      //  recycleview_purchase_list.setLayoutManager(new GridLayoutManager(getActivity(), 1), R.layout.item_shimmer_card_view);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getActivity());
+        linearLayoutManager2.setReverseLayout(true);
+        linearLayoutManager2.setStackFromEnd(true);
+        recycleview_purchase_list.setLayoutManager(linearLayoutManager2);
         recycleview_purchase_list.showShimmer();
 
 

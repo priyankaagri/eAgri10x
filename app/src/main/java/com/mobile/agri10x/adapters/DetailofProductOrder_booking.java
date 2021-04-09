@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.models.GetBookingDeatilProduct;
 import com.mobile.agri10x.models.GetOrderListDatumBookingCartDataProduct;
 
 import java.text.NumberFormat;
@@ -20,12 +21,12 @@ import java.util.Locale;
 public class DetailofProductOrder_booking extends RecyclerView.Adapter<DetailofProductOrder_booking.HolderView> {
     Context context;
     String valueoftotalweight;
-    List<GetOrderListDatumBookingCartDataProduct> ProductsInOrderlistData = new ArrayList<>();
+    List<GetBookingDeatilProduct> ProductsInOrderlistData = new ArrayList<>();
 
 
 
 
-    public DetailofProductOrder_booking(List<GetOrderListDatumBookingCartDataProduct> productslistData, Context context) {
+    public DetailofProductOrder_booking(List<GetBookingDeatilProduct> productslistData, Context context) {
 
         this.context = context;
         this.ProductsInOrderlistData = productslistData;

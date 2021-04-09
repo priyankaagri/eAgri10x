@@ -205,7 +205,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 if (strerr.contains("java.lang.NumberFormatException: For input string")) {
                     makeToast(getApplicationContext(), getResources().getString(R.string.not_authorized_mobile));
                 } else {
-                    makeToast(getApplicationContext(), getResources().getString(R.string.something_went_wrong));
+                    makeToast(getApplicationContext(), getResources().getString(R.string.slownetworkdeted));
                 }
             }
         });

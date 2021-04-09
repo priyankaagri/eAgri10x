@@ -515,6 +515,7 @@
     <string name="sure_wnat_to_remove">Are you sure you want to Remove ?</string>
     <string name="avail_quantity">"Available Quantity: "</string>
     <string name="avail_packaging_size">"Packaging Size:  "</string>
+    <string name="slownetworkdeted">Slow Network Detected</string>
 
 
 

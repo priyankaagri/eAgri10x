@@ -292,7 +292,7 @@ public class HomePageActivity extends AppCompatActivity implements PaymentResult
             @Override
             public void onFailure(Call<GetProductsInCart> call,
                                   Throwable t) {
-                Toast.makeText(context,R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,R.string.slownetworkdeted, Toast.LENGTH_SHORT).show();
             }
         });
     }

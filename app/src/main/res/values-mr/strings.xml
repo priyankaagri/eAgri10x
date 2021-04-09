@@ -514,4 +514,5 @@
     <string name="sure_wnat_to_remove">आपणास खात्री आहे की आपण काढू इच्छिता ?</string>
     <string name="avail_quantity">"उपलब्ध प्रमाण : "</string>
     <string name="avail_packaging_size">"पॅकेजिंग आकार: "</string>
+    <string name="slownetworkdeted">हळू नेटवर्क आढळले</string>
 </resources>

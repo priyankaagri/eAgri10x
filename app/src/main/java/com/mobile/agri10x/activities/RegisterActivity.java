@@ -288,7 +288,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
             public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
                 dialog.dismiss();
-                makeToast(getApplicationContext(),getResources().getString(R.string.something_went_wrong));
+                makeToast(getApplicationContext(),getResources().getString(R.string.slownetworkdeted));
             }
         });
     }

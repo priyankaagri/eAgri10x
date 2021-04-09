@@ -225,7 +225,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
                 dialogresend.dismiss();
-                Toast.makeText(Otp_Screen_Activity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Otp_Screen_Activity.this, R.string.slownetworkdeted, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -303,6 +303,7 @@ public class Otp_Screen_Activity extends AppCompatActivity {
 
                 } else {
                     dialog.dismiss();
+
                     Toast.makeText(Otp_Screen_Activity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -310,8 +311,9 @@ public class Otp_Screen_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<VerifyOTP> call,
                                   Throwable t) {
+
                 dialog.dismiss();
-                Toast.makeText(Otp_Screen_Activity.this, R.string.somethingwentwrong, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Otp_Screen_Activity.this, R.string.slownetworkdeted, Toast.LENGTH_SHORT).show();
             }
         });
     }
